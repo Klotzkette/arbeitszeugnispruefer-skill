@@ -42,7 +42,7 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | --- | --- | --- |
 | **BAG, Urteil v. 14.10.2003 – 9 AZR 12/03** | „Zur vollen Zufriedenheit" bescheinigt eine durchschnittliche Leistung (Note 3). Wer eine bessere als die durchschnittliche Beurteilung verlangt, trägt die Darlegungs- und Beweislast; für eine unterdurchschnittliche Beurteilung trägt sie der Arbeitgeber. | Notenstufenmatrix (Teil A), Beweislast (Stufe 6, Teil F.3) |
 | **BAG, Urteil v. 18.11.2014 – 9 AZR 584/13** | „Befriedigend" ist die mittlere Note der Zufriedenheitsskala. Der Arbeitnehmer trägt die Darlegungs- und Beweislast für eine bessere Note — auch dann, wenn in der Branche überwiegend gute oder sehr gute Noten vergeben werden. Branchenüblichkeit verschiebt die Beweislast nicht. | Beweislast (Stufe 6, Teil F.3), Erwartungsmanagement im Mandantenbericht |
-| **BAG, Urteil v. 20.02.2001 – 9 AZR 44/00** | Beginn der ständigen Linie: kein gesetzlicher Anspruch auf eine Schlussformel mit Dank und guten Wünschen. | Schlussformel (Teil B) |
+| **BAG, Urteil v. 20.02.2001 – 9 AZR 44/00** | Beginn der ständigen Linie: kein gesetzlicher Anspruch auf eine Schlussformel mit Dank und guten Wünschen. Das Fehlen der Schlusssätze macht das Zeugnis nicht unvollständig und ist kein unzulässiges Geheimzeichen. | Schlussformel (Teil B) |
 | **BAG, Urteil v. 11.12.2012 – 9 AZR 227/11** | Kein Anspruch auf Dank und gute Wünsche in der Schlussformel; Empfindungsäußerungen des Arbeitgebers gehören nicht zum geschuldeten Zeugnisinhalt. Ist der Arbeitnehmer mit einer erteilten Schlussformel unzufrieden, kann er nur ein Zeugnis **ohne** Schlussformel verlangen — keine Umformulierung. | Schlussformel (Teil B), Anspruchs-Realität |
 | **BAG, Urteil v. 25.01.2022 – 9 AZR 146/21** | Bestätigung der Linie: kein Anspruch auf eine Schlussformel; Abwägung mit der Meinungsfreiheit des Arbeitgebers (Art. 5 Abs. 1 GG). | Schlussformel (Teil B) |
 | **BAG, Urteil v. 21.06.2005 – 9 AZR 352/04** | Gebot der Zeugnisklarheit (§ 109 Abs. 2 GewO): Maßgeblich ist der objektive Empfängerhorizont, nicht die Absicht des Arbeitgebers. Die Formulierung „kennen gelernt" drückt für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen. | Empfängerhorizont (Stufe 4), Teil A |
@@ -207,6 +207,7 @@ Verwende Tabellen mit Spalten **Originalwortlaut · Decodierte Aussage · Note �
 - Sind Schlussformel-Signal und Schlussformel-Anspruch getrennt?
 - Ist die Beweislast richtig herum dargestellt (bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer)?
 - Keine erfundenen Fundstellen, Zeugnisinhalte oder Noten?
+- Jedes Rechtsprechungszitat gegen den [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) abgeglichen — und bei Schriftsatzverwendung erneut live verifiziert?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
 ---
