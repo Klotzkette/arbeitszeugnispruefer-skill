@@ -2,6 +2,8 @@
 
 > **Experimenteller Agent-Skill** für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
+> **Und jetzt mal ehrlich, Leute — keine Panik:** Das hier ist eigentlich nur ein riesiger Prompt. Kein Hexenwerk, keine Blackbox, kein heimlich trainiertes Modell, sondern strukturierter Text in Markdown, den ein LLM (z. B. Claude oder Perplexity Computer) beim Bearbeiten eines Arbeitszeugnisses als Anleitung lädt. `SKILL.md` ist die Hauptanweisung, die Dateien unter `references/` sind Nachschlagewerke, die der Agent bei Bedarf zieht. Wer schon mal einen langen ChatGPT-Prompt geschrieben hat, kennt das Prinzip — hier ist es nur sauber sortiert, juristisch geerdet und auf den deutschen Arbeitszeugnis-Kontext zugeschnitten. Man kann reinschauen, mitlesen, anpassen, forken. Mehr ist es nicht.
+
 Konsolidierter Skill für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün).
 
 Diese Skill bündelt eine 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben unterstützenden References. Sie deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
