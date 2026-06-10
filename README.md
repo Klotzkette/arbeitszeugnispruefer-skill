@@ -4,7 +4,23 @@
 
 > **Transparenz:** Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
 >
-> **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Anwendung: Inhalt der Datei in den Chat kopieren, darunter das zu prüfende Arbeitszeugnis einfügen. Es ist keine Installation, kein Upload, kein Konto und kein zusätzliches Werkzeug erforderlich.
+> **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
+
+## Anwendung: So einfach geht's
+
+**Weg A — Text kopieren:**
+
+1. [`skill/SKILL.md`](skill/SKILL.md) öffnen, den gesamten Text kopieren und in den Chat einfügen.
+2. Dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
+3. Das Zeugnis einfügen (Text, PDF oder Foto). Die Analyse startet von selbst.
+
+**Weg B — Datei hineinziehen (Drag & Drop):**
+
+1. [`skill/SKILL.md`](skill/SKILL.md) herunterladen (auf der GitHub-Dateiseite: „Download raw file").
+2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
+3. Das Zeugnis nachreichen — fertig.
+
+In beiden Fällen gilt der eingebaute Sofortstart: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang.
 
 Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — ausgegeben als farbige Ampelsymbole 🔴/🟠/🟢, nicht als Farbwörter.
 
