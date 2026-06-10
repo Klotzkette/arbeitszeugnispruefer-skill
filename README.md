@@ -4,45 +4,29 @@
 
 > **Und jetzt mal ehrlich, Leute — keine Panik:** Das hier ist eigentlich nur ein riesiger Prompt. Kein Hexenwerk, keine Blackbox, kein heimlich trainiertes Modell, sondern strukturierter Text in Markdown, den ein LLM beim Bearbeiten eines Arbeitszeugnisses als Anleitung lädt. Wer schon mal einen langen ChatGPT-Prompt geschrieben hat, kennt das Prinzip — hier ist es nur sauber sortiert, juristisch geerdet und auf den deutschen Arbeitszeugnis-Kontext zugeschnitten. Man kann reinschauen, mitlesen, anpassen, forken. Mehr ist es nicht.
 >
-> **Funktioniert in jedem Chatbot.** ChatGPT, Claude, Gemini, Mistral, Perplexity, lokales Llama — egal. Der Skill ist reiner Markdown-Text. Es gibt zwei Wege:
->
-> 1. **Copy & Paste (einfachster Weg, kein Upload, kein Konto, kein Tool nötig).** Inhalt von [`skill/SKILL.md`](skill/SKILL.md) kopieren, in den Chat einfügen, dann das zu prüfende Arbeitszeugnis darunter posten. Fertig. Die Dateien unter `references/` sind **optional** — nur mitkopieren, wenn der Chatbot bei einem bestimmten Aspekt nachfragt oder wenn das jeweilige Thema (Schlussformel, Geheimcodes, Ampelflaggen …) für den konkreten Fall relevant ist.
-> 2. **Als Datei-Anhang.** In Chatbots, die Dateien akzeptieren (ChatGPT, Claude, Perplexity-Anhänge), `SKILL.md` und bei Bedarf einzelne References einfach hochladen oder per Drag-and-Drop anhängen. In Agent-Umgebungen mit Skill-Loader (Claude Code, Perplexity Computer) den ganzen `skill/`-Ordner als Skill registrieren — dann liest sich der Agent die References bei Bedarf selbst nach.
->
-> Kurz: **Man muss nichts installieren und nichts hochladen.** Markdown rein in den Chat, Zeugnis dazu, los.
+> **Eine einzige Datei. Funktioniert in jedem Chatbot.** Der gesamte Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md). Keine Anhänge, keine Referenzen, keine Sammlung. ChatGPT, Claude, Gemini, Mistral, Perplexity, lokales Llama — egal. Inhalt der Datei kopieren, in den Chat einfügen, dann das zu prüfende Arbeitszeugnis darunter posten. Fertig. **Nichts installieren, nichts hochladen, kein Konto, kein Tool nötig.**
 
 Konsolidierter Skill für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün).
 
-Diese Skill bündelt eine 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben unterstützenden References. Sie deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
+Diese Skill bündelt eine 50-teilige Plugin-Sammlung in eine einzige `SKILL.md`. Sie deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
 
 ## Inhalt
 
 ```
 skill/
-├── SKILL.md                              Acht-Stufen-Workflow, rechtlicher Anker, Antwortformate
-└── references/
-    ├── zufriedenheitsformel.md           Notenstufen 1 bis 5 der Hauptformel
-    ├── schlussformel.md                  Bedauern/Dank/Wunsch, Signal versus Anspruch
-    ├── geheimcode-katalog.md             Standardphrasen nach Themenachsen
-    ├── ampel-flaggen.md                  Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte
-    ├── analyse-techniken.md              Drift, Auslassungen, Negationen, Widersprüche, Formalia
-    ├── mandatsmodule.md                  Aufforderungsschreiben, Wortlaut-Verbesserungen, Klageantrag
-    └── muster-und-sonderfaelle.md        Drei Musterzeugnisse, leitende Positionen, Azubi, Branchen
+└── SKILL.md   Alles in einer Datei: Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse
 ```
 
-### Was ist `SKILL.md`, was sind die References?
+Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 
-- **`SKILL.md`** ist die Hauptanweisung — der eigentliche Prompt mit dem Acht-Stufen-Workflow, dem rechtlichen Anker und den Antwortformaten. Diese Datei ist **immer dabei**.
-- **Die sieben Dateien unter `references/`** sind thematische Nachschlagewerke. Sie sind **nicht zwingend nötig**, um den Skill zu benutzen — `SKILL.md` allein liefert bereits einen vollständigen Workflow. Die References werden erst dann relevant, wenn ein konkreter Punkt vertieft werden soll:
-  - `zufriedenheitsformel.md` — wenn die Note der Hauptformel exakt eingeordnet werden soll (Note 1–5).
-  - `schlussformel.md` — wenn Bedauern, Dank und Zukunftswunsch im Detail bewertet werden sollen.
-  - `geheimcode-katalog.md` — wenn verdächtige Standardphrasen entschlüsselt werden müssen.
-  - `ampel-flaggen.md` — wenn Steigerungsadverbien und Codeworte sauber den Ampelfarben zugeordnet werden sollen.
-  - `analyse-techniken.md` — wenn nach Drift, Auslassungen, Negationen, Widersprüchen oder Formfehlern gesucht wird.
-  - `mandatsmodule.md` — wenn ein Aufforderungsschreiben, eine Wortlaut-Verbesserung oder ein Klageantrag formuliert werden soll.
-  - `muster-und-sonderfaelle.md` — wenn ein Musterzeugnis, eine Leitungsposition, ein Azubi-Zeugnis oder ein Branchenspezifikum als Vergleich gebraucht wird.
-
-**Faustregel:** Nur `SKILL.md` reinkopieren reicht für den ersten Durchgang. Die Referenz, die der Chatbot bzw. der konkrete Fall braucht, kann anschließend nachgeschoben werden — entweder per Copy-and-Paste oder als zusätzlicher Datei-Anhang.
+- **Workflow in acht Stufen** — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
+- **Teil A — Zufriedenheitsformel** — Notenstufen 1 bis 5 der Hauptformel.
+- **Teil B — Schlussformel** — Bedauern/Dank/Wunsch, Signal versus Anspruch.
+- **Teil C — Geheimcode-Katalog** — Standardphrasen nach Themenachsen.
+- **Teil D — Ampel-Flaggen** — Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte.
+- **Teil E — Analyse-Techniken** — Drift, Auslassungen, Negationen, Widersprüche, Formalia.
+- **Teil F — Mandatsmodule** — Aufforderungsschreiben, Wortlaut-Verbesserungen, Klageantrag.
+- **Teil G — Musterzeugnisse und Sonderfälle** — Drei Musterzeugnisse, leitende Positionen, Azubi, Branchen.
 
 ## Workflow in acht Stufen
 

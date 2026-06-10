@@ -5,7 +5,22 @@ description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugni
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. Die Code-, Flaggen-, Mandats- und Musterzeugnistabellen liegen in `references/`. Die Tabellen werden im Body nur zitiert, nicht dupliziert; lade die jeweilige Referenz, wenn der Schritt sie braucht.
+Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine externen Referenzen nötig.
+
+## Inhaltsverzeichnis
+
+- [Rechtlicher Anker](#rechtlicher-anker)
+- [Wann diese Skill greift](#wann-diese-skill-greift)
+- [Workflow in acht Stufen](#workflow-in-acht-stufen)
+- [Antwortformate](#antwortformate)
+- [Qualitätsgate vor jeder Ausgabe](#qualitätsgate-vor-jeder-ausgabe)
+- [Teil A — Zufriedenheitsformel](#teil-a--zufriedenheitsformel--decodierung)
+- [Teil B — Schlussformel](#teil-b--schlussformel--signal-und-anspruch)
+- [Teil C — Geheimcode-Katalog](#teil-c--geheimcode-katalog-der-deutschen-zeugnissprache)
+- [Teil D — Ampel-Flaggen, Steigerungsadverbien, negative Codeworte](#teil-d--ampel-flaggen-steigerungsadverbien-und-negative-codeworte)
+- [Teil E — Analyse-Techniken: Drift, Auslassungen, Widersprüche, Negationen, Formalia](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-negationen-formalia)
+- [Teil F — Mandatsmodule: Aufforderungsschreiben, Verbesserungen, Klagestrategie](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie)
+- [Teil G — Musterzeugnisse und Sonderfälle](#teil-g--musterzeugnisse-und-sonderfälle)
 
 ## Rechtlicher Anker
 
@@ -28,18 +43,6 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 
 Wenn dagegen nur ein Bewerbungsschreiben, eine Stellenausschreibung oder eine Beurteilung außerhalb des Zeugnisses zu prüfen ist: anderes Mandat, dieser Skill ist nicht zuständig.
 
-## Referenzbibliothek
-
-| Referenz | Inhalt |
-| --- | --- |
-| `references/zufriedenheitsformel.md` | Notenstufen 1 bis 5 der Hauptformel mit Steigerungs- und Abschwächungssignalen. |
-| `references/schlussformel.md` | Bedauern/Dank/Wunsch, Signal versus Anspruch, Fünf-Bausteine-Schema. |
-| `references/geheimcode-katalog.md` | Standardphrasen zu Leistung, Engagement, Belastbarkeit, Teamarbeit, Führung, Compliance. |
-| `references/ampel-flaggen.md` | Steigerungsadverbien, grüne, orange und rote Flaggen, negative Codeworte nach Themen. |
-| `references/analyse-techniken.md` | Bereichs-Drift, Auslassungen, Negationen, Widersprüche, formale Kopfdaten-Prüfung. |
-| `references/mandatsmodule.md` | Aufforderungsschreiben, Wortlaut-Verbesserungstabelle, Klageantrag, Streitwert, Beweislast. |
-| `references/muster-und-sonderfaelle.md` | Drei vollständige Musterzeugnisse (Note 1, gemischt, rote Flaggen) plus leitende Positionen, Azubi-Zeugnis, branchenspezifische Pflichtaussagen. |
-
 ## Workflow in acht Stufen
 
 Arbeite in der unten genannten Reihenfolge. Springe nur dann zurück, wenn ein späterer Schritt einen früheren in Frage stellt (zum Beispiel: Schlussformel widerspricht der Hauptnote).
@@ -59,7 +62,7 @@ Erfasse die folgenden Punkte aus dem Material. Frage nur nach, was der Mandant n
 | Vergleichsmaterial | Vorzeugnis, Zwischenzeugnis, Zielvereinbarungen, Boni, Beurteilungsbögen, Lob-Mails. |
 | Frist | Schon eine Klagefrist im Raum? Vorprozessuale Berichtigungsbitte schon ausgesprochen? |
 
-Notiere die Antworten in einem Mandatsblatt. Wenn das Zeugnis als PDF kommt, prüfe zuerst die formale Ebene aus `references/analyse-techniken.md` (Briefkopf, Datum, Unterschriftsberechtigung, vollständige Beschäftigungsangabe).
+Notiere die Antworten in einem Mandatsblatt. Wenn das Zeugnis als PDF kommt, prüfe zuerst die formale Ebene aus [Teil E](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-negationen-formalia) (Briefkopf, Datum, Unterschriftsberechtigung, vollständige Beschäftigungsangabe).
 
 ### 2 — Zeugnisart und Kopfdaten sichern
 
@@ -74,9 +77,9 @@ Kopfdaten gegen Arbeitsvertrag, Lohnabrechnung und Beendigungsdokument abgleiche
 
 Drei Sätze tragen typischerweise die Hauptnote eines qualifizierten Zeugnisses:
 
-- **Zusammenfassende Leistungsbeurteilung** (Zufriedenheitsformel): Hauptträger der Leistungsnote → `references/zufriedenheitsformel.md`.
+- **Zusammenfassende Leistungsbeurteilung** (Zufriedenheitsformel): Hauptträger der Leistungsnote → [Teil A](#teil-a--zufriedenheitsformel--decodierung).
 - **Verhaltensbeurteilung**: Trägt die Verhaltensnote. Reihenfolge Vorgesetzte vor Kollegen vor Kunden ist Pflicht.
-- **Schlussformel**: Trägt die Signalwirkung; rechtlich nur eingeschränkt einklagbar → `references/schlussformel.md`.
+- **Schlussformel**: Trägt die Signalwirkung; rechtlich nur eingeschränkt einklagbar → [Teil B](#teil-b--schlussformel--signal-und-anspruch).
 
 Die übrigen Sätze stützen oder widerlegen diese Hauptnoten. Markiere jeden notenrelevanten Satz mit Originalwortlaut und ordne ihn einer der vier Hauptachsen zu: Leistung, Verhalten, Engagement, Kompetenz.
 
@@ -91,9 +94,9 @@ Bilde für jeden notenrelevanten Satz vier Spalten:
 
 Material für die Decodierung:
 
-- `references/zufriedenheitsformel.md` — Hauptformel mit Notenstufen.
-- `references/geheimcode-katalog.md` — Standardformulierungen zu Leistung, Engagement, Belastbarkeit, Teamarbeit, Führung, Compliance.
-- `references/ampel-flaggen.md` — Steigerungsadverbien (vollkommen, stets, überwiegend, im Wesentlichen ...), grüne, orange und rote Flaggen, negative Codeworte nach Themen (Alkohol, Krankheit, Diebstahl, Konflikt, Loyalität, Betriebsrat, sexuelle Verfehlungen, Mitläufertum, Auslassungen).
+- [Teil A](#teil-a--zufriedenheitsformel--decodierung) — Hauptformel mit Notenstufen.
+- [Teil C](#teil-c--geheimcode-katalog-der-deutschen-zeugnissprache) — Standardformulierungen zu Leistung, Engagement, Belastbarkeit, Teamarbeit, Führung, Compliance.
+- [Teil D](#teil-d--ampel-flaggen-steigerungsadverbien-und-negative-codeworte) — Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte nach Themen (Alkohol, Krankheit, Diebstahl, Konflikt, Loyalität, Betriebsrat, sexuelle Verfehlungen, Mitläufertum, Auslassungen).
 
 Wenn ein Satz so nicht im Katalog steht, leite die Tendenz aus dem objektiven Empfängerhorizont her und vermerke die Unsicherheit ausdrücklich (Beispiel: Tendenz Note 3, weil X; ohne BAG-Stütze; Live-Recherche empfohlen).
 
@@ -105,7 +108,7 @@ Wenn ein Satz so nicht im Katalog steht, leite die Tendenz aus dem objektiven Em
 - **Widersprüche:** Hohe Einzelnoten in den Detailsätzen plus niedrige Hauptnote oder umgekehrt.
 - **Negationen:** Doppelte Verneinung wie nicht unzuverlässig, nicht unhöflich.
 
-Material: `references/analyse-techniken.md`.
+Material: [Teil E](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-negationen-formalia).
 
 ### 6 — Gesamtnotenspanne und Hauptbefund
 
@@ -126,7 +129,7 @@ Liefere dem Mandanten:
 - Handlungsempfehlung: akzeptieren, nachverhandeln, formal auffordern, Vergleich nutzen, klagen.
 - Eingeordnete Risikoabwägung (Bewerbungsdruck, Reputationsrisiko, Vergleichsbereitschaft).
 
-Wenn nachverhandelt oder aufgefordert werden soll, baue daraus das **Aufforderungsschreiben** an den Arbeitgeber: vorgerichtlich, höflich, mit klaren Streitstellen und einer angemessenen Frist (in der Praxis zwei bis drei Wochen). Material und Mustertext: `references/mandatsmodule.md`.
+Wenn nachverhandelt oder aufgefordert werden soll, baue daraus das **Aufforderungsschreiben** an den Arbeitgeber: vorgerichtlich, höflich, mit klaren Streitstellen und einer angemessenen Frist (in der Praxis zwei bis drei Wochen). Material und Mustertext: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie).
 
 ### 8 — Klagestrategie Zeugnisberichtigung
 
@@ -138,7 +141,7 @@ Wenn der Arbeitgeber nicht oder unzureichend reagiert:
 - **Kostenrisiko:** § 12a ArbGG; in der ersten Instanz keine Erstattung gegnerischer Anwaltskosten.
 - **Vergleichsfenster:** Häufig vor dem Gütetermin; halte einen vorformulierten Vergleichstext bereit.
 
-Material und Musterantrag: `references/mandatsmodule.md`.
+Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie).
 
 ## Antwortformate
 
@@ -175,15 +178,6 @@ Verwende Tabellen mit Spalten **Originalwortlaut · Decodierte Aussage · Note �
 - Beweislast und Belegbedarf pro Streitstelle.
 - Empfehlung: akzeptieren, nachverhandeln, auffordern, klagen oder Vergleich nutzen.
 
-## Sonderfälle
-
-- **Leitende Positionen:** Führung, Budget, Strategie und Loyalität gesondert prüfen.
-- **Ausbildungszeugnis (§ 16 BBiG):** Besonderheiten bei Berufsschule, Ausbildungsrahmenplan, Verhaltens- und Leistungsangabe nur auf Verlangen.
-- **Branchen-Codes:** Banken, Vertrieb, Gesundheitswesen, öffentlicher Dienst, IT haben eigene Standardphrasen.
-- **Entwurfsprüfung Arbeitgeberseite:** Prüfe rückwärts — was würde diesen Satz angreifbar machen?
-
-Alle drei Sonderfälle: `references/muster-und-sonderfaelle.md`.
-
 ## Qualitätsgate vor jeder Ausgabe
 
 - Sind Umlaute, ß, Namen, Daten und Zitate sauber übernommen?
@@ -193,12 +187,817 @@ Alle drei Sonderfälle: `references/muster-und-sonderfaelle.md`.
 - Keine erfundenen Fundstellen, Zeugnisinhalte oder Noten?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
-## Testakten und Übungsmaterial
+---
 
-`references/muster-und-sonderfaelle.md` enthält drei vollständige Musterzeugnisse:
+# Teil A — Zufriedenheitsformel — Decodierung
 
-- Note 1 mit warmer Schlussformel (Positivreferenz).
-- Gemischt mit Schaufenster-Drift bei Lernbereitschaft und Sozialverhalten.
-- Rote Flaggen mit „bemüht", falscher Reihenfolge, „direkter Kommunikationsweise" und kalter Schlussformel.
+Die Hauptformel der zusammenfassenden Leistungsbeurteilung. Ihre Bestandteile tragen die Note. Die Tabelle deckt nur die Standardvarianten ab; jede Abweichung muss in Kontext und Empfängerhorizont eingeordnet werden.
 
-Lies sie als Schulungsfälle, nicht als vorgefertigte Lösungen: erst Hypothese bilden, dann mit der Notenmatrix gegenprüfen.
+## Notenstufen
+
+| Formulierung | Note | Ampel |
+| --- | --- | --- |
+| „stets zu unserer vollsten Zufriedenheit" | 1 | Grün |
+| „stets zu unserer vollsten und uneingeschränkten Zufriedenheit" | 1 (verstärkt) | Grün |
+| „stets zu unserer vollen Zufriedenheit" | 2 | Grün |
+| „zu unserer vollsten Zufriedenheit" (ohne „stets") | 2 | Grün/Orange |
+| „zu unserer vollen Zufriedenheit" | 3 | Orange |
+| „stets zu unserer Zufriedenheit" | 3–4 | Orange |
+| „zu unserer Zufriedenheit" | 4 | Rot |
+| „im Großen und Ganzen zu unserer Zufriedenheit" | 5 | Rot |
+| „hat unsere Erwartungen erfüllt" | 4 (Ersatzformel) | Rot |
+| „zur vollen Zufriedenheit, soweit beurteilt werden konnte" | 3–4 (abgeschwächt) | Rot |
+| „Wir hatten an seiner Arbeit nichts auszusetzen" | 4–5 (geheim) | Rot |
+
+## Vier wirksame Verstärkungs- und Abschwächungssignale
+
+- **„stets"** — bei Note 1/2 erwartbar, Fehlen senkt um eine halbe Note.
+- **„vollsten / vollen / Zufriedenheit"** — der Verbalkern, der die Note 1 → 4 steuert.
+- **„uneingeschränkt"** — verstärkt Note 1.
+- **„zumeist / weitgehend / im Großen und Ganzen / soweit beurteilt werden konnte"** — Abschwächungen, die die Note um eine Stufe senken.
+
+## Sätze, die wie eine Hauptformel klingen, aber keine sind
+
+- „Frau X war eine geschätzte Mitarbeiterin." → kein Notenträger, nur freundliches Vorgeplänkel.
+- „Wir haben Herrn Y kennengelernt als jemanden, der …" → ambivalent, oft negativ kodiert.
+- „Sein Beitrag entsprach den betrieblichen Anforderungen." → ungebräuchlich, im Zweifel Note 4.
+
+## Quellen für die Notenstufenmatrix
+
+- **§ 109 GewO** — Wahrheits- und Wohlwollensgrundsatz.
+- **BAG, ständige Rechtsprechung**: Beweislast bis Note 3 beim Arbeitgeber, ab Note 2 abwärts beim Arbeitnehmer. Konkrete Entscheidung live verifizieren.
+
+---
+
+# Teil B — Schlussformel — Signal und Anspruch
+
+Die Schlussformel ist die rechtlich kniffligste Stelle. Sie ist **kein** unmittelbarer Notenträger — wer sie isoliert einklagt, scheitert oft. Sie ist aber das **stärkste Signal** im Bewerbungsverkehr. Trenne deshalb immer:
+
+- **Signalwirkung:** Was kommuniziert der Schluss an einen kundigen Empfänger?
+- **Anspruch:** Lässt sich genau diese Formel einklagen?
+
+## Notenwirkung der Schlussbausteine
+
+Vollständige Schlussformel (Note 1 – Note 2) besteht aus **fünf** Bausteinen:
+
+1. **Bedauern** über das Ausscheiden („Wir bedauern es außerordentlich, …").
+2. **Dank** für die geleistete Arbeit.
+3. **Wünsche** für die berufliche Zukunft.
+4. **Wünsche** für die persönliche Zukunft.
+5. **Erfolgswunsch** („weiterhin viel Erfolg").
+
+| Schlussformel | Signal | Ampel |
+| --- | --- | --- |
+| „Wir bedauern es außerordentlich, Frau X zu verlieren, danken ihr herzlich für ihre hervorragenden Leistungen und wünschen ihr für ihren weiteren beruflichen und persönlichen Weg alles erdenklich Gute und weiterhin viel Erfolg." | Maximalformel, Note 1 | Grün |
+| Vier von fünf Bausteinen vorhanden | Note 2 | Grün |
+| Drei Bausteine | Note 3 | Orange |
+| Nur Dank ohne Bedauern | Distanzsignal | Orange |
+| Nur Wunsch ohne Dank | Kalter Schluss | Rot/Orange |
+| „Frau X scheidet auf eigenen Wunsch aus. Wir wünschen ihr für die Zukunft alles Gute." | Sachlich-kalt | Rot/Orange |
+| Schlussformel fehlt | BAG-Sicht: kein Anspruch (BAG 11.12.2012 – 9 AZR 227/11 nur als Live-Recherche zitieren) | Orange |
+
+## Sonderfälle
+
+- **Eigenkündigung ohne Bedauern:** Häufig im Kontext erklärbar; alleine selten ein Berichtigungspunkt.
+- **Passivkonstruktion** („Das Arbeitsverhältnis endet"): Distanzsignal, kein rechtlicher Mangel.
+- **Datumsangabe ohne weitere Worte** am Ende: Kalte Trennung; Verhandlungspunkt.
+
+## Anspruchs-Realität
+
+- Eine wohlwollende Schlussformel lässt sich nach ständiger BAG-Linie **nicht erzwingen**.
+- Erzwingbar ist die **Berichtigung** unzulässiger oder unklarer Aussagen — wenn die Schlussformel z. B. unwahre Tatsachen suggeriert (passiv-kühle Andeutung von Verfehlungen), kann sie als Berichtigungspunkt herangezogen werden.
+- Live verifizieren: BAG-Linie zur fehlenden Schlussformel, BAG-Linie zur Korrektur ambivalenter Schlüsse.
+
+> Im Mandantenbericht immer beide Ebenen ausweisen — die Schlussformel sendet ein klares Signal, lässt sich aber nur als Teil der Berichtigungsstrategie einsetzen, nicht als selbständiger Klagepunkt.
+
+---
+
+# Teil C — Geheimcode-Katalog der deutschen Zeugnissprache
+
+Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus — prüfe immer den objektiven Empfängerhorizont im Gesamtkontext.
+
+## Leistung und Arbeitsqualität
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „stets einwandfreie Arbeitsergebnisse" | Höchste Qualität | Grün |
+| „sorgfältig und gewissenhaft" | Sehr gute Qualität | Grün |
+| „hat die Aufgaben sorgfältig erledigt" | Befriedigend | Orange |
+| „bemüht, die Aufgaben zu erfüllen" | Guter Wille, schlechtes Ergebnis | Rot |
+| „im Wesentlichen ordnungsgemäß" | Erhebliche Mängel | Rot |
+| „hat die übertragenen Aufgaben zu erledigen versucht" | Hat es nicht geschafft | Rot |
+
+## Engagement und Motivation
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „stets einsatzbereit und motiviert" | Hohe Motivation | Grün |
+| „zeigte Engagement" | Mittelmaß | Orange |
+| „bemühte sich, den Anforderungen gerecht zu werden" | Gescheitert | Rot |
+| „arbeitete im Rahmen seiner Möglichkeiten" | Geringe Leistungsfähigkeit | Rot |
+
+## Belastbarkeit
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „auch unter schwierigen Bedingungen belastbar" | Sehr gut | Grün |
+| „den üblichen Belastungen gewachsen" | Befriedigend | Orange |
+| „mit den üblichen Belastungen vertraut" | Konnte sie nicht bewältigen | Rot |
+
+## Teamarbeit
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „im Team geschätzt und respektiert" | Sehr gute Integration | Grün |
+| „arbeitete kollegial zusammen" | Befriedigend | Orange |
+| „arbeitete pflichtbewusst im Team" | Hielt sich zurück | Orange |
+| „bemüht, sich ins Team einzufügen" | Konflikte | Rot |
+| „war ein gesellig-kontaktfreudiger Mitarbeiter" | Hinweis auf Alkohol- oder Unzuverlässigkeitsproblem | Rot |
+
+## Führung (für Leitungsfunktionen)
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „führte sein Team mit klarer Linie und hoher Anerkennung" | Sehr gute Führungsleistung | Grün |
+| „erzielte mit seinem Team gute Ergebnisse" | Befriedigend | Orange |
+| „verstand es, sein Team zu motivieren" | Allein nicht aussagekräftig, Kontext prüfen | Orange |
+| „setzte sich für die Belange seiner Mitarbeiter ein" | Loyalität allein, fachlich offen | Orange |
+
+## Verhalten gegenüber Vorgesetzten, Kollegen, Kunden
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „stets vorbildlich gegenüber Vorgesetzten, Kollegen und Kunden" | Note 1 Verhalten | Grün |
+| „stets einwandfrei gegenüber Vorgesetzten und Kollegen" | Note 2 (Kunden fehlen — prüfen, ob Kundenkontakt existierte) | Grün/Orange |
+| „korrekt gegenüber Vorgesetzten und Kollegen" | Note 4 — distanziert, kühl | Rot |
+| „zeigte Verständnis für die Belange seiner Kollegen" | Verbindlich, aber nicht führungsstark | Orange |
+
+## Compliance, Integrität
+
+| Formulierung | Decodierung | Ampel |
+| --- | --- | --- |
+| „loyal und verantwortungsbewusst" | Sehr gut | Grün |
+| „wir haben keinerlei Anlass zur Beanstandung" | Note 2 verklausuliert | Grün |
+| „hat sich im Rahmen seiner Aufgaben bewährt" | Hinweis: ggf. außerhalb der Aufgaben nicht | Orange |
+| „hat zur Erfüllung der Aufgaben beigetragen" | Mittelmaß | Orange |
+
+Quelle für jede Decodierung: § 109 GewO Wahrheits- und Wohlwollensgrundsatz; BAG-Rechtsprechung zur Beweislastverteilung und zum Gebot der Klarheit live verifizieren.
+
+---
+
+# Teil D — Ampel-Flaggen, Steigerungsadverbien und negative Codeworte
+
+Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatrix gebraucht werden: das Steigerungsadverb steuert die Note, die Ampel ordnet die Tendenz, der Codewort-Katalog deckt verdeckte Negativsignale auf.
+
+## Rechtlicher Anker
+
+- § 109 GewO Abs. 1 und 2 — Anspruch auf qualifiziertes, wohlwollendes Zeugnis; Klarheits- und Wahrheitspflicht; keine kodierten Negativaussagen.
+- Rechtsprechung nur live nachprüfen, niemals aus Modellwissen zitieren.
+
+## D.1 — Steigerungsadverbien
+
+Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. Ein fehlendes Adverb ist eine ganze Note Abzug.
+
+### Maximalsteigerer (Note 1)
+
+| Adverb | Wirkung |
+| --- | --- |
+| stets vollster | Maximalformel, Note 1 |
+| jederzeit äußerst | Maximalformel, Note 1 |
+| vollkommen | Maximalsteigerer, Note 1 |
+| äußerst | Maximalsteigerer, Note 1 |
+| in höchstem Maße | Maximalsteigerer, Note 1 |
+| uneingeschränkt | Maximalsteigerer, Note 1 |
+| absolut | Maximalsteigerer, Note 1 |
+| in allen Belangen | Bereichssteigerer, Note 1 |
+
+### Standardsteigerer (Note 1 bis 2)
+
+| Adverb | Wirkung |
+| --- | --- |
+| stets | hebt um eine Note |
+| jederzeit | hebt um eine Note |
+| immer | hebt um eine Note |
+| durchgehend | hebt um eine Note |
+| zu jeder Zeit | hebt um eine Note |
+| ohne Ausnahme | Bereichssteigerer, Note 1 |
+
+### Scheinsteigerer (Note 2 bis 3)
+
+| Adverb | Wirkung |
+| --- | --- |
+| regelmäßig | Häufigkeit, keine Qualität, Note 3 |
+| im Allgemeinen | Standardlage, Note 3 |
+| zumeist | Mehrzahl der Fälle, Note 3 |
+
+### Abschwächer (Note 3 bis 4)
+
+| Adverb | Wirkung |
+| --- | --- |
+| überwiegend | Ausnahmen mitgedacht |
+| weitgehend | Ausnahmen mitgedacht |
+| grundsätzlich | Ausnahmen mitgedacht |
+
+### Starke Negativsteigerer (Note 4 bis 5)
+
+| Adverb | Wirkung |
+| --- | --- |
+| im Wesentlichen | erhebliche Mängel, Note 4 |
+| im Großen und Ganzen | erhebliche Mängel, Note 4 |
+| bei guten Tagen | schwankende Leistung, Note 4 bis 5 |
+
+### Frequenzadverbien
+
+| Adverb | Wirkung |
+| --- | --- |
+| oft | Note 2 bis 3 |
+| meist | Note 3 |
+| häufig | Note 3 |
+| gelegentlich | Note 4 |
+| bisweilen | Note 4 bis 5 |
+
+**Auslassungsregel:** Fehlt der Steigerer im gesamten Zeugnis, ist Note 1 nicht erreichbar. Fehlt er an genau einer Stelle, ist das ein punktuelles Drift-Signal.
+
+## D.2 — Grüne Flaggen (Note 1 und Note 2)
+
+| Formulierung | Bedeutung | Note |
+| --- | --- | --- |
+| stets zur vollsten Zufriedenheit | Maximalformel | 1 |
+| stets zur vollen Zufriedenheit | starke Formel | 2 |
+| hervorragende Leistungen | höchste Qualität | 1 |
+| ausgezeichnete Fachkenntnisse | exzellente Qualifikation | 1 |
+| stets einwandfrei (Verhalten) | maximale Verhaltensformel | 1 |
+| außerordentliches Engagement | weit über das Normale hinaus | 1 |
+| weit über den Erwartungen | Übererfüllung | 1 |
+| in besonderem Maße | besondere Herausragung | 1 bis 2 |
+| Vollständige warme Schlussformel mit drei Elementen | persönlich, eindeutig positiv | 1 bis 2 |
+| jederzeit vertreten (Schlussverstärker) | absolut positives Gesamtzeugnis | 1 |
+
+## D.3 — Orange Flaggen (Note 3)
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| zur vollen Zufriedenheit (ohne „stets") | Note 3 |
+| gute Auffassungsgabe (ohne Steigerung) | Note 3 |
+| engagiert (ohne Adverb) | mäßiges Engagement |
+| überwiegend ordnungsgemäß | Note 3 |
+| in der Regel zuverlässig | gelegentliche Unzuverlässigkeit |
+| hat sich in das Team integriert | keine besonderen sozialen Stärken |
+| Schlussformel nur aus Dank + Wunsch | fehlendes Bedauern; Signal, nicht zwingend Anspruch |
+| war mit seinen Aufgaben vertraut | keine besondere Expertise |
+| hat die übertragenen Aufgaben erfüllt | Minimum |
+
+## D.4 — Rote Flaggen (Note 4 und Note 5)
+
+| Formulierung | Bedeutung | Note |
+| --- | --- | --- |
+| bemüht | guter Wille, ungenügende Ergebnisse | 4 |
+| im Großen und Ganzen zur Zufriedenheit | erhebliche Mängel | 5 |
+| hat unsere Erwartungen erfüllt | nur Minimum | 4 |
+| zufriedenstellend | schwache Leistung | 4 |
+| im Wesentlichen | erhebliche Mängel | 4 bis 5 |
+| war stets bemüht | trotz Bemühen keine guten Ergebnisse | 4 |
+| erledigte Aufgaben nach Anweisung | keine Eigeninitiative | 4 |
+| kein Bedauern in der Schlussformel | mögliches Distanzsignal | Kontext |
+| direkte Kommunikationsweise | grobe, schwierige Umgangsformen | 4 bis 5 |
+| hatte ein großes Selbstbewusstsein | arrogant, schwierig im Team | 4 |
+| Unterschrift durch hierarchisch tiefer stehende Person | formale Abwertung | Rot (formal) |
+
+## D.5 — Negative Codeworte nach Themen
+
+### Alkohol und Suchtmittel
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| trug zur Verbesserung des Betriebsklimas bei | Alkohol- oder Drogenproblem |
+| war stets gesellig | Trinkgewohnheit |
+| war für Aufgaben im Außendienst geeignet (ohne Kontext) | wurde aus dem Innendienst entfernt |
+| pflegte einen kollegialen Umgang am Feierabend | Trinkkultur |
+
+### Krankheit und Fehlzeiten
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| war im Rahmen seiner Anwesenheit engagiert | hohe Fehlzeiten |
+| nutzte die ihm gegebenen Möglichkeiten | hoher Krankenstand |
+| erledigte die Aufgaben zuverlässig, wenn er anwesend war | krankheitsbedingte Ausfälle |
+| zeigte trotz seiner Beeinträchtigungen Einsatzbereitschaft | chronische Erkrankung |
+
+### Diebstahl und Vertrauensbruch
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| zeigte sich Mitarbeitern und Kunden gegenüber verständnisvoll | sexuelle Annäherung oder Belästigung |
+| war ehrlich und korrekt (ohne Kontext) | Diebstahlsverdacht |
+| erledigte die ihm übertragenen Geldgeschäfte zuverlässig | Eigentumsdelikt im Hintergrund |
+| achtete auf eine korrekte Abrechnung (bei Nicht-Kassenposition) | Unregelmäßigkeiten beim Vorgänger |
+
+### Konflikte und schwierige Persönlichkeit
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| pflegte einen direkten und offenen Kommunikationsstil | grob, schwierig im Umgang |
+| setzte seine Meinung mit Nachdruck durch | sturköpfig |
+| war für seine Ansichten bekannt | Querulant |
+| brachte sich engagiert in Diskussionen ein | konfliktfreudig |
+| hatte eine eigene Art | Persönlichkeitsstörungs-Signal |
+| war bei seinen Kollegen wegen seiner umgänglichen Art beliebt | Mitläufer ohne eigene Leistung |
+
+### Loyalität und Verlässlichkeit
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| identifizierte sich mit den von ihm übernommenen Aufgaben | Identifikation mit dem Unternehmen fehlt |
+| achtete auf die Vertraulichkeit dienstlicher Angelegenheiten (auffällig betont) | Verstoß gegen Verschwiegenheit |
+| war im Rahmen seiner Fähigkeiten loyal | eingeschränkte Loyalität |
+| nahm an Veranstaltungen teil (statt: war engagiert) | Distanz |
+
+### Betriebsrats- und gewerkschaftliche Tätigkeit
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| setzte sich auch für die Belange der Belegschaft ein | Betriebsratsmitglied |
+| brachte sich in Mitarbeiterfragen aktiv ein | gewerkschaftliche Tätigkeit |
+| nahm seine Mitwirkungsrechte umfassend wahr | aktiver Betriebsrat |
+
+### Sexuelle Verfehlungen
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| war beliebt bei Mitarbeiterinnen | Belästigungs-Code |
+| brachte einen Hauch von Frische in das Team | sexuelle Annäherung |
+| pflegte einen umgänglichen Stil mit dem weiblichen Personal | unangemessene Kontakte |
+
+### Mitläufertum und Passivität
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| fügte sich gut in die Hierarchie ein | Mitläufer |
+| akzeptierte Entscheidungen seiner Vorgesetzten | keine eigene Meinung |
+| erledigte die ihm zugewiesenen Aufgaben | reine Erfüllung, kein Engagement |
+| zeigte sich anpassungsfähig | Opportunist |
+
+### Auslassungssignale (Schweigen als Code)
+
+| Schweigen | Bedeutung |
+| --- | --- |
+| keine Aussage zur Ehrlichkeit bei Kassentätigkeit | Vertrauensproblem |
+| keine Aussage zur Loyalität bei Führungskraft | Loyalitätsproblem |
+| keine Aussage zur Belastbarkeit bei stressrelevanter Position | Belastbarkeitsdefizit |
+| keine Aussage zum Kundenverhalten bei Kundenposition | Kundenproblem |
+
+## D.6 — Anwendungsbeispiele
+
+- „stets vollster Zufriedenheit" → Maximalsteigerer + Maximalformel = Note 1.
+- „zur Zufriedenheit" ohne Adverb → Note 3.
+- „bemüht" allein → Note 4, unabhängig vom Adverb davor.
+- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → Alkohol-Code, Rot, berichtigungsfähig.
+- Geschäftsführerin ohne Loyalitätsaussage → Auslassungs-Code, Rot, berichtigungsfähig.
+
+---
+
+# Teil E — Analyse-Techniken: Drift, Auslassungen, Widersprüche, Negationen, Formalia
+
+Diese Sektion bündelt die fünf Lesetechniken jenseits der reinen Codewortdecodierung: Schaufenster-Drift, Bereichs-Drift, Auslassungen, Widersprüche, Negationen und formale Kopfdaten-Prüfung.
+
+## Rechtlicher Anker
+
+- § 109 Abs. 2 GewO — Klarheits- und Wahrheitspflicht; widersprüchliche Aussagen verstoßen gegen das Wohlwollensgebot.
+- § 242 BGB — Treu und Glauben; Bestnoten und kodierte Mängel dürfen nicht im selben Abschnitt nebeneinanderstehen.
+
+## E.1 — Bereichs-Drift und Schaufenster-Pattern
+
+Drift entsteht, wenn innerhalb desselben Themenblocks (Fachkenntnisse, Arbeitsweise, Engagement, Innovation, Erfolg, Sozialverhalten) zwei Sätze unterschiedliche Notenstufen tragen.
+
+| Drift-Befund | Signalwirkung | Ampel |
+| --- | --- | --- |
+| Note 1 und Note 3 zum selben Themenbereich direkt aufeinanderfolgend | Schaufenster mit kodierter Korrektur | Rot |
+| Spreizung zwei Stufen innerhalb eines Bereichs | systematische Abwertung | Rot |
+| Spreizung eine Stufe innerhalb eines Bereichs | bewusste Vorsicht | Orange |
+| Drift bei Lernbereitschaft trotz starker Fachkenntnisse | Stagnationssignal | Rot |
+| Drift bei Sozialverhalten trotz starker Leistungsteile | Konfliktsignal | Rot |
+| Drift bei Innovation trotz starker Arbeitsweise | Routinesignal | Orange |
+| Bereichsübergreifend konstante Note 1 | authentisch grün | Grün |
+
+**Beispiele:**
+
+- Satz A: „verfügt auch in Randbereichen über äußerst profundes Fachwissen" (Note 1) + Satz B unmittelbar darauf: „nahm an Weiterbildungsseminaren teil" (Note 3) → Drift zwei Stufen im Themenblock Fachwissen, Rot.
+- Satz A: „äußerst motiviert die Ziele beharrlich zu verfolgen" (Note 1) + Satz B: „zeigte eine hohe Lernbereitschaft" (Note 2 bis 3) → eine Stufe, Orange.
+- Leistungsbeurteilung Note 1 in jedem Satz, alle Steigerungsadverbien gesetzt → keine Drift, Grün.
+
+**Triage vor der Drift-Prüfung:**
+
+1. Welche Themenblöcke sind im Zeugnis enthalten?
+2. Wurde die Zufriedenheitsformel bereits ausgewertet?
+3. Ziel der Drift-Analyse: Klageantrag oder Mandantenberatung?
+
+## E.2 — Auslassungen (Schweigen als Code)
+
+Was fehlt, wiegt oft schwerer als das Geschriebene. Pflichtaussagen ergeben sich aus der Position.
+
+| Fehlende Aussage | Implikation | Ampel |
+| --- | --- | --- |
+| keine Ehrlichkeits- oder Integritätsaussage | Verdacht auf Unregelmäßigkeiten | Rot |
+| keine Pünktlichkeitsaussage bei Schichtjob | häufige Verspätungen oder Fehlzeiten | Orange |
+| keine Loyalitätsaussage bei Führungskraft | Loyalitätsproblem | Rot |
+| kein Wort zu Kunden bei Kundenposition | Probleme mit Kunden | Rot |
+| keine Eigeninitiative-Aussage bei Fachkraft | Passivität | Orange |
+| fehlender Führungsabschnitt bei Führungskraft | schlechte Führung | Rot |
+| keine Belastbarkeitsaussage bei stressrelevanter Position | Belastbarkeitsdefizit | Rot |
+
+## E.3 — Negationen und doppelte Verneinungen
+
+| Formulierung | Wirkung |
+| --- | --- |
+| „nicht unzuverlässig", „nicht unhöflich" | verkehrte Verneinung, Note 4 |
+| „uns sind keine Beanstandungen bekannt geworden" | betonte Negation weckt Verdacht |
+| „nie in Vorfälle verwickelt" | nicht selbstverständliche Klärung → Verdacht |
+| „kann nichts Negatives berichten" | Distanzsignal, Rot |
+
+Faustregel: Wer Negativität an sich nicht thematisieren müsste, sie aber explizit ausschließt, signalisiert genau das Gegenteil.
+
+## E.4 — Widersprüche
+
+| Widerspruchstyp | Signalwirkung | Ampel |
+| --- | --- | --- |
+| Leistung grün, Schlussformel rot oder fehlend | uneinvernehmliche Trennung | Orange bis Rot |
+| Verhalten grün, Leistung rot | netter, leistungsschwacher Mitarbeiter | Rot |
+| Eigeninitiative und „nach Anweisung" im selben Zeugnis | Inkonsistenz | Orange |
+| Sehr warme Schlussformel bei schwacher Leistung | Verdacht auf Gefälligkeit | Orange |
+| Positive Einzelsätze, schwache Gesamtzufriedenheitsformel | bewusste Irreführung | Rot |
+| Spitzensatz und Durchschnittssatz im selben Themenbereich | Schaufenster-Pattern | Rot |
+
+**Beispiele:**
+
+- „Herr Braun arbeitete stets eigenverantwortlich" + später „Er erledigte die nach Anweisung zugewiesenen Aufgaben zuverlässig" → direkter inhaltlicher Widerspruch.
+- Leistung „bemüht" (Note 4) + vollständige warme Schlussformel → Gefälligkeitsschluss.
+- Buchhalter mit lupenreiner Leistungsbeurteilung, aber kein Wort zu Zuverlässigkeit oder Vertrauen → das Schweigen ist das rote Signal.
+
+## E.5 — Formalia und Kopfdaten
+
+Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viele Berichtigungsansprüche dort beginnen.
+
+| Prüfposten | Soll | Mängel |
+| --- | --- | --- |
+| Briefkopf | offizielles Firmenpapier, vollständige Anschrift | privates Papier, fehlende Anschrift |
+| Datum | Ausstellungsdatum entspricht oder folgt knapp dem Beendigungsdatum | rückdatiert, unklar, fehlt |
+| Position | exakte Funktionsbezeichnung, eventuell mit Hierarchiestufe | unklare oder zu niedrige Bezeichnung |
+| Beschäftigungszeitraum | vollständig, ohne Lücken | Lücken, falsche Daten, Karenz nicht erwähnt |
+| Aufgabenkatalog | umfassend, mit Schlüsselverantwortungen | unvollständig, Schlüsselaufgaben fehlen |
+| Unterschrift | hierarchisch zuständige Person, eigenhändig oder digital signiert | tiefer stehende Unterschrift, Vorgesetzter umgangen, fehlende Unterschrift |
+| Rechtschreibung und Format | sauber, in einem Guss | Tippfehler, Stilbrüche → Indiz für Sorglosigkeit oder Absicht |
+
+**Beispiele für formale Mängel mit Berichtigungsanspruch:**
+
+- Unterschrift durch HR-Sachbearbeiter statt durch unmittelbaren Vorgesetzten oder Geschäftsführung.
+- Beschäftigungszeitraum ohne Ende-Datum oder mit falschem Beginn.
+- Ausstellungsdatum 14 Tage nach Beendigung, obwohl gesetzlicher Anspruch sofort fällig ist.
+- Sichtbare Tipp- oder Rechtschreibfehler → bei zeugnisrelevanten Positionen ein Berichtigungspunkt.
+
+## E.6 — Anwendung in der Notenmatrix
+
+Sobald Drift, Auslassungen, Negationen oder Widersprüche erkannt sind, fließen sie nicht in die Einzelnote des Satzes ein, sondern in das **Hauptbefundkapitel** des Mandantenberichts. Sie sind das, was bei einer Berichtigungsforderung als „strukturelles Argument" trägt, weil sie eine Gesamtnote begründen, nicht eine Einzelformulierung.
+
+---
+
+# Teil F — Mandatsmodule: Aufforderungsschreiben, Verbesserungen, Klagestrategie
+
+Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliches Berichtigungsverlangen, Wortlaut-Verbesserungstabelle, Klageantrag und Streitwert.
+
+## Rechtlicher Anker
+
+- § 109 GewO — Anspruch auf wohlwollendes qualifiziertes Zeugnis; Berichtigungsanspruch.
+- § 288 BGB — Verzugszinsen; Anwaltskosten als Verzugsschaden ab Fristablauf.
+- § 242 BGB — Treu und Glauben; Verwirkung bei langem Zuwarten.
+- §§ 195, 199 BGB — Verjährung drei Jahre ab Schluss des Ausstellungsjahres.
+- § 46 ArbGG — Arbeitsgerichtsverfahren; § 12a ArbGG — keine Anwaltskostenerstattung in erster Instanz.
+
+## F.1 — Aufforderungsschreiben an den Arbeitgeber
+
+### Funktion
+
+Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlage für Fristsetzung und Verzug. Ton: höflich, sachlich, bestimmt — keine Drohgebärden, keine Ironie, einmalige Klageandrohung am Ende.
+
+### Aufbau in acht Bausteinen
+
+1. **Mandatsanzeige** — Vollmacht beigefügt, Mandant mit vollem Namen, Geburtsdatum, Beschäftigungszeitraum.
+2. **Bezugnahme auf das Zeugnis** — Datum der Erteilung, Datum der Aushändigung, Form (qualifiziert/einfach/Zwischen), Feststellung, dass es § 109 GewO nicht genügt.
+3. **Rechtsgrundlage** — § 109 Abs. 1 S. 3 GewO Wohlwollen; § 109 Abs. 2 GewO Wahrheit und Klarheit; Beweislastregel des BAG.
+4. **Beanstandungen pro Streitstelle** — pro Stelle ein Block: Originalwortlaut in Anführungszeichen, Decodierung (Geheimcode, Drift, Auslassung, fehlendes Adverb), Vorschlag in Anführungszeichen, Begründung.
+5. **Schlussformel und Gesamtbild** — wenn relevant, separat behandeln.
+6. **Fristsetzung** — kalendermäßig (kein „binnen zwei Wochen"), Standard zwei bis drei Wochen; bei Eilbedarf kürzer mit Begründung.
+7. **Klageandrohung** — einmal, knapp, sachlich.
+8. **Kostenfolge und Anlagenverzeichnis** — Anwaltskosten als Verzugsschaden, Vollmacht, Zeugnis, Vorzeugnis, Korrespondenz.
+
+### Mustertext
+
+> Sehr geehrte Damen und Herren,
+>
+> unter Beifügung der auf uns lautenden Vollmacht zeigen wir die anwaltliche Vertretung der Mandantin [Vorname Name], geboren am [Datum], an. Bei Ihnen bestand vom [Datum] bis zum [Datum] ein Arbeitsverhältnis.
+>
+> Unsere Mandantin hat am [Datum] das beigefügte qualifizierte Zeugnis erhalten. Es entspricht nicht den Ansprüchen aus § 109 GewO. Aus dem Wohlwollens- und Wahrheitsgebot ergeben sich Berichtigungspflichten zu folgenden Punkten:
+>
+> **Punkt 1 — Leistungsformel.** Originalwortlaut: „[…]". In der Zeugnissprache bedeutet dies [Geheimcode/Drift/Auslassung]. Wir bitten um folgende Neufassung: „[…]".
+>
+> **Punkt 2 — Verhaltensbeurteilung.** Originalwortlaut: „[…]". Reihenfolge oder Adverbschwäche signalisiert [Befund]. Vorgeschlagene Neufassung: „[…]".
+>
+> **Punkt 3 — Schlussformel.** Es fehlt das Bedauern. Ob daraus ein einklagbarer Anspruch folgt, ist nur nach live verifizierter Rechtsprechung zu bewerten. Wir bitten gleichwohl um folgende Neufassung: „[…]".
+>
+> Wir bitten, das berichtigte Zeugnis bis zum [Datum] auf Geschäftspapier ohne Anlassbezug auf das Berichtigungsverlangen zu erteilen. Sollte das Zeugnis nicht fristgerecht in der vorgeschlagenen Form neu erteilt werden, werden wir Klage zum zuständigen Arbeitsgericht erheben.
+>
+> Die durch unsere Einschaltung entstandenen Anwaltskosten machen wir bereits jetzt als Verzugsschaden geltend.
+>
+> Mit freundlichen Grüßen
+>
+> [Kanzlei]
+> Anlagen: Vollmacht, Zeugnis vom [Datum], Vorzeugnis vom [Datum]
+
+### Stilregeln
+
+| Regel | Hinweis |
+| --- | --- |
+| höflich, bestimmt, sachlich | keine Drohgebärden |
+| konkrete Wortlaute statt „bitte verbessern" | pro Streitstelle alt + neu in Anführungszeichen |
+| Belege für Geheimcodes | BAG-Rechtsprechung live verifizieren |
+| Frist kalendermäßig | konkretes Datum |
+| Klageandrohung nur am Ende | einmal, knapp |
+
+## F.2 — Verbesserungsvorschläge: Wortlaut-Tabelle
+
+Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
+
+| Original (rot/orange) | Operation | Ergebnis (grün) |
+| --- | --- | --- |
+| „zur Zufriedenheit" | stets + vollsten ergänzen | „stets zur vollsten Zufriedenheit" |
+| „bemüht" | Ergebnis statt Wille | „stets mit Erfolg erledigt" |
+| „im Wesentlichen" | Einschränkung streichen | Formulierung ohne Einschränkung |
+| „nach Anweisung" | Eigenverantwortung einsetzen | „eigenverantwortlich und selbstständig" |
+| kein Bedauern | Bedauern ergänzen | „Wir bedauern es sehr, Herrn X zu verlieren" |
+| „korrekt" (Verhalten) | auf „stets einwandfrei" aufwerten | „Sein Verhalten war stets einwandfrei" |
+| „zeigte hohe Lernbereitschaft" | Verb und Steigerer aufwerten | „bildete sich stets eigeninitiativ und mit großem Erfolg fort" |
+| „fand gute neue Ideen" | Verb und Adjektiv aufwerten | „entwickelte stets hervorragende innovative Lösungsansätze" |
+| „war in der Lage, Konflikte zu bewältigen" | Fähigkeit zu Tatsache | „löste Konflikte stets souverän und mit Augenmaß" |
+| „geschätzter Ansprechpartner" | Steigerung ergänzen | „äußerst geschätzter und gefragter Ansprechpartner" |
+| Drift im Themenbereich | beide Sätze auf dasselbe Niveau heben | schwacher Satz wird aktiv aufgewertet |
+
+### Operationsprinzipien
+
+1. **Adverb zuerst** — „stets/jederzeit/vollsten" entscheidet die Note. Ohne Adverb kein Note-1-Wortlaut.
+2. **Ergebnis statt Wille** — „bemüht" und „in der Lage" durch konkrete Erfolgsaussage ersetzen.
+3. **Reihenfolge im Verhaltensteil** — Vorgesetzte vor Kollegen vor Kunden (oder branchenüblich begründet). Reihenfolge ist Berichtigungspunkt.
+4. **Schlussformel in drei Elementen** — Bedauern, Dank, Wunsch. Vollständigkeit ist Verhandlungspunkt, kein automatischer Klageanspruch.
+
+## F.3 — Klagestrategie Zeugnisberichtigung
+
+### Erfolgsaussichten je Befundtyp
+
+| Befund | Klagbarkeit | Erfolgsaussicht |
+| --- | --- | --- |
+| „bemüht" als Leistungsformel | klagbar | hoch |
+| falsche Reihenfolge im Sozialverhalten | klagbar | hoch |
+| unvollständige Schlussformel | meist Verhandlungspunkt, Klage nur mit Zusatzkontext | niedrig bis mittel |
+| negatives Codewort aus dem Katalog | klagbar | hoch |
+| Drift im selben Themenbereich | klagbar bei nachgewiesenem Schaufenster | mittel |
+| konstante Note 3 in weichen Bereichen | klagbar bei Wohlwollensverstoß | mittel |
+| Note 3 bei aktenkundig besserer Leistung | klagbar (Arbeitnehmer beweisbelastet) | mittel |
+| Note 4 im Standardfall | klagbar (Arbeitgeber beweisbelastet) | hoch |
+
+### Beweislast
+
+| Streitfrage | Beweislast |
+| --- | --- |
+| Note schlechter als befriedigend | Arbeitgeber |
+| Note besser als befriedigend | Arbeitnehmer |
+| Wohlwollensverstoß | Arbeitnehmer |
+| Wahrheitsverstoß | Arbeitnehmer |
+| Reihenfolge im Sozialverhalten | Arbeitgeber muss falsche Reihenfolge begründen |
+
+### Streitwert
+
+Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeitsgerichte. Mehrere Streitpunkte addieren sich nicht — der Anspruch auf das berichtigte Zeugnis entsteht nur einmal.
+
+| Klagegegenstand | Streitwert |
+| --- | --- |
+| vollständige Zeugnisberichtigung | ein Monatsbruttogehalt |
+| einzelne Note im Hauptteil | ein Monatsbruttogehalt |
+| Schlussformel-Korrektur | ein Drittel bis halbes Monatsgehalt |
+| mehrere Punkte gemeinsam | ein Monatsbruttogehalt insgesamt |
+| erstmalige Erteilung | ein Monatsbruttogehalt |
+
+### Musterklageantrag
+
+> Der Beklagte wird verurteilt, der Klägerin ein qualifiziertes Arbeitszeugnis zu erteilen, das auf dem Briefkopf der Beklagten ausgestellt ist, das Beendigungsdatum trägt, vom dazu Befugten unterschrieben ist und folgenden Inhalt aufweist:
+>
+> Erstens, in der Leistungsbeurteilung statt „war stets bemüht" die Formulierung „erledigte die ihr übertragenen Aufgaben stets zu unserer vollen Zufriedenheit".
+>
+> Zweitens, in der Verhaltensbeurteilung statt „Kollegen und Vorgesetzten" die Reihenfolge „Vorgesetzten, Kollegen und Kunden" mit dem Steigerer „stets" und dem Prädikat „einwandfrei".
+>
+> Drittens, [weitere Punkte analog].
+
+### Beweismittel für bessere Note
+
+- Zwischenzeugnisse mit gutem oder sehr gutem Inhalt.
+- Zielvereinbarungen, Bonusabrechnungen, Performance-Reviews.
+- Lob-E-Mails, Kundenbewertungen.
+- Zeugen: unmittelbare Vorgesetzte, Projektleiter.
+
+### Kostenrisiko und Verwirkung
+
+- § 12a ArbGG: in erster Instanz keine Erstattung gegnerischer Anwaltskosten.
+- Verwirkung: wer mehrere Jahre ohne Grund zuwartet, riskiert den Anspruchsverlust. Empfehlung: Berichtigungsverlangen innerhalb der ersten Monate nach Zeugnisübergabe.
+- Verjährung: drei Jahre ab Schluss des Ausstellungsjahres (§§ 195, 199 BGB).
+
+### Vergleichsfenster
+
+Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: Wortlaut der Streitstellen, Zeitpunkt der Übergabe des berichtigten Zeugnisses, Erledigungserklärung.
+
+## F.4 — Anschlussschritte
+
+- Aufforderung blieb fruchtlos → Klage einreichen.
+- Vollberichtigung → Abschlussschreiben + Kostennote.
+- Teilberichtigung → mit Mandant entscheiden: Akzeptanz oder Restklage.
+
+---
+
+# Teil G — Musterzeugnisse und Sonderfälle
+
+Diese Sektion hält drei vollständige Musterzeugnisse (Note 1, gemischt mit Drift, rote Flaggen) und drei Sonderfälle (leitende Positionen, Ausbildungszeugnis nach § 16 BBiG, branchenspezifische Pflichtaussagen) bereit. Die Muster sind Schulungsfälle — erst eigene Hypothese bilden, dann mit der Analyse abgleichen.
+
+## G.1 — Muster 1: Note 1 (Positivreferenz)
+
+### Volltext
+
+> **Musterunternehmen GmbH | Musterstraße 1 | 10000 Musterstadt**
+>
+> **Arbeitszeugnis**
+>
+> Frau Anna Musterfrau, geboren am 1. Januar 1985, war vom 1. März 2018 bis zum 28. Februar 2025 in unserem Unternehmen als Leiterin der Abteilung Controlling tätig.
+>
+> **Aufgaben:** Frau Musterfrau verantwortete die vollständige Führung unserer Controlling-Abteilung mit zwölf direkt unterstellten Mitarbeiterinnen und Mitarbeitern. Sie war zuständig für die monatliche Ergebnisberichterstattung an den Vorstand, die Erstellung der Jahresplanung und des mittelfristigen Finanzplans, die Durchführung von Abweichungsanalysen sowie die Koordination externer Prüfungsgesellschaften.
+>
+> **Leistungsbeurteilung:** Frau Musterfrau verfügt über hervorragende Fachkenntnisse, die sie stets sicher, souverän und mit außerordentlichem Erfolg eingesetzt hat. Ihre Arbeitsweise war stets strukturiert, präzise und ergebnisorientiert. Auch in Phasen hoher Arbeitsbelastung behielt sie stets die Übersicht und erzielte konstant hervorragende Ergebnisse. Ihre Eigeninitiative und ihr außerordentliches Engagement haben unser Unternehmen maßgeblich vorangebracht. Alle ihr übertragenen Aufgaben erledigte sie stets zu unserer vollsten Zufriedenheit.
+>
+> **Verhaltensbeurteilung:** Das Verhalten von Frau Musterfrau gegenüber Vorgesetzten, Kolleginnen und Kollegen sowie externen Partnern war stets einwandfrei. Sie führte ihre Mitarbeiterinnen und Mitarbeiter mit klarer Zielorientierung, hoher Wertschätzung und nachhaltigem Erfolg. Ihre Kommunikation war stets klar, konstruktiv und auf das Gesamtergebnis ausgerichtet. Frau Musterfrau genoss das vollste Vertrauen der Geschäftsführung.
+>
+> **Schlussformel:** Frau Musterfrau scheidet auf eigenen Wunsch aus unserem Unternehmen aus. Wir bedauern dies außerordentlich und danken ihr herzlich für ihre hervorragenden Leistungen, ihren unermüdlichen Einsatz und ihren wertvollen Beitrag zum Erfolg unseres Unternehmens. Für ihren weiteren beruflichen und persönlichen Weg wünschen wir ihr nur das Allerbeste und weiterhin großen Erfolg.
+
+### Ampel-Befund
+
+| Element | Ampel | Note |
+| --- | --- | --- |
+| „stets zur vollsten Zufriedenheit" | grün | 1 |
+| „hervorragende Fachkenntnisse" | grün | 1 |
+| „außerordentliches Engagement" | grün | 1 |
+| „stets einwandfrei" (Verhalten) | grün | 1 |
+| Warme Schlussformel mit Bedauern, Dank, Wunsch | grün | 1 |
+
+Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
+
+## G.2 — Muster 2: Schaufenster-Drift (Note 2 bis 3 nach Aggregation)
+
+### Volltext (Auszüge mit Drift-Signal)
+
+> Herr Beispiel verfügt auch in Randbereichen seines vielfältigen Aufgabenbereiches über äußerst profundes Fachwissen.
+>
+> Herr Beispiel nahm in eigener Initiative regelmäßig erfolgreich an internen und externen Weiterbildungsseminaren teil.
+>
+> Hervorzuheben ist sein ausgeprägt strategisches Denkvermögen, das es ihm ermöglichte, auch bei neuen geschäftlichen Entwicklungen stets in kürzester Zeit optimale Lösungen zu entwickeln.
+>
+> Er zeigte sich auch bei der Bewältigung neuer Aufgabenbereiche flexibel und aufgeschlossen.
+>
+> Herr Beispiel verfügt über eine besonders hohe Arbeitsmoral und war stets äußerst motiviert, die gesetzten Ziele beharrlich zu verfolgen.
+>
+> Herr Beispiel zeigte eine hohe Lernbereitschaft.
+>
+> Alle Aufgaben führte er jederzeit vollkommen selbstständig, äußerst sorgfältig und planvoll durchdacht aus.
+>
+> Herr Beispiel war Neuem gegenüber aufgeschlossen, fand gute neue Ideen und innovative Ansätze.
+>
+> Herr Beispiel hat die an ihn gestellten sehr hohen Erwartungen zu unserer vollsten Zufriedenheit erfüllt und teilweise sogar übertroffen.
+>
+> Wegen seines freundlichen und hilfsbereiten Auftretens war Herr Beispiel ein geschätzter Ansprechpartner. Sein persönliches Verhalten gegenüber Vorgesetzten, Mitarbeitern und Externen war einwandfrei.
+
+### Bereichs-Drift-Analyse
+
+| Themenbereich | Höchste Note | Niedrigste Note | Drift | Ampel |
+| --- | --- | --- | --- | --- |
+| Fachkenntnisse | 1 | 1 | keine | grün |
+| Lernbereitschaft | 1 (indirekt) | 3 | zwei Stufen | rot |
+| Strategisches Denken | 1 | 1 | keine | grün |
+| Flexibilität | 3 | 3 | keine | orange |
+| Engagement | 1 | 1 | keine | grün |
+| Arbeitsweise | 1 | 1 | keine | grün |
+| Innovation | 3 | 3 | keine | orange |
+| Sozialverhalten | 3 | 3 | keine | orange |
+| Gesamtbeurteilung und Schluss | 1 | 1 | keine | grün |
+
+**Aggregation:** Spitzensätze authentisch (Fachkenntnisse, Arbeitsweise, Engagement). Drift zwei Stufen im Themenblock Lernbereitschaft. Konstante Note 3 in Innovation und Sozialverhalten. Gesamtnote nach Aggregation: 2 bis 3.
+
+**Empfehlung:** Nachverhandlung der Sätze zu Lernbereitschaft, Innovation und Sozialverhalten. Beweislast nach BAG: bei Gesamtnote schlechter als befriedigend liegt sie beim Arbeitgeber — hier aus den Formulierungen selbst herauslesbar.
+
+## G.3 — Muster 3: Rote Flaggen (Note 4)
+
+### Volltext
+
+> **Beispiel GmbH | Beispielstraße 5 | 20000 Beispielstadt**
+>
+> **Arbeitszeugnis**
+>
+> Herr Thomas Beispiel, geboren am 15. Juni 1980, war vom 1. Januar 2020 bis zum 30. Juni 2024 in unserem Unternehmen als Vertriebsmitarbeiter beschäftigt.
+>
+> **Aufgaben:** Herr Beispiel war im Außendienst tätig und betreute einen definierten Kundenkreis im Bereich Industriebedarf. Er war für die regelmäßige Kundenbesuche, die Angebotserstellung und die Bearbeitung von Reklamationen zuständig.
+>
+> **Leistungsbeurteilung:** Herr Beispiel verfügt über ausreichende Fachkenntnisse für seinen Aufgabenbereich. Er war stets bemüht, die ihm übertragenen Aufgaben zur vollen Zufriedenheit zu erledigen, und zeigte dabei durchgehend guten Willen. Seine Arbeitsweise war im Wesentlichen strukturiert.
+>
+> **Verhaltensbeurteilung:** Gegenüber Kollegen und Vorgesetzten verhielt sich Herr Beispiel korrekt. Er zeichnete sich durch eine direkte Kommunikationsweise aus.
+>
+> **Schlussformel:** Wir danken Herrn Beispiel für seine Mitarbeit und wünschen ihm für die Zukunft alles Gute.
+
+### Befund
+
+| Befund | Bedeutung | Ampel | Note |
+| --- | --- | --- | --- |
+| „ausreichende Fachkenntnisse" | unterdurchschnittlich | rot | 4 |
+| „stets bemüht" | trotz Willen keine Ergebnisse | rot | 4 |
+| „zur vollen Zufriedenheit" ohne „stets" | fehlende Steigerung | orange | 3 |
+| „im Wesentlichen strukturiert" | erhebliche Mängel | rot | 4 |
+| „Kollegen und Vorgesetzten" (Reihenfolge) | falsche Reihenfolge | orange | 3 |
+| „korrekt" (Verhalten) | schwache Formel | orange | 3 |
+| „direkte Kommunikationsweise" | grob, schwierig | rot | 4 bis 5 |
+| Schweigen zu Kunden bei Vertriebsjob | Kundenproblem | rot | — |
+| Schlussformel ohne Bedauern | Distanz | orange | — |
+
+**Gesamtbild:** Leistung 4, Verhalten 4, Schluss 3 bis 4. Gesamtnote 4.
+
+**Handlungsempfehlung:** Nachverhandlung aller Leistungs- und Verhaltensformulierungen sowie wärmere Schlussformel. Bei Weigerung: Klage zu Leistung und Verhalten gut tragfähig; Schlussformel nur mit Zusatzkontext.
+
+## G.4 — Sonderfall A: Leitende Positionen
+
+Führungskräftezeugnisse haben fünf zusätzliche Pflichtbausteine, deren Fehlen jeweils ein eigener Berichtigungspunkt ist.
+
+| Erwartungsbaustein | Fehlen bedeutet | Ampel |
+| --- | --- | --- |
+| Mitarbeiterführung und -entwicklung | Führungsversagen | rot |
+| Strategische Verantwortung | keine Strategiebeteiligung | orange bis rot |
+| Budget- und P&L-Verantwortung | keine wirtschaftliche Führungsrolle | orange |
+| Repräsentation nach außen | keine externe Wirkung | orange |
+| Loyalitätsaussage gegenüber Gesellschaftern oder Vorstand | Loyalitätsproblem | rot |
+
+**Beispiel grüne Führungsaussage (Note 1):** „Frau Dr. Hoffmann führte ihre über 80 Mitarbeiter mit klarem Ziel, hoher Empathie und nachhaltigem Erfolg. Unter ihrer Leitung verzeichnete der Bereich eine Steigerung der Mitarbeiterzufriedenheit und eine signifikante Verbesserung der Ergebnisse."
+
+**Beispiel orange Führungsaussage (Note 3):** „Herr Vogel pflegte einen kooperativen Führungsstil und wurde von seinen Mitarbeitern geschätzt." — passiv, kein Erfolgsnachweis.
+
+**Beispiel rotes Schweigen:** Abteilungsleiter mit 15 Mitarbeitenden ohne eine einzige Aussage zur Mitarbeiterführung — starkes rotes Signal.
+
+## G.5 — Sonderfall B: Ausbildungszeugnis (§ 16 BBiG)
+
+### Rechtsgrundlagen
+
+- § 16 Abs. 1 BBiG — Anspruch auf einfaches Zeugnis nach Beendigung der Ausbildung.
+- § 16 Abs. 2 BBiG — qualifiziertes Zeugnis mit Angaben zu Verhalten und Leistung nur auf Verlangen.
+- § 13 BBiG — Pflichten des Auszubildenden.
+
+### Azubi-Geheimcodes
+
+| Formulierung | Bedeutung | Ampel |
+| --- | --- | --- |
+| „schnell und sicher aufgenommen" | hervorragender Lernfortschritt | grün |
+| „zuverlässig die Ausbildungsinhalte angeeignet" | guter Lernfortschritt | grün |
+| „hat sich die Inhalte erarbeitet" | befriedigender Fortschritt | orange |
+| „war bereit zu erlernen" | unterdurchschnittlicher Fortschritt | rot |
+| fehlender Berufsschulabschnitt (duale Ausbildung) | Schulprobleme möglich | orange |
+| „hat sich positiv entwickelt" (im Azubi-Kontext) | gut | grün |
+| „pünktlich und zuverlässig" | wichtiges Grundverhalten | grün |
+| fehlende Pünktlichkeitsaussage | Fehlzeiten oder Verspätungen | orange |
+
+### Triage
+
+1. Abschlusszeugnis oder Zwischenzeugnis?
+2. Duale Ausbildung → Berufsschulbewertung vorhanden?
+3. Ausbildung abgebrochen → nur Anspruch auf einfaches Zeugnis nach § 16 Abs. 1 BBiG.
+4. Beendigungsgrund: bestandene Prüfung oder Kündigung/Aufhebung?
+
+**Beispiel grün:** „Herr Müller hat die Ausbildungsinhalte stets schnell und sicher aufgenommen, zeigte großes Interesse an seinem Ausbildungsberuf und zeichnete sich durch hervorragende Berufsschulleistungen aus."
+
+**Beispiel rot:** „Herr Bauer war stets bereit, die Ausbildungsinhalte zu erlernen, und hat die Anforderungen im Wesentlichen erfüllt." — doppeltes Negativsignal.
+
+## G.6 — Sonderfall C: Branchenspezifische Pflichtaussagen
+
+Wer im Vertrieb ohne Zielerreichungssatz dasteht oder in der Pflege ohne Patientenkontakt-Satz, hat ein verdecktes Negativsignal — unabhängig davon, wie gut die übrigen Sätze klingen.
+
+| Branche | Pflichtformulierung | Fehlen bedeutet |
+| --- | --- | --- |
+| Vertrieb | Zielerreichung, Kundenbindung, Neukundengewinnung | unterdurchschnittliche Vertriebsleistung |
+| Recht und Kanzlei | Mandatsführung, Schriftsatzqualität | Qualitätsprobleme im Kernjob |
+| IT | Projektabschlüsse, Technologiekompetenz | fehlende Kernergebnisse |
+| Pflege | Patientenkontakt, Empathie | Probleme mit Patienten |
+| Finanzwesen und Buchhaltung | Zuverlässigkeit, Genauigkeit, Vertrauen | Verdacht auf Unregelmäßigkeiten |
+| Personalwesen | Mitarbeiterentwicklung, Verhandlungsführung | Schwäche im Kernbereich |
+| Einzelhandel | Kassenführung, Warenkenntnis | Kassenproblem |
+| Öffentlicher Dienst | Gesetzeskenntnis, Verfahrensführung, Bürgerkontakt | mangelhafte Amtsführung |
+
+**Beispiel Vertrieb grün:** „Herr Kurz übertraf seine Vertriebsziele im Beobachtungszeitraum durchgehend und war maßgeblich an der Neukundengewinnung beteiligt."
+
+**Beispiel IT orange:** „Frau Kramer hat an mehreren Softwareprojekten mitgewirkt und dabei ihre technischen Fähigkeiten eingesetzt." — passiv, keine Erfolgs- oder Verantwortungsaussage.
+
+**Beispiel Pflege rot durch Schweigen:** Stationsschwester-Zeugnis ohne eine einzige Aussage zu Patientenversorgung oder Empathie.
