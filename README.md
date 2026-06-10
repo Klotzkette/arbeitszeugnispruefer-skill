@@ -1,11 +1,5 @@
 # Arbeitszeugnis-Prüfer Skill
 
-[![GitHub stars](https://badgen.net/github/stars/Klotzkette/arbeitszeugnispruefer-skill?label=Stars&icon=github)](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/stargazers)
-[![GitHub forks](https://badgen.net/github/forks/Klotzkette/arbeitszeugnispruefer-skill?label=Forks&icon=github)](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/forks)
-[![GitHub watchers](https://img.shields.io/github/watchers/Klotzkette/arbeitszeugnispruefer-skill?style=flat&logo=github&label=Watchers&cacheSeconds=3600)](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/watchers)
-[![Letzter Commit](https://img.shields.io/github/last-commit/Klotzkette/arbeitszeugnispruefer-skill?style=flat&label=Letzter%20Commit&cacheSeconds=3600)](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/commits/main)
-[![Lizenz](https://img.shields.io/badge/Lizenz-Apache--2.0%20OR%20MIT-blue?style=flat)](LICENSE-APACHE)
-
 > **Experimenteller Agent-Skill** für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
 > **Transparenz:** Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
