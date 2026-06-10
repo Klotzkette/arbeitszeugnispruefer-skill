@@ -2,13 +2,13 @@
 
 > **Experimenteller Agent-Skill** für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
-> **Und jetzt mal ehrlich, Leute — keine Panik:** Das hier ist eigentlich nur ein riesiger Prompt. Kein Hexenwerk, keine Blackbox, kein heimlich trainiertes Modell, sondern strukturierter Text in Markdown, den ein LLM beim Bearbeiten eines Arbeitszeugnisses als Anleitung lädt. Wer schon mal einen langen ChatGPT-Prompt geschrieben hat, kennt das Prinzip — hier ist es nur sauber sortiert, juristisch geerdet und auf den deutschen Arbeitszeugnis-Kontext zugeschnitten. Man kann reinschauen, mitlesen, anpassen, forken. Mehr ist es nicht.
+> **Transparenz:** Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
 >
-> **Eine einzige Datei. Funktioniert in jedem Chatbot.** Der gesamte Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md). Keine Anhänge, keine Referenzen, keine Sammlung. ChatGPT, Claude, Gemini, Mistral, Perplexity, lokales Llama — egal. Inhalt der Datei kopieren, in den Chat einfügen, dann das zu prüfende Arbeitszeugnis darunter posten. Fertig. **Nichts installieren, nichts hochladen, kein Konto, kein Tool nötig.**
+> **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Anwendung: Inhalt der Datei in den Chat kopieren, darunter das zu prüfende Arbeitszeugnis einfügen. Es ist keine Installation, kein Upload, kein Konto und kein zusätzliches Werkzeug erforderlich.
 
 Konsolidierter Skill für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün).
 
-Diese Skill bündelt eine 50-teilige Plugin-Sammlung in eine einzige `SKILL.md`. Sie deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
+Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md`. Er deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
 
 ## Inhalt
 
@@ -20,6 +20,7 @@ skill/
 Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 
 - **Workflow in acht Stufen** — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
+- **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form.
 - **Teil A — Zufriedenheitsformel** — Notenstufen 1 bis 5 der Hauptformel.
 - **Teil B — Schlussformel** — Bedauern/Dank/Wunsch, Signal versus Anspruch.
 - **Teil C — Geheimcode-Katalog** — Standardphrasen nach Themenachsen.
@@ -44,10 +45,10 @@ Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 - § 109 GewO — Anspruch auf qualifiziertes wohlwollendes Zeugnis; Wahrheits- und Klarheitspflicht.
 - § 16 BBiG — Ausbildungszeugnis.
 - §§ 241 Abs. 2, 280 Abs. 1 BGB — Nebenpflicht; Schadensersatz bei Verletzung.
-- Beweislastregel BAG: bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer.
+- Beweislastregel BAG: bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13).
 - Zuständigkeit Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG); Klage als Leistungsklage.
 
-Rechtsprechung wird in dieser Skill nie aus Modellwissen zitiert — jede tragende Aussage wird über `gesetze-im-internet.de`, `dejure.org` oder das Rechtsprechungsportal des Bundes mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage live verifiziert.
+Die `SKILL.md` enthält einen eigenen Rechtsprechungsanker mit den Leitentscheidungen des Bundesarbeitsgerichts zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form. Darüber hinaus gilt: Rechtsprechung wird in diesem Skill nie ungeprüft aus Modellwissen zitiert — jede tragende Aussage wird über `gesetze-im-internet.de`, `dejure.org` oder das Rechtsprechungsportal des Bundes mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifiziert.
 
 ## Einsatzlagen
 
@@ -59,7 +60,7 @@ Rechtsprechung wird in dieser Skill nie aus Modellwissen zitiert — jede tragen
 
 ## Verwandte Projekte
 
-Dieser Skill ist aus dem Plugin `arbeitszeugnis-analyse` der Sammlung [`claude-fuer-deutsches-recht`](https://github.com/Klotzkette/claude-fuer-deutsches-recht) extrahiert und konsolidiert. Die ursprünglichen 50 Einzelskills wurden zu sieben thematischen Referenzen zusammengeführt, ohne fachliche Substanz zu verlieren.
+Dieser Skill ist aus dem Plugin `arbeitszeugnis-analyse` der Sammlung [`claude-fuer-deutsches-recht`](https://github.com/Klotzkette/claude-fuer-deutsches-recht) extrahiert und konsolidiert. Die ursprünglichen 50 Einzelskills wurden in eine einzige `SKILL.md` zusammengeführt, ohne fachliche Substanz zu verlieren.
 
 ## Testakte zum Üben
 

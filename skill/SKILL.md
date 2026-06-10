@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Notenmatrix, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber und Klagestrategie zur Zeugnisberichtigung. Stützt sich auf § 109 GewO, § 16 BBiG und § 241 II, § 280 I BGB; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
+description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Notenmatrix, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber und Klagestrategie zur Zeugnisberichtigung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
@@ -10,7 +10,8 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 ## Inhaltsverzeichnis
 
 - [Rechtlicher Anker](#rechtlicher-anker)
-- [Wann diese Skill greift](#wann-diese-skill-greift)
+- [Rechtsprechungsanker — BAG-Leitentscheidungen](#rechtsprechungsanker--bag-leitentscheidungen)
+- [Wann dieser Skill greift](#wann-dieser-skill-greift)
 - [Workflow in acht Stufen](#workflow-in-acht-stufen)
 - [Antwortformate](#antwortformate)
 - [Qualitätsgate vor jeder Ausgabe](#qualitätsgate-vor-jeder-ausgabe)
@@ -31,9 +32,30 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - **Beweislastregel BAG:** Bis Note 3 trägt der Arbeitgeber die Beweislast für eine schlechtere Beurteilung; ab Note 2 abwärts trägt der Arbeitnehmer die Beweislast für eine bessere Beurteilung.
 - **Zuständigkeit:** Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf Zeugnisberichtigung als Leistungsklage.
 
-> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, `dejure.org`, das Rechtsprechungsportal des Bundes oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren.
+> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, `dejure.org`, das Rechtsprechungsportal des Bundes oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. Das gilt auch für die nachstehend hinterlegten Leitentscheidungen: Sie sind als Arbeitsgrundlage verifiziert eingepflegt, müssen aber vor jeder Verwendung in einem Schriftsatz erneut auf Fortgeltung und genauen Wortlaut geprüft werden.
 
-## Wann diese Skill greift
+## Rechtsprechungsanker — BAG-Leitentscheidungen
+
+Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln dieses Skills. Jede Entscheidung ist mit Datum, Aktenzeichen und tragender Aussage hinterlegt und über die Entscheidungsdatenbank des BAG (`bundesarbeitsgericht.de`), `dejure.org` oder das Rechtsprechungsportal des Bundes frei nachprüfbar.
+
+| Entscheidung | Tragende Aussage | Einsatz im Skill |
+| --- | --- | --- |
+| **BAG, Urteil v. 14.10.2003 – 9 AZR 12/03** | „Zur vollen Zufriedenheit" bescheinigt eine durchschnittliche Leistung (Note 3). Wer eine bessere als die durchschnittliche Beurteilung verlangt, trägt die Darlegungs- und Beweislast; für eine unterdurchschnittliche Beurteilung trägt sie der Arbeitgeber. | Notenstufenmatrix (Teil A), Beweislast (Stufe 6, Teil F.3) |
+| **BAG, Urteil v. 18.11.2014 – 9 AZR 584/13** | „Befriedigend" ist die mittlere Note der Zufriedenheitsskala. Der Arbeitnehmer trägt die Darlegungs- und Beweislast für eine bessere Note — auch dann, wenn in der Branche überwiegend gute oder sehr gute Noten vergeben werden. Branchenüblichkeit verschiebt die Beweislast nicht. | Beweislast (Stufe 6, Teil F.3), Erwartungsmanagement im Mandantenbericht |
+| **BAG, Urteil v. 20.02.2001 – 9 AZR 44/00** | Beginn der ständigen Linie: kein gesetzlicher Anspruch auf eine Schlussformel mit Dank und guten Wünschen. | Schlussformel (Teil B) |
+| **BAG, Urteil v. 11.12.2012 – 9 AZR 227/11** | Kein Anspruch auf Dank und gute Wünsche in der Schlussformel; Empfindungsäußerungen des Arbeitgebers gehören nicht zum geschuldeten Zeugnisinhalt. Ist der Arbeitnehmer mit einer erteilten Schlussformel unzufrieden, kann er nur ein Zeugnis **ohne** Schlussformel verlangen — keine Umformulierung. | Schlussformel (Teil B), Anspruchs-Realität |
+| **BAG, Urteil v. 25.01.2022 – 9 AZR 146/21** | Bestätigung der Linie: kein Anspruch auf eine Schlussformel; Abwägung mit der Meinungsfreiheit des Arbeitgebers (Art. 5 Abs. 1 GG). | Schlussformel (Teil B) |
+| **BAG, Urteil v. 21.06.2005 – 9 AZR 352/04** | Gebot der Zeugnisklarheit (§ 109 Abs. 2 GewO): Maßgeblich ist der objektive Empfängerhorizont, nicht die Absicht des Arbeitgebers. Die Formulierung „kennen gelernt" drückt für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen. | Empfängerhorizont (Stufe 4), Teil A |
+| **BAG, Urteil v. 15.11.2011 – 9 AZR 386/10** | Bestätigung: „kennen gelernt" ist allein und losgelöst vom übrigen Zeugnisinhalt kein unzulässiger Geheimcode. Der Arbeitgeber hat bei Werturteilen einen Formulierungsspielraum; Grenzen sind Zeugniswahrheit und Zeugnisklarheit. | Teil A, Grenzen der Decodierung |
+| **BAG, Urteil v. 21.09.1999 – 9 AZR 893/98** | Äußere Form: Das Zeugnis muss den im Geschäftsleben üblichen Anforderungen genügen; zweimaliges Falten für den Versand ist zulässig, wenn das Original kopierfähig bleibt und die Knicke nicht auf Kopien durchschlagen. Schließt das Zeugnis mit Name und Funktion einer Person in Maschinenschrift, muss genau diese Person eigenhändig unterschreiben. | Formalia (Teil E.5) |
+
+**Anwendungsregeln aus dieser Rechtsprechung:**
+
+1. **Decodierung hat Grenzen.** Nicht jede unübliche oder blasse Formulierung ist ein Geheimcode. Das BAG verlangt für einen Verstoß gegen § 109 Abs. 2 S. 2 GewO, dass die Formulierung aus Sicht des objektiven Zeugnislesers etwas anderes aussagt als ihr Wortlaut. Im Zweifel: Tendenz mit Unsicherheitsvermerk ausweisen, nicht als sicheren Code behaupten.
+2. **Beweislast realistisch kommunizieren.** Wer Note 2 statt Note 3 will, muss liefern (9 AZR 12/03; 9 AZR 584/13). Branchenüblichkeit guter Noten ist kein Argument vor Gericht.
+3. **Schlussformel nüchtern einordnen.** Die Signalwirkung ist real, der Anspruch ist es nicht (9 AZR 44/00; 9 AZR 227/11; 9 AZR 146/21). Die Schlussformel gehört in die Verhandlung, nicht in den Klageantrag — und bei erteilter, missliebiger Schlussformel ist die einzige einklagbare Alternative das Zeugnis ohne Schlussformel.
+
+## Wann dieser Skill greift
 
 - Mandant oder Mandantin hat ein Zeugnis erhalten und will es einordnen.
 - Anwaltskanzlei prüft Berichtigungs-, Vergleichs- oder Klagestrategie.
@@ -118,7 +140,7 @@ Halte folgende Trennungen sauber:
 
 - Schlussformel-**Signalwirkung** ist nicht Schlussformel-**Anspruch**. Eine kalte Schlussformel signalisiert, lässt sich aber nur in Ausnahmefällen einklagen.
 - **Wahrheits-** vor **Wohlwollens**-pflicht: Ein gutes Zeugnis darf nicht unwahr sein. Wohlwollen steuert die Ausdrucksweise, ersetzt aber keine Tatsachen.
-- **Beweislast**: Bis Note 3 muss der Arbeitgeber begründen, warum nicht besser. Ab Note 2 muss der Arbeitnehmer belegen.
+- **Beweislast**: Bis Note 3 muss der Arbeitgeber begründen, warum nicht besser. Ab Note 2 muss der Arbeitnehmer belegen (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13 — Branchenüblichkeit guter Noten ändert daran nichts).
 
 ### 7 — Mandantenbericht und Verhandlungsmodul
 
@@ -219,13 +241,15 @@ Die Hauptformel der zusammenfassenden Leistungsbeurteilung. Ihre Bestandteile tr
 ## Sätze, die wie eine Hauptformel klingen, aber keine sind
 
 - „Frau X war eine geschätzte Mitarbeiterin." → kein Notenträger, nur freundliches Vorgeplänkel.
-- „Wir haben Herrn Y kennengelernt als jemanden, der …" → ambivalent, oft negativ kodiert.
+- „Wir haben Herrn Y kennengelernt als jemanden, der …" → **Vorsicht vor Übercodierung:** Nach BAG (21.06.2005 – 9 AZR 352/04; 15.11.2011 – 9 AZR 386/10) drückt „kennen gelernt" für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen — allein ist es kein Geheimcode. Negativsignal nur, wenn der Gesamtkontext (Drift, Auslassungen, schwache Hauptformel) es trägt.
 - „Sein Beitrag entsprach den betrieblichen Anforderungen." → ungebräuchlich, im Zweifel Note 4.
 
 ## Quellen für die Notenstufenmatrix
 
 - **§ 109 GewO** — Wahrheits- und Wohlwollensgrundsatz.
-- **BAG, ständige Rechtsprechung**: Beweislast bis Note 3 beim Arbeitgeber, ab Note 2 abwärts beim Arbeitnehmer. Konkrete Entscheidung live verifizieren.
+- **BAG 14.10.2003 – 9 AZR 12/03** — „zur vollen Zufriedenheit" = durchschnittliche Leistung (Note 3); Beweislast für bessere Note beim Arbeitnehmer, für schlechtere beim Arbeitgeber.
+- **BAG 18.11.2014 – 9 AZR 584/13** — „befriedigend" als Mitte der Skala; Branchenüblichkeit guter Noten verschiebt die Beweislast nicht.
+- Details und Fundstellen: [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Vor Schriftsatzverwendung erneut verifizieren.
 
 ---
 
@@ -254,7 +278,7 @@ Vollständige Schlussformel (Note 1 – Note 2) besteht aus **fünf** Bausteinen
 | Nur Dank ohne Bedauern | Distanzsignal | Orange |
 | Nur Wunsch ohne Dank | Kalter Schluss | Rot/Orange |
 | „Frau X scheidet auf eigenen Wunsch aus. Wir wünschen ihr für die Zukunft alles Gute." | Sachlich-kalt | Rot/Orange |
-| Schlussformel fehlt | BAG-Sicht: kein Anspruch (BAG 11.12.2012 – 9 AZR 227/11 nur als Live-Recherche zitieren) | Orange |
+| Schlussformel fehlt | BAG-Sicht: kein Anspruch (BAG 11.12.2012 – 9 AZR 227/11; bestätigt durch BAG 25.01.2022 – 9 AZR 146/21) | Orange |
 
 ## Sonderfälle
 
@@ -264,9 +288,10 @@ Vollständige Schlussformel (Note 1 – Note 2) besteht aus **fünf** Bausteinen
 
 ## Anspruchs-Realität
 
-- Eine wohlwollende Schlussformel lässt sich nach ständiger BAG-Linie **nicht erzwingen**.
+- Eine wohlwollende Schlussformel lässt sich nach ständiger BAG-Linie **nicht erzwingen** (BAG 20.02.2001 – 9 AZR 44/00; BAG 11.12.2012 – 9 AZR 227/11; BAG 25.01.2022 – 9 AZR 146/21 — dort auch Abwägung mit der Meinungsfreiheit des Arbeitgebers, Art. 5 Abs. 1 GG).
+- **Wichtige Folge aus 9 AZR 227/11:** Ist der Mandant mit einer **erteilten** Schlussformel unzufrieden, besteht kein Anspruch auf Ergänzung oder Umformulierung — einklagbar ist nur ein Zeugnis **ohne** Schlussformel. Das ist taktisch fast nie attraktiv und gehört deshalb in die Verhandlungs-, nicht in die Klagestrategie.
 - Erzwingbar ist die **Berichtigung** unzulässiger oder unklarer Aussagen — wenn die Schlussformel z. B. unwahre Tatsachen suggeriert (passiv-kühle Andeutung von Verfehlungen), kann sie als Berichtigungspunkt herangezogen werden.
-- Live verifizieren: BAG-Linie zur fehlenden Schlussformel, BAG-Linie zur Korrektur ambivalenter Schlüsse.
+- Vor Schriftsatzverwendung erneut verifizieren: [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen).
 
 > Im Mandantenbericht immer beide Ebenen ausweisen — die Schlussformel sendet ein klares Signal, lässt sich aber nur als Teil der Berichtigungsstrategie einsetzen, nicht als selbständiger Klagepunkt.
 
@@ -341,7 +366,7 @@ Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus �
 | „hat sich im Rahmen seiner Aufgaben bewährt" | Hinweis: ggf. außerhalb der Aufgaben nicht | Orange |
 | „hat zur Erfüllung der Aufgaben beigetragen" | Mittelmaß | Orange |
 
-Quelle für jede Decodierung: § 109 GewO Wahrheits- und Wohlwollensgrundsatz; BAG-Rechtsprechung zur Beweislastverteilung und zum Gebot der Klarheit live verifizieren.
+Quelle für jede Decodierung: § 109 GewO Wahrheits- und Wohlwollensgrundsatz; zur Beweislast und zum Gebot der Zeugnisklarheit siehe [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Beachte die dort hinterlegte Grenze der Decodierung (BAG 9 AZR 352/04, 9 AZR 386/10): Nicht jede blasse Formulierung ist ein Geheimcode — entscheidend ist der objektive Empfängerhorizont im Gesamtkontext.
 
 ---
 
@@ -650,9 +675,12 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 **Beispiele für formale Mängel mit Berichtigungsanspruch:**
 
 - Unterschrift durch HR-Sachbearbeiter statt durch unmittelbaren Vorgesetzten oder Geschäftsführung.
+- Zeugnis schließt mit Name und Funktion einer Person in Maschinenschrift, unterschrieben hat aber jemand anderes — nach BAG 21.09.1999 – 9 AZR 893/98 muss genau die genannte Person eigenhändig unterschreiben.
 - Beschäftigungszeitraum ohne Ende-Datum oder mit falschem Beginn.
 - Ausstellungsdatum 14 Tage nach Beendigung, obwohl gesetzlicher Anspruch sofort fällig ist.
 - Sichtbare Tipp- oder Rechtschreibfehler → bei zeugnisrelevanten Positionen ein Berichtigungspunkt.
+
+**Grenze nach BAG 21.09.1999 – 9 AZR 893/98:** Die äußere Form muss den im Geschäftsleben üblichen Anforderungen genügen — aber zweimaliges Falten für den Postversand ist zulässig, solange das Original kopierfähig bleibt und die Knicke auf Kopien nicht durchschlagen (z. B. als Schwärzung). Knicke allein sind also kein Berichtigungspunkt.
 
 ## E.6 — Anwendung in der Notenmatrix
 
@@ -682,7 +710,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 
 1. **Mandatsanzeige** — Vollmacht beigefügt, Mandant mit vollem Namen, Geburtsdatum, Beschäftigungszeitraum.
 2. **Bezugnahme auf das Zeugnis** — Datum der Erteilung, Datum der Aushändigung, Form (qualifiziert/einfach/Zwischen), Feststellung, dass es § 109 GewO nicht genügt.
-3. **Rechtsgrundlage** — § 109 Abs. 1 S. 3 GewO Wohlwollen; § 109 Abs. 2 GewO Wahrheit und Klarheit; Beweislastregel des BAG.
+3. **Rechtsgrundlage** — § 109 Abs. 1 S. 3 GewO Wohlwollen; § 109 Abs. 2 GewO Wahrheit und Klarheit; Beweislastregel des BAG (14.10.2003 – 9 AZR 12/03; 18.11.2014 – 9 AZR 584/13).
 4. **Beanstandungen pro Streitstelle** — pro Stelle ein Block: Originalwortlaut in Anführungszeichen, Decodierung (Geheimcode, Drift, Auslassung, fehlendes Adverb), Vorschlag in Anführungszeichen, Begründung.
 5. **Schlussformel und Gesamtbild** — wenn relevant, separat behandeln.
 6. **Fristsetzung** — kalendermäßig (kein „binnen zwei Wochen"), Standard zwei bis drei Wochen; bei Eilbedarf kürzer mit Begründung.
@@ -701,7 +729,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 >
 > **Punkt 2 — Verhaltensbeurteilung.** Originalwortlaut: „[…]". Reihenfolge oder Adverbschwäche signalisiert [Befund]. Vorgeschlagene Neufassung: „[…]".
 >
-> **Punkt 3 — Schlussformel.** Es fehlt das Bedauern. Ob daraus ein einklagbarer Anspruch folgt, ist nur nach live verifizierter Rechtsprechung zu bewerten. Wir bitten gleichwohl um folgende Neufassung: „[…]".
+> **Punkt 3 — Schlussformel.** Es fehlt das Bedauern. Uns ist bewusst, dass nach der Rechtsprechung des Bundesarbeitsgerichts (zuletzt Urteil vom 25.01.2022 – 9 AZR 146/21) kein einklagbarer Anspruch auf eine Schlussformel besteht; wir bitten gleichwohl im Interesse eines stimmigen Gesamtbildes um folgende Neufassung: „[…]".
 >
 > Wir bitten, das berichtigte Zeugnis bis zum [Datum] auf Geschäftspapier ohne Anlassbezug auf das Berichtigungsverlangen zu erteilen. Sollte das Zeugnis nicht fristgerecht in der vorgeschlagenen Form neu erteilt werden, werden wir Klage zum zuständigen Arbeitsgericht erheben.
 >
@@ -771,6 +799,8 @@ Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
 | Wohlwollensverstoß | Arbeitnehmer |
 | Wahrheitsverstoß | Arbeitnehmer |
 | Reihenfolge im Sozialverhalten | Arbeitgeber muss falsche Reihenfolge begründen |
+
+Grundlage: BAG 14.10.2003 – 9 AZR 12/03 und BAG 18.11.2014 – 9 AZR 584/13 ([Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen)).
 
 ### Streitwert
 
