@@ -1,6 +1,6 @@
 # Testakte: Arbeitszeugnis-Analyse — aus dem blühenden Leben
 
-Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainings- und Demonstrationsmaterial. Sie enthält **zehn Arbeitszeugnisse aus zehn verschiedenen Branchen und Berufen**, jeweils ein bis zwei Seiten lang, alle formal freundlich und im üblichen Wohlwollens-Stil verfasst. Alle Personen, Firmen und Adressen sind frei erfunden.
+Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainings- und Demonstrationsmaterial. Sie enthält zehn Arbeitszeugnisse aus zehn verschiedenen Branchen und Berufen, jeweils ein bis zwei Seiten lang, alle formal freundlich und im üblichen Wohlwollens-Stil verfasst. Alle Personen, Firmen und Adressen sind frei erfunden.
 
 ## Akte komplett lesen
 
