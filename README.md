@@ -2,7 +2,14 @@
 
 > **Experimenteller Agent-Skill** für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
-> **Und jetzt mal ehrlich, Leute — keine Panik:** Das hier ist eigentlich nur ein riesiger Prompt. Kein Hexenwerk, keine Blackbox, kein heimlich trainiertes Modell, sondern strukturierter Text in Markdown, den ein LLM (z. B. Claude oder Perplexity Computer) beim Bearbeiten eines Arbeitszeugnisses als Anleitung lädt. `SKILL.md` ist die Hauptanweisung, die Dateien unter `references/` sind Nachschlagewerke, die der Agent bei Bedarf zieht. Wer schon mal einen langen ChatGPT-Prompt geschrieben hat, kennt das Prinzip — hier ist es nur sauber sortiert, juristisch geerdet und auf den deutschen Arbeitszeugnis-Kontext zugeschnitten. Man kann reinschauen, mitlesen, anpassen, forken. Mehr ist es nicht.
+> **Und jetzt mal ehrlich, Leute — keine Panik:** Das hier ist eigentlich nur ein riesiger Prompt. Kein Hexenwerk, keine Blackbox, kein heimlich trainiertes Modell, sondern strukturierter Text in Markdown, den ein LLM beim Bearbeiten eines Arbeitszeugnisses als Anleitung lädt. Wer schon mal einen langen ChatGPT-Prompt geschrieben hat, kennt das Prinzip — hier ist es nur sauber sortiert, juristisch geerdet und auf den deutschen Arbeitszeugnis-Kontext zugeschnitten. Man kann reinschauen, mitlesen, anpassen, forken. Mehr ist es nicht.
+>
+> **Funktioniert in jedem Chatbot.** ChatGPT, Claude, Gemini, Mistral, Perplexity, lokales Llama — egal. Der Skill ist reiner Markdown-Text. Es gibt zwei Wege:
+>
+> 1. **Copy & Paste (einfachster Weg, kein Upload, kein Konto, kein Tool nötig).** Inhalt von [`skill/SKILL.md`](skill/SKILL.md) kopieren, in den Chat einfügen, dann das zu prüfende Arbeitszeugnis darunter posten. Fertig. Die Dateien unter `references/` sind **optional** — nur mitkopieren, wenn der Chatbot bei einem bestimmten Aspekt nachfragt oder wenn das jeweilige Thema (Schlussformel, Geheimcodes, Ampelflaggen …) für den konkreten Fall relevant ist.
+> 2. **Als Datei-Anhang.** In Chatbots, die Dateien akzeptieren (ChatGPT, Claude, Perplexity-Anhänge), `SKILL.md` und bei Bedarf einzelne References einfach hochladen oder per Drag-and-Drop anhängen. In Agent-Umgebungen mit Skill-Loader (Claude Code, Perplexity Computer) den ganzen `skill/`-Ordner als Skill registrieren — dann liest sich der Agent die References bei Bedarf selbst nach.
+>
+> Kurz: **Man muss nichts installieren und nichts hochladen.** Markdown rein in den Chat, Zeugnis dazu, los.
 
 Konsolidierter Skill für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün).
 
@@ -22,6 +29,20 @@ skill/
     ├── mandatsmodule.md                  Aufforderungsschreiben, Wortlaut-Verbesserungen, Klageantrag
     └── muster-und-sonderfaelle.md        Drei Musterzeugnisse, leitende Positionen, Azubi, Branchen
 ```
+
+### Was ist `SKILL.md`, was sind die References?
+
+- **`SKILL.md`** ist die Hauptanweisung — der eigentliche Prompt mit dem Acht-Stufen-Workflow, dem rechtlichen Anker und den Antwortformaten. Diese Datei ist **immer dabei**.
+- **Die sieben Dateien unter `references/`** sind thematische Nachschlagewerke. Sie sind **nicht zwingend nötig**, um den Skill zu benutzen — `SKILL.md` allein liefert bereits einen vollständigen Workflow. Die References werden erst dann relevant, wenn ein konkreter Punkt vertieft werden soll:
+  - `zufriedenheitsformel.md` — wenn die Note der Hauptformel exakt eingeordnet werden soll (Note 1–5).
+  - `schlussformel.md` — wenn Bedauern, Dank und Zukunftswunsch im Detail bewertet werden sollen.
+  - `geheimcode-katalog.md` — wenn verdächtige Standardphrasen entschlüsselt werden müssen.
+  - `ampel-flaggen.md` — wenn Steigerungsadverbien und Codeworte sauber den Ampelfarben zugeordnet werden sollen.
+  - `analyse-techniken.md` — wenn nach Drift, Auslassungen, Negationen, Widersprüchen oder Formfehlern gesucht wird.
+  - `mandatsmodule.md` — wenn ein Aufforderungsschreiben, eine Wortlaut-Verbesserung oder ein Klageantrag formuliert werden soll.
+  - `muster-und-sonderfaelle.md` — wenn ein Musterzeugnis, eine Leitungsposition, ein Azubi-Zeugnis oder ein Branchenspezifikum als Vergleich gebraucht wird.
+
+**Faustregel:** Nur `SKILL.md` reinkopieren reicht für den ersten Durchgang. Die Referenz, die der Chatbot bzw. der konkrete Fall braucht, kann anschließend nachgeschoben werden — entweder per Copy-and-Paste oder als zusätzlicher Datei-Anhang.
 
 ## Workflow in acht Stufen
 
