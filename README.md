@@ -6,7 +6,9 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Anwendung: Inhalt der Datei in den Chat kopieren, darunter das zu prüfende Arbeitszeugnis einfügen. Es ist keine Installation, kein Upload, kein Konto und kein zusätzliches Werkzeug erforderlich.
 
-Konsolidierter Skill für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün).
+Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — ausgegeben als farbige Ampelsymbole 🔴/🟠/🟢, nicht als Farbwörter.
+
+**Sofortstart:** Zeugnis einfügen genügt. Der Skill startet die Vollanalyse ohne Fragenkaskade, kennzeichnet fehlende Angaben als Annahmen und stellt höchstens eine gebündelte Rückfrage — nur dann, wenn die Analyse sonst objektiv falsch würde.
 
 Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md`. Er deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
 
@@ -20,6 +22,8 @@ skill/
 Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 
 - **Workflow in acht Stufen** — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
+- **Sofortstart und Rückfrage-Disziplin** — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
+- **Ampel-Darstellung** — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen (1995–2026) zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 - **Teil A — Zufriedenheitsformel** — Notenstufen 1 bis 5 der Hauptformel.
 - **Teil B — Schlussformel** — Bedauern/Dank/Wunsch, Signal versus Anspruch.
@@ -34,7 +38,7 @@ Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 1. Intake und Rollenklärung
 2. Zeugnisart und Kopfdaten sichern
 3. Notenrelevante Sätze markieren
-4. Satzweise Ampel-Notenmatrix
+4. Einschätzungsmatrix (satzweise, mit Ampelsymbolen und Rechtsprechungsstütze)
 5. Drift, Auslassungen und Widersprüche
 6. Gesamtnotenspanne und Hauptbefund
 7. Mandantenbericht und Verhandlungsmodul

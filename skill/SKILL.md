@@ -1,6 +1,7 @@
 ---
 name: arbeitszeugnis-pruefer
-description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (Rot/Orange/Grün). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Notenmatrix, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber und Klagestrategie zur Zeugnisberichtigung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
+version: "2.0.0"
+description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
@@ -12,6 +13,8 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Rechtlicher Anker](#rechtlicher-anker)
 - [Rechtsprechungsanker — BAG-Leitentscheidungen](#rechtsprechungsanker--bag-leitentscheidungen)
 - [Wann dieser Skill greift](#wann-dieser-skill-greift)
+- [Sofortstart und Rückfrage-Disziplin](#sofortstart-und-rückfrage-disziplin)
+- [Ampel-Darstellung](#ampel-darstellung)
 - [Workflow in acht Stufen](#workflow-in-acht-stufen)
 - [Antwortformate](#antwortformate)
 - [Qualitätsgate vor jeder Ausgabe](#qualitätsgate-vor-jeder-ausgabe)
@@ -78,13 +81,38 @@ Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und
 
 Wenn dagegen nur ein Bewerbungsschreiben, eine Stellenausschreibung oder eine Beurteilung außerhalb des Zeugnisses zu prüfen ist: anderes Mandat, dieser Skill ist nicht zuständig.
 
+## Sofortstart und Rückfrage-Disziplin
+
+**Der häufigste Fall ist der einfachste: Jemand fügt ein Zeugnis ein — sonst nichts.** Dann gilt:
+
+1. **Sofort loslegen.** Fügt der Nutzer nur ein Zeugnis ein (als Text, PDF oder Foto), ohne Anweisung, läuft ohne Nachfrage die **Vollanalyse**: Kopfdaten, Einschätzungsmatrix, Drift-/Auslassungsprüfung, Gesamtnotenspanne, Handlungsempfehlung. Keine Intake-Interviews, keine Fragenkaskade vorab.
+2. **Fehlende Angaben sind kein Blocker.** Was das Intake-Blatt (Stufe 1) nicht hergibt, wird aus dem Zeugnis selbst abgeleitet (Position, Branche, Beendigungsanlass, Zeugnisart) und als **gekennzeichnete Annahme** geführt: „Annahme: Vertriebsposition mit Kundenkontakt — bitte korrigieren, falls falsch."
+3. **Höchstens eine Rückfrage, und nur bei echtem Verständnisblocker.** Eine Rückfrage ist nur zulässig, wenn ohne die Antwort die Analyse objektiv falsch würde (z. B. Text unleserlich/abgeschnitten, zwei verschiedene Zeugnisse vermischt, Sprache unklar). Mehrere offene Punkte werden in **eine einzige gebündelte Rückfrage** gepackt — niemals seriell nachfragen.
+4. **Wünsche-Fragen ans Ende, nicht an den Anfang.** Ob der Nutzer auch ein Aufforderungsschreiben oder eine Klagestrategie will, wird nicht vorab abgefragt, sondern am Ende der Analyse als Option angeboten („Auf Wunsch erstelle ich daraus das Aufforderungsschreiben.").
+5. **Rollenvermutung:** Ohne anderslautende Angabe wird angenommen, dass der Einsender die beurteilte Person ist (Arbeitnehmerperspektive). HR-/Kanzlei-/Betriebsratsrollen nur bei entsprechendem Hinweis.
+
+## Ampel-Darstellung
+
+**Die Ampel wird grafisch gesetzt, nicht als Farbwort geschrieben.** In jeder Ausgabe an den Nutzer gilt:
+
+- 🔴 = Rot (Note 4–6, Negativcode, dringender Berichtigungspunkt)
+- 🟠 = Orange (Note 3, Abschwächung, Verhandlungspunkt) — wenn die Umgebung 🟠 nicht darstellt: 🟡
+- 🟢 = Grün (Note 1–2, unbedenklich)
+
+Regeln:
+
+1. In Matrizen, Tabellen, Aufzählungen und Fließtext immer das **farbige Ampelsymbol** setzen: „🔴", nicht „Rot". Die Farbwörter in den Katalogtabellen dieses Dokuments sind interne Kodierung — in der Nutzerausgabe erscheinen sie als Symbol.
+2. Kann die Zielumgebung nachweislich keine Emojis oder Farben darstellen (reine ASCII-Umgebung), ersatzweise `[ROT]`, `[ORANGE]`, `[GRÜN]` in Großbuchstaben.
+3. Im **Hauptbefund** zusätzlich eine Ampel-Bilanz als Zeile ausgeben, z. B.: `Ampel-Bilanz: 🔴 4 · 🟠 3 · 🟢 5` — so sieht der Mandant die Verteilung auf einen Blick.
+4. Mischbefunde (z. B. „Grün/Orange") als Doppelsymbol: 🟢🟠.
+
 ## Workflow in acht Stufen
 
 Arbeite in der unten genannten Reihenfolge. Springe nur dann zurück, wenn ein späterer Schritt einen früheren in Frage stellt (zum Beispiel: Schlussformel widerspricht der Hauptnote).
 
 ### 1 — Intake und Rollenklärung
 
-Erfasse die folgenden Punkte aus dem Material. Frage nur nach, was der Mandant noch nicht in das Material gelegt hat:
+Erfasse die folgenden Punkte **aus dem Material** — nicht per Interview. Was fehlt, wird nach der [Sofortstart-Regel](#sofortstart-und-rückfrage-disziplin) als gekennzeichnete Annahme geführt; nachgefragt wird nur bei echtem Verständnisblocker, gebündelt und höchstens einmal:
 
 | Punkt | Klärung |
 | --- | --- |
@@ -118,14 +146,21 @@ Drei Sätze tragen typischerweise die Hauptnote eines qualifizierten Zeugnisses:
 
 Die übrigen Sätze stützen oder widerlegen diese Hauptnoten. Markiere jeden notenrelevanten Satz mit Originalwortlaut und ordne ihn einer der vier Hauptachsen zu: Leistung, Verhalten, Engagement, Kompetenz.
 
-### 4 — Satzweise Ampel-Notenmatrix
+### 4 — Einschätzungsmatrix (satzweise Ampel-Notenmatrix)
 
-Bilde für jeden notenrelevanten Satz vier Spalten:
+Die Einschätzungsmatrix ist das Herzstück jeder Ausgabe. Bilde für jeden notenrelevanten Satz fünf Spalten:
 
 1. Originalwortlaut.
 2. Decodierte Aussage (was wäre die Klartextfassung).
 3. Notentendenz 1 bis 6 (Spanne erlaubt).
-4. Ampel Rot/Orange/Grün.
+4. Ampel als Symbol: 🔴 / 🟠 / 🟢 (siehe [Ampel-Darstellung](#ampel-darstellung)).
+5. Stütze: Katalogfundstelle (Teil A–E) und, wo vorhanden, die tragende Entscheidung aus dem [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) — so bleibt jede Bewertung rechtsprechungsbasiert nachvollziehbar.
+
+Beispielzeile:
+
+| Originalwortlaut | Decodiert | Note | Ampel | Stütze |
+| --- | --- | --- | --- | --- |
+| „stets bemüht" | guter Wille, keine Ergebnisse | 4 | 🔴 | Teil D.4; Beweislast AG: BAG 9 AZR 12/03 |
 
 Material für die Decodierung:
 
@@ -186,6 +221,7 @@ Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreibe
 Kurzbild
 - Zeugnisart:
 - Notentendenz (Spanne):
+- Ampel-Bilanz: 🔴 _ · 🟠 _ · 🟢 _
 - Hauptkritik:
 - Eilbedarf:
 
@@ -200,11 +236,30 @@ Nächster Schritt
 2. Notenrelevante Sätze markieren.
 3. Leistung, Verhalten, Schluss, Auslassungen getrennt bewerten.
 4. Drift und Widersprüche prüfen.
-5. Gesamtnotenspanne bilden.
+5. Gesamtnotenspanne bilden und Ampel-Bilanz ausgeben.
 6. Streitstellen-Tabelle und Handlungsempfehlung.
 ```
 
-Verwende Tabellen mit Spalten **Originalwortlaut · Decodierte Aussage · Note · Ampel**.
+Verwende die Einschätzungsmatrix mit Spalten **Originalwortlaut · Decodierte Aussage · Note · Ampel (🔴/🟠/🟢) · Stütze**.
+
+### HR-Gegenprüfung (Arbeitgeberseite)
+
+Wenn ein **Entwurf** vor Erteilung geprüft werden soll (HR, Geschäftsführung, Kanzlei auf Arbeitgeberseite):
+
+```
+1. Einschätzungsmatrix wie üblich — aber mit Blickrichtung: Welche
+   Formulierung liest ein kundiger Empfänger schlechter als gemeint?
+2. Unbeabsichtigte Codes markieren (Teil C–D) und neutral umformulieren.
+3. Klarheits-Check nach § 109 Abs. 2 GewO und BAG 9 AZR 352/04 / 386/10:
+   keine mehrdeutigen, ironischen oder überzogenen Formulierungen
+   (LAG Hamm 12 Ta 475/16).
+4. Formalia-Check nach Teil E.5 (Fließtext, Unterschrift, Datum,
+   keine elektronische Form, § 109 Abs. 3 GewO).
+5. Konsistenz: Hauptformel, Einzelsätze und Schlussformel auf derselben
+   Notenstufe? Drift vermeiden, bevor sie entsteht.
+```
+
+Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeitgeber heute sauber formuliert, muss er morgen nicht berichtigen.
 
 ### Mandatsoutput
 
@@ -221,6 +276,8 @@ Verwende Tabellen mit Spalten **Originalwortlaut · Decodierte Aussage · Note �
 - Ist die Beweislast richtig herum dargestellt (bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer)?
 - Keine erfundenen Fundstellen, Zeugnisinhalte oder Noten?
 - Jedes Rechtsprechungszitat gegen den [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) abgeglichen — und bei Schriftsatzverwendung erneut live verifiziert?
+- Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
+- Sofortstart-Regel eingehalten: direkt analysiert, Annahmen gekennzeichnet, höchstens eine gebündelte Rückfrage?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
 ---
@@ -741,7 +798,7 @@ Sobald Drift, Auslassungen, Negationen oder Widersprüche erkannt sind, fließen
 
 # Teil F — Mandatsmodule: Aufforderungsschreiben, Verbesserungen, Klagestrategie
 
-Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliches Berichtigungsverlangen, Wortlaut-Verbesserungstabelle, Klageantrag und Streitwert.
+Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliches Berichtigungsverlangen, Wortlaut-Verbesserungstabelle, Klageantrag, Streitwert und Vollstreckung.
 
 ## Rechtlicher Anker
 
@@ -894,11 +951,25 @@ Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: 
 
 **Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckungsfähigen Inhalt. Praxisfolge: Die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt ist das schärfste Vergleichsinstrument und sollte Standard im Vergleichstext sein; bei Nichterfüllung direkt Zwangsvollstreckung statt neuer Klage.
 
-## F.4 — Anschlussschritte
+## F.4 — Vollstreckung des Zeugnisanspruchs
+
+Wenn Urteil oder Vergleich vorliegt, der Arbeitgeber aber nicht oder falsch erfüllt:
+
+| Lage | Instrument |
+| --- | --- |
+| Titulierter Zeugnisanspruch wird nicht erfüllt | Zwangsgeld, ersatzweise Zwangshaft (§ 888 ZPO — nicht vertretbare Handlung, da nur der Arbeitgeber die Beurteilung abgeben kann) |
+| Vergleich mit Entwurfsklausel („Zeugnis nach Entwurf des Arbeitnehmers, Abweichung nur aus wichtigem Grund") | Unmittelbar vollstreckbar (BAG 07.05.2026 – 8 AZB 25/25) — kein neues Erkenntnisverfahren nötig |
+| Erteiltes Zeugnis weicht vom Titel ab | Im Vollstreckungsverfahren rügen; ironische Übererfüllung ist Nichterfüllung (LAG Hamm 14.11.2016 – 12 Ta 475/16) |
+| Streit über „wichtigen Grund" der Abweichung | Arbeitgeber muss den wichtigen Grund darlegen; sonst Zwangsmittel |
+
+**Praxisregel:** Schon beim Vergleichsschluss an die Vollstreckung denken — die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt (F.3) macht aus dem Vergleich einen scharfen Titel.
+
+## F.5 — Anschlussschritte
 
 - Aufforderung blieb fruchtlos → Klage einreichen.
 - Vollberichtigung → Abschlussschreiben + Kostennote.
 - Teilberichtigung → mit Mandant entscheiden: Akzeptanz oder Restklage.
+- Titel liegt vor, Erfüllung bleibt aus → Vollstreckungsmodul F.4.
 
 ---
 
