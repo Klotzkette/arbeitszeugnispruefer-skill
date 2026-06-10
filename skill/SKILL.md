@@ -48,6 +48,19 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | **BAG, Urteil v. 21.06.2005 – 9 AZR 352/04** | Gebot der Zeugnisklarheit (§ 109 Abs. 2 GewO): Maßgeblich ist der objektive Empfängerhorizont, nicht die Absicht des Arbeitgebers. Die Formulierung „kennen gelernt" drückt für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen. | Empfängerhorizont (Stufe 4), Teil A |
 | **BAG, Urteil v. 15.11.2011 – 9 AZR 386/10** | Bestätigung: „kennen gelernt" ist allein und losgelöst vom übrigen Zeugnisinhalt kein unzulässiger Geheimcode. Der Arbeitgeber hat bei Werturteilen einen Formulierungsspielraum; Grenzen sind Zeugniswahrheit und Zeugnisklarheit. | Teil A, Grenzen der Decodierung |
 | **BAG, Urteil v. 21.09.1999 – 9 AZR 893/98** | Äußere Form: Das Zeugnis muss den im Geschäftsleben üblichen Anforderungen genügen; zweimaliges Falten für den Versand ist zulässig, wenn das Original kopierfähig bleibt und die Knicke nicht auf Kopien durchschlagen. Schließt das Zeugnis mit Name und Funktion einer Person in Maschinenschrift, muss genau diese Person eigenhändig unterschreiben. | Formalia (Teil E.5) |
+| **BAG, Urteil v. 27.04.2021 – 9 AZR 262/20** | Ein qualifiziertes Zeugnis in tabellarischer Form (Ankreuz-/Schulnotenschema) erfüllt den Anspruch aus § 109 GewO regelmäßig nicht. Die erforderliche individuelle Hervorhebung und Differenzierung verlangt regelmäßig Fließtext. | Formalia (Teil E.5) |
+| **BAG, Urteil v. 06.06.2023 – 9 AZR 272/22** | Eine einmal erteilte Dankes- und Wunschformel darf der Arbeitgeber in einer späteren Zeugnisfassung nicht allein deshalb streichen, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat — Verstoß gegen das Maßregelungsverbot (§ 612a BGB), das auch nach Beendigung des Arbeitsverhältnisses gilt. | Schlussformel (Teil B), Berichtigungsstrategie (Teil F) |
+| **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, hat vollstreckungsfähigen Inhalt. | Vergleichsfenster und Vollstreckung (Teil F.3) |
+| **BAG, Urteil v. 08.03.1995 – 5 AZR 848/93** | Die Zeugniserteilung ist Holschuld (§ 269 BGB): Der Arbeitnehmer holt das Zeugnis im Betrieb ab; nur ausnahmsweise (Unzumutbarkeit, § 242 BGB) wird daraus eine Schickschuld. | Formalia und Mandatspraxis (Teil E.5, Teil F) |
+
+### LAG- und instanzgerichtliche Rechtsprechung (Auswahl)
+
+Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und Vergleichsverhandlung wertvoll. Beide nachstehenden Entscheidungen sind im Volltext frei verfügbar (NRW: Rechtsprechungsdatenbank `nrwe.de` / `justiz.nrw.de`; Schleswig-Holstein: mehrfach dokumentiert).
+
+| Entscheidung | Tragende Aussage | Einsatz im Skill |
+| --- | --- | --- |
+| **LAG Hamm, Beschluss v. 14.11.2016 – 12 Ta 475/16** | Zwei Aussagen: (1) **Ironisch überzogenes Lob ist unzulässig** — wer vereinbarte Formulierungen durch erkennbar nicht ernst gemeinte Superlative ersetzt („Wenn es bessere Noten als sehr gut gäbe, würden wir ihn damit beurteilen"), erfüllt den Zeugnisanspruch nicht. (2) Der Arbeitnehmer hat Anspruch auf die **geschäftsübliche Unterschrift** des Ausstellers; eine quer durch den Zeugnistext laufende Unterschrift weckt Zweifel an der Ernsthaftigkeit. | Ironie-Code (Teil D.5), Unterschrift (Teil E.5) |
+| **ArbG Kiel, Urteil v. 18.04.2013 – 5 Ca 80 b/13** | Ein in die Unterschrift eingearbeiteter Smiley mit herabgezogenen Mundwinkeln ist ein unzulässiges Geheimzeichen (§ 109 Abs. 2 S. 2 GewO); der Aussteller muss mit seiner geschäftsüblichen Unterschrift zeichnen. | Unterschrift (Teil E.5) |
 
 **Anwendungsregeln aus dieser Rechtsprechung:**
 
@@ -291,6 +304,7 @@ Vollständige Schlussformel (Note 1 – Note 2) besteht aus **fünf** Bausteinen
 
 - Eine wohlwollende Schlussformel lässt sich nach ständiger BAG-Linie **nicht erzwingen** (BAG 20.02.2001 – 9 AZR 44/00; BAG 11.12.2012 – 9 AZR 227/11; BAG 25.01.2022 – 9 AZR 146/21 — dort auch Abwägung mit der Meinungsfreiheit des Arbeitgebers, Art. 5 Abs. 1 GG).
 - **Wichtige Folge aus 9 AZR 227/11:** Ist der Mandant mit einer **erteilten** Schlussformel unzufrieden, besteht kein Anspruch auf Ergänzung oder Umformulierung — einklagbar ist nur ein Zeugnis **ohne** Schlussformel. Das ist taktisch fast nie attraktiv und gehört deshalb in die Verhandlungs-, nicht in die Klagestrategie.
+- **Gegenausnahme aus BAG 06.06.2023 – 9 AZR 272/22:** Was einmal erteilt wurde, ist geschützt. Streicht der Arbeitgeber die Dankes- und Wunschformel in einer Folgefassung, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat, verstößt das gegen das Maßregelungsverbot (§ 612a BGB) — die Formel ist dann wieder aufzunehmen. Praktisch wichtig im Berichtigungsverfahren: Der Mandant riskiert durch ein Berichtigungsverlangen nicht den Verlust der bereits erteilten Schlussformel.
 - Erzwingbar ist die **Berichtigung** unzulässiger oder unklarer Aussagen — wenn die Schlussformel z. B. unwahre Tatsachen suggeriert (passiv-kühle Andeutung von Verfehlungen), kann sie als Berichtigungspunkt herangezogen werden.
 - Vor Schriftsatzverwendung erneut verifizieren: [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen).
 
@@ -563,6 +577,35 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 | erledigte die ihm zugewiesenen Aufgaben | reine Erfüllung, kein Engagement |
 | zeigte sich anpassungsfähig | Opportunist |
 
+### Beendigungsformeln
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| „verlässt uns auf eigenen Wunsch" | neutrale Eigenkündigung |
+| „im gegenseitigen Einvernehmen" | meist arbeitgeberseitig initiierter Aufhebungsvertrag, oft nach Konflikt |
+| „im besten gegenseitigen Einvernehmen" | echte einvernehmliche Trennung |
+| „Das Arbeitsverhältnis endete am …" (kommentarlos) | Distanzsignal, häufig Arbeitgeberkündigung |
+| Beendigung mitten im Monat ohne Erläuterung | Verdacht auf fristlose Kündigung — im Intake klären |
+
+### Wunsch- und Zukunftsformeln als Negativcode
+
+| Formulierung | Bedeutung |
+| --- | --- |
+| „wir wünschen ihm für die Zukunft mehr Erfolg" | bisher erfolglos |
+| „künftig alles Gute, insbesondere Erfolg" | Erfolg blieb bislang aus |
+| „wünschen ihm Gesundheit" (betont) | Krankheits-Hinweis |
+| „hatte Gelegenheit, sich Kenntnisse anzueignen" | hat die Gelegenheit nicht genutzt |
+
+### Ironie und überzogenes Lob
+
+Nach LAG Hamm 14.11.2016 – 12 Ta 475/16 ist auch **erkennbar nicht ernst gemeintes Über-Lob** ein unzulässiger Code: Wer Superlative so stapelt, dass jeder kundige Leser die Ironie erkennt („Wenn es bessere Noten als sehr gut gäbe …"), entwertet das Zeugnis und erfüllt den Anspruch nicht.
+
+| Signal | Bedeutung |
+| --- | --- |
+| Gestapelte Superlative ohne Tatsachenkern | ironische Distanzierung, berichtigungsfähig |
+| Lob ausschließlich für Selbstverständlichkeiten („stets pünktlich" als Hauptaussage einer Fachkraft) | es gab sonst nichts Positives zu sagen |
+| Übertreibung nur an einer Stelle, Rest blass | gezielte Entwertung der Gesamtaussage |
+
 ### Auslassungssignale (Schweigen als Code)
 
 | Schweigen | Bedeutung |
@@ -682,6 +725,13 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 - Sichtbare Tipp- oder Rechtschreibfehler → bei zeugnisrelevanten Positionen ein Berichtigungspunkt.
 
 **Grenze nach BAG 21.09.1999 – 9 AZR 893/98:** Die äußere Form muss den im Geschäftsleben üblichen Anforderungen genügen — aber zweimaliges Falten für den Postversand ist zulässig, solange das Original kopierfähig bleibt und die Knicke auf Kopien nicht durchschlagen (z. B. als Schwärzung). Knicke allein sind also kein Berichtigungspunkt.
+
+**Weitere formale Eckpunkte (verifizierte Rechtsprechung und Gesetz):**
+
+- **Fließtext statt Tabelle:** Ein qualifiziertes Zeugnis im Ankreuz- oder Schulnotenschema erfüllt § 109 GewO regelmäßig nicht (BAG 27.04.2021 – 9 AZR 262/20).
+- **Keine elektronische Form:** § 109 Abs. 3 GewO schließt die Erteilung in elektronischer Form aus — das Zeugnis ist schriftlich auf Papier zu erteilen.
+- **Geschäftsübliche Unterschrift:** Eine quer durch den Text laufende Unterschrift (LAG Hamm 14.11.2016 – 12 Ta 475/16) oder ein in die Unterschrift eingebauter Smiley mit herabgezogenen Mundwinkeln (ArbG Kiel 18.04.2013 – 5 Ca 80 b/13) sind unzulässige Distanzierungs- bzw. Geheimzeichen.
+- **Holschuld:** Das Zeugnis ist grundsätzlich im Betrieb abzuholen (§ 269 BGB; BAG 08.03.1995 – 5 AZR 848/93); nur bei Unzumutbarkeit wird daraus eine Schickschuld. Für die Verzugsargumentation im Aufforderungsschreiben relevant.
 
 ## E.6 — Anwendung in der Notenmatrix
 
@@ -841,6 +891,8 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 ### Vergleichsfenster
 
 Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: Wortlaut der Streitstellen, Zeitpunkt der Übergabe des berichtigten Zeugnisses, Erledigungserklärung.
+
+**Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckungsfähigen Inhalt. Praxisfolge: Die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt ist das schärfste Vergleichsinstrument und sollte Standard im Vergleichstext sein; bei Nichterfüllung direkt Zwangsvollstreckung statt neuer Klage.
 
 ## F.4 — Anschlussschritte
 

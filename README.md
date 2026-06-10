@@ -20,7 +20,7 @@ skill/
 Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 
 - **Workflow in acht Stufen** — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
-- **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form.
+- **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen (1995–2026) zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 - **Teil A — Zufriedenheitsformel** — Notenstufen 1 bis 5 der Hauptformel.
 - **Teil B — Schlussformel** — Bedauern/Dank/Wunsch, Signal versus Anspruch.
 - **Teil C — Geheimcode-Katalog** — Standardphrasen nach Themenachsen.
