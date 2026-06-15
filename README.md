@@ -6,27 +6,38 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
+Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
+
+## Download
+
+**Direktdownload der Skill-Datei:**
+
+➡️ **[`SKILL.md` herunterladen (Rohdatei)](https://raw.githubusercontent.com/Klotzkette/arbeitszeugnispruefer-skill/main/skill/SKILL.md)** ⬅️
+
+Dieser Link liefert die Datei in Reinform aus. Verhalten je nach Gerät:
+
+- **Desktop-Browser (Chrome, Firefox, Safari, Edge):** Rechtsklick auf den Link → „Ziel speichern unter…" / „Verknüpfte Datei laden". Dateiname `SKILL.md` setzen, speichern. Alternativ den Link öffnen und über `Strg+S` / `Cmd+S` als `SKILL.md` sichern.
+- **iPhone / iPad (Safari):** Link gedrückt halten → **„Verknüpfte Datei laden"**. Die Datei landet in **Dateien → Downloads**. Alternativ: Link öffnen → Teilen-Symbol → **„In Dateien sichern"**.
+- **Android (Chrome):** Link gedrückt halten → **„Link herunterladen"**. Datei landet im **Downloads**-Ordner.
+- **GitHub-App (iOS/Android):** Tap auf den Link öffnet die Rohdatei → Teilen / Mehr-Menü → **„In Dateien sichern"** bzw. **„Speichern unter"**.
+
+Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) — das ist die formatierte Ansicht. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
+
 ## Anwendung: So einfach geht's
 
 **Weg A — Text kopieren:**
 
-1. [`skill/SKILL.md`](skill/SKILL.md) öffnen, den gesamten Text kopieren und in den Chat einfügen.
+1. [`skill/SKILL.md`](skill/SKILL.md) öffnen, den gesamten Text mit `Strg+A` / `Cmd+A` markieren und in den Chat einfügen.
 2. Dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis einfügen (Text, PDF oder Foto). Die Analyse startet von selbst.
 
 **Weg B — Datei hineinziehen (Drag & Drop):**
 
-1. [`skill/SKILL.md`](skill/SKILL.md) herunterladen (auf der GitHub-Dateiseite: „Download raw file").
+1. `SKILL.md` über den [Direktdownload-Link oben](#download) auf das Gerät laden.
 2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis nachreichen — fertig.
 
-In beiden Fällen gilt der eingebaute Sofortstart: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang.
-
-Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — ausgegeben als farbige Ampelsymbole 🔴/🟠/🟢, nicht als Farbwörter.
-
-**Sofortstart:** Zeugnis einfügen genügt. Der Skill startet die Vollanalyse ohne Fragenkaskade, kennzeichnet fehlende Angaben als Annahmen und stellt höchstens eine gebündelte Rückfrage — nur dann, wenn die Analyse sonst objektiv falsch würde.
-
-Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md`. Er deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
+**Sofortstart in beiden Wegen:** Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
 
 ## Inhalt
 
