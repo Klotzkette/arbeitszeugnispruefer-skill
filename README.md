@@ -10,9 +10,9 @@ Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse 
 
 ## Download
 
-➡️ **[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL.md)** ⬅️
+**[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL.md)**
 
-**Ein Klick genügt — die Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App.** Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
+Ein Klick genügt — die Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
 Wenn der Download-Knopf in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): die Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktioniert der Download-Knopf garantiert.
 
@@ -41,12 +41,9 @@ skill/
 └── SKILL.md   Alles in einer Datei: Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse
 ```
 
-Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
+Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
 
 - **Workflow in acht Stufen** — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
-- **Sofortstart und Rückfrage-Disziplin** — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
-- **Ampel-Darstellung** — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
-- **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen (1995–2026) zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 - **Teil A — Zufriedenheitsformel** — Notenstufen 1 bis 5 der Hauptformel.
 - **Teil B — Schlussformel** — Bedauern/Dank/Wunsch, Signal versus Anspruch.
 - **Teil C — Geheimcode-Katalog** — Standardphrasen nach Themenachsen.
@@ -54,6 +51,12 @@ Die Datei ist in folgende Teile gegliedert (interne Sprungmarken):
 - **Teil E — Analyse-Techniken** — Drift, Auslassungen, Negationen, Widersprüche, Formalia.
 - **Teil F — Mandatsmodule** — Aufforderungsschreiben, Wortlaut-Verbesserungen, Klageantrag.
 - **Teil G — Musterzeugnisse und Sonderfälle** — Drei Musterzeugnisse, leitende Positionen, Azubi, Branchen.
+
+Zusätzlich enthält der Skill durchgängig:
+
+- **Sofortstart und Rückfrage-Disziplin** — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
+- **Ampel-Darstellung** — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
+- **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 
 ## Workflow in acht Stufen
 
