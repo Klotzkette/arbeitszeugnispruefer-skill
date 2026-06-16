@@ -1,0 +1,37 @@
+name: Sync SKILL.md to docs/
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skill/SKILL.md'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy SKILL.md to docs/
+        run: |
+          mkdir -p docs
+          cp skill/SKILL.md docs/SKILL.md
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet docs/SKILL.md; then
+            echo "docs/SKILL.md unchanged — nothing to commit."
+            exit 0
+          fi
+          git add docs/SKILL.md
+          git commit -m "chore(docs): sync SKILL.md for GitHub Pages"
+          git push

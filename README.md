@@ -10,18 +10,13 @@ Konsolidierter Skill (Version 2.0) für die Prüfung deutscher Arbeitszeugnisse 
 
 ## Download
 
-**Direktdownload der Skill-Datei:**
+➡️ **[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL.md)** ⬅️
 
-➡️ **[`SKILL.md` herunterladen (Rohdatei)](https://raw.githubusercontent.com/Klotzkette/arbeitszeugnispruefer-skill/main/skill/SKILL.md)** ⬅️
+**Ein Klick genügt — die Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App.** Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
-Dieser Link liefert die Datei in Reinform aus. Verhalten je nach Gerät:
+Wenn der Download-Knopf in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): die Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktioniert der Download-Knopf garantiert.
 
-- **Desktop-Browser (Chrome, Firefox, Safari, Edge):** Rechtsklick auf den Link → „Ziel speichern unter…" / „Verknüpfte Datei laden". Dateiname `SKILL.md` setzen, speichern. Alternativ den Link öffnen und über `Strg+S` / `Cmd+S` als `SKILL.md` sichern.
-- **iPhone / iPad (Safari):** Link gedrückt halten → **„Verknüpfte Datei laden"**. Die Datei landet in **Dateien → Downloads**. Alternativ: Link öffnen → Teilen-Symbol → **„In Dateien sichern"**.
-- **Android (Chrome):** Link gedrückt halten → **„Link herunterladen"**. Datei landet im **Downloads**-Ordner.
-- **GitHub-App (iOS/Android):** Tap auf den Link öffnet die Rohdatei → Teilen / Mehr-Menü → **„In Dateien sichern"** bzw. **„Speichern unter"**.
-
-Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) — das ist die formatierte Ansicht. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
+Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) — das ist die formatierte Ansicht hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
 ## Anwendung: So einfach geht's
 
@@ -33,7 +28,7 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 
 **Weg B — Datei hineinziehen (Drag & Drop):**
 
-1. `SKILL.md` über den [Direktdownload-Link oben](#download) auf das Gerät laden.
+1. `SKILL.md` über den [Direktdownload oben](#download) auf das Gerät laden.
 2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis nachreichen — fertig.
 
