@@ -1,7 +1,7 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.0.0"
-description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
+version: "2.1.0"
+description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit immer fertiggemacht: Mandantenschreiben und außergerichtliches Aufforderungsschreiben werden ohne Rückfrage miterstellt, sofern das Zeugnis nicht durchgehend einwandfrei ist. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
@@ -14,6 +14,7 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Rechtsprechungsanker — BAG-Leitentscheidungen](#rechtsprechungsanker--bag-leitentscheidungen)
 - [Wann dieser Skill greift](#wann-dieser-skill-greift)
 - [Sofortstart und Rückfrage-Disziplin](#sofortstart-und-rückfrage-disziplin)
+- [Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext)
 - [Ampel-Darstellung](#ampel-darstellung)
 - [Workflow in acht Stufen](#workflow-in-acht-stufen)
 - [Antwortformate](#antwortformate)
@@ -88,8 +89,24 @@ Wenn dagegen nur ein Bewerbungsschreiben, eine Stellenausschreibung oder eine Be
 1. **Sofort loslegen.** Fügt der Nutzer nur ein Zeugnis ein (als Text, PDF oder Foto), ohne Anweisung, läuft ohne Nachfrage die **Vollanalyse**: Kopfdaten, Einschätzungsmatrix, Drift-/Auslassungsprüfung, Gesamtnotenspanne, Handlungsempfehlung. Keine Intake-Interviews, keine Fragenkaskade vorab.
 2. **Fehlende Angaben sind kein Blocker.** Was das Intake-Blatt (Stufe 1) nicht hergibt, wird aus dem Zeugnis selbst abgeleitet (Position, Branche, Beendigungsanlass, Zeugnisart) und als **gekennzeichnete Annahme** geführt: „Annahme: Vertriebsposition mit Kundenkontakt — bitte korrigieren, falls falsch."
 3. **Höchstens eine Rückfrage, und nur bei echtem Verständnisblocker.** Eine Rückfrage ist nur zulässig, wenn ohne die Antwort die Analyse objektiv falsch würde (z. B. Text unleserlich/abgeschnitten, zwei verschiedene Zeugnisse vermischt, Sprache unklar). Mehrere offene Punkte werden in **eine einzige gebündelte Rückfrage** gepackt — niemals seriell nachfragen.
-4. **Wünsche-Fragen ans Ende, nicht an den Anfang.** Ob der Nutzer auch ein Aufforderungsschreiben oder eine Klagestrategie will, wird nicht vorab abgefragt, sondern am Ende der Analyse als Option angeboten („Auf Wunsch erstelle ich daraus das Aufforderungsschreiben.").
+4. **Wünsche-Fragen ans Ende, nicht an den Anfang — aber nur im interaktiven Einsatz.** Läuft der Skill in einer interaktiven Claude-Oberfläche, in der eine Folge-Runde sicher ist, wird nicht vorab abgefragt, ob der Nutzer auch ein Aufforderungsschreiben oder eine Klagestrategie will; das wird am Ende der Analyse als Option angeboten („Auf Wunsch erstelle ich daraus das Aufforderungsschreiben."). Läuft der Skill dagegen außerhalb einer interaktiven Umgebung, entfällt das Anbieten — dann werden Mandantenschreiben und Aufforderungsschreiben sofort miterstellt. Siehe [Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext).
 5. **Rollenvermutung:** Ohne anderslautende Angabe wird angenommen, dass der Einsender die beurteilte Person ist (Arbeitnehmerperspektive). HR-/Kanzlei-/Betriebsratsrollen nur bei entsprechendem Hinweis.
+
+## Lieferumfang nach Einsatzkontext
+
+Der Skill läuft in zwei Umgebungstypen, und der Einsatzkontext bestimmt, wie viel in einer Antwort fertig geliefert wird:
+
+**Interaktiver Einsatz** — Claude-Apps, Claude Code, Chat-Oberfläche: Eine Folge-Runde mit dem Nutzer ist sicher verfügbar. Hier liefert der Skill zuerst Analyse und Mandantenbericht und bietet Aufforderungsschreiben sowie Klagestrategie am Ende als Option an (Sofortstart-Regel 4).
+
+**Nicht-interaktiver / autonomer Einsatz** — API, Agent-SDK, Automatisierung, anderes Agenten-Harness, Batch- oder One-Shot-Aufruf: Es gibt **keine** garantierte Folge-Runde; der Nutzer kann auf ein Angebot nicht antworten. Hier **macht der Skill die Arbeit immer fertig** und liefert in einer einzigen Antwort das vollständige Paket:
+
+1. **Vollanalyse** — Einschätzungsmatrix, Drift-/Auslassungsprüfung, Gesamtnotenspanne, Ampel-Bilanz.
+2. **Schreiben an den Mandanten** — der Mandantenbericht nach [Stufe 7](#7--mandantenbericht-und-verhandlungsmodul) / [Mandatsoutput](#mandatsoutput), immer ausformuliert als fertiges Schreiben (nicht nur als Stichpunktliste).
+3. **Außergerichtliches Aufforderungsschreiben** an den Arbeitgeber nach [Teil F.1](#f1--aufforderungsschreiben-an-den-arbeitgeber) — immer, sobald es mindestens eine 🔴- oder 🟠-Beanstandung oder einen sonstigen Berichtigungspunkt gibt (Drift, Auslassung, falsche Reihenfolge im Sozialverhalten, Formfehler nach Teil E.5).
+
+**Einzige Ausnahme — das saubere Zeugnis.** Ist das Zeugnis durchgehend 🟢, ohne Beanstandung und ohne Berichtigungspunkt, wird **kein** Aufforderungsschreiben erzeugt. Stattdessen hält das Mandantenschreiben ausdrücklich fest, dass das Zeugnis nicht zu beanstanden ist und kein Handlungsbedarf besteht. Das Aufforderungsschreiben ist also der Normalfall; es entfällt nur, wenn „alles in Ordnung" ist.
+
+**Im Zweifel autonom.** Ist nicht erkennbar, in welchem Kontext der Skill läuft, gilt der nicht-interaktive Einsatz als Standard — lieber das vollständige Paket liefern als auf eine Rückfrage warten, die nie beantwortet wird. Fehlende Angaben (Namen, Daten, Adressen, Kanzleibriefkopf) werden in beiden Schreiben als klar gekennzeichnete Platzhalter geführt (z. B. „[Vorname Name]", „[Datum]", „[Kanzlei]") und nicht als Blocker behandelt; die Schreiben bleiben so eine sofort einsatzbereite Arbeitsfassung zum Einfüllen.
 
 ## Ampel-Darstellung
 
@@ -201,6 +218,8 @@ Liefere dem Mandanten:
 
 Wenn nachverhandelt oder aufgefordert werden soll, baue daraus das **Aufforderungsschreiben** an den Arbeitgeber: vorgerichtlich, höflich, mit klaren Streitstellen und einer angemessenen Frist (in der Praxis zwei bis drei Wochen). Material und Mustertext: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie).
 
+Im **nicht-interaktiven Einsatz** (API, Agent-SDK, Automatisierung) wird hier nicht gefragt, sondern fertig geliefert: Das Mandantenschreiben wird immer ausformuliert, und sobald mindestens eine 🔴-/🟠-Beanstandung oder ein sonstiger Berichtigungspunkt vorliegt, wird das Aufforderungsschreiben gleich mitgeliefert. Es entfällt nur beim durchgehend sauberen Zeugnis. Einzelheiten: [Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext).
+
 ### 8 — Klagestrategie Zeugnisberichtigung
 
 Wenn der Arbeitgeber nicht oder unzureichend reagiert:
@@ -278,6 +297,7 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 - Jedes Rechtsprechungszitat gegen den [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) abgeglichen — und bei Schriftsatzverwendung erneut live verifiziert?
 - Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
 - Sofortstart-Regel eingehalten: direkt analysiert, Annahmen gekennzeichnet, höchstens eine gebündelte Rückfrage?
+- Im nicht-interaktiven Einsatz die Arbeit fertiggemacht: Mandantenschreiben ausformuliert und — außer beim durchgehend sauberen Zeugnis — Aufforderungsschreiben mitgeliefert ([Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext))?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
 ---
