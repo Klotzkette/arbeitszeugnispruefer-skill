@@ -1,10 +1,11 @@
-name: Sync SKILL.md to docs/
+name: Sync skill files to docs/
 
 on:
   push:
     branches: [main]
     paths:
       - 'skill/SKILL.md'
+      - 'skill/SKILL-mini.md'
 
 permissions:
   contents: write
@@ -19,19 +20,20 @@ jobs:
           fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Copy SKILL.md to docs/
+      - name: Copy skill files to docs/
         run: |
           mkdir -p docs
           cp skill/SKILL.md docs/SKILL.md
+          cp skill/SKILL-mini.md docs/SKILL-mini.md
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet docs/SKILL.md; then
-            echo "docs/SKILL.md unchanged — nothing to commit."
+          if git diff --quiet docs/SKILL.md docs/SKILL-mini.md; then
+            echo "docs skill files unchanged — nothing to commit."
             exit 0
           fi
-          git add docs/SKILL.md
-          git commit -m "chore(docs): sync SKILL.md for GitHub Pages"
+          git add docs/SKILL.md docs/SKILL-mini.md
+          git commit -m "chore(docs): sync skill files for GitHub Pages"
           git push

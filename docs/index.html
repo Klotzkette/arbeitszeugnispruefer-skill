@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Arbeitszeugnis-Prüfer Skill — Direktdownload</title>
-<meta name="description" content="Lade die SKILL.md-Datei des Arbeitszeugnis-Prüfer-Skills direkt herunter — ein Klick, sofort als Markdown im Downloads-Ordner.">
+<meta name="description" content="Lade die Vollversion oder Mini-Version des Arbeitszeugnis-Prüfer-Skills direkt herunter — ein Klick, sofort als Markdown im Downloads-Ordner.">
 <meta name="robots" content="index,follow">
 <style>
   :root {
@@ -87,6 +87,15 @@
   }
   a.btn:hover, a.btn:focus { background: var(--accent-hover); }
   a.btn:focus { outline: 3px solid var(--fg); outline-offset: 2px; }
+  a.btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  a.btn.secondary:hover, a.btn.secondary:focus {
+    background: var(--accent);
+    color: #ffffff;
+  }
   a.link {
     color: var(--accent);
     text-decoration: underline;
@@ -112,13 +121,21 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Lade die vollständige Skill-Datei in einem Klick herunter — als reine Markdown-Datei direkt in den Downloads-Ordner deines Geräts.</p>
+  <p class="lead">Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als reine Markdown-Datei direkt in den Downloads-Ordner deines Geräts.</p>
 
   <div class="card">
-    <h2>📥 Direktdownload</h2>
-    <p>Ein Klick reicht — die Datei wird sofort gespeichert, nicht im Browser angezeigt.</p>
+    <h2>📥 Vollversion</h2>
+    <p>Die beste Variante mit vollständigem Workflow, Katalogen, Mandatsmodulen und Musterzeugnissen.</p>
     <a class="btn" href="SKILL.md" download="SKILL.md" type="text/markdown">
       SKILL.md herunterladen
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>Mini-Version</h2>
+    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen, weniger tief, aber schon gut brauchbar.</p>
+    <a class="btn secondary" href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">
+      SKILL-mini.md herunterladen
     </a>
   </div>
 
@@ -134,9 +151,9 @@
 
   <div class="card">
     <h2>Und dann?</h2>
-    <p>Die heruntergeladene <code>SKILL.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
+    <p>Die heruntergeladene <code>SKILL.md</code> oder <code>SKILL-mini.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
     <p><em>„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."</em></p>
-    <p>Dann das Zeugnis nachreichen — die Vollanalyse startet automatisch.</p>
+    <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch.</p>
   </div>
 
   <footer>
