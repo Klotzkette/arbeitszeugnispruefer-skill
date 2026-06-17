@@ -6,29 +6,31 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.1) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung.
+Konsolidierter Skill (Version 2.2) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2 ergänzt die Mini-Fassung und schärft die Rollenlogik für HR-/Arbeitgeberprüfungen.
 
 ## Download
 
 **[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL.md)**
 
-Ein Klick genügt — die Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
+**Kurzversion für kleine Assistenten:** Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion: **[SKILL-mini.md herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL-mini.md)**. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist nicht so tief wie die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, HR-Gate und Ausgabeformaten ab.
+
+Ein Klick genügt — die ausgewählte Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
 Wenn der Download-Knopf in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): die Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktioniert der Download-Knopf garantiert.
 
-Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) — das ist die formatierte Ansicht hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
+Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
 ## Anwendung: So einfach geht's
 
 **Weg A — Text kopieren:**
 
-1. [`skill/SKILL.md`](skill/SKILL.md) öffnen, den gesamten Text mit `Strg+A` / `Cmd+A` markieren und in den Chat einfügen.
+1. [`skill/SKILL.md`](skill/SKILL.md) oder [`skill/SKILL-mini.md`](skill/SKILL-mini.md) öffnen, den gesamten Text mit `Strg+A` / `Cmd+A` markieren und in den Chat einfügen.
 2. Dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis einfügen (Text, PDF oder Foto). Die Analyse startet von selbst.
 
 **Weg B — Datei hineinziehen (Drag & Drop):**
 
-1. `SKILL.md` über den [Direktdownload oben](#download) auf das Gerät laden.
+1. `SKILL.md` oder `SKILL-mini.md` über den [Direktdownload oben](#download) auf das Gerät laden.
 2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis nachreichen — fertig.
 
@@ -38,7 +40,8 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 
 ```
 skill/
-└── SKILL.md   Alles in einer Datei: Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse
+├── SKILL.md        Vollversion: Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse
+└── SKILL-mini.md   Sparversion unter 7.500 Zeichen für kleinere Assistenten und Skillsets
 ```
 
 Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
@@ -55,7 +58,7 @@ Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
 Zusätzlich enthält der Skill durchgängig:
 
 - **Sofortstart und Rückfrage-Disziplin** — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
-- **Lieferumfang nach Einsatzkontext** — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit immer fertig und liefert Mandantenschreiben **und** außergerichtliches Aufforderungsschreiben ohne Rückfrage mit — außer das Zeugnis ist durchgehend einwandfrei.
+- **Lieferumfang nach Einsatzkontext** — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Arbeitnehmerperspektive erhält bei Berichtigungsbedarf das Aufforderungsschreiben, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
 - **Ampel-Darstellung** — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - **Rechtsprechungsanker** — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 
