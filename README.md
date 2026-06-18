@@ -6,7 +6,7 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.2.1) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.1 enthält die Mini-Fassung, die HR-/Arbeitgeber-Rollenlogik und eine präzisere Vollstreckungswarnung zu BAG 8 AZB 25/25.
+Konsolidierter Skill (Version 2.2.2) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.2 enthält die Mini-Fassung, die HR-/Arbeitgeber-Rollenlogik, eine präzisere Vollstreckungswarnung zu BAG 8 AZB 25/25 und klarere Download-Hinweise.
 
 ## Download
 
@@ -16,7 +16,7 @@ Konsolidierter Skill (Version 2.2.1) für die Prüfung deutscher Arbeitszeugniss
 
 Ein Klick genügt — die ausgewählte Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
-Wenn der Download-Knopf in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): die Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktioniert der Download-Knopf garantiert.
+Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): Die ausgewählte Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktionieren die Download-Buttons zuverlässig.
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
