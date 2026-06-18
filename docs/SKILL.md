@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.6"
+version: "2.2.7"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -200,7 +200,7 @@ Material: [Teil E](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-n
 
 ### 6 — Gesamtnotenspanne und Hauptbefund
 
-Aggregiere die satzweise Bewertung zu **einer begründeten Notenspanne**, nicht zu einer Punktezahl. Beispiel: Leistung 3 bis 3+, Verhalten 2 bis 3, Schluss neutral (Note 3 nicht angreifbar). Gesamtbild Note 3, mit Berichtigungspotenzial auf 2 bei nachweisbarer Zielerreichung in 2023/2024.
+Aggregiere die satzweise Bewertung zu **einer begründeten Notenspanne**, nicht zu einer Punktezahl. Beispiel: Leistung 3 bis 3+, Verhalten 2 bis 3, Schluss neutral (Note 3 nicht angreifbar). Gesamtbild Note 3, mit Berichtigungspotenzial auf 2 bei nachweisbarer Zielerreichung in den jüngsten Beurteilungszeiträumen.
 
 Halte folgende Trennungen sauber:
 
@@ -239,6 +239,7 @@ Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreibe
 
 ```
 Kurzbild
+- Rolle/Perspektive:
 - Zeugnisart:
 - Notentendenz (Spanne):
 - Ampel-Bilanz: 🔴 _ · 🟠 _ · 🟢 _
