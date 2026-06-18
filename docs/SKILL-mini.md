@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "2.2.2"
+version: "2.2.3"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -23,6 +23,7 @@ Autonomer Einsatz (API, Agent, Batch, One-Shot): Arbeit rollenrichtig fertig lie
 - §§ 241 II, 280 I BGB: Nebenpflicht/Schadensersatz.
 - Arbeitsgericht zuständig; Zeugnisberichtigung als Leistungsklage.
 - BAG-Linie: „zur vollen Zufriedenheit" = Note 3; bessere Note muss grundsätzlich Arbeitnehmer darlegen, schlechtere Arbeitgeber. Schlussformel mit Dank/Wünschen ist starkes Signal, aber regelmäßig nicht einklagbar.
+- Fristen nicht schematisch prüfen: Regelverjährung nach §§ 195, 199 BGB, mögliche Ausschlussfristen und Verwirkung beachten.
 - Keine Entscheidung aus Modellwissen blind zitieren. Aktenzeichen und tragende Aussage vor Verwendung prüfen.
 
 ## Ampel und Noten
@@ -53,7 +54,7 @@ Liefere knapp, aber verwendbar:
 1. **Kurzbefund:** Zeugnisart, vermutete Rolle, Gesamtnotenspanne, Ampel-Bilanz.
 2. **Matrix:** Originalsatz | Bereich | Ampel | Note/Tendenz | Begründung | bessere Formulierung.
 3. **Hauptkritik:** Top-3 Risiken, Drift/Auslassungen/Widersprüche.
-4. **Rechtliche Einordnung:** § 109 GewO, Beweislast, Schlussformel/Anspruch, Verjährung grob; keine ungeprüften Zitate.
+4. **Rechtliche Einordnung:** § 109 GewO, Beweislast, Schlussformel/Anspruch, Fristen grob; keine ungeprüften Zitate.
 5. **Empfehlung:** akzeptieren, freundlich nachverhandeln, Berichtigung verlangen, Vergleich/Klage prüfen.
 
 Bei Arbeitnehmerperspektive mit 🔴/🟠: zusätzlich kurzes Mandantenschreiben und außergerichtliches Aufforderungsschreiben mit Frist, Streitstellen alt/neu und höflichem Ton. Bei durchgehend 🟢 kein Aufforderungsschreiben, sondern „kein Handlungsbedarf".

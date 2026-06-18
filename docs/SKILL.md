@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.2"
+version: "2.2.3"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -825,7 +825,7 @@ Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliche
 - § 109 GewO — Anspruch auf wohlwollendes qualifiziertes Zeugnis; Berichtigungsanspruch.
 - § 288 BGB — Verzugszinsen; Anwaltskosten als Verzugsschaden ab Fristablauf.
 - § 242 BGB — Treu und Glauben; Verwirkung bei langem Zuwarten.
-- §§ 195, 199 BGB — Verjährung drei Jahre ab Schluss des Ausstellungsjahres.
+- §§ 195, 199 BGB — regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt; Zeugnis-/Beendigungsjahr und Ausschlussfristen immer konkret prüfen.
 - § 46 ArbGG — Arbeitsgerichtsverfahren; § 12a ArbGG — keine Anwaltskostenerstattung in erster Instanz.
 
 ## F.1 — Aufforderungsschreiben an den Arbeitgeber
@@ -959,11 +959,12 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 - Lob-E-Mails, Kundenbewertungen.
 - Zeugen: unmittelbare Vorgesetzte, Projektleiter.
 
-### Kostenrisiko und Verwirkung
+### Kostenrisiko, Fristen und Verwirkung
 
 - § 12a ArbGG: in erster Instanz keine Erstattung gegnerischer Anwaltskosten.
-- Verwirkung: wer mehrere Jahre ohne Grund zuwartet, riskiert den Anspruchsverlust. Empfehlung: Berichtigungsverlangen innerhalb der ersten Monate nach Zeugnisübergabe.
-- Verjährung: drei Jahre ab Schluss des Ausstellungsjahres (§§ 195, 199 BGB).
+- Verwirkung: wer ohne nachvollziehbaren Grund lange zuwartet, riskiert den Anspruchsverlust. Empfehlung: Berichtigungsverlangen innerhalb der ersten Monate nach Zeugnisübergabe.
+- Ausschlussfristen: Arbeitsvertrag, Tarifvertrag oder Vergleich können deutlich kürzere Geltendmachungsfristen enthalten; vor Aufforderungsschreiben und Klage immer prüfen.
+- Verjährung: regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt (§§ 195, 199 BGB); nicht schematisch nur auf das Ausstellungsdatum abstellen.
 
 ### Vergleichsfenster
 
