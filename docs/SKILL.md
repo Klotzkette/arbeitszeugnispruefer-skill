@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.5"
+version: "2.2.6"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -228,7 +228,7 @@ Wenn der Arbeitgeber nicht oder unzureichend reagiert:
 - **Antrag:** Verurteilung des Arbeitgebers zur Erteilung eines geänderten Zeugnisses mit präzise vorformuliertem Wortlaut.
 - **Streitwert:** In der Regel ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Arbeitsgerichte (live verifizieren).
 - **Beweismittel:** Vorzeugnis, Zwischenzeugnis, Beurteilungsbögen, Zielerreichung, Zeugen, Lob-E-Mails.
-- **Kostenrisiko:** § 12a ArbGG; in der ersten Instanz keine Erstattung gegnerischer Anwaltskosten.
+- **Kostenrisiko:** § 12a ArbGG; eigene Anwaltskosten sind im ersten Rechtszug regelmäßig nicht erstattungsfähig, gegnerische Anwaltskosten regelmäßig nicht zu erstatten; vorgerichtliche Kosten nicht schematisch fordern.
 - **Vergleichsfenster:** Häufig vor dem Gütetermin; halte einen vorformulierten Vergleichstext bereit.
 
 Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie).
@@ -961,7 +961,7 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 
 ### Kostenrisiko, Fristen und Verwirkung
 
-- § 12a ArbGG: im erstinstanzlichen arbeitsgerichtlichen Kontext regelmäßig keine Erstattung eigener oder gegnerischer Anwaltskosten; der Ausschluss erfasst nach BAG 8 AZR 293/18 auch materielle Ansprüche auf vor- und außergerichtliche Rechtsverfolgungskosten.
+- § 12a ArbGG: im erstinstanzlichen arbeitsgerichtlichen Kontext sind eigene Anwaltskosten regelmäßig nicht erstattungsfähig; die Gegenseite kann ihre Anwaltskosten ebenfalls regelmäßig nicht erstattet verlangen. Der Ausschluss erfasst nach BAG 8 AZR 293/18 auch materielle Ansprüche auf vor- und außergerichtliche Rechtsverfolgungskosten.
 - Verwirkung: wer ohne nachvollziehbaren Grund lange zuwartet, riskiert den Anspruchsverlust. Empfehlung: Berichtigungsverlangen innerhalb der ersten Monate nach Zeugnisübergabe.
 - Ausschlussfristen: Arbeitsvertrag, Tarifvertrag oder Vergleich können deutlich kürzere Geltendmachungsfristen enthalten; vor Aufforderungsschreiben und Klage immer prüfen.
 - Verjährung: regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt (§§ 195, 199 BGB); nicht schematisch nur auf das Ausstellungsdatum abstellen.
@@ -988,7 +988,7 @@ Wenn Urteil oder Vergleich vorliegt, der Arbeitgeber aber nicht oder falsch erf�
 ## F.5 — Anschlussschritte
 
 - Aufforderung blieb fruchtlos → Klage einreichen.
-- Vollberichtigung → Abschlussschreiben + Kostennote.
+- Vollberichtigung → Abschlussschreiben an den Arbeitgeber; Mandatsabschluss und Abrechnung gegenüber dem Mandanten, keine Kostengeltendmachung gegen den Arbeitgeber ohne gesonderte Prüfung.
 - Teilberichtigung → mit Mandant entscheiden: Akzeptanz oder Restklage.
 - Titel liegt vor, Erfüllung bleibt aus → Vollstreckungsmodul F.4.
 
