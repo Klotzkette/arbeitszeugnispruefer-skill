@@ -6,7 +6,7 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.2.4) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.4 enthält die Mini-Fassung, die HR-/Arbeitgeber-Rollenlogik, eine präzisere Vollstreckungswarnung zu BAG 8 AZB 25/25, klarere Download-Hinweise, eine genauere Fristenprüfung und bereinigte Kostenhinweise zu § 12a ArbGG.
+Konsolidierter Skill (Version 2.2.5) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.5 enthält die Mini-Fassung, die HR-/Arbeitgeber-Rollenlogik, eine präzisere Vollstreckungswarnung zu BAG 8 AZB 25/25, klarere Download-Hinweise, eine genauere Fristenprüfung, bereinigte Kostenhinweise zu § 12a ArbGG und eine klarere Beweislastformel.
 
 ## Download
 
@@ -78,7 +78,7 @@ Zusätzlich enthält der Skill durchgängig:
 - § 109 GewO — Anspruch auf qualifiziertes wohlwollendes Zeugnis; Wahrheits- und Klarheitspflicht.
 - § 16 BBiG — Ausbildungszeugnis.
 - §§ 241 Abs. 2, 280 Abs. 1 BGB — Nebenpflicht; Schadensersatz bei Verletzung.
-- Beweislastregel BAG: bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13).
+- Beweislastregel BAG: Note 3 ist Ausgangspunkt; besser als Note 3 muss grundsätzlich der Arbeitnehmer darlegen und beweisen, schlechter als Note 3 der Arbeitgeber (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13).
 - Zuständigkeit Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG); Klage als Leistungsklage.
 
 Die `SKILL.md` enthält einen eigenen Rechtsprechungsanker mit den Leitentscheidungen des Bundesarbeitsgerichts zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form. Darüber hinaus gilt: Rechtsprechung wird in diesem Skill nie ungeprüft aus Modellwissen zitiert — jede tragende Aussage wird über `gesetze-im-internet.de`, `dejure.org` oder das Rechtsprechungsportal des Bundes mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifiziert.

@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.4"
+version: "2.2.5"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -33,7 +33,7 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - **§ 109 Abs. 2 S. 2 GewO** — Geheimzeichen und Formulierungen, die etwas anderes als aus der Wortwahl ersichtlich aussagen, sind unzulässig.
 - **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung.
 - **§ 241 Abs. 2 BGB**, **§ 280 Abs. 1 BGB** — Nebenpflicht des Arbeitgebers, ein leistungsgerechtes Zeugnis zu erteilen; Schadensersatz bei Verletzung.
-- **Beweislastregel BAG:** Bis Note 3 trägt der Arbeitgeber die Beweislast für eine schlechtere Beurteilung; ab Note 2 abwärts trägt der Arbeitnehmer die Beweislast für eine bessere Beurteilung.
+- **Beweislastregel BAG:** Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist der Ausgangspunkt. Wer eine bessere Bewertung als Note 3 verlangt, trägt als Arbeitnehmer die Darlegungs- und Beweislast; wer schlechter als Note 3 bewertet, trägt als Arbeitgeber die Darlegungs- und Beweislast.
 - **Zuständigkeit:** Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf Zeugnisberichtigung als Leistungsklage.
 
 > **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, `dejure.org`, das Rechtsprechungsportal des Bundes oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. Das gilt auch für die nachstehend hinterlegten Leitentscheidungen: Sie sind als Arbeitsgrundlage verifiziert eingepflegt, müssen aber vor jeder Verwendung in einem Schriftsatz erneut auf Fortgeltung und genauen Wortlaut geprüft werden.
@@ -206,7 +206,7 @@ Halte folgende Trennungen sauber:
 
 - Schlussformel-**Signalwirkung** ist nicht Schlussformel-**Anspruch**. Eine kalte Schlussformel signalisiert, lässt sich aber nur in Ausnahmefällen einklagen.
 - **Wahrheits-** vor **Wohlwollens**-pflicht: Ein gutes Zeugnis darf nicht unwahr sein. Wohlwollen steuert die Ausdrucksweise, ersetzt aber keine Tatsachen.
-- **Beweislast**: Bis Note 3 muss der Arbeitgeber begründen, warum nicht besser. Ab Note 2 muss der Arbeitnehmer belegen (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13 — Branchenüblichkeit guter Noten ändert daran nichts).
+- **Beweislast**: Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist der Ausgangspunkt. Besser als Note 3 muss der Arbeitnehmer darlegen und beweisen; schlechter als Note 3 muss der Arbeitgeber darlegen und beweisen (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13 — Branchenüblichkeit guter Noten ändert daran nichts).
 
 ### 7 — Mandantenbericht und Verhandlungsmodul
 
@@ -293,7 +293,7 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 - Sind Umlaute, ß, Namen, Daten und Zitate sauber übernommen?
 - Ist die Zeugnisart richtig bestimmt?
 - Sind Schlussformel-Signal und Schlussformel-Anspruch getrennt?
-- Ist die Beweislast richtig herum dargestellt (bis Note 3 Arbeitgeber, ab Note 2 abwärts Arbeitnehmer)?
+- Ist die Beweislast richtig herum dargestellt (Note 3 als Ausgangspunkt; besser als Note 3 Arbeitnehmer, schlechter als Note 3 Arbeitgeber)?
 - Keine erfundenen Fundstellen, Zeugnisinhalte oder Noten?
 - Jedes Rechtsprechungszitat gegen den [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) abgeglichen — und bei Schriftsatzverwendung erneut live verifiziert?
 - Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
