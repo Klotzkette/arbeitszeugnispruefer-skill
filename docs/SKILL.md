@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.0"
+version: "2.2.1"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -969,7 +969,7 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 
 Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: Wortlaut der Streitstellen, Zeitpunkt der Übergabe des berichtigten Zeugnisses, Erledigungserklärung.
 
-**Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckungsfähigen Inhalt. Praxisfolge: Die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt ist das schärfste Vergleichsinstrument und sollte Standard im Vergleichstext sein; bei Nichterfüllung direkt Zwangsvollstreckung statt neuer Klage.
+**Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckungsfähigen Inhalt. Praxisfolge: Die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt ist ein starkes Vergleichsinstrument und sollte im Vergleichstext mitgedacht werden. Sie eröffnet Vollstreckung, wenn der Arbeitgeber keinen nachvollziehbaren wichtigen Grund vorträgt. Beruft er sich dagegen substantiiert auf Zeugniswahrheit oder Zeugnisklarheit, ist der Inhalt nicht im Vollstreckungsverfahren auszujudizieren; dann ist ein neues Erkenntnisverfahren nötig (BAG 8 AZB 25/25, Rn. 19-21).
 
 ## F.4 — Vollstreckung des Zeugnisanspruchs
 
@@ -978,11 +978,11 @@ Wenn Urteil oder Vergleich vorliegt, der Arbeitgeber aber nicht oder falsch erf�
 | Lage | Instrument |
 | --- | --- |
 | Titulierter Zeugnisanspruch wird nicht erfüllt | Zwangsgeld, ersatzweise Zwangshaft (§ 888 ZPO — nicht vertretbare Handlung, da nur der Arbeitgeber die Beurteilung abgeben kann) |
-| Vergleich mit Entwurfsklausel („Zeugnis nach Entwurf des Arbeitnehmers, Abweichung nur aus wichtigem Grund") | Unmittelbar vollstreckbar (BAG 07.05.2026 – 8 AZB 25/25) — kein neues Erkenntnisverfahren nötig |
+| Vergleich mit Entwurfsklausel („Zeugnis nach Entwurf des Arbeitnehmers, Abweichung nur aus wichtigem Grund") | Vollstreckbarer Inhalt (BAG 07.05.2026 – 8 AZB 25/25); Zwangsmittel aber nur, wenn kein nachvollziehbarer Wahrheits-/Klarheitseinwand besteht |
 | Erteiltes Zeugnis weicht vom Titel ab | Im Vollstreckungsverfahren rügen; ironische Übererfüllung ist Nichterfüllung (LAG Hamm 14.11.2016 – 12 Ta 475/16) |
-| Streit über „wichtigen Grund" der Abweichung | Arbeitgeber muss den wichtigen Grund darlegen; sonst Zwangsmittel |
+| Streit über „wichtigen Grund" der Abweichung | Arbeitgeber muss nachvollziehbar vortragen; bei substantiiertem Streit über Zeugniswahrheit/-klarheit Klärung im Erkenntnisverfahren, nicht per Zwangsgeld |
 
-**Praxisregel:** Schon beim Vergleichsschluss an die Vollstreckung denken — die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt (F.3) macht aus dem Vergleich einen scharfen Titel.
+**Praxisregel:** Schon beim Vergleichsschluss an die Vollstreckung denken — die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt (F.3) macht aus dem Vergleich einen praktisch verwertbaren Titel, aber keinen Freibrief gegen Zeugniswahrheit und Zeugnisklarheit.
 
 ## F.5 — Anschlussschritte
 
