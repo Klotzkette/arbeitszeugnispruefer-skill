@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.3"
+version: "2.2.4"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -54,6 +54,7 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | **BAG, Urteil v. 21.09.1999 – 9 AZR 893/98** | Äußere Form: Das Zeugnis muss den im Geschäftsleben üblichen Anforderungen genügen; zweimaliges Falten für den Versand ist zulässig, wenn das Original kopierfähig bleibt und die Knicke nicht auf Kopien durchschlagen. Schließt das Zeugnis mit Name und Funktion einer Person in Maschinenschrift, muss genau diese Person eigenhändig unterschreiben. | Formalia (Teil E.5) |
 | **BAG, Urteil v. 27.04.2021 – 9 AZR 262/20** | Ein qualifiziertes Zeugnis in tabellarischer Form (Ankreuz-/Schulnotenschema) erfüllt den Anspruch aus § 109 GewO regelmäßig nicht. Die erforderliche individuelle Hervorhebung und Differenzierung verlangt regelmäßig Fließtext. | Formalia (Teil E.5) |
 | **BAG, Urteil v. 06.06.2023 – 9 AZR 272/22** | Eine einmal erteilte Dankes- und Wunschformel darf der Arbeitgeber in einer späteren Zeugnisfassung nicht allein deshalb streichen, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat — Verstoß gegen das Maßregelungsverbot (§ 612a BGB), das auch nach Beendigung des Arbeitsverhältnisses gilt. | Schlussformel (Teil B), Berichtigungsstrategie (Teil F) |
+| **BAG, Urteil v. 28.11.2019 – 8 AZR 293/18** | § 12a Abs. 1 S. 1 ArbGG schließt nicht nur prozessuale, sondern auch materiell-rechtliche Ansprüche auf Erstattung vor- und außergerichtlicher Rechtsverfolgungskosten bis zum Schluss einer möglichen ersten Instanz regelmäßig aus. | Kostenrisiko und Aufforderungsschreiben (Teil F) |
 | **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, hat vollstreckungsfähigen Inhalt. | Vergleichsfenster und Vollstreckung (Teil F.3) |
 | **BAG, Urteil v. 08.03.1995 – 5 AZR 848/93** | Die Zeugniserteilung ist Holschuld (§ 269 BGB): Der Arbeitnehmer holt das Zeugnis im Betrieb ab; nur ausnahmsweise (Unzumutbarkeit, § 242 BGB) wird daraus eine Schickschuld. | Formalia und Mandatspraxis (Teil E.5, Teil F) |
 
@@ -823,7 +824,7 @@ Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliche
 ## Rechtlicher Anker
 
 - § 109 GewO — Anspruch auf wohlwollendes qualifiziertes Zeugnis; Berichtigungsanspruch.
-- § 288 BGB — Verzugszinsen; Anwaltskosten als Verzugsschaden ab Fristablauf.
+- §§ 286, 288 BGB — Verzug und Fristsetzung; vorgerichtliche Anwaltskosten im arbeitsgerichtlichen Kontext wegen § 12a ArbGG/BAG 8 AZR 293/18 nicht schematisch als Verzugsschaden verlangen.
 - § 242 BGB — Treu und Glauben; Verwirkung bei langem Zuwarten.
 - §§ 195, 199 BGB — regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt; Zeugnis-/Beendigungsjahr und Ausschlussfristen immer konkret prüfen.
 - § 46 ArbGG — Arbeitsgerichtsverfahren; § 12a ArbGG — keine Anwaltskostenerstattung in erster Instanz.
@@ -843,7 +844,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 5. **Schlussformel und Gesamtbild** — wenn relevant, separat behandeln.
 6. **Fristsetzung** — kalendermäßig (kein „binnen zwei Wochen"), Standard zwei bis drei Wochen; bei Eilbedarf kürzer mit Begründung.
 7. **Klageandrohung** — einmal, knapp, sachlich.
-8. **Kostenfolge und Anlagenverzeichnis** — Anwaltskosten als Verzugsschaden, Vollmacht, Zeugnis, Vorzeugnis, Korrespondenz.
+8. **Kostenrisiko und Anlagenverzeichnis** — keine standardmäßige Anwaltskostengeltendmachung; Vollmacht, Zeugnis, Vorzeugnis, Korrespondenz.
 
 ### Mustertext
 
@@ -861,8 +862,6 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 >
 > Wir bitten, das berichtigte Zeugnis bis zum [Datum] auf Geschäftspapier ohne Anlassbezug auf das Berichtigungsverlangen zu erteilen. Sollte das Zeugnis nicht fristgerecht in der vorgeschlagenen Form neu erteilt werden, werden wir Klage zum zuständigen Arbeitsgericht erheben.
 >
-> Die durch unsere Einschaltung entstandenen Anwaltskosten machen wir bereits jetzt als Verzugsschaden geltend.
->
 > Mit freundlichen Grüßen
 >
 > [Kanzlei]
@@ -873,6 +872,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 | Regel | Hinweis |
 | --- | --- |
 | höflich, bestimmt, sachlich | keine Drohgebärden |
+| Kosten | vorgerichtliche Anwaltskosten im arbeitsgerichtlichen Kontext nicht standardmäßig als Verzugsschaden verlangen; § 12a ArbGG und BAG 8 AZR 293/18 prüfen |
 | konkrete Wortlaute statt „bitte verbessern" | pro Streitstelle alt + neu in Anführungszeichen |
 | Belege für Geheimcodes | BAG-Rechtsprechung live verifizieren |
 | Frist kalendermäßig | konkretes Datum |
@@ -961,7 +961,7 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 
 ### Kostenrisiko, Fristen und Verwirkung
 
-- § 12a ArbGG: in erster Instanz keine Erstattung gegnerischer Anwaltskosten.
+- § 12a ArbGG: im erstinstanzlichen arbeitsgerichtlichen Kontext regelmäßig keine Erstattung eigener oder gegnerischer Anwaltskosten; der Ausschluss erfasst nach BAG 8 AZR 293/18 auch materielle Ansprüche auf vor- und außergerichtliche Rechtsverfolgungskosten.
 - Verwirkung: wer ohne nachvollziehbaren Grund lange zuwartet, riskiert den Anspruchsverlust. Empfehlung: Berichtigungsverlangen innerhalb der ersten Monate nach Zeugnisübergabe.
 - Ausschlussfristen: Arbeitsvertrag, Tarifvertrag oder Vergleich können deutlich kürzere Geltendmachungsfristen enthalten; vor Aufforderungsschreiben und Klage immer prüfen.
 - Verjährung: regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt (§§ 195, 199 BGB); nicht schematisch nur auf das Ausstellungsdatum abstellen.

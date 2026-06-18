@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "2.2.3"
+version: "2.2.4"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -24,6 +24,7 @@ Autonomer Einsatz (API, Agent, Batch, One-Shot): Arbeit rollenrichtig fertig lie
 - Arbeitsgericht zuständig; Zeugnisberichtigung als Leistungsklage.
 - BAG-Linie: „zur vollen Zufriedenheit" = Note 3; bessere Note muss grundsätzlich Arbeitnehmer darlegen, schlechtere Arbeitgeber. Schlussformel mit Dank/Wünschen ist starkes Signal, aber regelmäßig nicht einklagbar.
 - Fristen nicht schematisch prüfen: Regelverjährung nach §§ 195, 199 BGB, mögliche Ausschlussfristen und Verwirkung beachten.
+- Kosten nicht schematisch fordern: § 12a ArbGG schließt Anwaltskostenerstattung im ersten Rechtszug und regelmäßig auch vorgerichtliche Rechtsverfolgungskosten aus.
 - Keine Entscheidung aus Modellwissen blind zitieren. Aktenzeichen und tragende Aussage vor Verwendung prüfen.
 
 ## Ampel und Noten
