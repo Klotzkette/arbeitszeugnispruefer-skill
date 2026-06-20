@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "2.2.14"
+version: "2.2.15"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -20,7 +20,7 @@ Autonomer Einsatz (API, Agent, Batch, One-Shot): Arbeit rollenrichtig fertig lie
 
 ## Rechtsanker
 
-- § 109 GewO: einfaches/qualifiziertes Zeugnis; Klarheit und Geheimzeichenverbot für jedes Zeugnis; Leistungs-/Verhaltensbewertung nur im qualifizierten Zeugnis; elektronische Form nur mit Einwilligung und qualifizierter elektronischer Signatur.
+- § 109 GewO und BAG-Linie: einfaches/qualifiziertes Zeugnis; Wahrheit und verständiges Wohlwollen; Klarheit und Geheimzeichenverbot für jedes Zeugnis; Leistungs-/Verhaltensbewertung nur im qualifizierten Zeugnis; elektronische Form nur mit Einwilligung und qualifizierter elektronischer Signatur.
 - § 16 BBiG: Ausbildungszeugnis; elektronische Form nur mit Einwilligung der Auszubildenden und qualifizierter elektronischer Signatur.
 - §§ 241 II, 280 I BGB: Nebenpflicht/Schadensersatz.
 - Arbeitsgericht zuständig; Zeugnisberichtigung als Leistungsklage.
