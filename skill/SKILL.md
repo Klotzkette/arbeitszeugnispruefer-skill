@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.7"
+version: "2.2.8"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -10,6 +10,7 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 
 ## Inhaltsverzeichnis
 
+- [Freistehende Nutzung als Megaprompt](#freistehende-nutzung-als-megaprompt)
 - [Rechtlicher Anker](#rechtlicher-anker)
 - [Rechtsprechungsanker — BAG-Leitentscheidungen](#rechtsprechungsanker--bag-leitentscheidungen)
 - [Wann dieser Skill greift](#wann-dieser-skill-greift)
@@ -26,6 +27,10 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Teil E — Analyse-Techniken: Drift, Auslassungen, Widersprüche, Negationen, Formalia](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-negationen-formalia)
 - [Teil F — Mandatsmodule: Aufforderungsschreiben, Verbesserungen, Klagestrategie](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie)
 - [Teil G — Musterzeugnisse und Sonderfälle](#teil-g--musterzeugnisse-und-sonderfälle)
+
+## Freistehende Nutzung als Megaprompt
+
+Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: den gesamten Inhalt in ein KI-System kopieren oder als Markdown-Datei anhängen, dann das Arbeitszeugnis nachreichen und ausdrücklich darum bitten, nach diesem Skill zu arbeiten. Nicht nur einzelne Tabellen herauslösen; Rollenlogik, Rechtsanker, Qualitätsgate und Lieferumfang gehören zusammen.
 
 ## Rechtlicher Anker
 
@@ -55,7 +60,7 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | **BAG, Urteil v. 27.04.2021 – 9 AZR 262/20** | Ein qualifiziertes Zeugnis in tabellarischer Form (Ankreuz-/Schulnotenschema) erfüllt den Anspruch aus § 109 GewO regelmäßig nicht. Die erforderliche individuelle Hervorhebung und Differenzierung verlangt regelmäßig Fließtext. | Formalia (Teil E.5) |
 | **BAG, Urteil v. 06.06.2023 – 9 AZR 272/22** | Eine einmal erteilte Dankes- und Wunschformel darf der Arbeitgeber in einer späteren Zeugnisfassung nicht allein deshalb streichen, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat — Verstoß gegen das Maßregelungsverbot (§ 612a BGB), das auch nach Beendigung des Arbeitsverhältnisses gilt. | Schlussformel (Teil B), Berichtigungsstrategie (Teil F) |
 | **BAG, Urteil v. 28.11.2019 – 8 AZR 293/18** | § 12a Abs. 1 S. 1 ArbGG schließt nicht nur prozessuale, sondern auch materiell-rechtliche Ansprüche auf Erstattung vor- und außergerichtlicher Rechtsverfolgungskosten bis zum Schluss einer möglichen ersten Instanz regelmäßig aus. | Kostenrisiko und Aufforderungsschreiben (Teil F) |
-| **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, hat vollstreckungsfähigen Inhalt. | Vergleichsfenster und Vollstreckung (Teil F.3) |
+| **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, kann vollstreckungsfähigen Inhalt haben; substantielle Einwände aus Zeugniswahrheit oder Zeugnisklarheit werden nicht per Zwangsgeld „entschieden". | Vergleichsfenster und Vollstreckung (Teil F.3) |
 | **BAG, Urteil v. 08.03.1995 – 5 AZR 848/93** | Die Zeugniserteilung ist Holschuld (§ 269 BGB): Der Arbeitnehmer holt das Zeugnis im Betrieb ab; nur ausnahmsweise (Unzumutbarkeit, § 242 BGB) wird daraus eine Schickschuld. | Formalia und Mandatspraxis (Teil E.5, Teil F) |
 
 ### LAG- und instanzgerichtliche Rechtsprechung (Auswahl)
@@ -584,72 +589,74 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 
 ## D.5 — Negative Codeworte nach Themen
 
-### Alkohol und Suchtmittel
+**Vorsicht bei Tatsachenverdacht.** Die folgenden Begriffe sind Warnsignale für die Zeugnisanalyse, keine Tatsachenfeststellungen. In der Nutzerausgabe nie behaupten, der Arbeitnehmer habe Alkohol-, Diebstahls-, Krankheits-, Belästigungs- oder Persönlichkeitsprobleme; stattdessen formulieren: „kann aus Empfängersicht den Verdacht auf … wecken" oder „riskiert eine entsprechende Lesart".
 
-| Formulierung | Bedeutung |
+### Suchtmittel-Lesarten
+
+| Formulierung | Mögliche Lesart |
 | --- | --- |
-| trug zur Verbesserung des Betriebsklimas bei | Alkohol- oder Drogenproblem |
-| war stets gesellig | Trinkgewohnheit |
+| trug zur Verbesserung des Betriebsklimas bei | Suchtmittelbezug |
+| war stets gesellig | Trinkgewohnheiten |
 | war für Aufgaben im Außendienst geeignet (ohne Kontext) | wurde aus dem Innendienst entfernt |
 | pflegte einen kollegialen Umgang am Feierabend | Trinkkultur |
 
 ### Krankheit und Fehlzeiten
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | war im Rahmen seiner Anwesenheit engagiert | hohe Fehlzeiten |
 | nutzte die ihm gegebenen Möglichkeiten | hoher Krankenstand |
 | erledigte die Aufgaben zuverlässig, wenn er anwesend war | krankheitsbedingte Ausfälle |
-| zeigte trotz seiner Beeinträchtigungen Einsatzbereitschaft | chronische Erkrankung |
+| zeigte trotz seiner Beeinträchtigungen Einsatzbereitschaft | Krankheits- oder Belastbarkeitsbezug |
 
-### Diebstahl und Vertrauensbruch
+### Vertrauensbruch-Risiken
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | zeigte sich Mitarbeitern und Kunden gegenüber verständnisvoll | sexuelle Annäherung oder Belästigung |
 | war ehrlich und korrekt (ohne Kontext) | Diebstahlsverdacht |
-| erledigte die ihm übertragenen Geldgeschäfte zuverlässig | Eigentumsdelikt im Hintergrund |
+| erledigte die ihm übertragenen Geldgeschäfte zuverlässig | Vertrauens- oder Eigentumsverdacht |
 | achtete auf eine korrekte Abrechnung (bei Nicht-Kassenposition) | Unregelmäßigkeiten beim Vorgänger |
 
 ### Konflikte und schwierige Persönlichkeit
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | pflegte einen direkten und offenen Kommunikationsstil | grob, schwierig im Umgang |
 | setzte seine Meinung mit Nachdruck durch | sturköpfig |
-| war für seine Ansichten bekannt | Querulant |
+| war für seine Ansichten bekannt | konfliktträchtig |
 | brachte sich engagiert in Diskussionen ein | konfliktfreudig |
-| hatte eine eigene Art | Persönlichkeitsstörungs-Signal |
+| hatte eine eigene Art | wirkt eigentümlich oder schwer einzuordnen |
 | war bei seinen Kollegen wegen seiner umgänglichen Art beliebt | Mitläufer ohne eigene Leistung |
 
 ### Loyalität und Verlässlichkeit
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | identifizierte sich mit den von ihm übernommenen Aufgaben | Identifikation mit dem Unternehmen fehlt |
-| achtete auf die Vertraulichkeit dienstlicher Angelegenheiten (auffällig betont) | Verstoß gegen Verschwiegenheit |
+| achtete auf die Vertraulichkeit dienstlicher Angelegenheiten (auffällig betont) | Verschwiegenheitsrisiko |
 | war im Rahmen seiner Fähigkeiten loyal | eingeschränkte Loyalität |
 | nahm an Veranstaltungen teil (statt: war engagiert) | Distanz |
 
 ### Betriebsrats- und gewerkschaftliche Tätigkeit
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | setzte sich auch für die Belange der Belegschaft ein | Betriebsratsmitglied |
 | brachte sich in Mitarbeiterfragen aktiv ein | gewerkschaftliche Tätigkeit |
 | nahm seine Mitwirkungsrechte umfassend wahr | aktiver Betriebsrat |
 
-### Sexuelle Verfehlungen
+### Grenzverletzungs-Lesarten
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
-| war beliebt bei Mitarbeiterinnen | Belästigungs-Code |
-| brachte einen Hauch von Frische in das Team | sexuelle Annäherung |
+| war beliebt bei Mitarbeiterinnen | Belästigungs-Lesart |
+| brachte einen Hauch von Frische in das Team | Grenzverletzungsverdacht |
 | pflegte einen umgänglichen Stil mit dem weiblichen Personal | unangemessene Kontakte |
 
 ### Mitläufertum und Passivität
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | fügte sich gut in die Hierarchie ein | Mitläufer |
 | akzeptierte Entscheidungen seiner Vorgesetzten | keine eigene Meinung |
@@ -658,7 +665,7 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 
 ### Beendigungsformeln
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | „verlässt uns auf eigenen Wunsch" | neutrale Eigenkündigung |
 | „im gegenseitigen Einvernehmen" | meist arbeitgeberseitig initiierter Aufhebungsvertrag, oft nach Konflikt |
@@ -668,7 +675,7 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 
 ### Wunsch- und Zukunftsformeln als Negativcode
 
-| Formulierung | Bedeutung |
+| Formulierung | Mögliche Lesart |
 | --- | --- |
 | „wir wünschen ihm für die Zukunft mehr Erfolg" | bisher erfolglos |
 | „künftig alles Gute, insbesondere Erfolg" | Erfolg blieb bislang aus |
@@ -699,7 +706,7 @@ Nach LAG Hamm 14.11.2016 – 12 Ta 475/16 ist auch **erkennbar nicht ernst gemei
 - „stets vollster Zufriedenheit" → Maximalsteigerer + Maximalformel = Note 1.
 - „zur Zufriedenheit" ohne Adverb → Note 3.
 - „bemüht" allein → Note 4, unabhängig vom Adverb davor.
-- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → Alkohol-Code, Rot, berichtigungsfähig.
+- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → Suchtmittel-Lesart, Rot, berichtigungsfähig.
 - Geschäftsführerin ohne Loyalitätsaussage → Auslassungs-Code, Rot, berichtigungsfähig.
 
 ---
