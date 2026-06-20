@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.9"
+version: "2.2.10"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -34,7 +34,7 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 
 ## Rechtlicher Anker
 
-- **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot; elektronische Form nur mit Einwilligung des Arbeitnehmers.
+- **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot; elektronische Form nur mit Einwilligung des Arbeitnehmers (§ 109 Abs. 3 GewO n. F. seit dem Vierten Bürokratieentlastungsgesetz, in Kraft 1.1.2025 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur; davor war die elektronische Form ausgeschlossen).
 - **§ 109 Abs. 2 S. 2 GewO** — Geheimzeichen und Formulierungen, die etwas anderes als aus der Wortwahl ersichtlich aussagen, sind unzulässig.
 - **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden.
 - **§ 241 Abs. 2 BGB**, **§ 280 Abs. 1 BGB** — Nebenpflicht des Arbeitgebers, ein leistungsgerechtes Zeugnis zu erteilen; Schadensersatz bei Verletzung.
@@ -815,7 +815,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 **Weitere formale Eckpunkte (verifizierte Rechtsprechung und Gesetz):**
 
 - **Fließtext statt Tabelle:** Ein qualifiziertes Zeugnis im Ankreuz- oder Schulnotenschema erfüllt § 109 GewO regelmäßig nicht (BAG 27.04.2021 – 9 AZR 262/20).
-- **Papierzeugnis oder elektronische Form:** § 109 Abs. 3 GewO erlaubt die elektronische Form mit Einwilligung des Arbeitnehmers; § 16 Abs. 1 BBiG entsprechend mit Einwilligung der Auszubildenden. Ohne Einwilligung bleibt das Papierzeugnis der Regelfall. Elektronisch genügt nicht bloß PDF, Scan, E-Mail oder Textform, sondern nur die elektronische Form im Rechtssinn (qualifizierte elektronische Signatur, § 126a BGB).
+- **Papierzeugnis oder elektronische Form:** Für das Arbeitszeugnis erlaubt § 109 Abs. 3 GewO seit dem Vierten Bürokratieentlastungsgesetz (in Kraft 1.1.2025) die elektronische Form mit Einwilligung des Arbeitnehmers; für das Ausbildungszeugnis brachte das Berufsbildungsvalidierungs- und -digitalisierungsgesetz (BVaDiG, in Kraft 1.8.2024) die parallele Öffnung in § 16 Abs. 1 BBiG mit Einwilligung der Auszubildenden. Davor war die elektronische Form jeweils ausdrücklich ausgeschlossen. Ohne Einwilligung bleibt das Papierzeugnis der Regelfall. Elektronisch genügt nicht bloß PDF, Scan, E-Mail oder Textform, sondern nur die elektronische Form im Rechtssinn (qualifizierte elektronische Signatur, § 126a BGB).
 - **Geschäftsübliche Unterschrift:** Eine quer durch den Text laufende Unterschrift (LAG Hamm 14.11.2016 – 12 Ta 475/16) oder ein in die Unterschrift eingebauter Smiley mit herabgezogenen Mundwinkeln (ArbG Kiel 18.04.2013 – 5 Ca 80 b/13) sind unzulässige Distanzierungs- bzw. Geheimzeichen.
 - **Holschuld:** Das Zeugnis ist grundsätzlich im Betrieb abzuholen (§ 269 BGB; BAG 08.03.1995 – 5 AZR 848/93); nur bei Unzumutbarkeit wird daraus eine Schickschuld. Für die Verzugsargumentation im Aufforderungsschreiben relevant.
 
