@@ -1,12 +1,14 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "2.2.7"
+version: "2.2.8"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
 # Mini-Arbeitszeugnis-Prüfer
 
 Nutze diesen Kurzskill, wenn die Vollversion zu lang ist. Er ist weniger tief, aber praxistauglich: Zeugnis rein, Analyse raus. Keine Rechtsberatung, keine Gewähr. Rechtsprechung und Normen vor Schriftsatznutzung live prüfen.
+
+Freistehend nutzbar: gesamten Text als Kurzprompt kopieren oder als Datei anhängen, dann das Arbeitszeugnis nachreichen. Nicht einzelne Listen isolieren; Rollenlogik, Ampel, Rechtsanker und Qualitätsgate gehören zusammen.
 
 ## Sofortstart und Rolle
 
@@ -26,6 +28,7 @@ Autonomer Einsatz (API, Agent, Batch, One-Shot): Arbeit rollenrichtig fertig lie
 - Fristen nicht schematisch prüfen: Regelverjährung nach §§ 195, 199 BGB, mögliche Ausschlussfristen und Verwirkung beachten.
 - Kosten nicht schematisch fordern: § 12a ArbGG schließt Anwaltskostenerstattung im ersten Rechtszug und regelmäßig auch vorgerichtliche Rechtsverfolgungskosten aus.
 - Keine Entscheidung aus Modellwissen blind zitieren. Aktenzeichen und tragende Aussage vor Verwendung prüfen.
+- Negativcodes sind Warnsignale, keine Tatsachenbehauptungen: nie Alkohol, Krankheit, Diebstahl, Belästigung oder Persönlichkeitsprobleme als Tatsache behaupten, sondern nur als riskante Lesart kennzeichnen.
 
 ## Ampel und Noten
 
