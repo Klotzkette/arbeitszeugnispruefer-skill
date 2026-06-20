@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.10"
+version: "2.2.11"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -36,7 +36,7 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 
 - **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot; elektronische Form nur mit Einwilligung des Arbeitnehmers (§ 109 Abs. 3 GewO n. F. seit dem Vierten Bürokratieentlastungsgesetz, in Kraft 1.1.2025 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur; davor war die elektronische Form ausgeschlossen).
 - **§ 109 Abs. 2 S. 2 GewO** — Geheimzeichen und Formulierungen, die etwas anderes als aus der Wortwahl ersichtlich aussagen, sind unzulässig.
-- **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden.
+- **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden (§ 16 Abs. 1 BBiG n. F. seit dem Berufsbildungsvalidierungs- und -digitalisierungsgesetz, in Kraft 1.8.2024 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur).
 - **§ 241 Abs. 2 BGB**, **§ 280 Abs. 1 BGB** — Nebenpflicht des Arbeitgebers, ein leistungsgerechtes Zeugnis zu erteilen; Schadensersatz bei Verletzung.
 - **Beweislastregel BAG:** Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist der Ausgangspunkt. Wer eine bessere Bewertung als Note 3 verlangt, trägt als Arbeitnehmer die Darlegungs- und Beweislast; wer schlechter als Note 3 bewertet, trägt als Arbeitgeber die Darlegungs- und Beweislast.
 - **Zuständigkeit:** Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf Zeugnisberichtigung als Leistungsklage.

@@ -6,7 +6,7 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.2.10) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.10 datiert die elektronische Form präzise: für das Arbeitszeugnis durch das Vierte Bürokratieentlastungsgesetz (§ 109 Abs. 3 GewO, in Kraft 1.1.2025), für das Ausbildungszeugnis durch das Berufsbildungsvalidierungs- und -digitalisierungsgesetz (§ 16 Abs. 1 BBiG, in Kraft 1.8.2024) — jeweils nur mit Einwilligung und in elektronischer Form i. S. d. § 126a BGB (qualifizierte elektronische Signatur), während einfache PDFs/Scans/E-Mails nicht genügen. Rechtsprechungsstand (u. a. BAG 8 AZB 25/25 zur Vollstreckbarkeit von Zeugnisvergleichen) und interne Verweise wurden gegengeprüft.
+Konsolidierter Skill (Version 2.2.11) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.11 bereinigt den Rechtsanker: Arbeits- und Ausbildungszeugnisse werden bei der elektronischen Form parallel geführt, die Mini-Fassung nennt die qualifizierte elektronische Signatur bereits im Rechtsanker, und der README-Anker verengt § 109 GewO nicht mehr auf qualifizierte Zeugnisse.
 
 ## Download
 
@@ -75,8 +75,8 @@ Zusätzlich enthält der Skill durchgängig:
 
 ## Rechtlicher Anker
 
-- § 109 GewO — Anspruch auf qualifiziertes wohlwollendes Zeugnis; Wahrheits- und Klarheitspflicht; elektronische Form nur mit Einwilligung.
-- § 16 BBiG — Ausbildungszeugnis; elektronische Form nur mit Einwilligung der Auszubildenden.
+- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits-, Wohlwollens- und Klarheitspflicht; elektronische Form nur mit Einwilligung.
+- § 16 BBiG — Ausbildungszeugnis; auf Verlangen mit Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden.
 - §§ 241 Abs. 2, 280 Abs. 1 BGB — Nebenpflicht; Schadensersatz bei Verletzung.
 - Beweislastregel BAG: Note 3 ist Ausgangspunkt; besser als Note 3 muss grundsätzlich der Arbeitnehmer darlegen und beweisen, schlechter als Note 3 der Arbeitgeber (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13).
 - Zuständigkeit Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG); Klage als Leistungsklage.
