@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.13"
+version: "2.2.14"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -34,7 +34,7 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 
 ## Rechtlicher Anker
 
-- **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot; elektronische Form nur mit Einwilligung des Arbeitnehmers (§ 109 Abs. 3 GewO n. F. seit dem Vierten Bürokratieentlastungsgesetz, in Kraft 1.1.2025 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur; davor war die elektronische Form ausgeschlossen).
+- **§ 109 GewO und BAG-Linie** — Anspruch auf einfaches oder qualifiziertes Zeugnis; § 109 Abs. 2 normiert Klarheit, Verständlichkeit und Geheimzeichenverbot; Zeugniswahrheit und verständiges Wohlwollen ergeben sich aus der BAG-Linie zum Zeugnisrecht; elektronische Form nur mit Einwilligung des Arbeitnehmers (§ 109 Abs. 3 GewO n. F. seit dem Vierten Bürokratieentlastungsgesetz, in Kraft 1.1.2025 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur; davor war die elektronische Form ausgeschlossen).
 - **§ 109 Abs. 2 S. 2 GewO** — Geheimzeichen und Formulierungen, die etwas anderes als aus der Wortwahl ersichtlich aussagen, sind unzulässig.
 - **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden (§ 16 Abs. 1 BBiG n. F. seit dem Berufsbildungsvalidierungs- und -digitalisierungsgesetz, in Kraft 1.8.2024 — elektronische Form i. S. d. § 126a BGB mit qualifizierter elektronischer Signatur).
 - **§ 241 Abs. 2 BGB**, **§ 280 Abs. 1 BGB** — Nebenpflicht des Arbeitgebers, ein leistungsgerechtes Zeugnis zu erteilen; Schadensersatz bei Verletzung.
@@ -344,7 +344,7 @@ Die Hauptformel der zusammenfassenden Leistungsbeurteilung. Ihre Bestandteile tr
 
 ## Quellen für die Notenstufenmatrix
 
-- **§ 109 GewO** — Wahrheits- und Wohlwollensgrundsatz.
+- **§ 109 GewO und BAG-Linie** — Zeugniswahrheit und verständiges Wohlwollen; § 109 Abs. 2 GewO für Klarheit, Verständlichkeit und Geheimzeichenverbot.
 - **BAG 14.10.2003 – 9 AZR 12/03** — „zur vollen Zufriedenheit" = durchschnittliche Leistung (Note 3); Beweislast für bessere Note beim Arbeitnehmer, für schlechtere beim Arbeitgeber.
 - **BAG 18.11.2014 – 9 AZR 584/13** — „befriedigend" als Mitte der Skala; Branchenüblichkeit guter Noten verschiebt die Beweislast nicht.
 - Details und Fundstellen: [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Vor Schriftsatzverwendung erneut verifizieren.
@@ -465,7 +465,7 @@ Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus �
 | „hat sich im Rahmen seiner Aufgaben bewährt" | Hinweis: ggf. außerhalb der Aufgaben nicht | Orange |
 | „hat zur Erfüllung der Aufgaben beigetragen" | Mittelmaß | Orange |
 
-Quelle für jede Decodierung: § 109 GewO Wahrheits- und Wohlwollensgrundsatz; zur Beweislast und zum Gebot der Zeugnisklarheit siehe [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Beachte die dort hinterlegte Grenze der Decodierung (BAG 9 AZR 352/04, 9 AZR 386/10): Nicht jede blasse Formulierung ist ein Geheimcode — entscheidend ist der objektive Empfängerhorizont im Gesamtkontext.
+Quelle für jede Decodierung: Zeugniswahrheit und verständiges Wohlwollen aus der BAG-Linie; § 109 Abs. 2 GewO für Klarheit, Verständlichkeit und Geheimzeichenverbot. Zur Beweislast und zum Gebot der Zeugnisklarheit siehe [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Beachte die dort hinterlegte Grenze der Decodierung (BAG 9 AZR 352/04, 9 AZR 386/10): Nicht jede blasse Formulierung ist ein Geheimcode — entscheidend ist der objektive Empfängerhorizont im Gesamtkontext.
 
 ---
 
@@ -717,7 +717,7 @@ Diese Sektion bündelt die fünf Lesetechniken jenseits der reinen Codewortdecod
 
 ## Rechtlicher Anker
 
-- § 109 Abs. 2 GewO — Klarheits- und Wahrheitspflicht; widersprüchliche Aussagen verstoßen gegen das Wohlwollensgebot.
+- § 109 Abs. 2 GewO — Klarheits-/Verständlichkeitsgebot und Geheimzeichenverbot; Widersprüche können gegen Zeugniswahrheit, Zeugnisklarheit und verständiges Wohlwollen verstoßen.
 - § 242 BGB — Treu und Glauben; Bestnoten und kodierte Mängel dürfen nicht im selben Abschnitt nebeneinanderstehen.
 
 ## E.1 — Bereichs-Drift und Schaufenster-Pattern
@@ -847,7 +847,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 
 1. **Mandatsanzeige** — Vollmacht beigefügt, Mandant mit vollem Namen, Geburtsdatum, Beschäftigungszeitraum.
 2. **Bezugnahme auf das Zeugnis** — Datum der Erteilung, Datum der Aushändigung, Form (qualifiziert/einfach/Zwischen), Feststellung, dass es § 109 GewO nicht genügt.
-3. **Rechtsgrundlage** — § 109 Abs. 1 S. 3 GewO Wohlwollen; § 109 Abs. 2 GewO Wahrheit und Klarheit; Beweislastregel des BAG (14.10.2003 – 9 AZR 12/03; 18.11.2014 – 9 AZR 584/13).
+3. **Rechtsgrundlage** — § 109 Abs. 1 GewO Zeugnisanspruch; § 109 Abs. 1 S. 3 GewO nur beim qualifizierten Zeugnis für Leistung/Verhalten; § 109 Abs. 2 GewO für Klarheit, Verständlichkeit und Geheimzeichenverbot; Zeugniswahrheit und verständiges Wohlwollen nach BAG-Linie; Beweislastregel des BAG (14.10.2003 – 9 AZR 12/03; 18.11.2014 – 9 AZR 584/13).
 4. **Beanstandungen pro Streitstelle** — pro Stelle ein Block: Originalwortlaut in Anführungszeichen, Decodierung (Geheimcode, Drift, Auslassung, fehlendes Adverb), Vorschlag in Anführungszeichen, Begründung.
 5. **Schlussformel und Gesamtbild** — wenn relevant, separat behandeln.
 6. **Fristsetzung** — kalendermäßig (kein „binnen zwei Wochen"), Standard zwei bis drei Wochen; bei Eilbedarf kürzer mit Begründung.

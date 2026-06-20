@@ -6,7 +6,7 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.2.13) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.13 stellt klar: § 109 Abs. 2 GewO gilt für jedes Zeugnis; Klarheit, Verständlichkeit und Geheimzeichenverbot werden auch beim einfachen Zeugnis geprüft.
+Konsolidierter Skill (Version 2.2.14) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.14 trennt nach amtlichem Quellencheck § 109 Abs. 2 GewO noch sauberer von der BAG-Linie zu Zeugniswahrheit und verständigem Wohlwollen.
 
 ## Download
 
@@ -75,7 +75,7 @@ Zusätzlich enthält der Skill durchgängig:
 
 ## Rechtlicher Anker
 
-- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits-, Wohlwollens- und Klarheitspflicht; elektronische Form nur mit Einwilligung.
+- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; Klarheit, Verständlichkeit und Geheimzeichenverbot; elektronische Form nur mit Einwilligung. Zeugniswahrheit und verständiges Wohlwollen folgen aus der BAG-Linie.
 - § 16 BBiG — Ausbildungszeugnis; auf Verlangen mit Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden.
 - §§ 241 Abs. 2, 280 Abs. 1 BGB — Nebenpflicht; Schadensersatz bei Verletzung.
 - Beweislastregel BAG: Note 3 ist Ausgangspunkt; besser als Note 3 muss grundsätzlich der Arbeitnehmer darlegen und beweisen, schlechter als Note 3 der Arbeitgeber (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13).
