@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.8"
+version: "2.2.9"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -34,9 +34,9 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 
 ## Rechtlicher Anker
 
-- **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot.
+- **§ 109 GewO** — Anspruch auf einfaches oder qualifiziertes Zeugnis; Wahrheits- und Wohlwollensgrundsatz; Klarheits- und Verständlichkeitsgebot; elektronische Form nur mit Einwilligung des Arbeitnehmers.
 - **§ 109 Abs. 2 S. 2 GewO** — Geheimzeichen und Formulierungen, die etwas anderes als aus der Wortwahl ersichtlich aussagen, sind unzulässig.
-- **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung.
+- **§ 16 BBiG** — Ausbildungszeugnis; auf Verlangen mit Angaben zu Verhalten und Leistung; elektronische Form nur mit Einwilligung der Auszubildenden.
 - **§ 241 Abs. 2 BGB**, **§ 280 Abs. 1 BGB** — Nebenpflicht des Arbeitgebers, ein leistungsgerechtes Zeugnis zu erteilen; Schadensersatz bei Verletzung.
 - **Beweislastregel BAG:** Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist der Ausgangspunkt. Wer eine bessere Bewertung als Note 3 verlangt, trägt als Arbeitnehmer die Darlegungs- und Beweislast; wer schlechter als Note 3 bewertet, trägt als Arbeitgeber die Darlegungs- und Beweislast.
 - **Zuständigkeit:** Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf Zeugnisberichtigung als Leistungsklage.
@@ -279,8 +279,8 @@ Wenn ein **Entwurf** vor Erteilung geprüft werden soll (HR, Geschäftsführung,
 3. Klarheits-Check nach § 109 Abs. 2 GewO und BAG 9 AZR 352/04 / 386/10:
    keine mehrdeutigen, ironischen oder überzogenen Formulierungen
    (LAG Hamm 12 Ta 475/16).
-4. Formalia-Check nach Teil E.5 (Fließtext, Unterschrift, Datum,
-   keine elektronische Form, § 109 Abs. 3 GewO).
+4. Formalia-Check nach Teil E.5 (Fließtext, Unterschrift/Signatur,
+   Datum, elektronische Form nur mit Einwilligung).
 5. Konsistenz: Hauptformel, Einzelsätze und Schlussformel auf derselben
    Notenstufe? Drift vermeiden, bevor sie entsteht.
 ```
@@ -799,13 +799,13 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 | Position | exakte Funktionsbezeichnung, eventuell mit Hierarchiestufe | unklare oder zu niedrige Bezeichnung |
 | Beschäftigungszeitraum | vollständig, ohne Lücken | Lücken, falsche Daten, Karenz nicht erwähnt |
 | Aufgabenkatalog | umfassend, mit Schlüsselverantwortungen | unvollständig, Schlüsselaufgaben fehlen |
-| Unterschrift | hierarchisch zuständige Person, eigenhändig oder digital signiert | tiefer stehende Unterschrift, Vorgesetzter umgangen, fehlende Unterschrift |
+| Unterschrift/Signatur | hierarchisch zuständige Person; bei Papier eigenhändig, elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur | tiefer stehende Unterschrift, Vorgesetzter umgangen, fehlende Unterschrift/Signatur, einfache PDF/Scan/E-Mail ohne wirksame elektronische Form |
 | Rechtschreibung und Format | sauber, in einem Guss | Tippfehler, Stilbrüche → Indiz für Sorglosigkeit oder Absicht |
 
 **Beispiele für formale Mängel mit Berichtigungsanspruch:**
 
 - Unterschrift durch HR-Sachbearbeiter statt durch unmittelbaren Vorgesetzten oder Geschäftsführung.
-- Zeugnis schließt mit Name und Funktion einer Person in Maschinenschrift, unterschrieben hat aber jemand anderes — nach BAG 21.09.1999 – 9 AZR 893/98 muss genau die genannte Person eigenhändig unterschreiben.
+- Papierzeugnis schließt mit Name und Funktion einer Person in Maschinenschrift, unterschrieben hat aber jemand anderes — nach BAG 21.09.1999 – 9 AZR 893/98 muss genau die genannte Person eigenhändig unterschreiben.
 - Beschäftigungszeitraum ohne Ende-Datum oder mit falschem Beginn.
 - Ausstellungsdatum 14 Tage nach Beendigung, obwohl gesetzlicher Anspruch sofort fällig ist.
 - Sichtbare Tipp- oder Rechtschreibfehler → bei zeugnisrelevanten Positionen ein Berichtigungspunkt.
@@ -815,7 +815,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 **Weitere formale Eckpunkte (verifizierte Rechtsprechung und Gesetz):**
 
 - **Fließtext statt Tabelle:** Ein qualifiziertes Zeugnis im Ankreuz- oder Schulnotenschema erfüllt § 109 GewO regelmäßig nicht (BAG 27.04.2021 – 9 AZR 262/20).
-- **Keine elektronische Form:** § 109 Abs. 3 GewO schließt die Erteilung in elektronischer Form aus — das Zeugnis ist schriftlich auf Papier zu erteilen.
+- **Papierzeugnis oder elektronische Form:** § 109 Abs. 3 GewO erlaubt die elektronische Form mit Einwilligung des Arbeitnehmers; § 16 Abs. 1 BBiG entsprechend mit Einwilligung der Auszubildenden. Ohne Einwilligung bleibt das Papierzeugnis der Regelfall. Elektronisch genügt nicht bloß PDF, Scan, E-Mail oder Textform, sondern nur die elektronische Form im Rechtssinn (qualifizierte elektronische Signatur, § 126a BGB).
 - **Geschäftsübliche Unterschrift:** Eine quer durch den Text laufende Unterschrift (LAG Hamm 14.11.2016 – 12 Ta 475/16) oder ein in die Unterschrift eingebauter Smiley mit herabgezogenen Mundwinkeln (ArbG Kiel 18.04.2013 – 5 Ca 80 b/13) sind unzulässige Distanzierungs- bzw. Geheimzeichen.
 - **Holschuld:** Das Zeugnis ist grundsätzlich im Betrieb abzuholen (§ 269 BGB; BAG 08.03.1995 – 5 AZR 848/93); nur bei Unzumutbarkeit wird daraus eine Schickschuld. Für die Verzugsargumentation im Aufforderungsschreiben relevant.
 
@@ -1136,7 +1136,7 @@ Führungskräftezeugnisse haben fünf zusätzliche Pflichtbausteine, deren Fehle
 
 ### Rechtsgrundlagen
 
-- § 16 Abs. 1 BBiG — Anspruch auf einfaches Zeugnis nach Beendigung der Ausbildung.
+- § 16 Abs. 1 BBiG — Anspruch auf einfaches Zeugnis bei Beendigung des Berufsausbildungsverhältnisses.
 - § 16 Abs. 2 BBiG — qualifiziertes Zeugnis mit Angaben zu Verhalten und Leistung nur auf Verlangen.
 - § 13 BBiG — Pflichten des Auszubildenden.
 
@@ -1157,7 +1157,7 @@ Führungskräftezeugnisse haben fünf zusätzliche Pflichtbausteine, deren Fehle
 
 1. Abschlusszeugnis oder Zwischenzeugnis?
 2. Duale Ausbildung → Berufsschulbewertung vorhanden?
-3. Ausbildung abgebrochen → nur Anspruch auf einfaches Zeugnis nach § 16 Abs. 1 BBiG.
+3. Ausbildung abgebrochen → nicht automatisch nur einfaches Zeugnis; Angaben zu Verhalten und Leistung nach § 16 Abs. 2 BBiG auf Verlangen prüfen.
 4. Beendigungsgrund: bestandene Prüfung oder Kündigung/Aufhebung?
 
 **Beispiel grün:** „Herr Müller hat die Ausbildungsinhalte stets schnell und sicher aufgenommen, zeigte großes Interesse an seinem Ausbildungsberuf und zeichnete sich durch hervorragende Berufsschulleistungen aus."

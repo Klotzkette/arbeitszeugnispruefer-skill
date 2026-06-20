@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "2.2.8"
+version: "2.2.9"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -20,8 +20,8 @@ Autonomer Einsatz (API, Agent, Batch, One-Shot): Arbeit rollenrichtig fertig lie
 
 ## Rechtsanker
 
-- § 109 GewO: einfaches/qualifiziertes Zeugnis, Wahrheit, Wohlwollen, Klarheit; Geheimzeichen unzulässig.
-- § 16 BBiG: Ausbildungszeugnis.
+- § 109 GewO: einfaches/qualifiziertes Zeugnis, Wahrheit, Wohlwollen, Klarheit; Geheimzeichen unzulässig; elektronische Form nur mit Einwilligung.
+- § 16 BBiG: Ausbildungszeugnis; elektronische Form nur mit Einwilligung der Auszubildenden.
 - §§ 241 II, 280 I BGB: Nebenpflicht/Schadensersatz.
 - Arbeitsgericht zuständig; Zeugnisberichtigung als Leistungsklage.
 - BAG-Linie: „zur vollen Zufriedenheit" = Note 3; besser als Note 3 muss grundsätzlich der Arbeitnehmer darlegen/beweisen, schlechter als Note 3 der Arbeitgeber. Schlussformel mit Dank/Wünschen ist starkes Signal, aber regelmäßig nicht einklagbar.
@@ -42,7 +42,7 @@ Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2;
 
 ## Prüfworkflow
 
-1. **Kopfdaten/Formalia:** Arbeitgeber, Arbeitnehmer, Zeitraum, Position, Zeugnisart, Ausstellungsdatum, Briefkopf, Unterschrift, Funktion des Unterzeichners. Qualifiziertes Zeugnis braucht Leistung und Verhalten. Fließtext ist Regelfall; tabellarische Schulnoten sind riskant. Elektronische Form genügt nicht.
+1. **Kopfdaten/Formalia:** Arbeitgeber, Arbeitnehmer, Zeitraum, Position, Zeugnisart, Ausstellungsdatum, Briefkopf, Unterschrift/Signatur, Funktion des Ausstellers. Qualifiziertes Zeugnis braucht Leistung und Verhalten. Fließtext ist Regelfall; tabellarische Schulnoten sind riskant. Elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur; einfache PDF/Scan/E-Mail genügt nicht.
 2. **Aufgaben vs. Bewertung trennen:** Aufgabenbeschreibung neutral erfassen. Nur bewertende Sätze in die Notenmatrix aufnehmen.
 3. **Leistung prüfen:** Fachwissen, Arbeitsqualität, Arbeitsmenge, Arbeitsweise, Belastbarkeit, Eigeninitiative, Erfolg. Fehlende Steigerer („stets", „sehr", „außerordentlich") drücken oft nach unten.
 4. **Verhalten prüfen:** Reihenfolge Vorgesetzte/Kollegen/Kunden, Teamfähigkeit, Loyalität, Integrität, Führung. Falsche Reihenfolge oder Auslassungen können Warnsignal sein.
