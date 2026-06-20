@@ -6,7 +6,7 @@
 >
 > **Eine einzige Datei, modellunabhängig einsetzbar.** Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 2.2.12) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.12 schärft den Praxis-Check: Ausstellungsdaten werden nicht schematisch als Mangel behandelt, § 109 GewO trennt einfache und qualifizierte Zeugnisse sauberer, und Schlussformel-Streitwerte werden nur nach gesonderter Prüfung angesetzt.
+Konsolidierter Skill (Version 2.2.13) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 2.2.13 stellt klar: § 109 Abs. 2 GewO gilt für jedes Zeugnis; Klarheit, Verständlichkeit und Geheimzeichenverbot werden auch beim einfachen Zeugnis geprüft.
 
 ## Download
 

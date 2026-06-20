@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.12"
+version: "2.2.13"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -475,7 +475,7 @@ Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatr
 
 ## Rechtlicher Anker
 
-- § 109 GewO Abs. 1 und 2 — Anspruch auf einfaches oder qualifiziertes Zeugnis; beim qualifizierten Zeugnis Wahrheit, Wohlwollen, Klarheit und keine kodierten Negativaussagen.
+- § 109 GewO Abs. 1 und 2 — Anspruch auf einfaches oder qualifiziertes Zeugnis; Klarheit, Verständlichkeit und Verbot kodierter Negativaussagen gelten für jedes Zeugnis; Leistungs- und Verhaltensbewertung nur beim qualifizierten Zeugnis.
 - Rechtsprechung nur live nachprüfen, niemals aus Modellwissen zitieren.
 
 ## D.1 — Steigerungsadverbien
@@ -831,7 +831,7 @@ Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliche
 
 ## Rechtlicher Anker
 
-- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; beim qualifizierten Zeugnis Berichtigung unrichtiger, unklarer oder unvollständiger Leistungs-/Verhaltensaussagen.
+- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; Berichtigung unrichtiger, unklarer oder codierter Angaben bei jedem Zeugnis; Leistungs-/Verhaltensaussagen nur beim qualifizierten Zeugnis.
 - §§ 286, 288 BGB — Verzug und Fristsetzung; vorgerichtliche Anwaltskosten im arbeitsgerichtlichen Kontext wegen § 12a ArbGG/BAG 8 AZR 293/18 nicht schematisch als Verzugsschaden verlangen.
 - § 242 BGB — Treu und Glauben; Verwirkung bei langem Zuwarten.
 - §§ 195, 199 BGB — regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt; Zeugnis-/Beendigungsjahr und Ausschlussfristen immer konkret prüfen.
