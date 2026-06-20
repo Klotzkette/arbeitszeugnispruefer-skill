@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "2.2.11"
+version: "2.2.12"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -189,7 +189,7 @@ Material für die Decodierung:
 
 - [Teil A](#teil-a--zufriedenheitsformel--decodierung) — Hauptformel mit Notenstufen.
 - [Teil C](#teil-c--geheimcode-katalog-der-deutschen-zeugnissprache) — Standardformulierungen zu Leistung, Engagement, Belastbarkeit, Teamarbeit, Führung, Compliance.
-- [Teil D](#teil-d--ampel-flaggen-steigerungsadverbien-und-negative-codeworte) — Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte nach Themen (Alkohol, Krankheit, Diebstahl, Konflikt, Loyalität, Betriebsrat, sexuelle Verfehlungen, Mitläufertum, Auslassungen).
+- [Teil D](#teil-d--ampel-flaggen-steigerungsadverbien-und-negative-codeworte) — Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte nach Themen (riskante Lesarten zu Alkohol, Krankheit, Eigentum, Konflikt, Loyalität, Betriebsrat, Grenzverletzungen, Mitläufertum, Auslassungen).
 
 Wenn ein Satz so nicht im Katalog steht, leite die Tendenz aus dem objektiven Empfängerhorizont her und vermerke die Unsicherheit ausdrücklich (Beispiel: Tendenz Note 3, weil X; ohne BAG-Stütze; Live-Recherche empfohlen).
 
@@ -436,7 +436,7 @@ Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus �
 | „arbeitete kollegial zusammen" | Befriedigend | Orange |
 | „arbeitete pflichtbewusst im Team" | Hielt sich zurück | Orange |
 | „bemüht, sich ins Team einzufügen" | Konflikte | Rot |
-| „war ein gesellig-kontaktfreudiger Mitarbeiter" | Hinweis auf Alkohol- oder Unzuverlässigkeitsproblem | Rot |
+| „war ein gesellig-kontaktfreudiger Mitarbeiter" | riskante Alkohol-/Unzuverlässigkeitslesart, nur im Kontext | Rot |
 
 ## Führung (für Leitungsfunktionen)
 
@@ -475,7 +475,7 @@ Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatr
 
 ## Rechtlicher Anker
 
-- § 109 GewO Abs. 1 und 2 — Anspruch auf qualifiziertes, wohlwollendes Zeugnis; Klarheits- und Wahrheitspflicht; keine kodierten Negativaussagen.
+- § 109 GewO Abs. 1 und 2 — Anspruch auf einfaches oder qualifiziertes Zeugnis; beim qualifizierten Zeugnis Wahrheit, Wohlwollen, Klarheit und keine kodierten Negativaussagen.
 - Rechtsprechung nur live nachprüfen, niemals aus Modellwissen zitieren.
 
 ## D.1 — Steigerungsadverbien
@@ -595,92 +595,92 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| trug zur Verbesserung des Betriebsklimas bei | Suchtmittelbezug |
-| war stets gesellig | Trinkgewohnheiten |
+| trug zur Verbesserung des Betriebsklimas bei | riskante Suchtmittel-Lesart |
+| war stets gesellig | riskante Alkohol-/Geselligkeitslesart |
 | war für Aufgaben im Außendienst geeignet (ohne Kontext) | wurde aus dem Innendienst entfernt |
-| pflegte einen kollegialen Umgang am Feierabend | Trinkkultur |
+| pflegte einen kollegialen Umgang am Feierabend | riskante Feierabend-/Alkohollesart |
 
 ### Krankheit und Fehlzeiten
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| war im Rahmen seiner Anwesenheit engagiert | hohe Fehlzeiten |
-| nutzte die ihm gegebenen Möglichkeiten | hoher Krankenstand |
-| erledigte die Aufgaben zuverlässig, wenn er anwesend war | krankheitsbedingte Ausfälle |
-| zeigte trotz seiner Beeinträchtigungen Einsatzbereitschaft | Krankheits- oder Belastbarkeitsbezug |
+| war im Rahmen seiner Anwesenheit engagiert | riskante Fehlzeiten-Lesart |
+| nutzte die ihm gegebenen Möglichkeiten | riskante Krankenstands-Lesart |
+| erledigte die Aufgaben zuverlässig, wenn er anwesend war | riskante Ausfallzeiten-Lesart |
+| zeigte trotz seiner Beeinträchtigungen Einsatzbereitschaft | riskante Krankheits-/Belastbarkeitslesart |
 
 ### Vertrauensbruch-Risiken
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| zeigte sich Mitarbeitern und Kunden gegenüber verständnisvoll | sexuelle Annäherung oder Belästigung |
-| war ehrlich und korrekt (ohne Kontext) | Diebstahlsverdacht |
-| erledigte die ihm übertragenen Geldgeschäfte zuverlässig | Vertrauens- oder Eigentumsverdacht |
-| achtete auf eine korrekte Abrechnung (bei Nicht-Kassenposition) | Unregelmäßigkeiten beim Vorgänger |
+| zeigte sich Mitarbeitern und Kunden gegenüber verständnisvoll | riskante Annäherungs-/Belästigungslesart |
+| war ehrlich und korrekt (ohne Kontext) | riskante Eigentums-/Vertrauenslesart |
+| erledigte die ihm übertragenen Geldgeschäfte zuverlässig | riskante Vertrauens-/Eigentumslesart |
+| achtete auf eine korrekte Abrechnung (bei Nicht-Kassenposition) | riskante Lesart zu Abrechnungsunregelmäßigkeiten |
 
 ### Konflikte und schwierige Persönlichkeit
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| pflegte einen direkten und offenen Kommunikationsstil | grob, schwierig im Umgang |
-| setzte seine Meinung mit Nachdruck durch | sturköpfig |
-| war für seine Ansichten bekannt | konfliktträchtig |
-| brachte sich engagiert in Diskussionen ein | konfliktfreudig |
-| hatte eine eigene Art | wirkt eigentümlich oder schwer einzuordnen |
-| war bei seinen Kollegen wegen seiner umgänglichen Art beliebt | Mitläufer ohne eigene Leistung |
+| pflegte einen direkten und offenen Kommunikationsstil | riskante Lesart: grob oder schwierig im Umgang |
+| setzte seine Meinung mit Nachdruck durch | riskante Sturheits-Lesart |
+| war für seine Ansichten bekannt | riskante Konflikt-Lesart |
+| brachte sich engagiert in Diskussionen ein | riskante Konfliktfreude-Lesart |
+| hatte eine eigene Art | riskante Lesart: eigentümlich oder schwer einzuordnen |
+| war bei seinen Kollegen wegen seiner umgänglichen Art beliebt | riskante Mitläufer-Lesart ohne eigene Leistungsbasis |
 
 ### Loyalität und Verlässlichkeit
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| identifizierte sich mit den von ihm übernommenen Aufgaben | Identifikation mit dem Unternehmen fehlt |
-| achtete auf die Vertraulichkeit dienstlicher Angelegenheiten (auffällig betont) | Verschwiegenheitsrisiko |
-| war im Rahmen seiner Fähigkeiten loyal | eingeschränkte Loyalität |
-| nahm an Veranstaltungen teil (statt: war engagiert) | Distanz |
+| identifizierte sich mit den von ihm übernommenen Aufgaben | riskante Lesart: Identifikation mit dem Unternehmen fehlt |
+| achtete auf die Vertraulichkeit dienstlicher Angelegenheiten (auffällig betont) | riskantes Verschwiegenheitssignal |
+| war im Rahmen seiner Fähigkeiten loyal | riskante Lesart eingeschränkter Loyalität |
+| nahm an Veranstaltungen teil (statt: war engagiert) | riskantes Distanzsignal |
 
 ### Betriebsrats- und gewerkschaftliche Tätigkeit
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| setzte sich auch für die Belange der Belegschaft ein | Betriebsratsmitglied |
-| brachte sich in Mitarbeiterfragen aktiv ein | gewerkschaftliche Tätigkeit |
-| nahm seine Mitwirkungsrechte umfassend wahr | aktiver Betriebsrat |
+| setzte sich auch für die Belange der Belegschaft ein | riskanter Hinweis auf Betriebsratstätigkeit |
+| brachte sich in Mitarbeiterfragen aktiv ein | riskanter Hinweis auf gewerkschaftliche Tätigkeit |
+| nahm seine Mitwirkungsrechte umfassend wahr | riskanter Hinweis auf aktives Betriebsratsamt |
 
 ### Grenzverletzungs-Lesarten
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| war beliebt bei Mitarbeiterinnen | Belästigungs-Lesart |
-| brachte einen Hauch von Frische in das Team | Grenzverletzungsverdacht |
-| pflegte einen umgänglichen Stil mit dem weiblichen Personal | unangemessene Kontakte |
+| war beliebt bei Mitarbeiterinnen | riskante Belästigungs-Lesart |
+| brachte einen Hauch von Frische in das Team | riskante Grenzverletzungslesart |
+| pflegte einen umgänglichen Stil mit dem weiblichen Personal | riskante Lesart unangemessener Kontakte |
 
 ### Mitläufertum und Passivität
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| fügte sich gut in die Hierarchie ein | Mitläufer |
-| akzeptierte Entscheidungen seiner Vorgesetzten | keine eigene Meinung |
-| erledigte die ihm zugewiesenen Aufgaben | reine Erfüllung, kein Engagement |
-| zeigte sich anpassungsfähig | Opportunist |
+| fügte sich gut in die Hierarchie ein | riskante Mitläufer-Lesart |
+| akzeptierte Entscheidungen seiner Vorgesetzten | riskante Lesart fehlender eigener Meinung |
+| erledigte die ihm zugewiesenen Aufgaben | riskante Lesart reiner Erfüllung ohne Engagement |
+| zeigte sich anpassungsfähig | riskante Opportunismus-Lesart |
 
 ### Beendigungsformeln
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
 | „verlässt uns auf eigenen Wunsch" | neutrale Eigenkündigung |
-| „im gegenseitigen Einvernehmen" | meist arbeitgeberseitig initiierter Aufhebungsvertrag, oft nach Konflikt |
+| „im gegenseitigen Einvernehmen" | mögliche arbeitgeberseitige Initiative; Konfliktkontext prüfen |
 | „im besten gegenseitigen Einvernehmen" | echte einvernehmliche Trennung |
-| „Das Arbeitsverhältnis endete am …" (kommentarlos) | Distanzsignal, häufig Arbeitgeberkündigung |
-| Beendigung mitten im Monat ohne Erläuterung | Verdacht auf fristlose Kündigung — im Intake klären |
+| „Das Arbeitsverhältnis endete am …" (kommentarlos) | Distanzsignal; Arbeitgeberkündigung im Intake prüfen |
+| Beendigung mitten im Monat ohne Erläuterung | riskante Kündigungs-Lesart; im Intake klären |
 
 ### Wunsch- und Zukunftsformeln als Negativcode
 
 | Formulierung | Mögliche Lesart |
 | --- | --- |
-| „wir wünschen ihm für die Zukunft mehr Erfolg" | bisher erfolglos |
-| „künftig alles Gute, insbesondere Erfolg" | Erfolg blieb bislang aus |
-| „wünschen ihm Gesundheit" (betont) | Krankheits-Hinweis |
-| „hatte Gelegenheit, sich Kenntnisse anzueignen" | hat die Gelegenheit nicht genutzt |
+| „wir wünschen ihm für die Zukunft mehr Erfolg" | riskante Lesart: bisher erfolglos |
+| „künftig alles Gute, insbesondere Erfolg" | riskante Lesart: Erfolg blieb bislang aus |
+| „wünschen ihm Gesundheit" (betont) | riskanter Krankheits-Hinweis |
+| „hatte Gelegenheit, sich Kenntnisse anzueignen" | riskante Lesart: Gelegenheit nicht genutzt |
 
 ### Ironie und überzogenes Lob
 
@@ -706,7 +706,7 @@ Nach LAG Hamm 14.11.2016 – 12 Ta 475/16 ist auch **erkennbar nicht ernst gemei
 - „stets vollster Zufriedenheit" → Maximalsteigerer + Maximalformel = Note 1.
 - „zur Zufriedenheit" ohne Adverb → Note 3.
 - „bemüht" allein → Note 4, unabhängig vom Adverb davor.
-- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → Suchtmittel-Lesart, Rot, berichtigungsfähig.
+- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → riskante Suchtmittel-Lesart, Rot, als Formulierung berichtigungsfähig.
 - Geschäftsführerin ohne Loyalitätsaussage → Auslassungs-Code, Rot, berichtigungsfähig.
 
 ---
@@ -795,7 +795,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 | Prüfposten | Soll | Mängel |
 | --- | --- | --- |
 | Briefkopf | offizielles Firmenpapier, vollständige Anschrift | privates Papier, fehlende Anschrift |
-| Datum | Ausstellungsdatum entspricht oder folgt knapp dem Beendigungsdatum | rückdatiert, unklar, fehlt |
+| Datum | Ausstellungsdatum plausibel und nicht verschleiernd; Rückdatierung/Datierung im Kontext prüfen | fehlendes, unplausibles oder taktisch verschleierndes Datum |
 | Position | exakte Funktionsbezeichnung, eventuell mit Hierarchiestufe | unklare oder zu niedrige Bezeichnung |
 | Beschäftigungszeitraum | vollständig, ohne Lücken | Lücken, falsche Daten, Karenz nicht erwähnt |
 | Aufgabenkatalog | umfassend, mit Schlüsselverantwortungen | unvollständig, Schlüsselaufgaben fehlen |
@@ -807,7 +807,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 - Unterschrift durch HR-Sachbearbeiter statt durch unmittelbaren Vorgesetzten oder Geschäftsführung.
 - Papierzeugnis schließt mit Name und Funktion einer Person in Maschinenschrift, unterschrieben hat aber jemand anderes — nach BAG 21.09.1999 – 9 AZR 893/98 muss genau die genannte Person eigenhändig unterschreiben.
 - Beschäftigungszeitraum ohne Ende-Datum oder mit falschem Beginn.
-- Ausstellungsdatum 14 Tage nach Beendigung, obwohl gesetzlicher Anspruch sofort fällig ist.
+- Ausstellungsdatum liegt deutlich nach Beendigung und verschleiert Übergabe-/Verzugsfragen; nicht jedes spätere Ausstellungsdatum ist automatisch ein Berichtigungspunkt.
 - Sichtbare Tipp- oder Rechtschreibfehler → bei zeugnisrelevanten Positionen ein Berichtigungspunkt.
 
 **Grenze nach BAG 21.09.1999 – 9 AZR 893/98:** Die äußere Form muss den im Geschäftsleben üblichen Anforderungen genügen — aber zweimaliges Falten für den Postversand ist zulässig, solange das Original kopierfähig bleibt und die Knicke auf Kopien nicht durchschlagen (z. B. als Schwärzung). Knicke allein sind also kein Berichtigungspunkt.
@@ -831,7 +831,7 @@ Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliche
 
 ## Rechtlicher Anker
 
-- § 109 GewO — Anspruch auf wohlwollendes qualifiziertes Zeugnis; Berichtigungsanspruch.
+- § 109 GewO — Anspruch auf einfaches oder qualifiziertes Zeugnis; beim qualifizierten Zeugnis Berichtigung unrichtiger, unklarer oder unvollständiger Leistungs-/Verhaltensaussagen.
 - §§ 286, 288 BGB — Verzug und Fristsetzung; vorgerichtliche Anwaltskosten im arbeitsgerichtlichen Kontext wegen § 12a ArbGG/BAG 8 AZR 293/18 nicht schematisch als Verzugsschaden verlangen.
 - § 242 BGB — Treu und Glauben; Verwirkung bei langem Zuwarten.
 - §§ 195, 199 BGB — regelmäßige Verjährung drei Jahre ab Schluss des Jahres, in dem der Anspruch entstanden ist und Kenntnis vorliegt; Zeugnis-/Beendigungsjahr und Ausschlussfristen immer konkret prüfen.
@@ -946,7 +946,7 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 | --- | --- |
 | vollständige Zeugnisberichtigung | ein Monatsbruttogehalt |
 | einzelne Note im Hauptteil | ein Monatsbruttogehalt |
-| Schlussformel-Korrektur | ein Drittel bis halbes Monatsgehalt |
+| Schlussformel als Nebenpunkt | regelmäßig kein eigenständiger Streitwert; nur bei selbständigem Streit nach Live-Prüfung |
 | mehrere Punkte gemeinsam | ein Monatsbruttogehalt insgesamt |
 | erstmalige Erteilung | ein Monatsbruttogehalt |
 
