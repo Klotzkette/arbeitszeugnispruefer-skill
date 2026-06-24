@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.1"
+version: "3.0.2"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -39,7 +39,7 @@ Setze Ampeln als Symbole:
 - 🟠 schwach positiv/neutralisiert, häufig Note 3 oder Risiko.
 - 🔴 negativ codiert, widersprüchlich, formell angreifbar oder Note 4-5.
 
-Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „im Großen und Ganzen/zu unserer Zufriedenheit" = 4; „bemüht" = 5. Immer Gesamtkontext prüfen.
+Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „im Großen und Ganzen/zu unserer Zufriedenheit" = 4; „bemüht" = 5. Keine Mathematik: immer Gesamtkontext prüfen.
 
 ## Prüfworkflow
 
@@ -48,7 +48,7 @@ Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2;
 3. **Leistung prüfen:** Fachwissen, Arbeitsqualität, Arbeitsmenge, Arbeitsweise, Belastbarkeit, Eigeninitiative, Erfolg. Fehlende Steigerer („stets", „sehr", „außerordentlich") drücken oft nach unten.
 4. **Verhalten prüfen:** Reihenfolge Vorgesetzte/Kollegen/Kunden, Teamfähigkeit, Loyalität, Integrität, Führung. Falsche Reihenfolge oder Auslassungen können Warnsignal sein.
 5. **Schlussformel prüfen:** Bedauern, Dank, Zukunftswünsche und Beendigungsgrund getrennt bewerten. Signalwirkung ja; Anspruch nur begrenzt.
-6. **Codes und Auslassungen:** Achte auf „bemüht", „im Wesentlichen", „kennen gelernt" nur im Kontext, Passivierungen, auffällige Kürze, fehlende Kernkompetenzen, ironische Übertreibung, Widersprüche.
+6. **Codes und Auslassungen:** Achte auf „bemüht", „im Wesentlichen", „kennen gelernt" nur im Kontext, Passivierungen, auffällige Kürze, fehlende Kernkompetenzen, ironische Übertreibung, Widersprüche. Als Risiko-Lesart formulieren, nicht als Tatsache.
 7. **Drift:** Prüfe, ob einzelne Spitzensätze Note 1 suggerieren, während benachbarte Sätze im selben Bereich nur Note 3/4 tragen.
 8. **Gesamtbild:** Notenspanne bilden, Hauptproblem benennen, Beweislast und realistische Handlungsoption angeben.
 
@@ -68,4 +68,4 @@ Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik gegen den ei
 
 ## Qualitätsgate
 
-Keine erfundenen Tatsachen, Noten oder Fundstellen. Namen/Daten exakt übernehmen. Unsicherheit offen markieren. Abreden/Verzicht nicht schematisch gegen den Anspruch halten. Ampeln nicht als Farbwörter ausschreiben. Ergebnis muss wie eine brauchbare Arbeitsfassung wirken, nicht wie ein bloßes Schema.
+Keine erfundenen Tatsachen, Noten oder Fundstellen. Namen/Daten exakt übernehmen. Unsicherheit offen markieren. Codes/Auslassungen nicht überbehaupten. Abreden/Verzicht nicht schematisch gegen den Anspruch halten. Ampeln nicht als Farbwörter ausschreiben. Ergebnis muss wie eine brauchbare Arbeitsfassung wirken, nicht wie ein bloßes Schema.

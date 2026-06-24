@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.1"
+version: "3.0.2"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -406,6 +406,8 @@ Vollständige Schlussformel (Note 1 – Note 2) besteht aus **fünf** Bausteinen
 
 Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus — prüfe immer den objektiven Empfängerhorizont im Gesamtkontext.
 
+**Kontextfilter vor jeder Code-Diagnose:** Erst Zeugnisart, Position, Branche, Aufgabenprofil, Kunden-/Führungsverantwortung, Länge des Arbeitsverhältnisses und vorhandene Belege prüfen. Eine riskante Lesart ist noch keine Tatsachenbehauptung über Alkohol, Krankheit, Diebstahl, Konflikt oder Loyalitätsbruch. In der Nutzerausgabe deshalb Formulierungen wie „kann so gelesen werden", „riskante Lesart", „klärungsbedürftig" verwenden und nicht behaupten, die verdeckte Tatsache liege fest.
+
 ## Leistung und Arbeitsqualität
 
 | Formulierung | Decodierung | Ampel |
@@ -477,7 +479,7 @@ Quelle für jede Decodierung: Zeugniswahrheit und verständiges Wohlwollen aus d
 
 # Teil D — Ampel-Flaggen, Steigerungsadverbien und negative Codeworte
 
-Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatrix gebraucht werden: das Steigerungsadverb steuert die Note, die Ampel ordnet die Tendenz, der Codewort-Katalog deckt verdeckte Negativsignale auf.
+Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatrix gebraucht werden: das Steigerungsadverb prägt die Notentendenz, die Ampel ordnet die Tendenz, der Codewort-Katalog deckt verdeckte Negativsignale auf.
 
 ## Rechtlicher Anker
 
@@ -486,7 +488,7 @@ Diese Sektion bündelt vier Werkzeuge, die zusammen für die satzweise Notenmatr
 
 ## D.1 — Steigerungsadverbien
 
-Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. Ein fehlendes Adverb ist eine ganze Note Abzug.
+Die deutsche Zeugnissprache arbeitet stark mit Adverbien vor der Bewertung. Ein fehlendes oder schwaches Adverb kann die Notentendenz deutlich senken; es ist aber keine Rechenregel. Maßgeblich bleiben Wortlaut, Themenbereich, Gesamtbild und Beweislast.
 
 ### Maximalsteigerer (Note 1)
 
@@ -505,11 +507,11 @@ Die deutsche Zeugnissprache regelt die Note über das Adverb vor der Bewertung. 
 
 | Adverb | Wirkung |
 | --- | --- |
-| stets | hebt um eine Note |
-| jederzeit | hebt um eine Note |
-| immer | hebt um eine Note |
-| durchgehend | hebt um eine Note |
-| zu jeder Zeit | hebt um eine Note |
+| stets | regelmäßig deutliche Aufwertung |
+| jederzeit | regelmäßig deutliche Aufwertung |
+| immer | regelmäßig deutliche Aufwertung |
+| durchgehend | regelmäßig deutliche Aufwertung |
+| zu jeder Zeit | regelmäßig deutliche Aufwertung |
 | ohne Ausnahme | Bereichssteigerer, Note 1 |
 
 ### Scheinsteigerer (Note 2 bis 3)
@@ -698,22 +700,22 @@ Nach LAG Hamm 14.11.2016 – 12 Ta 475/16 ist auch **erkennbar nicht ernst gemei
 | Lob ausschließlich für Selbstverständlichkeiten („stets pünktlich" als Hauptaussage einer Fachkraft) | es gab sonst nichts Positives zu sagen |
 | Übertreibung nur an einer Stelle, Rest blass | gezielte Entwertung der Gesamtaussage |
 
-### Auslassungssignale (Schweigen als Code)
+### Auslassungssignale (Schweigen als Risikosignal)
 
-| Schweigen | Bedeutung |
+| Schweigen | Risiko-/Empfängerlesart |
 | --- | --- |
-| keine Aussage zur Ehrlichkeit bei Kassentätigkeit | Vertrauensproblem |
-| keine Aussage zur Loyalität bei Führungskraft | Loyalitätsproblem |
-| keine Aussage zur Belastbarkeit bei stressrelevanter Position | Belastbarkeitsdefizit |
-| keine Aussage zum Kundenverhalten bei Kundenposition | Kundenproblem |
+| keine Aussage zur Ehrlichkeit bei Kassentätigkeit | kann Vertrauensfragen auslösen |
+| keine Aussage zur Loyalität bei Führungskraft | kann Loyalitätsfragen öffnen |
+| keine Aussage zur Belastbarkeit bei stressrelevanter Position | kann Belastbarkeitszweifel wecken |
+| keine Aussage zum Kundenverhalten bei Kundenposition | kann Kundenkontakt oder Kundenzufriedenheit ausklammern |
 
 ## D.6 — Anwendungsbeispiele
 
 - „stets vollster Zufriedenheit" → Maximalsteigerer + Maximalformel = Note 1.
-- „zur Zufriedenheit" ohne Adverb → Note 3.
-- „bemüht" allein → Note 4, unabhängig vom Adverb davor.
-- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → riskante Suchtmittel-Lesart, Rot, als Formulierung berichtigungsfähig.
-- Geschäftsführerin ohne Loyalitätsaussage → Auslassungs-Code, Rot, berichtigungsfähig.
+- „zu unserer Zufriedenheit" ohne „voll/volle/vollen" und ohne Steigerer → regelmäßig Note 4.
+- „bemüht" allein → regelmäßig Note 5, unabhängig vom Adverb davor.
+- Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → riskante Suchtmittel-Lesart, Rot als Formulierungsrisiko; nicht als Tatsachenbehauptung ausgeben.
+- Geschäftsführerin ohne Loyalitätsaussage → Auslassungsrisiko, Rot, berichtigungsfähig bei rollenbezogener Erwartbarkeit.
 
 ---
 
@@ -752,19 +754,19 @@ Drift entsteht, wenn innerhalb desselben Themenblocks (Fachkenntnisse, Arbeitswe
 2. Wurde die Zufriedenheitsformel bereits ausgewertet?
 3. Ziel der Drift-Analyse: Klageantrag oder Mandantenberatung?
 
-## E.2 — Auslassungen (Schweigen als Code)
+## E.2 — Auslassungen (Schweigen als Risikosignal)
 
-Was fehlt, wiegt oft schwerer als das Geschriebene. Pflichtaussagen ergeben sich aus der Position.
+Was fehlt, kann schwerer wiegen als das Geschriebene. Auslassungen sind aber nur dann belastbar, wenn die Aussage nach Position, Aufgabenprofil, Branche oder Zeugnisart erwartbar war und keine neutrale Erklärung vorliegt. Diagnose deshalb als **Risiko-/Empfängerlesart** formulieren, nicht als feststehende Tatsache.
 
-| Fehlende Aussage | Implikation | Ampel |
+| Fehlende Aussage | Risiko-/Empfängerlesart | Ampel |
 | --- | --- | --- |
-| keine Ehrlichkeits- oder Integritätsaussage | Verdacht auf Unregelmäßigkeiten | Rot |
-| keine Pünktlichkeitsaussage bei Schichtjob | häufige Verspätungen oder Fehlzeiten | Orange |
-| keine Loyalitätsaussage bei Führungskraft | Loyalitätsproblem | Rot |
-| kein Wort zu Kunden bei Kundenposition | Probleme mit Kunden | Rot |
-| keine Eigeninitiative-Aussage bei Fachkraft | Passivität | Orange |
-| fehlender Führungsabschnitt bei Führungskraft | schlechte Führung | Rot |
-| keine Belastbarkeitsaussage bei stressrelevanter Position | Belastbarkeitsdefizit | Rot |
+| keine Ehrlichkeits- oder Integritätsaussage | kann bei Vertrauenspositionen Fragen nach Zuverlässigkeit/Integrität auslösen | Rot |
+| keine Pünktlichkeitsaussage bei Schichtjob | kann auf Verspätungs- oder Fehlzeitenrisiko gelesen werden | Orange |
+| keine Loyalitätsaussage bei Führungskraft | kann Loyalitäts- oder Vertraulichkeitsfragen öffnen | Rot |
+| kein Wort zu Kunden bei Kundenposition | kann Kundenkontakt ausklammern oder dortige Schwächen nahelegen | Rot |
+| keine Eigeninitiative-Aussage bei Fachkraft | kann Passivität signalisieren | Orange |
+| fehlender Führungsabschnitt bei Führungskraft | kann Führungsleistung aus der Beurteilung herausnehmen | Rot |
+| keine Belastbarkeitsaussage bei stressrelevanter Position | kann Belastbarkeitszweifel wecken | Rot |
 
 ## E.3 — Negationen und doppelte Verneinungen
 
@@ -792,7 +794,7 @@ Faustregel: Wer Negativität an sich nicht thematisieren müsste, sie aber expli
 
 - „Herr Braun arbeitete stets eigenverantwortlich" + später „Er erledigte die nach Anweisung zugewiesenen Aufgaben zuverlässig" → direkter inhaltlicher Widerspruch.
 - Leistung „bemüht" (Note 4) + vollständige warme Schlussformel → Gefälligkeitsschluss.
-- Buchhalter mit lupenreiner Leistungsbeurteilung, aber kein Wort zu Zuverlässigkeit oder Vertrauen → das Schweigen ist das rote Signal.
+- Buchhalter mit lupenreiner Leistungsbeurteilung, aber kein Wort zu Zuverlässigkeit oder Vertrauen → das Schweigen kann bei Vertrauenspositionen ein rotes Risikosignal sein.
 
 ## E.5 — Formalia und Kopfdaten
 
@@ -827,7 +829,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 
 ## E.6 — Anwendung in der Notenmatrix
 
-Sobald Drift, Auslassungen, Negationen oder Widersprüche erkannt sind, fließen sie nicht in die Einzelnote des Satzes ein, sondern in das **Hauptbefundkapitel** des Mandantenberichts. Sie sind das, was bei einer Berichtigungsforderung als „strukturelles Argument" trägt, weil sie eine Gesamtnote begründen, nicht eine Einzelformulierung.
+Sobald Drift, Auslassungen, Negationen oder Widersprüche erkannt sind, fließen sie nicht mechanisch in die Einzelnote des Satzes ein, sondern in das **Hauptbefundkapitel** des Mandantenberichts. Sie tragen eine Berichtigungsforderung nur, wenn der objektive Empfängerhorizont und der Zeugniszusammenhang sie stützen.
 
 ---
 
@@ -926,9 +928,9 @@ Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
 | Befund | Klagbarkeit | Erfolgsaussicht |
 | --- | --- | --- |
 | „bemüht" als Leistungsformel | klagbar | hoch |
-| falsche Reihenfolge im Sozialverhalten | klagbar | hoch |
+| falsche Reihenfolge im Sozialverhalten | klagbar bei rollenrelevantem Kontakt und fehlender neutraler Erklärung | mittel bis hoch |
 | unvollständige Schlussformel | meist Verhandlungspunkt, Klage nur mit Zusatzkontext | niedrig bis mittel |
-| negatives Codewort aus dem Katalog | klagbar | hoch |
+| negatives Codewort aus dem Katalog | klagbar bei objektiv verdeckter Negativaussage | mittel bis hoch |
 | Drift im selben Themenbereich | klagbar bei nachgewiesenem Schaufenster | mittel |
 | konstante Note 3 in weichen Bereichen | klagbar bei Wohlwollensverstoß | mittel |
 | Note 3 bei aktenkundig besserer Leistung | klagbar (Arbeitnehmer beweisbelastet) | mittel |
@@ -1124,15 +1126,15 @@ Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
 
 ## G.4 — Sonderfall A: Leitende Positionen
 
-Führungskräftezeugnisse haben fünf zusätzliche Pflichtbausteine, deren Fehlen jeweils ein eigener Berichtigungspunkt ist.
+Führungskräftezeugnisse haben typische Erwartungsbausteine. Ihr Fehlen ist nicht automatisch ein Mangel, kann aber bei entsprechender Rolle ein eigener Berichtigungspunkt sein.
 
-| Erwartungsbaustein | Fehlen bedeutet | Ampel |
+| Erwartungsbaustein | Fehlen kann gelesen werden als | Ampel |
 | --- | --- | --- |
-| Mitarbeiterführung und -entwicklung | Führungsversagen | rot |
-| Strategische Verantwortung | keine Strategiebeteiligung | orange bis rot |
-| Budget- und P&L-Verantwortung | keine wirtschaftliche Führungsrolle | orange |
-| Repräsentation nach außen | keine externe Wirkung | orange |
-| Loyalitätsaussage gegenüber Gesellschaftern oder Vorstand | Loyalitätsproblem | rot |
+| Mitarbeiterführung und -entwicklung | Führungsleistung ausgeklammert | rot |
+| Strategische Verantwortung | Strategiebeteiligung unklar oder nicht belegt | orange bis rot |
+| Budget- und P&L-Verantwortung | wirtschaftliche Führungsrolle unklar | orange |
+| Repräsentation nach außen | externe Wirkung ausgeklammert | orange |
+| Loyalitätsaussage gegenüber Gesellschaftern oder Vorstand | Loyalitäts- oder Vertraulichkeitsfrage | rot |
 
 **Beispiel grüne Führungsaussage (Note 1):** „Frau Dr. Hoffmann führte ihre über 80 Mitarbeiter mit klarem Ziel, hoher Empathie und nachhaltigem Erfolg. Unter ihrer Leitung verzeichnete der Bereich eine Steigerung der Mitarbeiterzufriedenheit und eine signifikante Verbesserung der Ergebnisse."
 
@@ -1176,13 +1178,13 @@ Führungskräftezeugnisse haben fünf zusätzliche Pflichtbausteine, deren Fehle
 
 Wer im Vertrieb ohne Zielerreichungssatz dasteht oder in der Pflege ohne Patientenkontakt-Satz, hat ein verdecktes Negativsignal — unabhängig davon, wie gut die übrigen Sätze klingen.
 
-| Branche | Pflichtformulierung | Fehlen bedeutet |
+| Branche | Erwartbare Aussage | Fehlen kann gelesen werden als |
 | --- | --- | --- |
 | Vertrieb | Zielerreichung, Kundenbindung, Neukundengewinnung | unterdurchschnittliche Vertriebsleistung |
 | Recht und Kanzlei | Mandatsführung, Schriftsatzqualität | Qualitätsprobleme im Kernjob |
 | IT | Projektabschlüsse, Technologiekompetenz | fehlende Kernergebnisse |
 | Pflege | Patientenkontakt, Empathie | Probleme mit Patienten |
-| Finanzwesen und Buchhaltung | Zuverlässigkeit, Genauigkeit, Vertrauen | Verdacht auf Unregelmäßigkeiten |
+| Finanzwesen und Buchhaltung | Zuverlässigkeit, Genauigkeit, Vertrauen | Integritäts- oder Sorgfaltsfragen |
 | Personalwesen | Mitarbeiterentwicklung, Verhandlungsführung | Schwäche im Kernbereich |
 | Einzelhandel | Kassenführung, Warenkenntnis | Kassenproblem |
 | Öffentlicher Dienst | Gesetzeskenntnis, Verfahrensführung, Bürgerkontakt | mangelhafte Amtsführung |
