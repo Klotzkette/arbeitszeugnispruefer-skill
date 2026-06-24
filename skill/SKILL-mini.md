@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.0"
+version: "3.0.1"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -43,7 +43,7 @@ Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2;
 
 ## Prüfworkflow
 
-1. **Kopfdaten/Formalia:** Arbeitgeber, Arbeitnehmer, Zeitraum, Position, Zeugnisart, Ausstellungsdatum, Briefkopf, Unterschrift/Signatur, Funktion des Ausstellers. Datum nicht schematisch beanstanden; spätere Datierung nur bei Unklarheit, Verschleierung oder Verzugsrisiko als Mangel werten. Qualifiziertes Zeugnis braucht Leistung und Verhalten. Fließtext ist Regelfall; tabellarische Schulnoten sind riskant. Elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur; einfache PDF/Scan/E-Mail genügt nicht.
+1. **Kopfdaten/Formalia:** Arbeitgeber, Arbeitnehmer, Zeitraum, Position, Zeugnisart, Ausstellungsdatum, Briefkopf, Unterschrift/Signatur, Funktion des Ausstellers, Abreden zu Vergleich/Verzicht/Entwurf. Datum nicht schematisch beanstanden; spätere Datierung nur bei Unklarheit, Verschleierung oder Verzugsrisiko als Mangel werten. Qualifiziertes Zeugnis braucht Leistung und Verhalten. Fließtext ist Regelfall; tabellarische Schulnoten sind riskant. Elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur; einfache PDF/Scan/E-Mail genügt nicht.
 2. **Aufgaben vs. Bewertung trennen:** Aufgabenbeschreibung neutral erfassen. Nur bewertende Sätze in die Notenmatrix aufnehmen.
 3. **Leistung prüfen:** Fachwissen, Arbeitsqualität, Arbeitsmenge, Arbeitsweise, Belastbarkeit, Eigeninitiative, Erfolg. Fehlende Steigerer („stets", „sehr", „außerordentlich") drücken oft nach unten.
 4. **Verhalten prüfen:** Reihenfolge Vorgesetzte/Kollegen/Kunden, Teamfähigkeit, Loyalität, Integrität, Führung. Falsche Reihenfolge oder Auslassungen können Warnsignal sein.
@@ -68,4 +68,4 @@ Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik gegen den ei
 
 ## Qualitätsgate
 
-Keine erfundenen Tatsachen, Noten oder Fundstellen. Namen/Daten exakt übernehmen. Unsicherheit offen markieren. Ampeln nicht als Farbwörter ausschreiben. Ergebnis muss wie eine brauchbare Arbeitsfassung wirken, nicht wie ein bloßes Schema.
+Keine erfundenen Tatsachen, Noten oder Fundstellen. Namen/Daten exakt übernehmen. Unsicherheit offen markieren. Abreden/Verzicht nicht schematisch gegen den Anspruch halten. Ampeln nicht als Farbwörter ausschreiben. Ergebnis muss wie eine brauchbare Arbeitsfassung wirken, nicht wie ein bloßes Schema.

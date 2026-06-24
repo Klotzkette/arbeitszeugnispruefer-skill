@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.0"
+version: "3.0.1"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -54,8 +54,8 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | **BAG, Urteil v. 20.02.2001 – 9 AZR 44/00** | Beginn der ständigen Linie: kein gesetzlicher Anspruch auf eine Schlussformel mit Dank und guten Wünschen. Das Fehlen der Schlusssätze macht das Zeugnis nicht unvollständig und ist kein unzulässiges Geheimzeichen. | Schlussformel (Teil B) |
 | **BAG, Urteil v. 11.12.2012 – 9 AZR 227/11** | Kein Anspruch auf Dank und gute Wünsche in der Schlussformel; Empfindungsäußerungen des Arbeitgebers gehören nicht zum geschuldeten Zeugnisinhalt. Ist der Arbeitnehmer mit einer erteilten Schlussformel unzufrieden, kann er nur ein Zeugnis **ohne** Schlussformel verlangen — keine Umformulierung. | Schlussformel (Teil B), Anspruchs-Realität |
 | **BAG, Urteil v. 25.01.2022 – 9 AZR 146/21** | Bestätigung der Linie: kein Anspruch auf eine Schlussformel; Abwägung mit der Meinungsfreiheit des Arbeitgebers (Art. 5 Abs. 1 GG). | Schlussformel (Teil B) |
-| **BAG, Urteil v. 21.06.2005 – 9 AZR 352/04** | Gebot der Zeugnisklarheit (§ 109 Abs. 2 GewO): Maßgeblich ist der objektive Empfängerhorizont, nicht die Absicht des Arbeitgebers. Die Formulierung „kennen gelernt" drückt für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen. | Empfängerhorizont (Stufe 4), Teil A |
-| **BAG, Urteil v. 15.11.2011 – 9 AZR 386/10** | Bestätigung: „kennen gelernt" ist allein und losgelöst vom übrigen Zeugnisinhalt kein unzulässiger Geheimcode. Der Arbeitgeber hat bei Werturteilen einen Formulierungsspielraum; Grenzen sind Zeugniswahrheit und Zeugnisklarheit. | Teil A, Grenzen der Decodierung |
+| **BAG, Urteil v. 21.06.2005 – 9 AZR 352/04** | Zeugnisberichtigung/Selbstbindung: Erteilt der Arbeitgeber nach berechtigtem Berichtigungsverlangen ein neues Zeugnis, ist er an seine bisherige Verhaltensbeurteilung gebunden, soweit keine neuen Umstände eine schlechtere Beurteilung rechtfertigen. | Folgefassungen, Selbstbindung, Berichtigungsstrategie (Teil B, Teil F) |
+| **BAG, Urteil v. 15.11.2011 – 9 AZR 386/10** | Zeugnisklarheit und objektiver Empfängerhorizont: „kennen gelernt" ist allein und losgelöst vom übrigen Zeugnisinhalt kein unzulässiger Geheimcode. Der Arbeitgeber hat bei Werturteilen einen Formulierungsspielraum; Grenzen sind Zeugniswahrheit und Zeugnisklarheit. | Teil A, Empfängerhorizont, Grenzen der Decodierung |
 | **BAG, Urteil v. 21.09.1999 – 9 AZR 893/98** | Äußere Form: Das Zeugnis muss den im Geschäftsleben üblichen Anforderungen genügen; zweimaliges Falten für den Versand ist zulässig, wenn das Original kopierfähig bleibt und die Knicke nicht auf Kopien durchschlagen. Schließt das Zeugnis mit Name und Funktion einer Person in Maschinenschrift, muss genau diese Person eigenhändig unterschreiben. | Formalia (Teil E.5) |
 | **BAG, Urteil v. 27.04.2021 – 9 AZR 262/20** | Ein qualifiziertes Zeugnis in tabellarischer Form (Ankreuz-/Schulnotenschema) erfüllt den Anspruch aus § 109 GewO regelmäßig nicht. Die erforderliche individuelle Hervorhebung und Differenzierung verlangt regelmäßig Fließtext. | Formalia (Teil E.5) |
 | **BAG, Urteil v. 06.06.2023 – 9 AZR 272/22** | Eine einmal erteilte Dankes- und Wunschformel darf der Arbeitgeber in einer späteren Zeugnisfassung nicht allein deshalb streichen, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat — Verstoß gegen das Maßregelungsverbot (§ 612a BGB), das auch nach Beendigung des Arbeitsverhältnisses gilt. | Schlussformel (Teil B), Berichtigungsstrategie (Teil F) |
@@ -79,6 +79,7 @@ Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und
 2. **Beweislast realistisch kommunizieren.** Wer Note 2 statt Note 3 will, muss liefern (9 AZR 12/03; 9 AZR 584/13). Branchenüblichkeit guter Noten ist kein Argument vor Gericht.
 3. **Schlussformel nüchtern einordnen.** Die Signalwirkung ist real, der Anspruch ist es nicht (9 AZR 44/00; 9 AZR 227/11; 9 AZR 146/21). Die Schlussformel gehört in die Verhandlung, nicht in den Klageantrag — und bei erteilter, missliebiger Schlussformel ist die einzige einklagbare Alternative das Zeugnis ohne Schlussformel.
 4. **Verzichtsklauseln prüfen.** Ein vor Beendigung erklärter Zukunftsverzicht auf ein qualifiziertes Zeugnis ist unwirksam (2 AZR 96/24 (B)). Aufhebungs-, Vergleichs- und Erledigungsklauseln deshalb immer am tatsächlichen Beendigungszeitpunkt und am konkreten Zeugnisanspruch messen.
+5. **Folgefassungen gegen Verschlechterung sichern.** Bei Berichtigungsverlangen und neuen Zeugnisfassungen prüfen, ob der Arbeitgeber ohne neue Tatsachen von früheren Leistungs- oder Verhaltensbeurteilungen abrückt (9 AZR 352/04). Schlussformeln bleiben gesondert zu behandeln: grundsätzlich kein Anspruch, aber Schutz gegen maßregelnde Streichung nach berechtigtem Änderungsverlangen.
 
 ## Wann dieser Skill greift
 
@@ -149,6 +150,7 @@ Erfasse die folgenden Punkte **aus dem Material** — nicht per Interview. Was f
 | Zeitpunkt | Datum Ausstellung, Datum Erhalt, Bewerbungs- oder Vergleichsdruck. |
 | Vergleichsmaterial | Vorzeugnis, Zwischenzeugnis, Zielvereinbarungen, Boni, Beurteilungsbögen, Lob-Mails. |
 | Frist | Schon eine Klagefrist im Raum? Vorprozessuale Berichtigungsbitte schon ausgesprochen? |
+| Abreden | Aufhebungsvertrag, Vergleich, Erledigungsklausel, Zeugnisverzicht oder Zeugnisentwurf; Zeitpunkt der Erklärung. |
 
 Notiere die Antworten in einem Mandatsblatt. Wenn das Zeugnis als PDF kommt, prüfe zuerst die formale Ebene aus [Teil E](#teil-e--analyse-techniken-drift-auslassungen-widersprüche-negationen-formalia) (Briefkopf, Datum, Unterschriftsberechtigung, vollständige Beschäftigungsangabe).
 
@@ -214,6 +216,7 @@ Halte folgende Trennungen sauber:
 - Schlussformel-**Signalwirkung** ist nicht Schlussformel-**Anspruch**. Eine kalte Schlussformel signalisiert, lässt sich aber nur in Ausnahmefällen einklagen.
 - **Wahrheits-** vor **Wohlwollens**-pflicht: Ein gutes Zeugnis darf nicht unwahr sein. Wohlwollen steuert die Ausdrucksweise, ersetzt aber keine Tatsachen.
 - **Beweislast**: Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist der Ausgangspunkt. Besser als Note 3 muss der Arbeitnehmer darlegen und beweisen; schlechter als Note 3 muss der Arbeitgeber darlegen und beweisen (BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13 — Branchenüblichkeit guter Noten ändert daran nichts).
+- **Abreden-Check**: Vergleich, Erledigungsklausel, Zeugnisentwurf und Verzicht trennen. Vor Beendigung kein Zukunftsverzicht auf das qualifizierte Zeugnis; Entwurfsklauseln bleiben an Zeugniswahrheit und Zeugnisklarheit gebunden.
 
 ### 7 — Mandantenbericht und Verhandlungsmodul
 
@@ -278,7 +281,7 @@ Wenn ein **Entwurf** vor Erteilung geprüft werden soll (HR, Geschäftsführung,
 1. Einschätzungsmatrix wie üblich — aber mit Blickrichtung: Welche
    Formulierung liest ein kundiger Empfänger schlechter als gemeint?
 2. Unbeabsichtigte Codes markieren (Teil C–D) und neutral umformulieren.
-3. Klarheits-Check nach § 109 Abs. 2 GewO und BAG 9 AZR 352/04 / 386/10:
+3. Klarheits-Check nach § 109 Abs. 2 GewO und BAG 9 AZR 386/10:
    keine mehrdeutigen, ironischen oder überzogenen Formulierungen
    (LAG Hamm 12 Ta 475/16).
 4. Formalia-Check nach Teil E.5 (Fließtext, Unterschrift/Signatur,
@@ -302,6 +305,7 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 - Ist die Zeugnisart richtig bestimmt?
 - Sind Schlussformel-Signal und Schlussformel-Anspruch getrennt?
 - Ist die Beweislast richtig herum dargestellt (Note 3 als Ausgangspunkt; besser als Note 3 Arbeitnehmer, schlechter als Note 3 Arbeitgeber)?
+- Sind Vergleichs-, Erledigungs-, Verzichts- oder Entwurfsklauseln erkannt und nach Zeitpunkt, Zeugnisart und Wahrheit/Klarheit eingeordnet?
 - Keine erfundenen Fundstellen, Zeugnisinhalte oder Noten?
 - Jedes Rechtsprechungszitat gegen den [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen) abgeglichen — und bei Schriftsatzverwendung erneut live verifiziert?
 - Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
@@ -341,7 +345,7 @@ Die Hauptformel der zusammenfassenden Leistungsbeurteilung. Ihre Bestandteile tr
 ## Sätze, die wie eine Hauptformel klingen, aber keine sind
 
 - „Frau X war eine geschätzte Mitarbeiterin." → kein Notenträger, nur freundliches Vorgeplänkel.
-- „Wir haben Herrn Y kennengelernt als jemanden, der …" → **Vorsicht vor Übercodierung:** Nach BAG (21.06.2005 – 9 AZR 352/04; 15.11.2011 – 9 AZR 386/10) drückt „kennen gelernt" für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen — allein ist es kein Geheimcode. Negativsignal nur, wenn der Gesamtkontext (Drift, Auslassungen, schwache Hauptformel) es trägt.
+- „Wir haben Herrn Y kennengelernt als jemanden, der …" → **Vorsicht vor Übercodierung:** Nach BAG 15.11.2011 – 9 AZR 386/10 drückt „kennen gelernt" für sich genommen **nicht** aus, dass die genannten Eigenschaften fehlen — allein ist es kein Geheimcode. Negativsignal nur, wenn der Gesamtkontext (Drift, Auslassungen, schwache Hauptformel) es trägt.
 - „Sein Beitrag entsprach den betrieblichen Anforderungen." → ungebräuchlich, im Zweifel Note 4.
 
 ## Quellen für die Notenstufenmatrix
@@ -467,7 +471,7 @@ Standardformulierungen nach Themenachsen. Die Tabellen sind kein Automatismus �
 | „hat sich im Rahmen seiner Aufgaben bewährt" | Hinweis: ggf. außerhalb der Aufgaben nicht | Orange |
 | „hat zur Erfüllung der Aufgaben beigetragen" | Mittelmaß | Orange |
 
-Quelle für jede Decodierung: Zeugniswahrheit und verständiges Wohlwollen aus der BAG-Linie; § 109 Abs. 2 GewO für Klarheit, Verständlichkeit und Geheimzeichenverbot. Zur Beweislast und zum Gebot der Zeugnisklarheit siehe [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Beachte die dort hinterlegte Grenze der Decodierung (BAG 9 AZR 352/04, 9 AZR 386/10): Nicht jede blasse Formulierung ist ein Geheimcode — entscheidend ist der objektive Empfängerhorizont im Gesamtkontext.
+Quelle für jede Decodierung: Zeugniswahrheit und verständiges Wohlwollen aus der BAG-Linie; § 109 Abs. 2 GewO für Klarheit, Verständlichkeit und Geheimzeichenverbot. Zur Beweislast und zum Gebot der Zeugnisklarheit siehe [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen). Beachte die dort hinterlegte Grenze der Decodierung (BAG 9 AZR 386/10): Nicht jede blasse Formulierung ist ein Geheimcode — entscheidend ist der objektive Empfängerhorizont im Gesamtkontext.
 
 ---
 
@@ -863,7 +867,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 >
 > unter Beifügung der auf uns lautenden Vollmacht zeigen wir die anwaltliche Vertretung der Mandantin [Vorname Name], geboren am [Datum], an. Bei Ihnen bestand vom [Datum] bis zum [Datum] ein Arbeitsverhältnis.
 >
-> Unsere Mandantin hat am [Datum] das beigefügte qualifizierte Zeugnis erhalten. Es entspricht nicht den Ansprüchen aus § 109 GewO. Aus dem Wohlwollens- und Wahrheitsgebot ergeben sich Berichtigungspflichten zu folgenden Punkten:
+> Unsere Mandantin hat am [Datum] das beigefügte qualifizierte Zeugnis erhalten. Es entspricht nicht den Ansprüchen aus § 109 GewO. Aus Zeugniswahrheit, verständigem Wohlwollen und dem Klarheits-/Geheimzeichenverbot des § 109 Abs. 2 GewO ergeben sich Berichtigungspflichten zu folgenden Punkten:
 >
 > **Punkt 1 — Leistungsformel.** Originalwortlaut: „[…]". In der Zeugnissprache bedeutet dies [Geheimcode/Drift/Auslassung]. Wir bitten um folgende Neufassung: „[…]".
 >
@@ -886,6 +890,7 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 | Kosten | vorgerichtliche Anwaltskosten im arbeitsgerichtlichen Kontext nicht standardmäßig als Verzugsschaden verlangen; § 12a ArbGG und BAG 8 AZR 293/18 prüfen |
 | konkrete Wortlaute statt „bitte verbessern" | pro Streitstelle alt + neu in Anführungszeichen |
 | Belege für Geheimcodes | BAG-Rechtsprechung live verifizieren |
+| Verzichtsklauseln | vor Beendigung erklärten Zukunftsverzicht nicht als Ausschlussgrund behandeln; BAG 2 AZR 96/24 (B) prüfen |
 | Frist kalendermäßig | konkretes Datum |
 | Klageandrohung nur am Ende | einmal, knapp |
 
