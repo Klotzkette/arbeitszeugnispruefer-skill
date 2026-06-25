@@ -20,6 +20,14 @@ Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
+## Testakten zum Üben — Download
+
+Zehn fiktive Arbeitszeugnisse aus zehn Branchen (PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Filialleiterin Sparkasse, Spedition, Hotel-Empfang, Altenpflege, Industriemechaniker) zum Durchtesten des Skills. Wahlweise als ZIP mit allen Einzel-PDFs oder als ein zusammenhängendes Gesamt-PDF.
+
+- [📦 Akten-ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip) — ideal, um die Zeugnisse einzeln in den KI-Chat zu geben.
+- [📄 Gesamt-PDF aller 10 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) — ideal, um alle Zeugnisse am Stück hochzuladen oder zu drucken.
+- [🗂️ Einzelordner im Repository](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) — mit Ergänzungs-Korrespondenz, Vollvermerken und allen Quelldateien je Akte.
+
 ## Anwendung: So einfach geht's
 
 Weg A — Text kopieren:
@@ -95,9 +103,9 @@ Die `SKILL.md` enthält einen eigenen Rechtsprechungsanker mit den Leitentscheid
 
 Dieser Skill ist aus dem Plugin `arbeitszeugnis-analyse` der Sammlung [`claude-fuer-deutsches-recht`](https://github.com/Klotzkette/claude-fuer-deutsches-recht) extrahiert und konsolidiert. Die ursprünglichen 50 Einzelskills wurden in eine einzige `SKILL.md` zusammengeführt, ohne fachliche Substanz zu verlieren.
 
-## Testakte zum Üben
+## Testakten zum Üben — Details
 
-Im Ordner [`testakten/arbeitszeugnis-analyse-bluehendes-leben/`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) liegen zehn fiktive Arbeitszeugnisse aus zehn Branchen (PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Filialleiterin Sparkasse, Spedition, Hotel-Empfang, Altenpflege, Industriemechaniker) zum Durchtesten des Skills, plus ergänzende Korrespondenz und Vollvermerke.
+Der Direktdownload steht oben im Abschnitt [Testakten zum Üben — Download](#testakten-zum-üben--download). Im Ordner [`testakten/arbeitszeugnis-analyse-bluehendes-leben/`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) liegen die zehn fiktiven Arbeitszeugnisse zusätzlich als einzelne Akten mit Korrespondenz und Vollvermerken — PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Filialleiterin Sparkasse, Spedition, Hotel-Empfang, Altenpflege, Industriemechaniker.
 
 ## 🚨 KEINE Aussage über Berufsrecht, Datenschutz, KI-VO oder Beschlagnahmeverbote
 
