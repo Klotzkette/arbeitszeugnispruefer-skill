@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.3"
+version: "3.0.4"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -40,7 +40,7 @@ Setze Ampeln als Symbole:
 - 🟠 schwach positiv/neutralisiert, häufig Note 3 oder Risiko.
 - 🔴 negativ codiert, widersprüchlich, formell angreifbar oder Note 4-5.
 
-Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „im Großen und Ganzen/zu unserer Zufriedenheit" = 4; „bemüht" = 5. Keine Mathematik: immer Gesamtkontext prüfen.
+Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „zu unserer Zufriedenheit" = 4; „im Großen und Ganzen zu unserer Zufriedenheit"/„bemüht" = 5. Keine Mathematik: immer Gesamtkontext prüfen.
 
 ## Prüfworkflow
 
