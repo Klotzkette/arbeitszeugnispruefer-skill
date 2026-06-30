@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.4) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.4 ist ein Qualitäts- und Kohärenz-Durchgang: Die Notenstufen der Mini-Fassung wurden mit der Vollversion in Deckung gebracht (Trennung von „zu unserer Zufriedenheit" = Note 4 und „im Großen und Ganzen …" = Note 5), die fehlerhafte tabellarische Form mit einem Negativbeispiel veranschaulicht, eine doppelte Beweislast-Passage entschlackt und die Testakten-Downloads (ZIP + Gesamt-PDF) auf der Download-Seite verlinkt.
+Konsolidierter Skill (Version 3.0.5) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.5 ist ein Usability- und Feinschliff-Durchgang: Der Skill-Inhalt bleibt inhaltlich stabil (Anker, Rechtsprechungszitate und Mini/Voll-Notenstufen wurden gegengeprüft und sind konsistent); neu sind ein direkt kopierbarer Starter-Prompt, ein durchgehendes [CHANGELOG](CHANGELOG.md) und eine aufgeräumte Download-Seite mit sichtbarem Haftungshinweis.
 
 ## Download
 
@@ -29,6 +29,12 @@ Zehn fiktive Arbeitszeugnisse aus zehn Branchen (PTA, Rechtsanwalt, MTA-R, Lager
 - [🗂️ Einzelordner im Repository](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) — mit Ergänzungs-Korrespondenz, Vollvermerken und allen Quelldateien je Akte.
 
 ## Anwendung: So einfach geht's
+
+Begleitsatz zum Kopieren (egal ob Weg A oder Weg B) — zusammen mit dem Skill in den Chat geben:
+
+```text
+Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach.
+```
 
 Weg A — Text kopieren:
 
