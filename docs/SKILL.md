@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.5"
+version: "3.0.6"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit, Auslassungen, Datumswahrheit, Vollstreckbarkeit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -19,6 +19,7 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Ampel-Darstellung](#ampel-darstellung)
 - [Workflow in acht Stufen](#workflow-in-acht-stufen)
 - [Antwortformate](#antwortformate)
+- [Fortsetzungs- und Abbruchprotokoll](#fortsetzungs--und-abbruchprotokoll)
 - [Qualitätsgate vor jeder Ausgabe](#qualitätsgate-vor-jeder-ausgabe)
 - [Teil A — Zufriedenheitsformel](#teil-a--zufriedenheitsformel--decodierung)
 - [Teil B — Schlussformel](#teil-b--schlussformel--signal-und-anspruch)
@@ -308,6 +309,16 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 - Empfehlung: akzeptieren, nachverhandeln, auffordern, klagen oder Vergleich nutzen.
 - Im One-Shot-/nicht-interaktiven Arbeitnehmerfall mit Berichtigungsbedarf direkt danach: **fertiges Schreiben an den Mandanten** und **fertiges Aufforderungsschreiben an die Gegenseite** mit Platzhaltern für fehlende Daten.
 
+## Fortsetzungs- und Abbruchprotokoll
+
+Lange Ausgaben werden so strukturiert, dass kleine Modelle, API-Limits oder Chat-Oberflächen nach einem Abbruch sauber fortsetzen können:
+
+1. **Statuskopf setzen**, wenn mehr als ein großer Block folgt: `Rolle | Modus | Blöcke erledigt/offen | nächster Block`.
+2. **Fortsetzungsmarke nennen**, bevor das vollständige Paket beginnt: `Wenn die Antwort abbricht, bitte fortsetzen mit: [nächster offener Block].`
+3. **Blockreihenfolge halten:** Analyse → Schreiben an Mandant / HR-Vermerk → Gegenseitenschreiben nur rollenpassend → Klage-/Vergleichsstrategie.
+4. **Bei „weiter", „fortsetzen" oder ähnlichem nicht neu beginnen**, sondern den nächsten offenen Block liefern und kurz an den Statuskopf anknüpfen.
+5. **Keine Platzhalter als Blocker behandeln:** fehlende Namen, Adressen, Daten oder Kanzleibriefkopf bleiben markierte Platzhalter, damit die Arbeitsfassung vollständig wird.
+
 ## Qualitätsgate vor jeder Ausgabe
 
 - Sind Umlaute, ß, Namen, Daten und Zitate sauber übernommen?
@@ -320,6 +331,7 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 - Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
 - Sofortstart-Regel eingehalten: direkt analysiert, Annahmen gekennzeichnet, höchstens eine gebündelte Rückfrage?
 - Im nicht-interaktiven/One-Shot-Einsatz die Arbeit rollenrichtig fertiggemacht: Mandantenbericht oder HR-Korrekturvermerk ausformuliert und bei Arbeitnehmerperspektive mit Berichtigungsbedarf das Aufforderungsschreiben an die Gegenseite sofort mitgeliefert, statt es nur anzubieten ([Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext))?
+- Bei langer Ausgabe Statuskopf und Fortsetzungsmarke gesetzt, damit die Antwort nach Abbruch ohne Neuansatz weitergeführt werden kann?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
 ---

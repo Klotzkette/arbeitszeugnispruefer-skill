@@ -5,6 +5,29 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.6] — 2026-07-01
+
+### Hinzugefügt
+- Fortsetzungs- und Abbruchprotokoll in der Vollversion: Statuskopf,
+  Fortsetzungsmarke und feste Blockreihenfolge für lange One-Shot-Ausgaben.
+- Komprimierte Fortsetzungsregel in der Mini-Fassung, damit kleine Modelle nach
+  „weiter" am nächsten offenen Block fortfahren statt neu anzusetzen.
+- Eigene GitHub-Pages-Downloadstarts für `SKILL.md` und `SKILL-mini.md` mit
+  automatischem Downloadversuch und sichtbarem Fallback-Button.
+- Ausgabe-Kompass in README und Download-Seite: erster Blick, One-Shot,
+  HR-/Arbeitgeberprüfung und Fortsetzung nach Abbruch.
+
+### Geändert
+- Download-Seite mit Versionsstand 3.0.6, klarerer Ausgabeerwartung und
+  neutralerem Layout.
+- Versionsbump auf 3.0.6 in Voll- und Mini-Skill; README-Versionssatz
+  aktualisiert.
+
+### Geprüft
+- Mini-Fassung bleibt unter 7.500 Zeichen.
+- `docs/`-Kopien bleiben mit den Quelldateien in `skill/` byte-identisch.
+- Interne Markdown-Sprungmarken und Versionsangaben wurden erneut geprüft.
+
 ## [3.0.5] — 2026-06-29
 
 ### Hinzugefügt
@@ -57,5 +80,6 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.6]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.6
 [3.0.5]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.5
 [3.0.4]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.4

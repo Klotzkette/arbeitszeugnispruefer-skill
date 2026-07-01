@@ -6,17 +6,17 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.5) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.5 ist ein Usability- und Feinschliff-Durchgang: Der Skill-Inhalt bleibt inhaltlich stabil (Anker, Rechtsprechungszitate und Mini/Voll-Notenstufen wurden gegengeprüft und sind konsistent); neu sind ein direkt kopierbarer Starter-Prompt, ein durchgehendes [CHANGELOG](CHANGELOG.md) und eine aufgeräumte Download-Seite mit sichtbarem Haftungshinweis.
+Konsolidierter Skill (Version 3.0.6) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.6 härtet die Bedienbarkeit: lange One-Shot-Ausgaben bekommen Status- und Fortsetzungsmarken, README und Download-Seite erklären die erwartbaren Ausgaben klarer, und die direkten Download-Starts sind als eigene GitHub-Pages-Links verfügbar.
 
 ## Download
 
-[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL.md)
+[📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html)
 
-Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion: [SKILL-mini.md herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SKILL-mini.md). Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist nicht so tief wie die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, HR-Gate und Ausgabeformaten ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
+Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion: [SKILL-mini.md herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html). Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist nicht so tief wie die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, HR-Gate und Ausgabeformaten ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
-Ein Klick genügt — die ausgewählte Datei lädt sofort als Markdown-Datei in den Downloads-Ordner, egal ob am Computer, iPhone, Android-Gerät oder in der GitHub-App. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
+Ein Klick genügt — die neuen Download-Startseiten stoßen den Download der ausgewählten Markdown-Datei automatisch an und zeigen zusätzlich einen großen Fallback-Button, falls eine App den automatischen Download blockiert. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
-Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): Die ausgewählte Datei wird statt heruntergeladen angezeigt — dann den Link einfach gedrückt halten und „Link herunterladen" bzw. „Verknüpfte Datei laden" wählen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort funktionieren die Download-Buttons zuverlässig.
+Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): Die Startseite geöffnet lassen und den sichtbaren Download-Button antippen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort stehen Vollversion, Mini-Version und Testakten nebeneinander.
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
@@ -50,6 +50,13 @@ Weg B — Datei hineinziehen (Drag & Drop):
 
 Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Wird der Skill als One-Shot/Megaprompt mit Zeugnis genutzt, soll er bei Arbeitnehmerperspektive und Berichtigungsbedarf zusätzlich sofort ein Mandantenschreiben und ein außergerichtliches Aufforderungsschreiben an den Arbeitgeber/Gegenseite mitliefern, nicht nur anbieten. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
 
+### Welche Ausgabe bekomme ich?
+
+- **Erster Blick / Status:** Analyse, Ampel-Bilanz, Notenspanne, Hauptkritik und klare nächste Weiche.
+- **One-Shot / Megaprompt:** bei Arbeitnehmerperspektive und Berichtigungsbedarf Analyse, Mandantenschreiben und außergerichtliches Aufforderungsschreiben in einem Durchgang.
+- **HR / Arbeitgeberseite:** neutraler Korrekturvermerk mit Risiko, sicherer Ersatzformulierung und Formcheck statt Arbeitnehmer-Aufforderungsschreiben.
+- **Antwort bricht ab:** „Bitte fahre mit dem nächsten offenen Block fort." Der Skill soll dann nicht neu anfangen, sondern an der Fortsetzungsmarke weiterarbeiten.
+
 ## Inhalt
 
 ```
@@ -73,6 +80,7 @@ Zusätzlich enthält der Skill durchgängig:
 
 - Sofortstart und Rückfrage-Disziplin — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
 - Lieferumfang nach Einsatzkontext — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Arbeitnehmerperspektive erhält bei Berichtigungsbedarf das Aufforderungsschreiben, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
+- Fortsetzungs- und Abbruchprotokoll — lange One-Shot-Ausgaben bekommen Statuskopf und Fortsetzungsmarke, damit kleine Modelle oder API-Limits nicht zum Neuansatz zwingen.
 - Ampel-Darstellung — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - Rechtsprechungsanker — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Auslassungen, Datumswahrheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 

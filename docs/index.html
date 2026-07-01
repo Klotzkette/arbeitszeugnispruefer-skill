@@ -8,23 +8,23 @@
 <meta name="robots" content="index,follow">
 <style>
   :root {
-    --bg: #0f172a;
-    --fg: #f1f5f9;
-    --muted: #94a3b8;
-    --accent: #22c55e;
-    --accent-hover: #16a34a;
-    --card: #1e293b;
-    --border: #334155;
+    --bg: #f6f7f9;
+    --fg: #17202a;
+    --muted: #4b5563;
+    --accent: #047857;
+    --accent-hover: #065f46;
+    --card: #ffffff;
+    --border: #d8dee8;
   }
-  @media (prefers-color-scheme: light) {
+  @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #ffffff;
-      --fg: #0f172a;
-      --muted: #475569;
-      --accent: #16a34a;
-      --accent-hover: #15803d;
-      --card: #f8fafc;
-      --border: #e2e8f0;
+      --bg: #16181d;
+      --fg: #f5f7fb;
+      --muted: #adb5c2;
+      --accent: #34d399;
+      --accent-hover: #10b981;
+      --card: #22252c;
+      --border: #3a3f4a;
     }
   }
   * { box-sizing: border-box; }
@@ -57,7 +57,7 @@
   .card {
     background: var(--card);
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.25rem;
   }
@@ -81,7 +81,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
-    border-radius: 10px;
+    border-radius: 8px;
     transition: background 0.15s ease;
     text-align: center;
   }
@@ -121,7 +121,7 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeitszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts.</p>
+  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeitszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.6.</p>
 
   <div class="card">
     <h2>📥 Vollversion</h2>
@@ -165,6 +165,16 @@
     <p>Die heruntergeladene <code>SKILL.md</code> oder <code>SKILL-mini.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
     <p><em>„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."</em></p>
     <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch.</p>
+  </div>
+
+  <div class="card">
+    <h2>Welche Ausgabe?</h2>
+    <ul>
+      <li><strong>Erster Blick:</strong> Analyse, Ampel-Bilanz, Notenspanne und nächste Weiche.</li>
+      <li><strong>One-Shot:</strong> bei Arbeitnehmerperspektive und Berichtigungsbedarf Analyse, Mandantenschreiben und Arbeitgeber-Schreiben.</li>
+      <li><strong>HR/Arbeitgeber:</strong> neutraler Korrekturvermerk mit sicheren Ersatzformulierungen.</li>
+      <li><strong>Abbruch:</strong> „Bitte fahre mit dem nächsten offenen Block fort."</li>
+    </ul>
   </div>
 
   <div class="card">
