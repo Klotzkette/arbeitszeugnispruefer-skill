@@ -5,6 +5,29 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.8] — 2026-07-04
+
+### Geändert
+- Die zehn Jura-/Wissenschafts-Testzeugnisse wurden fachlich und formal
+  vertieft: ausführlichere Briefköpfe, Personalzeichen, Projekt- und
+  Registerbezüge, HR-/Ausstellerrollen, Dienstsiegel und Kanzleistempel.
+- Aufgabenprofile und Bewertungsstellen wurden expliziter gefasst, insbesondere
+  für juristische Lehrstühle, Postdoc-/Drittmittelkontext, Kanzleileitung ohne
+  Anwaltszulassung, Probezeit-Associate, ReNo-/beA-/RVG-Arbeit und
+  Senior-Associate-Konstellationen.
+- Erwartungshorizont und README der Testakte betonen nun Briefkopf/Formalia,
+  Ausstellerkompetenz, Rollenabgrenzung und typische Auslassungen.
+- Versionsbump auf 3.0.8 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Build-Skript erzeugt die Jura-/Wissenschafts-Artefakte zentral aus den
+  hinterlegten Falltexten neu.
+- Jura/Wissenschaft-ZIP enthält genau 10 Einzel-PDFs; Gesamt-PDF ist A4,
+  nicht verschlüsselt und enthält 10 Zeugnisüberschriften.
+- Mini-Fassung bleibt unter 7.500 Zeichen; `skill/` und `docs/` sind
+  byte-identisch; interne Markdown-Anker und lokale HTML-Links wurden geprüft.
+
 ## [3.0.7] — 2026-07-04
 
 ### Hinzugefügt
@@ -104,6 +127,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.8]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.8
 [3.0.7]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.7
 [3.0.6]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.6
 [3.0.5]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.5

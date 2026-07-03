@@ -13,6 +13,8 @@ Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/
 
 Die Zeugnisse trainieren Rollen, die im klassischen Zeugnisfundus oft fehlen: wissenschaftliche Mitarbeit an juristischen Lehrstuehlen, Postdoc-/Drittmittelkontexte, Probezeit in der Grosskanzlei, Kanzleileitung ohne Anwaltszulassung, ReNo-/Fristenarbeit und Senior-Associate-Bewertungen in kleinen und grossen Kanzleien.
 
+Die Briefkoepfe sind absichtlich ausfuehrlicher gestaltet als in einfachen Musterzeugnissen. Personalzeichen, Projektbezug, Registerangaben, HR-/Ausstellerrolle, Dienstsiegel oder Kanzleistempel sollen mitgeprueft werden: Sie koennen helfen, Zeugnisart, Ausstellerkompetenz, Rollenabgrenzung und formale Plausibilitaet zu erkennen.
+
 Die Bewertungen sind absichtlich gemischt. Einige Zeugnisse sind sehr gut, andere enthalten typische Drift-, Auslassungs-, Rollen- oder Schlussformelprobleme. Der Skill soll nicht nur Codewoerter suchen, sondern Rolle, Zeugnisart, Aufgabenprofil, Beendigungsgrund und Erwartungshorizont zusammenfuehren.
 
 ## Aktenuebersicht
@@ -36,6 +38,7 @@ Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname 
 
 ## Mögliche Arbeitsauftraege an den Skill
 
+- Briefkopf, Aussteller, Personalzeichen, Projekt- oder Registerbezug formal einordnen
 - akademische und kanzleispezifische Aufgabenprofile vom Bewertungsinhalt trennen
 - Besonderheiten von Zwischenzeugnis, Befristung, Probezeit und Kanzleileitung einordnen
 - Schlussformel, Beendigungsgrund und Sozialverhalten rollenbewusst pruefen

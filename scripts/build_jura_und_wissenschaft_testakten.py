@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "testakten" / "arbeitszeugnisse-jura-und-wissenschaft"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
-WIDTH = 88
+WIDTH = 76
 
 
 CASES = [
@@ -29,11 +29,14 @@ CASES = [
         "sector": "Universität / Zivilrecht",
         "type": "Endzeugnis",
         "reason": "Promotionsabschluss und Wechsel ins Referendariat",
-        "expected": "überwiegend 🟢; klare Note 1-2, aber Lehr-/Publikationsanteile sauber prüfen",
+        "expected": "überwiegend 🟢; klare Note 1-2, Briefkopf/Aussteller und Lehr-/Publikationsanteile sauber prüfen",
         "text": """
         UNIVERSITAET ALBSTADT - JURISTISCHE FAKULTAET
         Lehrstuhl fuer Buergerliches Recht, Handels- und Gesellschaftsrecht
-        Parkring 12, 70199 Albstadt, Tel. 0711 4000-211, sekretariat.zivilrecht@uni-albstadt.test
+        Prof. Dr. Miriam Hagedorn
+        Parkring 12, 70199 Albstadt, Tel. 0711 4000-211
+        sekretariat.zivilrecht@uni-albstadt.test, www.jura.uni-albstadt.test
+        Personalzeichen: JF-ZR/HAG-2025-0930-KIR
 
         Albstadt, den 30. September 2025
 
@@ -44,10 +47,18 @@ CASES = [
         an unserem Lehrstuhl fuer Buergerliches Recht, Handels- und Gesellschaftsrecht
         beschaeftigt.
 
-        Zu ihren Aufgaben gehoerten die Vorbereitung und Nachbereitung von Vorlesungen
-        und Arbeitsgemeinschaften, die Recherche fuer wissenschaftliche Publikationen,
-        die Erstellung von Gutachtenvermerken, die Betreuung von Seminararbeiten sowie
-        die organisatorische Unterstuetzung von Tagungen und Moot-Court-Formaten.
+        Zu ihren Aufgaben gehoerten insbesondere die Vorbereitung und Nachbereitung der
+        Vorlesungen Buergerliches Recht II und Handelsrecht, die Leitung von
+        Arbeitsgemeinschaften, die Recherche fuer Kommentierungen und Aufsaetze, die
+        Erstellung von Gutachtenvermerken, die Betreuung von Seminar- und Schwerpunkt-
+        arbeiten sowie die organisatorische Unterstuetzung von Tagungen und
+        Moot-Court-Formaten.
+
+        Daneben koordinierte Frau Kirchhoff die Korrekturassistenz fuer Klausuren,
+        bereitete Besprechungsfaelle auf, pflegte Literatur- und Rechtsprechungsdatenbanken
+        und stimmte Lehrmaterialien mit studentischen Hilfskraeften ab. Ihre Taetigkeit
+        hatte damit sowohl wissenschaftliche als auch lehr- und organisationsbezogene
+        Schwerpunkte.
 
         Frau Kirchhoff verfuegte jederzeit ueber ausgezeichnete juristische Kenntnisse
         und verband dogmatische Praezision mit einem sicheren Blick fuer praktische
@@ -55,7 +66,8 @@ CASES = [
         und selbststaendig. Ihre schriftlichen Vorarbeiten waren durchweg klar
         strukturiert, sprachlich sehr sorgfaeltig und wissenschaftlich belastbar.
 
-        Auch bei hoher Fristendichte arbeitete Frau Kirchhoff stets sehr zuverlaessig,
+        Auch bei hoher Fristendichte, kurzfristigen Aktualisierungen der Rechtsprechung
+        und parallelen Lehrformaten arbeitete Frau Kirchhoff stets sehr zuverlaessig,
         planvoll und mit bemerkenswerter Eigeninitiative. Die ihr uebertragenen Aufgaben
         erledigte sie stets zu unserer vollsten Zufriedenheit. In Lehrveranstaltungen
         trat sie sicher, freundlich und foerdernd auf; Studierende und Kollegium
@@ -70,6 +82,8 @@ CASES = [
 
         Prof. Dr. Miriam Hagedorn
         Lehrstuhlinhaberin
+
+        Dienstsiegel: Juristische Fakultaet der Universitaet Albstadt
         """,
     },
     {
@@ -80,11 +94,14 @@ CASES = [
         "sector": "Universität / Strafrecht",
         "type": "Endzeugnis",
         "reason": "Auslaufen der Projektbefristung",
-        "expected": "🟠 mit einzelnen 🔴-Signalen; Auslassungen, Abschwaechungen und Schlussformel pruefen",
+        "expected": "🟠 mit einzelnen 🔴-Signalen; Projektrolle, Nachbearbeitung, Auslassungen und Schlussformel pruefen",
         "text": """
         RHEINISCHE UNIVERSITAET NORDSTADT - FAKULTAET FUER RECHTSWISSENSCHAFT
         Lehrstuhl fuer Strafrecht, Strafprozessrecht und Wirtschaftsstrafrecht
+        Drittmittelprojekt "Corporate Crime Monitor"
         Universitaetsallee 8, 41001 Nordstadt, Tel. 0211 7710-88
+        strafrecht.seefeld@uni-nordstadt.test
+        Personalzeichen: ST-Seefeld/CCM-2026-03-Rauch
 
         Nordstadt, den 31. Maerz 2026
 
@@ -97,13 +114,20 @@ CASES = [
         Herr Rauch unterstuetzte die Arbeit des Lehrstuhls insbesondere durch
         Rechtsprechungsrecherchen, Literaturauswertungen, Entwuerfe fuer Fallloesungen,
         die Pflege von Lehrmaterialien und die Mitwirkung an einem drittmittelgefoerderten
-        Forschungsprojekt zum Unternehmensstrafrecht.
+        Forschungsprojekt zum Unternehmensstrafrecht. Im Projekt war er fuer die erste
+        Sichtung neuer Entscheidungen, die Verschlagwortung von Aufsatzliteratur und die
+        Vorbereitung interner Besprechungsvermerke zustaendig.
+
+        Daneben uebernahm er organisatorische Aufgaben bei Klausuren, half bei der
+        Aktualisierung des Moodle-Kurses und unterstuetzte die Vorbereitung einer
+        lehrstuhlinternen Tagung.
 
         Er verfuegte ueber solide strafrechtliche Kenntnisse und zeigte Interesse an
         komplexen wissenschaftlichen Fragestellungen. Die ihm uebertragenen Aufgaben
         bearbeitete er im Allgemeinen sorgfaeltig. Bei klar umrissenen Arbeitsauftraegen
-        erzielte Herr Rauch brauchbare Ergebnisse; bei offenen Forschungsfragen benoetigte
-        er gelegentlich eine engere Abstimmung.
+        erzielte Herr Rauch brauchbare Ergebnisse; bei offenen Forschungsfragen,
+        Priorisierung mehrerer Fundstellen und eigenstaendiger Verdichtung benoetigte er
+        gelegentlich eine engere Abstimmung.
 
         Herr Rauch erledigte seine Aufgaben zu unserer vollen Zufriedenheit. Er war
         belastbar, wenn Prioritaeten vorgegeben waren, und brachte sich in die laufende
@@ -116,6 +140,8 @@ CASES = [
 
         Prof. Dr. Armin Seefeld
         Lehrstuhlinhaber
+
+        Dienstsiegel: Fakultaet fuer Rechtswissenschaft
         """,
     },
     {
@@ -126,11 +152,14 @@ CASES = [
         "sector": "Universität / Öffentliches Recht",
         "type": "Zwischenzeugnis",
         "reason": "Drittmittelantrag und Lehrstuhlwechsel",
-        "expected": "🟢🟠; starke Forschung, aber Zwischenzeugnis-/Selbstbindungslogik und Schluss sauber einordnen",
+        "expected": "🟢🟠; starke Forschung, Zwischenzeugnis-/Selbstbindungslogik, Drittmittelanlass und Schluss einordnen",
         "text": """
         UNIVERSITAET KUETTENHAFEN - JURISTISCHE FAKULTAET
         Institut fuer Oeffentliches Recht und Europarecht
-        Hafenstrasse 44, 24001 Kuettenhafen, europarecht@uni-kuettenhafen.test
+        Direktor: Prof. Dr. Nils Achtermann
+        Hafenstrasse 44, 24001 Kuettenhafen
+        europarecht@uni-kuettenhafen.test, Tel. 0431 6600-141
+        Personalzeichen: OER-EU/2026-01-OST-ZW
 
         Kuettenhafen, den 15. Januar 2026
 
@@ -143,6 +172,9 @@ CASES = [
         Ihr Arbeitsgebiet umfasst europaeisches Verwaltungsrecht, Klimaschutzrecht,
         Forschungskoordination, Drittmittelantraege, Betreuung von Examensklausuren,
         Vorlesungsbegleitung und die fachliche Anleitung studentischer Hilfskraefte.
+        Frau Dr. Oster erstellt Exposes fuer Drittmittelgeber, koordiniert
+        Projektpartner, prueft Manuskripte auf Zitations- und Argumentationskonsistenz
+        und uebernimmt Lehranteile im Schwerpunktbereich.
 
         Frau Dr. Oster besitzt sehr umfassende und jederzeit sichere Kenntnisse ihres
         Fachgebiets. Sie arbeitet wissenschaftlich eigenstaendig, methodisch ueberzeugend
@@ -157,11 +189,15 @@ CASES = [
 
         Dieses Zwischenzeugnis wird auf Wunsch von Frau Dr. Oster aus Anlass eines
         anstehenden Drittmittelantrags und einer moeglichen Lehrstuhlvertretung erteilt.
-        Wir freuen uns auf die weitere Zusammenarbeit und wuenschen ihr fuer die
-        naechsten akademischen Schritte weiterhin viel Erfolg.
+        Es bezieht sich auf den Zeitraum bis zum Ausstellungsdatum und begruendet keine
+        abschliessende Beurteilung fuer kuenftige Aufgaben. Wir freuen uns auf die
+        weitere Zusammenarbeit und wuenschen ihr fuer die naechsten akademischen Schritte
+        weiterhin viel Erfolg.
 
         Prof. Dr. Nils Achtermann
         Institutsdirektor
+
+        Dienstsiegel: Institut fuer Oeffentliches Recht und Europarecht
         """,
     },
     {
@@ -172,11 +208,13 @@ CASES = [
         "sector": "Universität / Legal Tech",
         "type": "Endzeugnis",
         "reason": "Wechsel in die Justiz",
-        "expected": "🟠; Schaufenster-Drift zwischen Projektlob und abgeschwaechter Gesamtformel",
+        "expected": "🟠; Schaufenster-Drift zwischen Tech-/Projektlob, juristischer Nachbearbeitung und Gesamtformel",
         "text": """
         UNIVERSITAET WESTFELD - CENTER FOR LAW AND TECHNOLOGY
         Arbeitsbereich Zivilprozessrecht und digitale Justiz
+        Verbundprojekt "Court Data Lab"
         Campusbogen 3, 56001 Westfeld, Tel. 0261 9090-44
+        lawtech@uni-westfeld.test, Projektzeichen: CDL-ZPO-2025-07-BOR
 
         Westfeld, den 31. Juli 2025
 
@@ -189,12 +227,16 @@ CASES = [
         Herr Borchert wirkte an Forschungsprojekten zu elektronischem Rechtsverkehr,
         Online-Verhandlungen, Datenaufbereitung fuer empirische Studien und didaktischen
         Formaten fuer die Schwerpunktbereichslehre mit. Daneben betreute er Workshops,
-        koordinierte externe Referentinnen und Referenten und pflegte die Projektwebseite.
+        koordinierte externe Referentinnen und Referenten, pflegte die Projektwebseite
+        und bereitete Datensaetze fuer Auswertungen in Abstimmung mit der Ethik- und
+        Datenschutzkoordination auf.
 
         In technischen Fragen arbeitete Herr Borchert sehr kreativ und loesungsorientiert.
         Er entwickelte mehrfach hilfreiche Arbeitshilfen und brachte wertvolle Impulse
         in die Projektgruppe ein. Juristische Texte bearbeitete er sorgfaeltig, wenn
-        Gegenstand, Umfang und Erwartung zuvor abgestimmt waren.
+        Gegenstand, Umfang und Erwartung zuvor abgestimmt waren. Eigenstaendige
+        dogmatische Verdichtungen und die abschliessende Einordnung prozessrechtlicher
+        Streitfragen wurden regelmaessig durch die Projektleitung nachbearbeitet.
 
         Die ihm uebertragenen Aufgaben erledigte Herr Borchert stets zu unserer vollen
         Zufriedenheit. Bei wechselnden Prioritaeten zeigte er Einsatzbereitschaft und
@@ -208,6 +250,8 @@ CASES = [
 
         Prof. Dr. Karen Muelder
         Leiterin des Arbeitsbereichs
+
+        Dienstsiegel: Center for Law and Technology
         """,
     },
     {
@@ -218,11 +262,13 @@ CASES = [
         "sector": "Universität / Arbeitsrecht",
         "type": "Endzeugnis",
         "reason": "Beendigung nach Befristungsablauf",
-        "expected": "🔴/🟠; knappe Bewertung, fehlende Kernbereiche und auffaellige Sozialformel",
+        "expected": "🔴/🟠; knappe Bewertung, enges Anleitungsbeduerfnis, fehlende Kernbereiche und Sozialformel",
         "text": """
         UNIVERSITAET HELMBURG - FAKULTAET FUER RECHTSWISSENSCHAFT
         Lehrstuhl fuer Arbeitsrecht und Buergerliches Recht
+        Prof. Dr. Ralf Neumayer
         Schlossplatz 2, 99001 Helmburg, arbeitsrecht@uni-helmburg.test
+        Personalzeichen: ARB-Neu/2025-09-WEB, Befristungsakte: 21/2021-WM
 
         Helmburg, den 30. September 2025
 
@@ -235,12 +281,17 @@ CASES = [
         Frau Weber war mit Recherchen im Arbeitsrecht, der Vorbereitung von
         Lehrveranstaltungen, der organisatorischen Betreuung von Klausuren, der
         Kommunikation mit Studierenden sowie allgemeinen Aufgaben der Lehrstuhlverwaltung
-        betraut.
+        betraut. Sie pflegte die Lernplattform, versandte Hinweise an Arbeitsgemeinschaften,
+        sichtete einfache Rechtsprechungsnachweise und fuehrte Fristenlisten fuer
+        Korrekturrunden.
 
         Sie zeigte Interesse an den ihr uebertragenen Aufgaben und verfuegte ueber
         brauchbare Kenntnisse im Arbeitsrecht. Die Aufgaben erledigte Frau Weber im
         Wesentlichen zu unserer Zufriedenheit. Sie bemuehte sich, auch bei umfangreichen
-        organisatorischen Anforderungen den Ueberblick zu behalten.
+        organisatorischen Anforderungen den Ueberblick zu behalten. Wissenschaftliche
+        Entwuerfe konnten nach Ueberarbeitung verwendet werden; bei eigener Gewichtung
+        der Argumente und bei termingebundener Priorisierung war eine engere Anleitung
+        erforderlich.
 
         Im Umgang mit Studierenden war Frau Weber freundlich. Ihr Verhalten gegenueber
         Vorgesetzten und Kolleginnen und Kollegen war insgesamt korrekt. Das befristete
@@ -250,6 +301,8 @@ CASES = [
 
         Prof. Dr. Ralf Neumayer
         Lehrstuhlinhaber
+
+        Dienstsiegel: Juristische Fakultaet der Universitaet Helmburg
         """,
     },
     {
@@ -260,11 +313,13 @@ CASES = [
         "sector": "Große Wirtschaftskanzlei",
         "type": "Endzeugnis",
         "reason": "Aufhebungsvereinbarung",
-        "expected": "🟠; Organ-/Arbeitnehmerrolle, Managementleistung und Schlussformel getrennt pruefen",
+        "expected": "🟠; Nicht-Anwaltsrolle, Organ-/Arbeitnehmerbezug, Managementleistung und Schlussformel trennen",
         "text": """
         ELLERBROOK RECHTSANWAELTE PARTG MBB
         Wirtschaftsrecht - Steuern - Compliance
+        Partnerschaftsregister Frankfurt am Main PR 2441 (fiktiv)
         Kaiserring 17, 60311 Frankfurt am Main, Tel. 069 8800-0
+        office@ellerbrook.test, Personalzeichen: GF-DE/ML-2025-12
 
         Frankfurt am Main, den 31. Dezember 2025
 
@@ -273,19 +328,25 @@ CASES = [
         Herr Markus Lentner, geboren am 18. Januar 1978 in Kassel, war vom 1. Mai 2019
         bis zum 31. Dezember 2025 als angestellter Geschaeftsfuehrer der
         Verwaltungsgesellschaft und Kanzleileiter unserer deutschen Standorte taetig.
-        Herr Lentner ist nicht als Rechtsanwalt zugelassen; seine Aufgabe lag in der
-        kaufmaennischen, personellen und organisatorischen Leitung des Kanzleibetriebs.
+        Herr Lentner ist nicht als Rechtsanwalt zugelassen; er fuehrte keine
+        anwaltlichen Mandate und trat nicht als Berufstraeger auf. Seine Aufgabe lag in
+        der kaufmaennischen, personellen und organisatorischen Leitung des Kanzleibetriebs.
 
         Zu seinem Verantwortungsbereich gehoerten Budgetplanung, Personalsteuerung,
         Standortorganisation, Dienstleistermanagement, IT- und Prozessprojekte,
         Controlling, Raumplanung, Honorardaten-Auswertungen und die Vorbereitung von
-        Beschlussvorlagen fuer das Partnermanagement.
+        Beschlussvorlagen fuer das Partnermanagement. Er fuehrte das nichtanwaltliche
+        Personal disziplinarisch, koordinierte Office Managerinnen und Manager,
+        bereitete Recruiting- und Verguetungsrunden vor und berichtete monatlich an das
+        Management Board.
 
         Herr Lentner verfuegte ueber sehr gute betriebswirtschaftliche Kenntnisse und
         verstand die besonderen Anforderungen anwaltlicher Berufstraegerorganisationen.
         Er arbeitete strukturiert, diskret und wirtschaftlich umsichtig. Besonders bei
         der Einfuehrung neuer Controlling- und Recruiting-Prozesse erzielte er gute
-        Ergebnisse.
+        Ergebnisse. Bei standortuebergreifenden Veraenderungen gelang ihm die
+        Umsetzung wirtschaftlicher Vorgaben; die kommunikative Einbindung einzelner
+        Praxisgruppen blieb dabei anspruchsvoll.
 
         Die ihm uebertragenen Aufgaben erledigte Herr Lentner stets zu unserer vollen
         Zufriedenheit. Sein Verhalten gegenueber Partnerinnen und Partnern,
@@ -298,6 +359,8 @@ CASES = [
 
         Dr. Veit Sommerfeld
         Managing Partner
+
+        Kanzleistempel: Ellerbrook Rechtsanwaelte PartG mbB
         """,
     },
     {
@@ -308,11 +371,14 @@ CASES = [
         "sector": "Internationale Kanzlei / M&A",
         "type": "Endzeugnis",
         "reason": "Beendigung waehrend der Probezeit",
-        "expected": "🔴; Probezeit, sehr kurze Dauer, Note 4-5 und knappe Schlussformel",
+        "expected": "🔴; Probezeit, Nachbearbeitungsbedarf, Note 4-5, Mandatskontakt und knappe Schlussformel",
         "text": """
         BERGNER FIELDING LLP
         Rechtsanwaelte und Steuerberater
+        German Branch Office Munich - Corporate / M&A
         Opernplatz 4, 80333 Muenchen, Tel. 089 7000-20
+        HR Germany: people.de@bergner-fielding.test
+        Personalnummer: DE-MUC-ASS-2025-117, Practice Group: Corporate/M&A
 
         Muenchen, den 15. Februar 2026
 
@@ -325,13 +391,18 @@ CASES = [
         Frau Hartmann wurde in die laufende Transaktionsarbeit eingefuehrt. Zu ihren
         Aufgaben gehoerten die Unterstuetzung bei Due-Diligence-Pruefungen, die
         Recherche gesellschaftsrechtlicher Einzelfragen, die Erstellung von
-        Zusammenfassungen, die Pflege von Signing-Listen und die Vorbereitung einfacher
-        Entwurfsfassungen.
+        Zusammenfassungen, die Pflege von Signing-Listen, die Vorbereitung einfacher
+        Entwurfsfassungen und die Abstimmung mit dem Projektsekretariat. Sie nahm an
+        internen Team-Calls teil und erhielt Rueckmeldungen zu Entwurfsstil,
+        Mandatsorganisation und Priorisierung.
 
         Sie verfuegte ueber juristische Grundkenntnisse und zeigte Bereitschaft, sich
         in die Arbeitsweise einer internationalen Wirtschaftskanzlei einzuarbeiten. Die
         ihr uebertragenen Aufgaben erledigte sie zu unserer Zufriedenheit. Bei hoher
-        Arbeitsbelastung bemuehte sie sich, die gesetzten Fristen einzuhalten.
+        Arbeitsbelastung bemuehte sie sich, die gesetzten Fristen einzuhalten. Ihre
+        Arbeitsergebnisse waren fuer einfache Teilschritte verwendbar; bei komplexeren
+        Pruefungsfragen und bei der mandatsgerechten Verdichtung war eine deutliche
+        Nachbearbeitung durch erfahrenere Teammitglieder erforderlich.
 
         Ihr Verhalten gegenueber Vorgesetzten, Kolleginnen und Kollegen sowie
         Mandantenkontakten war korrekt. Das Arbeitsverhaeltnis endet waehrend der
@@ -340,6 +411,9 @@ CASES = [
 
         Dr. Friederike Kahl
         Partnerin
+
+        Dr. Michael Greve
+        Head of HR Germany
         """,
     },
     {
@@ -350,11 +424,13 @@ CASES = [
         "sector": "Kleine Kanzlei",
         "type": "Endzeugnis",
         "reason": "Eigenkuendigung",
-        "expected": "🟠; Fristen-/Gebuehrenprofil, Reihenfolge im Sozialverhalten und Code-Lesarten pruefen",
+        "expected": "🟠; Fristen-/beA-/RVG-Profil, Ruecksprachebedarf, Reihenfolge im Sozialverhalten und Code-Lesarten pruefen",
         "text": """
         KANZLEI HANSEN & KOLLEGEN
         Rechtsanwaelte - Familienrecht - Mietrecht - Verkehrsrecht
         Marktgasse 9, 37073 Goettingen, Tel. 0551 4400-12
+        beA-Verwaltung: kanzlei@hansen-kollegen.test
+        Personalakte: REN/2018-2026, Aussteller: Rechtsanwalt Dr. Nils Hansen
 
         Goettingen, den 31. Mai 2026
 
@@ -367,12 +443,17 @@ CASES = [
         Ihr Aufgabenbereich umfasste die Fristenkontrolle, Aktenanlage, Korrespondenz
         nach Diktat und Vorlage, beA-Versand, Telefonzentrale, Zwangsvollstreckung,
         Kostenfestsetzung, RVG-Abrechnungen, Terminskoordination und die Betreuung des
-        Empfangs.
+        Empfangs. Sie fuehrte das elektronische und das papiergebundene Fristenbuch,
+        bereitete Kostenrechnungen vor, ueberwachte Wiedervorlagen und stimmte
+        Gerichtspost mit den sachbearbeitenden Rechtsanwaeltinnen und Rechtsanwaelten ab.
 
         Frau Renner verfuegte ueber gute Kenntnisse im Kanzleialltag und war mit den
         gaengigen Arbeitsablaeufen vertraut. Die ihr uebertragenen Aufgaben erledigte
         sie stets zu unserer vollen Zufriedenheit. Besonders in der Mandantenannahme
         und bei der telefonischen Kommunikation zeigte sie Freundlichkeit und Geduld.
+        Bei Fristen und beA-Ausgaengen arbeitete sie sorgfaeltig; komplexere
+        Kostenfestsetzungs- und Vollstreckungsvorgaenge legte sie regelmaessig zur
+        Ruecksprache vor.
 
         Frau Renner war ehrlich, puenktlich und ordnungsliebend. Ihr Verhalten gegenueber
         Kolleginnen, Mandantinnen und Mandanten sowie Vorgesetzten war einwandfrei. Sie
@@ -381,6 +462,8 @@ CASES = [
 
         Rechtsanwalt Dr. Nils Hansen
         Kanzleiinhaber
+
+        Kanzleistempel: Hansen & Kollegen
         """,
     },
     {
@@ -391,11 +474,13 @@ CASES = [
         "sector": "Arbeitsrechtsboutique",
         "type": "Zwischenzeugnis",
         "reason": "Partnerperspektive / interner Wechsel",
-        "expected": "🟢🟠; sehr starke Leistung, aber Partnertrack- und Akquiseauslassungen beachten",
+        "expected": "🟢🟠; sehr starke Leistung, aber Zwischenzeugnisanlass, Partnertrack- und Akquiseauslassungen beachten",
         "text": """
         LINDENAU ARBEITSRECHT
         Boutique fuer Arbeitsrecht und Organhaftung
+        Partnerschaftsregister Duesseldorf PR 1187 (fiktiv)
         Rheinpromenade 21, 40213 Duesseldorf, Tel. 0211 3300-77
+        personal@lindenau-arbeitsrecht.test, Az.: JK-SA-2026-ZW
 
         Duesseldorf, den 1. Juli 2026
 
@@ -409,13 +494,17 @@ CASES = [
         kollektivarbeitsrechtlichen Fragen. Zu seinen Aufgaben gehoeren die Fuehrung
         arbeitsgerichtlicher Verfahren, die Vorbereitung von Interessenausgleichs- und
         Sozialplanverhandlungen, die Beratung von Geschaeftsfuehrungen, die Erstellung
-        von Gutachten sowie die Anleitung juengerer Kolleginnen und Kollegen.
+        von Gutachten sowie die Anleitung juengerer Kolleginnen und Kollegen. Er
+        betreut Einigungsstellen, entwirft Betriebsvereinbarungen und uebernimmt
+        Mandatskoordination in Restrukturierungsprojekten.
 
         Herr Kemper verfuegt ueber sehr breite und sichere Kenntnisse im Arbeitsrecht.
         Seine Schriftsaetze sind praezise, taktisch durchdacht und sprachlich klar. Auch
         in eilbeduerftigen Verfahren arbeitet er sehr belastbar und loesungsorientiert.
         Mandanten schaetzen seine ruhige, verbindliche und wirtschaftlich fokussierte
-        Beratung.
+        Beratung. In internen Pitches und Fachveranstaltungen bringt er sich ein; eine
+        eigenstaendige Umsatz- oder Akquiseverantwortung wird mit diesem Zwischenzeugnis
+        nicht bewertet.
 
         Herr Kemper erledigt die ihm uebertragenen Aufgaben stets zu unserer vollsten
         Zufriedenheit. Sein Verhalten gegenueber Partnerinnen und Partnern, Kolleginnen
@@ -426,6 +515,8 @@ CASES = [
 
         Rechtsanwalt Dr. Clara Lindenau
         Partnerin
+
+        Kanzleistempel: Lindenau Arbeitsrecht
         """,
     },
     {
@@ -436,11 +527,14 @@ CASES = [
         "sector": "Internationale Großkanzlei / Dispute Resolution",
         "type": "Endzeugnis",
         "reason": "Wechsel in ein Unternehmen",
-        "expected": "🟠; starke Einzelsaetze, abgeschwaechte Team-/Fuerungsformeln und Schlussabgleich",
+        "expected": "🟠; starke Einzelsaetze, Teamleitung, fehlende Akquise-/Partnerperspektive und Schlussabgleich",
         "text": """
         WINTERBOURNE KELLER RECHTSANWAELTE PARTG MBB
         Litigation - Arbitration - Investigations
+        Partnerschaftsregister Frankfurt am Main PR 3770 (fiktiv)
         Taunusanlage 3, 60329 Frankfurt am Main, Tel. 069 9900-100
+        HR Legal Germany: hr.legal@winterbourne-keller.test
+        Personalzeichen: DIS-FRA-MV-2026-06
 
         Frankfurt am Main, den 30. Juni 2026
 
@@ -454,12 +548,16 @@ CASES = [
         Workstreams in umfangreichen Schiedsverfahren, koordinierte Dokumentenreviews,
         entwarf Schriftsaetze in deutscher und englischer Sprache und bereitete
         Zeugen- sowie Sachverstaendigentermine vor. Zudem wirkte sie an internen
-        Trainings und Knowledge-Management-Projekten mit.
+        Trainings und Knowledge-Management-Projekten mit. Sie steuerte kleine Teams aus
+        Associates, Legal Analysts und externen Dienstleistern und berichtete an die
+        verantwortlichen Partnerinnen und Partner.
 
         Fachlich verfuegte Frau Dr. Voss ueber sehr gute Kenntnisse des Prozess- und
         Schiedsverfahrensrechts. Ihre Analysen waren praezise, belastbar und mandatsnah.
         In arbeitsintensiven Phasen zeigte sie hohe Einsatzbereitschaft und erzielte
-        sehr gute Arbeitsergebnisse.
+        sehr gute Arbeitsergebnisse. Bei der Fuehrung juengerer Teammitglieder agierte
+        sie sachlich und klar; die eigenstaendige Mandatsakquise und Partnerperspektive
+        waren nicht Gegenstand ihrer Position.
 
         Die ihr uebertragenen Aufgaben erledigte Frau Dr. Voss stets zu unserer vollen
         Zufriedenheit. Sie fuehrte juengere Teammitglieder sachlich an und integrierte
@@ -473,6 +571,9 @@ CASES = [
 
         Rechtsanwalt Dr. Paul Winterbourne
         Partner
+
+        Dr. Sandra Lueg
+        People Partner Germany
         """,
     },
 ]
@@ -538,6 +639,8 @@ Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/
 
 Die Zeugnisse trainieren Rollen, die im klassischen Zeugnisfundus oft fehlen: wissenschaftliche Mitarbeit an juristischen Lehrstuehlen, Postdoc-/Drittmittelkontexte, Probezeit in der Grosskanzlei, Kanzleileitung ohne Anwaltszulassung, ReNo-/Fristenarbeit und Senior-Associate-Bewertungen in kleinen und grossen Kanzleien.
 
+Die Briefkoepfe sind absichtlich ausfuehrlicher gestaltet als in einfachen Musterzeugnissen. Personalzeichen, Projektbezug, Registerangaben, HR-/Ausstellerrolle, Dienstsiegel oder Kanzleistempel sollen mitgeprueft werden: Sie koennen helfen, Zeugnisart, Ausstellerkompetenz, Rollenabgrenzung und formale Plausibilitaet zu erkennen.
+
 Die Bewertungen sind absichtlich gemischt. Einige Zeugnisse sind sehr gut, andere enthalten typische Drift-, Auslassungs-, Rollen- oder Schlussformelprobleme. Der Skill soll nicht nur Codewoerter suchen, sondern Rolle, Zeugnisart, Aufgabenprofil, Beendigungsgrund und Erwartungshorizont zusammenfuehren.
 
 ## Aktenuebersicht
@@ -552,6 +655,7 @@ Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname 
 
 ## Mögliche Arbeitsauftraege an den Skill
 
+- Briefkopf, Aussteller, Personalzeichen, Projekt- oder Registerbezug formal einordnen
 - akademische und kanzleispezifische Aufgabenprofile vom Bewertungsinhalt trennen
 - Besonderheiten von Zwischenzeugnis, Befristung, Probezeit und Kanzleileitung einordnen
 - Schlussformel, Beendigungsgrund und Sozialverhalten rollenbewusst pruefen
@@ -578,6 +682,7 @@ Diese Liste ist kein Loesungsschluessel, sondern ein Pruefhorizont. Die Skill-Au
 
 - **Akademische Zeugnisse:** Forschungsleistung, Lehre, Drittmittel, Betreuung von Studierenden und Lehrstuhlorganisation getrennt auswerten.
 - **Kanzleirollen:** anwaltliche Leistung, Mandantenkontakt, Teamfuehrung, Akquise, Kanzleiorganisation und Berufsrollen nicht vermischen.
+- **Briefkopf/Formalia:** Ausstellerkompetenz, Personalzeichen, Projektbezug, Dienstsiegel, Kanzleistempel und Registerangaben mitpruefen, ohne aus reinen Stilfragen vorschnell Maengel zu machen.
 - **Probezeit:** kurze Beschaeftigungsdauer nicht als Freibrief fuer unklare oder codierte Abwertung behandeln, aber Beweis- und Erwartungslage realistisch halten.
 - **ReNo-/Kanzleibetrieb:** Fristen, beA, RVG, Kostenfestsetzung, Zwangsvollstreckung und Mandantenkontakt als Kernkompetenzen pruefen.
 - **Fremdgeschaeftsfuehrung:** Organ- und Arbeitnehmerbezug, Managementaufgaben und fehlende Anwaltszulassung sauber im Zeugnistext abbilden.
