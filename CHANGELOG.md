@@ -5,6 +5,30 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.7] — 2026-07-04
+
+### Hinzugefügt
+- Zweite Testakte `arbeitszeugnisse-jura-und-wissenschaft` mit zehn
+  fiktiven Arbeitszeugnissen aus juristisch-akademischen Rollen:
+  wissenschaftliche Mitarbeit an juristischen Lehrstühlen, Kanzleileitung ohne
+  Anwaltszulassung, Junior Associate in der Probezeit, ReNo-Fachkraft und
+  Senior Associates in Boutique und Großkanzlei.
+- Reproduzierbares Build-Skript
+  `scripts/build_jura_und_wissenschaft_testakten.py` für Einzel-PDFs,
+  Gesamt-PDF, ZIP und öffentliche `docs/testakten`-Downloads.
+- Erwartungshorizont und Prüfpunkte zur neuen Testakte.
+
+### Geändert
+- README und Download-Seite verlinken nun beide Testakten-Sätze.
+- Versionsbump auf 3.0.7 in Voll- und Mini-Skill; README-Versionssatz
+  aktualisiert.
+
+### Geprüft
+- Neue Einzel-PDFs und Gesamt-PDF werden in A4 erzeugt.
+- Jura/Wissenschaft-ZIP enthält genau 10 Einzel-PDFs; Gesamt-PDF enthält
+  genau 10 Seiten.
+- Download-Artefakte liegen zusätzlich unter `docs/testakten/`.
+
 ## [3.0.6] — 2026-07-01
 
 ### Hinzugefügt
@@ -80,6 +104,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.7]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.7
 [3.0.6]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.6
 [3.0.5]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.5
 [3.0.4]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.4
