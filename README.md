@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.8) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.8 vertieft die juristisch-akademischen Testakten: ausführlichere Briefköpfe, klarere Aussteller-/Personalzeichen, explizitere Aufgabenprofile und schärfere Prüfpunkte für Kanzlei-, Lehrstuhl-, ReNo-, Probezeit- und Senior-Associate-Konstellationen.
+Konsolidierter Skill (Version 3.0.9) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.9 ergänzt einen reproduzierbaren Release-Integritätscheck; die juristisch-akademischen Testakten bleiben mit ausführlichen Briefköpfen, klaren Aussteller-/Personalzeichen, expliziten Aufgabenprofilen und scharfen Prüfpunkten für Kanzlei-, Lehrstuhl-, ReNo-, Probezeit- und Senior-Associate-Konstellationen hinterlegt.
 
 ## Download
 
@@ -91,6 +91,16 @@ Zusätzlich enthält der Skill durchgängig:
 - Fortsetzungs- und Abbruchprotokoll — lange One-Shot-Ausgaben bekommen Statuskopf und Fortsetzungsmarke, damit kleine Modelle oder API-Limits nicht zum Neuansatz zwingen.
 - Ampel-Darstellung — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - Rechtsprechungsanker — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Auslassungen, Datumswahrheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
+
+## Qualitätssicherung und Release-Check
+
+Vor einer neuen Version kann der lokale Integritätscheck ausgeführt werden:
+
+```bash
+python3 scripts/check_release_integrity.py
+```
+
+Der Check prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Die Jura-/Wissenschafts-Testakten werden weiterhin reproduzierbar über `python3 scripts/build_jura_und_wissenschaft_testakten.py` erzeugt.
 
 ## Workflow in acht Stufen
 
