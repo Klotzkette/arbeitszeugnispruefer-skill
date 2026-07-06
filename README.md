@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.9) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.9 ergänzt einen reproduzierbaren Release-Integritätscheck; die juristisch-akademischen Testakten bleiben mit ausführlichen Briefköpfen, klaren Aussteller-/Personalzeichen, expliziten Aufgabenprofilen und scharfen Prüfpunkten für Kanzlei-, Lehrstuhl-, ReNo-, Probezeit- und Senior-Associate-Konstellationen hinterlegt.
+Konsolidierter Skill (Version 3.0.10) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.10 ergänzt eine dritte Testakte mit fünf ausführlichen Zeugnissen für Leitungsfunktionen: Rechtsabteilung, kaufmännische Leitung, Personal/Arbeitsrecht, Compliance/Datenschutz und Standort-/Werkleitung.
 
 ## Download
 
@@ -22,7 +22,7 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 
 ## Testakten zum Üben — Download
 
-Zwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Die erste Akte deckt zehn allgemeine Branchen ab; die zweite Akte ergänzt zehn juristische und akademische Rollen.
+Fünfundzwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Die erste Akte deckt zehn allgemeine Branchen ab; die zweite Akte ergänzt zehn juristische und akademische Rollen; die dritte Akte trainiert fünf obere Leitungsfunktionen mit bewusst durchwachsenen Bewertungen.
 
 Allgemeine Branchen: PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Filialleiterin Sparkasse, Spedition, Hotel-Empfang, Altenpflege, Industriemechaniker.
 
@@ -35,6 +35,12 @@ Jura und Wissenschaft: fünf juristische Lehrstuhl-/Universitätszeugnisse und f
 - [📦 Jura/Wissenschaft-ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) — ideal für gezielte Kanzlei- und Lehrstuhltests.
 - [📄 Jura/Wissenschaft-Gesamt-PDF aller 10 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) — ideal für Batch- oder One-Shot-Tests.
 - [🗂️ Jura/Wissenschaft-Einzelordner im Repository](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) — mit Erwartungshorizont und Prüfpunkten.
+
+Leitungsfunktionen: fünf ausführliche Zeugnisse für obere Führungsrollen, darunter Leiter Rechtsabteilung eines mitteldeutschen Mischkonzerns, kaufmännische Leitung/CFO, Leitung Personal und Arbeitsrecht, Compliance/Datenschutz sowie Werk- und Standortleitung.
+
+- [📦 Leitungsfunktionen-ZIP mit 5 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) — ideal für gezielte Tests zu Führungszeugnissen.
+- [📄 Leitungsfunktionen-Gesamt-PDF aller 5 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) — ideal für Batch- oder One-Shot-Tests.
+- [🗂️ Leitungsfunktionen-Einzelordner im Repository](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) — mit Erwartungshorizont und Prüfpunkten.
 
 ## Anwendung: So einfach geht's
 
@@ -100,7 +106,7 @@ Vor einer neuen Version kann der lokale Integritätscheck ausgeführt werden:
 python3 scripts/check_release_integrity.py
 ```
 
-Der Check prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Die Jura-/Wissenschafts-Testakten werden weiterhin reproduzierbar über `python3 scripts/build_jura_und_wissenschaft_testakten.py` erzeugt.
+Der Check prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Die Jura-/Wissenschafts-Testakten werden reproduzierbar über `python3 scripts/build_jura_und_wissenschaft_testakten.py` erzeugt; die Leitungsfunktionen über `python3 scripts/build_leitungsfunktionen_testakten.py`.
 
 ## Workflow in acht Stufen
 
@@ -137,7 +143,7 @@ Dieser Skill ist aus dem Plugin `arbeitszeugnis-analyse` der Sammlung [`claude-f
 
 ## Testakten zum Üben — Details
 
-Der Direktdownload steht oben im Abschnitt [Testakten zum Üben — Download](#testakten-zum-üben--download). Im Ordner [`testakten/arbeitszeugnis-analyse-bluehendes-leben/`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) liegen die zehn allgemeinen fiktiven Arbeitszeugnisse zusätzlich als einzelne Akten mit Korrespondenz und Vollvermerken. Im Ordner [`testakten/arbeitszeugnisse-jura-und-wissenschaft/`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) liegen zehn weitere juristisch-akademische Arbeitszeugnisse mit Erwartungshorizont.
+Der Direktdownload steht oben im Abschnitt [Testakten zum Üben — Download](#testakten-zum-üben--download). Im Ordner [`testakten/arbeitszeugnis-analyse-bluehendes-leben/`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) liegen die zehn allgemeinen fiktiven Arbeitszeugnisse zusätzlich als einzelne Akten mit Korrespondenz und Vollvermerken. Im Ordner [`testakten/arbeitszeugnisse-jura-und-wissenschaft/`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) liegen zehn weitere juristisch-akademische Arbeitszeugnisse mit Erwartungshorizont. Im Ordner [`testakten/arbeitszeugnisse-leitungsfunktionen/`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) liegen fünf ausführliche Führungszeugnisse mit eigener Prüflogik.
 
 ## 🚨 KEINE Aussage über Berufsrecht, Datenschutz, KI-VO oder Beschlagnahmeverbote
 

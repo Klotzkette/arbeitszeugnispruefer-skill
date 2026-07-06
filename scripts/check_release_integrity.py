@@ -27,6 +27,8 @@ MARKDOWN_WITH_ANCHORS = [
     Path("skill/SKILL.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md"),
+    Path("testakten/arbeitszeugnisse-leitungsfunktionen/README.md"),
+    Path("testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md"),
 ]
 
 HTML_FILES = [
@@ -55,6 +57,29 @@ PUBLIC_ARTIFACTS = [
         Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
         Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
         None,
+    ),
+    (
+        Path("testakten/arbeitszeugnisse-leitungsfunktionen/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
+        Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
+        5,
+    ),
+    (
+        Path("testakten/arbeitszeugnisse-leitungsfunktionen/gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+        Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+        None,
+    ),
+]
+
+COMBINED_PDF_DETAILS = [
+    (
+        Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
+        "Jura/Wissenschaft",
+        10,
+    ),
+    (
+        Path("testakten/arbeitszeugnisse-leitungsfunktionen/gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+        "Leitungsfunktionen",
+        5,
     ),
 ]
 
@@ -217,33 +242,39 @@ def check_public_artifacts(checker: Checker) -> None:
             checker.require(source_path.read_bytes().startswith(b"%PDF"), f"{source} is a PDF file")
 
     jura_pdfs = sorted((ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft").glob("[0-9][0-9]-*/Arbeitszeugnis_*.pdf"))
+    leadership_pdfs = sorted((ROOT / "testakten/arbeitszeugnisse-leitungsfunktionen").glob("[0-9][0-9]-*/Arbeitszeugnis_*.pdf"))
     general_pdfs = sorted((ROOT / "testakten/arbeitszeugnis-analyse-bluehendes-leben").glob("[0-9][0-9]-*/Arbeitszeugnis_*.pdf"))
     checker.require(len(jura_pdfs) == 10, "Jura/Wissenschaft test set has 10 individual PDFs")
+    checker.require(len(leadership_pdfs) == 5, "Leitungsfunktionen test set has 5 individual PDFs")
     checker.require(len(general_pdfs) == 10, "general test set has 10 individual PDFs")
 
 
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
-    combined = ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"
-    if not combined.exists():
-        checker.fail("Jura/Wissenschaft combined PDF is missing")
-        return
+    for rel, label, expected_headings in COMBINED_PDF_DETAILS:
+        combined = ROOT / rel
+        if not combined.exists():
+            checker.fail(f"{label} combined PDF is missing")
+            continue
 
-    if pdfinfo:
-        info = subprocess.run([pdfinfo, str(combined)], text=True, capture_output=True, check=True).stdout
-        checker.require("Encrypted:       no" in info, "Jura/Wissenschaft combined PDF is not encrypted")
-        page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
-        checker.require(bool(page_match and int(page_match.group(1)) >= 10), "Jura/Wissenschaft combined PDF has at least 10 pages")
-    else:
-        checker.warn("pdfinfo not found; skipped detailed PDF metadata check")
+        if pdfinfo:
+            info = subprocess.run([pdfinfo, str(combined)], text=True, capture_output=True, check=True).stdout
+            checker.require("Encrypted:       no" in info, f"{label} combined PDF is not encrypted")
+            page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
+            checker.require(
+                bool(page_match and int(page_match.group(1)) >= expected_headings),
+                f"{label} combined PDF has at least {expected_headings} pages",
+            )
+        else:
+            checker.warn("pdfinfo not found; skipped detailed PDF metadata check")
 
-    if pdftotext:
-        text = subprocess.run([pdftotext, str(combined), "-"], text=True, capture_output=True, check=True).stdout
-        headings = len(re.findall(r"\b(?:ARBEITSZEUGNIS|ZWISCHENZEUGNIS)\b", text))
-        checker.require(headings == 10, "Jura/Wissenschaft combined PDF contains 10 certificate headings")
-    else:
-        checker.warn("pdftotext not found; skipped PDF text extraction check")
+        if pdftotext:
+            text = subprocess.run([pdftotext, str(combined), "-"], text=True, capture_output=True, check=True).stdout
+            headings = len(re.findall(r"\b(?:ARBEITSZEUGNIS|ZWISCHENZEUGNIS)\b", text))
+            checker.require(headings == expected_headings, f"{label} combined PDF contains {expected_headings} certificate headings")
+        else:
+            checker.warn("pdftotext not found; skipped PDF text extraction check")
 
 
 def main() -> int:

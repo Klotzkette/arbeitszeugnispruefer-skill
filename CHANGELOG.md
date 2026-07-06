@@ -5,6 +5,31 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.10] — 2026-07-06
+
+### Hinzugefügt
+- Dritte Testakte `arbeitszeugnisse-leitungsfunktionen` mit fünf
+  ausführlichen fiktiven Arbeitszeugnissen für obere Führungsrollen:
+  Leiter Rechtsabteilung eines mitteldeutschen Mischkonzerns,
+  kaufmännische Leitung/CFO, Leitung Personal und Arbeitsrecht,
+  Compliance/Datenschutz sowie Werk- und Standortleitung.
+- Reproduzierbares Build-Skript
+  `scripts/build_leitungsfunktionen_testakten.py` für Einzel-PDFs,
+  Gesamt-PDF, ZIP und öffentliche `docs/testakten`-Downloads.
+- Erwartungshorizont und Prüfpunkte zur neuen Leitungsakte.
+
+### Geändert
+- README und Download-Seite verlinken nun alle drei Testakten-Sätze.
+- Release-Integritätscheck prüft zusätzlich die neue Leitungsakte.
+- Versionsbump auf 3.0.10 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Leitungsfunktionen-ZIP enthält genau 5 Einzel-PDFs; Gesamt-PDF ist A4,
+  nicht verschlüsselt und enthält 5 Zeugnisüberschriften.
+- Voller Integritätscheck läuft erfolgreich; Mini-Fassung bleibt unter
+  7.500 Zeichen; `skill/` und `docs/` sind byte-identisch.
+
 ## [3.0.9] — 2026-07-04
 
 ### Hinzugefügt
@@ -147,6 +172,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.10]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.10
 [3.0.9]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.9
 [3.0.8]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.8
 [3.0.7]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.7
