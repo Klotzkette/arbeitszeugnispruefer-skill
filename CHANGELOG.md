@@ -5,6 +5,23 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.12] — 2026-07-06
+
+### Geändert
+- Root-README mit Schnellzugriff, klarerer Testaktenübersicht und sortierter
+  Skript-/Release-Check-Tabelle überarbeitet.
+- Alle drei Testakten-READMEs vereinheitlicht: öffentliche Downloads,
+  Repository-Dateien, Einzel-PDFs, Prüffokus und typische Arbeitsaufträge sind
+  nun direkt verlinkt.
+- GitHub-Pages-Downloadseite um Schnellzugriff, Repository-Detailverweise und
+  Wartungs-/Release-Links ergänzt.
+- Versionsbump auf 3.0.12 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- README- und Pages-Links sind in die bestehende Integritätsprüfung
+  einbezogen; `skill/` und `docs/` bleiben byte-identisch.
+
 ## [3.0.11] — 2026-07-06
 
 ### Hinzugefügt
@@ -193,6 +210,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.12]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.12
 [3.0.11]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.11
 [3.0.10]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.10
 [3.0.9]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.9

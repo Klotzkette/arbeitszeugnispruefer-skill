@@ -103,6 +103,47 @@
   }
   ul { padding-left: 1.25rem; margin: 0.5rem 0 0; }
   li { color: var(--muted); margin-bottom: 0.35rem; }
+  .link-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+  .link-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding: 0.7rem 0;
+    margin: 0;
+  }
+  .link-list li:first-child { border-top: 0; }
+  .link-list span {
+    color: var(--fg);
+    font-weight: 600;
+  }
+  .link-list a {
+    color: var(--accent);
+    text-align: right;
+  }
+  .small-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.9rem;
+    margin: 0.75rem 0 0;
+  }
+  .small-links a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  @media (max-width: 520px) {
+    .link-list li { display: block; }
+    .link-list a {
+      display: block;
+      text-align: left;
+      margin-top: 0.15rem;
+    }
+  }
   code {
     background: var(--border);
     padding: 0.1rem 0.4rem;
@@ -121,7 +162,18 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeitszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.11.</p>
+  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeitszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.12.</p>
+
+  <div class="card">
+    <h2>Schnellzugriff</h2>
+    <p>Die wichtigsten Ansichten und Dateien an einem Ort: Download, Quelltext, Testakten und Release-Historie.</p>
+    <ul class="link-list">
+      <li><span>Vollversion</span><a href="SKILL.md" download="SKILL.md" type="text/markdown">SKILL.md herunterladen</a></li>
+      <li><span>Mini-Version</span><a href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">SKILL-mini.md herunterladen</a></li>
+      <li><span>Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">README und Quelltext</a></li>
+      <li><span>Release-Historie</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">CHANGELOG.md</a></li>
+    </ul>
+  </div>
 
   <div class="card">
     <h2>📥 Vollversion</h2>
@@ -149,6 +201,9 @@
     <a class="btn secondary" href="testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf" download type="application/pdf" style="margin-top:0.6rem;">
       📄 Gesamt-PDF aller 10 Zeugnisse
     </a>
+    <p class="small-links">
+      <a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/testakten/arbeitszeugnis-analyse-bluehendes-leben">Details im Repository</a>
+    </p>
     <p style="margin-top:1rem;"><strong>Jura und Wissenschaft</strong></p>
     <a class="btn secondary" href="testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip" download type="application/zip">
       📦 Jura/Wissenschaft-ZIP mit 10 Einzel-PDFs
@@ -156,6 +211,9 @@
     <a class="btn secondary" href="testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf" download type="application/pdf" style="margin-top:0.6rem;">
       📄 Jura/Wissenschaft-Gesamt-PDF
     </a>
+    <p class="small-links">
+      <a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/testakten/arbeitszeugnisse-jura-und-wissenschaft">Details im Repository</a>
+    </p>
     <p style="margin-top:1rem;"><strong>Leitungsfunktionen</strong></p>
     <a class="btn secondary" href="testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip" download type="application/zip">
       📦 Leitungsfunktionen-ZIP mit 5 Einzel-PDFs
@@ -163,6 +221,19 @@
     <a class="btn secondary" href="testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf" download type="application/pdf" style="margin-top:0.6rem;">
       📄 Leitungsfunktionen-Gesamt-PDF
     </a>
+    <p class="small-links">
+      <a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/testakten/arbeitszeugnisse-leitungsfunktionen">Details im Repository</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Für Wartung und Release</h2>
+    <p>Die Projektdateien sind offen einsehbar; der Release-Check prüft Versionen, Links, Pages-Spiegel und Testakten-Artefakte.</p>
+    <ul class="link-list">
+      <li><span>Changelog</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">Release-Historie öffnen</a></li>
+      <li><span>Integritätscheck</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/check_release_integrity.py">check_release_integrity.py</a></li>
+      <li><span>Testakten-Build</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/build_generated_testakten.py">build_generated_testakten.py</a></li>
+    </ul>
   </div>
 
   <div class="card">

@@ -6,7 +6,20 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.11) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.11 konsolidiert den Testakten-Build und härtet den Release-Check für alle drei Gesamt-PDFs.
+Konsolidierter Skill (Version 3.0.12) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.12 sortiert die README-Ansichten neu, macht Downloads und Testakten leichter auffindbar und verlinkt die Wartungswege klarer.
+
+## Schnellzugriff
+
+| Ziel | Direktlink | Hinweis |
+| --- | --- | --- |
+| Vollversion herunterladen | [SKILL.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) | Startet den Markdown-Download mit Fallback-Button. |
+| Kurzversion herunterladen | [SKILL-mini.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) | Kompaktfassung unter 7.500 Zeichen. |
+| Öffentliche Downloadseite | [GitHub Pages öffnen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) | Vollversion, Mini-Version und Testakten an einem Ort. |
+| Skill-Quelltext ansehen | [`skill/SKILL.md`](skill/SKILL.md) | Formatierte Repository-Ansicht zum Prüfen oder Kopieren. |
+| Mini-Quelltext ansehen | [`skill/SKILL-mini.md`](skill/SKILL-mini.md) | Freistehende Kurzfassung für kleine Assistenten. |
+| Release-Historie | [`CHANGELOG.md`](CHANGELOG.md) | Änderungen und Prüfpunkte je Version. |
+| Testakten gesamt | [Übersicht unten](#testakten-im-überblick) | 25 fiktive Arbeitszeugnisse in drei Akten. |
+| Release-Check | [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionen, Links, Spiegeldateien und Testakten-Artefakte. |
 
 ## Download
 
@@ -20,27 +33,17 @@ Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
-## Testakten zum Üben — Download
+## Testakten im Überblick
 
-Fünfundzwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Die erste Akte deckt zehn allgemeine Branchen ab; die zweite Akte ergänzt zehn juristische und akademische Rollen; die dritte Akte trainiert fünf obere Leitungsfunktionen mit bewusst durchwachsenen Bewertungen.
+Fünfundzwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Alle Akten sind frei erfunden, als Einzel-PDFs und Gesamt-PDF verfügbar und zusätzlich mit Erwartungshorizont beziehungsweise Prüfpunkten im Repository dokumentiert.
 
-Allgemeine Branchen: PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Filialleiterin Sparkasse, Spedition, Hotel-Empfang, Altenpflege, Industriemechaniker.
+| Akte | Inhalt | Direktdownloads | Details im Repository |
+| --- | --- | --- | --- |
+| Allgemeine Branchen | 10 Zeugnisse: PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Sparkassen-Filialleitung, Spedition, Hotel-Empfang, Altenpflege, Industriemechanik. | [ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip) · [Gesamt-PDF](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) | [`README`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) · [`Vollvermerke`](testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md) |
+| Jura und Wissenschaft | 10 Zeugnisse: juristische Lehrstuhl-/Universitätsrollen, Kanzleileitung ohne Anwaltszulassung, Junior Associate, ReNo-Fachkraft, Senior Associates. | [ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [Gesamt-PDF](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) | [`README`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) · [`Erwartungshorizont`](testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md) |
+| Leitungsfunktionen | 5 Zeugnisse: Rechtsabteilungsleitung, kaufmännische Leitung/CFO, Personal und Arbeitsrecht, Compliance/Datenschutz, Werk- und Standortleitung. | [ZIP mit 5 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [Gesamt-PDF](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) | [`README`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) · [`Erwartungshorizont`](testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md) |
 
-- [📦 Akten-ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip) — ideal, um die Zeugnisse einzeln in den KI-Chat zu geben.
-- [📄 Gesamt-PDF aller 10 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) — ideal, um alle Zeugnisse am Stück hochzuladen oder zu drucken.
-- [🗂️ Einzelordner im Repository](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) — mit Ergänzungs-Korrespondenz, Vollvermerken und allen Quelldateien je Akte.
-
-Jura und Wissenschaft: fünf juristische Lehrstuhl-/Universitätszeugnisse und fünf Kanzlei-/juristische Praxiszeugnisse, darunter Kanzleileitung ohne Anwaltszulassung, Junior Associate in der Probezeit, ReNo-Fachkraft und Senior Associates in Boutique und Großkanzlei.
-
-- [📦 Jura/Wissenschaft-ZIP mit 10 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) — ideal für gezielte Kanzlei- und Lehrstuhltests.
-- [📄 Jura/Wissenschaft-Gesamt-PDF aller 10 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) — ideal für Batch- oder One-Shot-Tests.
-- [🗂️ Jura/Wissenschaft-Einzelordner im Repository](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) — mit Erwartungshorizont und Prüfpunkten.
-
-Leitungsfunktionen: fünf ausführliche Zeugnisse für obere Führungsrollen, darunter Leiter Rechtsabteilung eines mitteldeutschen Mischkonzerns, kaufmännische Leitung/CFO, Leitung Personal und Arbeitsrecht, Compliance/Datenschutz sowie Werk- und Standortleitung.
-
-- [📦 Leitungsfunktionen-ZIP mit 5 Einzel-PDFs](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) — ideal für gezielte Tests zu Führungszeugnissen.
-- [📄 Leitungsfunktionen-Gesamt-PDF aller 5 Zeugnisse](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) — ideal für Batch- oder One-Shot-Tests.
-- [🗂️ Leitungsfunktionen-Einzelordner im Repository](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) — mit Erwartungshorizont und Prüfpunkten.
+Praktischer Einsatz: Einzel-PDFs eignen sich für gezielte Chats und Regressionstests; Gesamt-PDFs eignen sich für Batch- oder One-Shot-Läufe. Die README-Dateien der Testakten erklären, welche Rollen, formalen Auffälligkeiten und typischen Bewertungsfallen jeweils trainiert werden.
 
 ## Anwendung: So einfach geht's
 
@@ -77,6 +80,16 @@ Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kenn
 skill/
 ├── SKILL.md        Vollversion: Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse
 └── SKILL-mini.md   Sparversion unter 7.500 Zeichen für kleinere Assistenten und Skillsets
+
+testakten/
+├── arbeitszeugnis-analyse-bluehendes-leben/       10 allgemeine Branchen
+├── arbeitszeugnisse-jura-und-wissenschaft/        10 Jura-/Wissenschaftsfälle
+└── arbeitszeugnisse-leitungsfunktionen/           5 Führungszeugnisse
+
+docs/
+├── index.html       öffentliche Downloadseite
+├── SKILL.md         Pages-Spiegel der Vollversion
+└── SKILL-mini.md    Pages-Spiegel der Kurzversion
 ```
 
 Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
@@ -100,13 +113,18 @@ Zusätzlich enthält der Skill durchgängig:
 
 ## Qualitätssicherung und Release-Check
 
-Vor einer neuen Version kann der lokale Integritätscheck ausgeführt werden:
+Vor einer neuen Version sollte der lokale Integritätscheck ausgeführt werden:
 
 ```bash
 python3 scripts/check_release_integrity.py
 ```
 
-Der Check prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Die Jura-/Wissenschafts-Testakten werden reproduzierbar über `python3 scripts/build_jura_und_wissenschaft_testakten.py` erzeugt; die Leitungsfunktionen über `python3 scripts/build_leitungsfunktionen_testakten.py`.
+| Skript | Zweck |
+| --- | --- |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. |
+| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte aus den vorhandenen Buildern neu. |
+| [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
+| [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
 
 Alle generierten Testakten-Artefakte gemeinsam neu bauen:
 
@@ -149,7 +167,13 @@ Dieser Skill ist aus dem Plugin `arbeitszeugnis-analyse` der Sammlung [`claude-f
 
 ## Testakten zum Üben — Details
 
-Der Direktdownload steht oben im Abschnitt [Testakten zum Üben — Download](#testakten-zum-üben--download). Im Ordner [`testakten/arbeitszeugnis-analyse-bluehendes-leben/`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) liegen die zehn allgemeinen fiktiven Arbeitszeugnisse zusätzlich als einzelne Akten mit Korrespondenz und Vollvermerken. Im Ordner [`testakten/arbeitszeugnisse-jura-und-wissenschaft/`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) liegen zehn weitere juristisch-akademische Arbeitszeugnisse mit Erwartungshorizont. Im Ordner [`testakten/arbeitszeugnisse-leitungsfunktionen/`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) liegen fünf ausführliche Führungszeugnisse mit eigener Prüflogik.
+Der Direktdownload steht oben im Abschnitt [Testakten im Überblick](#testakten-im-überblick). Die Detailansichten führen jeweils durch Aktenzweck, einzelne Rollen, Einzel-PDFs und Prüfpunkte:
+
+| Detailansicht | Inhalt |
+| --- | --- |
+| [`testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) | Zehn allgemeine Branchenzeugnisse mit Korrespondenz und Vollvermerken. |
+| [`testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) | Zehn juristisch-akademische Zeugnisse mit Erwartungshorizont und Prüfpunkten. |
+| [`testakten/arbeitszeugnisse-leitungsfunktionen/README.md`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) | Fünf ausführliche Führungszeugnisse mit eigener Prüflogik. |
 
 ## 🚨 KEINE Aussage über Berufsrecht, Datenschutz, KI-VO oder Beschlagnahmeverbote
 

@@ -1,58 +1,47 @@
 # Testakte: Arbeitszeugnis-Analyse — aus dem blühenden Leben
 
-Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainings- und Demonstrationsmaterial. Sie enthält zehn Arbeitszeugnisse aus zehn verschiedenen Branchen und Berufen, jeweils ein bis zwei Seiten lang, alle formal freundlich und im üblichen Wohlwollens-Stil verfasst. Alle Personen, Firmen und Adressen sind frei erfunden.
+Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainings- und Demonstrationsmaterial. Sie enthält zehn fiktive Arbeitszeugnisse aus zehn verschiedenen Branchen und Berufen, jeweils ein bis zwei Seiten lang, formal freundlich und im üblichen Wohlwollens-Stil verfasst. Alle Personen, Firmen, Adressen, Telefon-, Fax- und Steuernummern sind frei erfunden.
 
-## Akte komplett lesen
+## Schnellzugriff
 
-| Was | Format | Datei |
-| --- | --- | --- |
-| Gesamt-PDF (alle zehn Zeugnisse plus Vollvermerk in einer Datei) | PDF | [`gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf`](gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
-| Vollvermerk, Korrespondenz, Beweis-/Fristenlogik | Markdown | [`90-ergaenzende-korrespondenz-und-vollvermerke.md`](90-ergaenzende-korrespondenz-und-vollvermerke.md) |
+| Ziel | Link |
+| --- | --- |
+| Zur Hauptübersicht | [`README.md`](../../README.md) |
+| Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
+| ZIP mit allen 10 Einzel-PDFs | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnis-testakten-einzel-pdfs.zip) |
+| Gesamt-PDF aller 10 Zeugnisse | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
+| Ergänzende Korrespondenz und Vollvermerke | [`90-ergaenzende-korrespondenz-und-vollvermerke.md`](90-ergaenzende-korrespondenz-und-vollvermerke.md) |
 
 ## Zweck der Akte
 
-Die Zeugnisse sehen oberflächlich höflich, vollständig und unkritisch aus. Tatsächlich verteilen sich die Bewertungen über die gesamte Notenskala. Die Aufgabe für den Skill ist es, aus Briefkopf, Aufbau, Wortwahl, Steigerungsadverbien, Zufriedenheitsformeln, Beendigungsgrund, Schlussformel und Unterzeichnerstruktur die wahre Bewertung herauszulesen.
+Die Zeugnisse sehen oberflächlich höflich, vollständig und unkritisch aus. Tatsächlich verteilen sich die Bewertungen über die gesamte Notenskala. Der Skill soll aus Briefkopf, Aufbau, Wortwahl, Steigerungsadverbien, Zufriedenheitsformeln, Beendigungsgrund, Schlussformel und Unterzeichnerstruktur die wahre Bewertung herausarbeiten.
 
 ## Aktenübersicht
 
-| Nr. | Name | Beruf | Branche | Zeugnistyp | Beendigungsgrund |
-|-----|------|-------|---------|------------|------------------|
-| 01 | Gunhilde Brachvogel-Riemenschneider | Pharmazeutisch-technische Assistentin | Apotheke (Würzburg) | Endzeugnis | Eigener Wunsch, Wechsel zu Filialleiterstelle |
-| 02 | Volkmar Eitel-Hartung | Angestellter Rechtsanwalt | Anwaltspartnerschaft (Düsseldorf) | Endzeugnis | Eigene Kanzleigründung |
-| 03 | Edelgard Schwerdtfeger | Medizinisch-technische Radiologieassistentin | Radiologische Gemeinschaftspraxis (Hof) | Endzeugnis | Eigener Wunsch |
-| 04 | Friedhelm Pöttering | Lagermeister | Eisenwarenhandel (Gütersloh) | Endzeugnis | Betriebsbedingte Kündigung im Rahmen Umstrukturierung |
-| 05 | Walpurga Dietrichsen-Hofstätter | Zahnmedizinische Fachangestellte | Zahnarztpraxis (Ravensburg) | Endzeugnis | Beendigung ohne weitere Angabe |
-| 06 | Reinhilde Eisenträger | Filialleiterin | Sparkasse (Selb/Marktredwitz) | Zwischenzeugnis | Antritt Elternzeit |
-| 07 | Dietram Auerwald-Bornhöft | Sachbearbeiter Speditionsdisposition | Logistikunternehmen (Bremen) | Endzeugnis | Aufhebung im gegenseitigen Einvernehmen |
-| 08 | Hartmut Greifenklau | Empfangsleiter | Vier-Sterne-Hotel (Bautzen) | Endzeugnis | Beendigung ohne weitere Angabe |
-| 09 | Ortrud Falckenstein | Examinierte Altenpflegerin, Wohnbereichsleitung | Seniorenresidenz (Einbeck) | Endzeugnis | Eintritt in den Ruhestand |
-| 10 | Burchard Holzapfel | Industriemechaniker, Schichtführer | Maschinenbau (Oelsnitz/Erzgebirge) | Endzeugnis | Beendigung ohne weitere Angabe |
+| Nr. | Person | Beruf / Rolle | Branche | Typ / Anlass | Einzel-PDF |
+| --- | --- | --- | --- | --- | --- |
+| 01 | Gunhilde Brachvogel-Riemenschneider | Pharmazeutisch-technische Assistentin | Apotheke, Würzburg | Endzeugnis, eigener Wechselwunsch | [`PDF`](01-gunhilde-brachvogel-riemenschneider-pta/Arbeitszeugnis_01-gunhilde-brachvogel-riemenschneider-pta.pdf) |
+| 02 | Volkmar Eitel-Hartung | Angestellter Rechtsanwalt | Anwaltspartnerschaft, Düsseldorf | Endzeugnis, Kanzleigründung | [`PDF`](02-volkmar-eitel-hartung-rechtsanwalt/Arbeitszeugnis_02-volkmar-eitel-hartung-rechtsanwalt.pdf) |
+| 03 | Edelgard Schwerdtfeger | MTA Radiologie | Radiologische Gemeinschaftspraxis, Hof | Endzeugnis, eigener Wunsch | [`PDF`](03-edelgard-schwerdtfeger-mta-radiologie/Arbeitszeugnis_03-edelgard-schwerdtfeger-mta-radiologie.pdf) |
+| 04 | Friedhelm Pöttering | Lagermeister | Eisenwarenhandel, Gütersloh | Endzeugnis, betriebsbedingte Kündigung | [`PDF`](04-friedhelm-poettering-lagermeister/Arbeitszeugnis_04-friedhelm-poettering-lagermeister.pdf) |
+| 05 | Walpurga Dietrichsen-Hofstätter | Zahnmedizinische Fachangestellte | Zahnarztpraxis, Ravensburg | Endzeugnis, Beendigung ohne nähere Angabe | [`PDF`](05-walpurga-dietrichsen-hofstaetter-zfa/Arbeitszeugnis_05-walpurga-dietrichsen-hofstaetter-zfa.pdf) |
+| 06 | Reinhilde Eisenträger | Filialleiterin | Sparkasse, Selb/Marktredwitz | Zwischenzeugnis, Elternzeit | [`PDF`](06-reinhilde-eisentraeger-filialleiterin-sparkasse/Arbeitszeugnis_06-reinhilde-eisentraeger-filialleiterin-sparkasse.pdf) |
+| 07 | Dietram Auerwald-Bornhöft | Sachbearbeiter Speditionsdisposition | Logistik, Bremen | Endzeugnis, Aufhebung | [`PDF`](07-dietram-auerwald-bornhoeft-spedition/Arbeitszeugnis_07-dietram-auerwald-bornhoeft-spedition.pdf) |
+| 08 | Hartmut Greifenklau | Empfangsleiter | Vier-Sterne-Hotel, Bautzen | Endzeugnis, Beendigung ohne nähere Angabe | [`PDF`](08-hartmut-greifenklau-hotel-empfangsleiter/Arbeitszeugnis_08-hartmut-greifenklau-hotel-empfangsleiter.pdf) |
+| 09 | Ortrud Falckenstein | Examinierte Altenpflegerin / Wohnbereichsleitung | Seniorenresidenz, Einbeck | Endzeugnis, Ruhestand | [`PDF`](09-ortrud-falckenstein-altenpflegerin/Arbeitszeugnis_09-ortrud-falckenstein-altenpflegerin.pdf) |
+| 10 | Burchard Holzapfel | Industriemechaniker / Schichtführer | Maschinenbau, Oelsnitz/Erzgebirge | Endzeugnis, Beendigung ohne nähere Angabe | [`PDF`](10-burchard-holzapfel-industriemechaniker/Arbeitszeugnis_10-burchard-holzapfel-industriemechaniker.pdf) |
+
+## Prüfprofil
+
+| Bereich | Worauf der Skill achten soll |
+| --- | --- |
+| Form und Aufbau | Briefkopf, Datum, Unterzeichner, Zeugnisart, Aufgabenblock und Schlussblock. |
+| Notensprache | Zufriedenheitsformeln, Steigerungsadverbien, Abschwächungen und Widersprüche. |
+| Verdeckte Risiken | Codeworte, Negationen, Auslassungen, Bereichs-Drift und auffällige Reihenfolgen. |
+| Mandatsoutput | Mandantenkommunikation, Berichtigungsverlangen oder Klagestrategie aus den Befunden ableiten. |
 
 ## Struktur der einzelnen Akten
 
 Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname folgt dem Schema `Arbeitszeugnis_<nr>-<vorname>-<nachname>-<beruf>.pdf`.
 
-Alle Zeugnisse enthalten:
-
-- vollständigen Briefkopf mit Firmenname, Anschrift, Telefon, Fax, E-Mail sowie ggf. USt-IdNr. oder Registernummer
-- schlichte Briefkopfmarke mit Kanzlei-, Praxis-, Hotel-, Bank- oder Unternehmensbezug
-- Ort und Datum der Ausstellung
-- Personalstammdaten (Name, Geburtsdatum, Eintritt, Austritt, Position)
-- Aufgabenbeschreibung als Fließtext und Bulletliste
-- Bewertungsteile zu Fachkenntnissen, Arbeitsweise, Belastbarkeit, Engagement, Arbeitserfolg und Verhalten
-- Beendigungspassage und Schlussformel
-- Unterschriftsblock mit ein oder zwei Unterzeichnern und Stempel-Hinweis
-
-## Mögliche Arbeitsaufträge an den Skill
-
-- Note pro Zeugnis ermitteln, einzeln und im Gesamtbild
-- Codeworte, Negationen, Auslassungen und Steigerungsadverbien markieren
-- Schaufenster-Pattern und Bereichs-Drift erkennen
-- Schlussformel auf Vollständigkeit prüfen
-- Aus den Befunden eine Mandantenkommunikation, ein Berichtigungsverlangen oder eine Klagestrategie entwickeln
-
-## Technisches und Datenschutz
-
-- Format der Zeugnisse: PDF, A4, deutsche Typographie mit Anführungszeichen „…", Halbgeviertstrich und korrekt gesetzten Umlauten
-- Alle Personen, Firmen, Adressen, Telefon-, Fax- und Steuernummern sind frei erfunden; Übereinstimmungen mit realen Personen oder Unternehmen sind unbeabsichtigt
-- Die Akte ist als Trainings- und Demonstrationsmaterial gedacht und ersetzt keine rechtliche Beratung
+Alle Zeugnisse enthalten vollständige Briefköpfe, Ort und Datum, Personalstammdaten, Aufgabenbeschreibung, Bewertungsteile, Beendigungspassage, Schlussformel und Unterschriftsblock. Die Akte ist Trainings- und Demonstrationsmaterial und ersetzt keine rechtliche Beratung.
