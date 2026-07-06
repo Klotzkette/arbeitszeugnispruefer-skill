@@ -5,6 +5,27 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.11] — 2026-07-06
+
+### Hinzugefügt
+- Neues Sammelskript `scripts/build_generated_testakten.py`, das alle
+  generierten Testakten-Artefakte aus den vorhandenen Buildern neu erzeugt.
+
+### Geändert
+- Release-Integritätscheck prüft nun die Gesamt-PDFs aller drei Testakten-Sätze
+  tiefgehend, einschließlich der ursprünglichen allgemeinen Branchenakte:
+  PDF-Metadaten, Nichtverschlüsselung, Mindestseitenzahl, Zeugnisüberschriften
+  und bei der allgemeinen Akte zusätzlich die zehn PDF-Anhang-Marker.
+- README-Abschnitt zur Qualitätssicherung um das zentrale Build-Kommando für
+  generierte Testakten ergänzt.
+- Versionsbump auf 3.0.11 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Zentrale Testakten-Generierung läuft erfolgreich.
+- Voller Integritätscheck läuft erfolgreich; Mini-Fassung bleibt unter
+  7.500 Zeichen; `skill/` und `docs/` sind byte-identisch.
+
 ## [3.0.10] — 2026-07-06
 
 ### Hinzugefügt
@@ -172,6 +193,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.11]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.11
 [3.0.10]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.10
 [3.0.9]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.9
 [3.0.8]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.8

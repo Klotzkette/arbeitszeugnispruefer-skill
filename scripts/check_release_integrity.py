@@ -72,14 +72,25 @@ PUBLIC_ARTIFACTS = [
 
 COMBINED_PDF_DETAILS = [
     (
+        Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf"),
+        "Allgemeine Branchen",
+        10,
+        9,
+        10,
+    ),
+    (
         Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
         "Jura/Wissenschaft",
         10,
+        10,
+        None,
     ),
     (
         Path("testakten/arbeitszeugnisse-leitungsfunktionen/gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
         "Leitungsfunktionen",
         5,
+        5,
+        None,
     ),
 ]
 
@@ -252,7 +263,7 @@ def check_public_artifacts(checker: Checker) -> None:
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
-    for rel, label, expected_headings in COMBINED_PDF_DETAILS:
+    for rel, label, minimum_pages, expected_headings, expected_attachments in COMBINED_PDF_DETAILS:
         combined = ROOT / rel
         if not combined.exists():
             checker.fail(f"{label} combined PDF is missing")
@@ -263,16 +274,29 @@ def check_pdf_details(checker: Checker) -> None:
             checker.require("Encrypted:       no" in info, f"{label} combined PDF is not encrypted")
             page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
             checker.require(
-                bool(page_match and int(page_match.group(1)) >= expected_headings),
-                f"{label} combined PDF has at least {expected_headings} pages",
+                bool(page_match and int(page_match.group(1)) >= minimum_pages),
+                f"{label} combined PDF has at least {minimum_pages} pages",
             )
         else:
             checker.warn("pdfinfo not found; skipped detailed PDF metadata check")
 
         if pdftotext:
             text = subprocess.run([pdftotext, str(combined), "-"], text=True, capture_output=True, check=True).stdout
-            headings = len(re.findall(r"\b(?:ARBEITSZEUGNIS|ZWISCHENZEUGNIS)\b", text))
-            checker.require(headings == expected_headings, f"{label} combined PDF contains {expected_headings} certificate headings")
+            headings = sum(
+                1
+                for line in text.splitlines()
+                if line.strip() in {"ARBEITSZEUGNIS", "ZWISCHENZEUGNIS", "Arbeitszeugnis"}
+            )
+            checker.require(
+                headings == expected_headings,
+                f"{label} combined PDF contains {expected_headings} certificate headings (found {headings})",
+            )
+            if expected_attachments is not None:
+                attachments = sum(1 for line in text.splitlines() if line.strip().startswith("PDF-Anhang:"))
+                checker.require(
+                    attachments == expected_attachments,
+                    f"{label} combined PDF contains {expected_attachments} PDF attachment markers (found {attachments})",
+                )
         else:
             checker.warn("pdftotext not found; skipped PDF text extraction check")
 

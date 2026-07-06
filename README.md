@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.10) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.10 ergänzt eine dritte Testakte mit fünf ausführlichen Zeugnissen für Leitungsfunktionen: Rechtsabteilung, kaufmännische Leitung, Personal/Arbeitsrecht, Compliance/Datenschutz und Standort-/Werkleitung.
+Konsolidierter Skill (Version 3.0.11) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.11 konsolidiert den Testakten-Build und härtet den Release-Check für alle drei Gesamt-PDFs.
 
 ## Download
 
@@ -107,6 +107,12 @@ python3 scripts/check_release_integrity.py
 ```
 
 Der Check prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Die Jura-/Wissenschafts-Testakten werden reproduzierbar über `python3 scripts/build_jura_und_wissenschaft_testakten.py` erzeugt; die Leitungsfunktionen über `python3 scripts/build_leitungsfunktionen_testakten.py`.
+
+Alle generierten Testakten-Artefakte gemeinsam neu bauen:
+
+```bash
+python3 scripts/build_generated_testakten.py
+```
 
 ## Workflow in acht Stufen
 
