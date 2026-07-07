@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.12"
+version: "3.0.13"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -8,7 +8,7 @@ description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, k
 
 Nutze diesen Kurzskill, wenn die Vollversion zu lang ist. Er ist weniger tief, aber praxistauglich: Zeugnis rein, Analyse raus. Keine Rechtsberatung, keine Gewähr. Rechtsprechung und Normen vor Schriftsatznutzung live prüfen.
 
-Freistehend nutzbar: gesamten Text als Kurzprompt kopieren oder als Datei anhängen, dann das Arbeitszeugnis nachreichen. Nicht einzelne Listen isolieren; Rollenlogik, Ampel, Rechtsanker und Qualitätsgate gehören zusammen.
+Freistehend nutzbar: gesamten Text als Kurzprompt kopieren oder anhängen, dann Zeugnis nachreichen. Listen nicht isolieren; Rollenlogik, Ampel, Rechtsanker und Qualitätsgate gehören zusammen.
 
 ## Sofortstart und Rolle
 
@@ -27,7 +27,7 @@ Bei langer Ausgabe Fortsetzungsmarke setzen; bei „weiter" am nächsten offenen
 - §§ 241 II, 280 I BGB: Nebenpflicht/Schadensersatz.
 - Arbeitsgericht zuständig; Zeugnisberichtigung als Leistungsklage.
 - BAG-Linie: „zur vollen Zufriedenheit" = Note 3; besser als Note 3 muss grundsätzlich der Arbeitnehmer darlegen/beweisen, schlechter als Note 3 der Arbeitgeber. Schlussformel mit Dank/Wünschen ist starkes Signal, aber regelmäßig nicht einklagbar.
-- Auslassungen nur rügen, wenn positive Hervorhebung nach Rolle/Branche erwartbar ist; Datum muss wahr bleiben; Vergleiche nicht nur mit Note titulieren, sondern Wortlaut/Entwurf sichern.
+- Auslassungen nur bei erwartbarer Hervorhebung rügen; Datum muss wahr bleiben; Vergleichstitel: konkrete Wortlaute/Entwurf sichern; Entwurf + wichtiger-Grund-Vorbehalt kann vollstreckbar sein.
 - Vor Beendigung kein wirksamer Zukunftsverzicht auf ein qualifiziertes Zeugnis; Verzichts-/Erledigungsklauseln prüfen.
 - Fristen nicht schematisch prüfen: Regelverjährung nach §§ 195, 199 BGB, mögliche Ausschlussfristen und Verwirkung beachten.
 - Kosten nicht schematisch fordern: § 12a ArbGG schließt Anwaltskostenerstattung im ersten Rechtszug und regelmäßig auch vorgerichtliche Rechtsverfolgungskosten aus.
@@ -42,14 +42,14 @@ Setze Ampeln als Symbole:
 - 🟠 schwach positiv/neutralisiert, häufig Note 3 oder Risiko.
 - 🔴 negativ codiert, widersprüchlich, formell angreifbar oder Note 4-5.
 
-Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „zu unserer Zufriedenheit" = 4; „im Großen und Ganzen zu unserer Zufriedenheit"/„bemüht" = 5. Keine Mathematik: immer Gesamtkontext prüfen.
+Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2; „zur vollen" = 3; „zu unserer Zufriedenheit" = 4; „im Großen und Ganzen zu unserer Zufriedenheit"/„bemüht" = 4-5. Keine Mathematik: immer Gesamtkontext prüfen.
 
 ## Prüfworkflow
 
 1. **Kopfdaten/Formalia:** Arbeitgeber, Arbeitnehmer, Zeitraum, Position, Zeugnisart, Ausstellungsdatum, Briefkopf, Unterschrift/Signatur, Funktion des Ausstellers, Abreden zu Vergleich/Verzicht/Entwurf. Datum nicht schematisch beanstanden; spätere Datierung nur bei Unklarheit, Verschleierung, Unwahrheit oder Verzugsrisiko als Mangel werten. Qualifiziertes Zeugnis braucht Leistung und Verhalten. Fließtext ist Regelfall; tabellarische Schulnoten sind riskant. Elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur; einfache PDF/Scan/E-Mail genügt nicht.
 2. **Aufgaben vs. Bewertung trennen:** Aufgabenbeschreibung neutral erfassen. Nur bewertende Sätze in die Notenmatrix aufnehmen.
 3. **Leistung prüfen:** Fachwissen, Arbeitsqualität, Arbeitsmenge, Arbeitsweise, Belastbarkeit, Eigeninitiative, Erfolg. Fehlende Steigerer („stets", „sehr", „außerordentlich") drücken oft nach unten.
-4. **Verhalten prüfen:** Reihenfolge Vorgesetzte/Kollegen/Kunden, Teamfähigkeit, Loyalität, Integrität, Führung. Falsche Reihenfolge oder Auslassungen können Warnsignal sein.
+4. **Verhalten prüfen:** Reihenfolge Vorgesetzte/Kollegen/Kunden als Regelfall, Teamfähigkeit, Loyalität, Integrität, Führung. Abweichungen/Auslassungen nur rollenbewusst rügen.
 5. **Schlussformel prüfen:** Bedauern, Dank, Zukunftswünsche und Beendigungsgrund getrennt bewerten. Signalwirkung ja; Anspruch nur begrenzt.
 6. **Codes und Auslassungen:** Achte auf „bemüht", „im Wesentlichen", „kennen gelernt" nur im Kontext, Passivierungen, auffällige Kürze, fehlende Kernkompetenzen, ironische Übertreibung, Widersprüche. Als Risiko-Lesart formulieren, nicht als Tatsache.
 7. **Drift:** Prüfe, ob einzelne Spitzensätze Note 1 suggerieren, während benachbarte Sätze im selben Bereich nur Note 3/4 tragen.

@@ -5,6 +5,28 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.13] — 2026-07-07
+
+### Geändert
+- Finaler Bug-Hunt und Kohärenz-Sweep durch Voll- und Mini-Fassung.
+- BAG 07.05.2026 – 8 AZB 25/25 in der Vollversion näher am Leitsatz
+  formuliert: Entwurfsklausel mit Abweichung nur aus wichtigem Grund ist
+  vollstreckbar, bleibt aber durch Zeugniswahrheit und Zeugnisklarheit begrenzt.
+- Mini-Fassung um den komprimierten Entwurfsklausel-/Vollstreckungsanker
+  ergänzt, ohne das 7.500-Zeichen-Limit zu überschreiten.
+- Notenlogik zu „bemüht" von einem starren Note-5-Automatismus auf eine
+  realistischere Spanne 4 bis 5 gehärtet.
+- Sozialverhaltens-Reihenfolge als rollenbewusster Regelfall statt als
+  schematische Pflicht formuliert; Beweislasttabelle entsprechend präzisiert.
+- Kleine sprachliche Glättung im roten Musterzeugnis.
+- Versionsbump auf 3.0.13 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Gesetzesanker (§ 109 GewO, § 16 BBiG) und aktuelle BAG-Anker
+  2 AZR 96/24 (B) sowie 8 AZB 25/25 gegen frei verfügbare Primärquellen
+  gegengeprüft.
+
 ## [3.0.12] — 2026-07-06
 
 ### Geändert
@@ -210,6 +232,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.13]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.13
 [3.0.12]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.12
 [3.0.11]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.11
 [3.0.10]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.10

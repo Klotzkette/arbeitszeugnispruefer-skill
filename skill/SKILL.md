@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.12"
+version: "3.0.13"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit, Auslassungen, Datumswahrheit, Vollstreckbarkeit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -65,7 +65,7 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 | **BAG, Urteil v. 28.11.2019 – 8 AZR 293/18** | § 12a Abs. 1 S. 1 ArbGG schließt nicht nur prozessuale, sondern auch materiell-rechtliche Ansprüche auf Erstattung vor- und außergerichtlicher Rechtsverfolgungskosten bis zum Schluss einer möglichen ersten Instanz regelmäßig aus. | Kostenrisiko und Aufforderungsschreiben (Teil F) |
 | **BAG, Teilurteil v. 18.06.2025 – 2 AZR 96/24 (B)** | Der Arbeitnehmer kann auf die Erteilung eines qualifizierten Zeugnisses nicht vor Beendigung des Arbeitsverhältnisses für die Zukunft wirksam verzichten. | Verzichts-, Erledigungs- und Vergleichsklauseln (Teil F) |
 | **BAG, Beschluss v. 14.02.2017 – 9 AZB 49/16** | Ein Vergleichs- oder Vollstreckungstitel, der nur eine Notenstufe („sehr gut", „gut") vorgibt, ist regelmäßig nicht hinreichend bestimmt. Wer konkreten Zeugnisinhalt sichern will, muss Wortlaut, Form oder eine belastbare Entwurfsklausel titulieren. | Klageantrag, Vergleichsfenster, Vollstreckung (Teil F.3, Teil F.4) |
-| **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, kann vollstreckungsfähigen Inhalt haben; substantielle Einwände aus Zeugniswahrheit oder Zeugnisklarheit werden nicht per Zwangsgeld „entschieden". | Vergleichsfenster und Vollstreckung (Teil F.3) |
+| **BAG, Beschluss v. 07.05.2026 – 8 AZB 25/25** | Die in einem gerichtlichen Vergleich übernommene Pflicht, ein Zeugnis nach dem Entwurf des Arbeitnehmers zu erteilen, von dem nur aus wichtigem Grund abgewichen werden darf, hat vollstreckbaren Inhalt. Zeugniswahrheit und Zeugnisklarheit bleiben aber Grenzen: nachvollziehbar vorgetragene Einwände können Zwangsgeld sperren und ein neues Erkenntnisverfahren erfordern. | Vergleichsfenster und Vollstreckung (Teil F.3) |
 | **BAG, Urteil v. 08.03.1995 – 5 AZR 848/93** | Die Zeugniserteilung ist Holschuld (§ 269 BGB): Der Arbeitnehmer holt das Zeugnis im Betrieb ab; nur ausnahmsweise (Unzumutbarkeit, § 242 BGB) wird daraus eine Schickschuld. | Formalia und Mandatspraxis (Teil E.5, Teil F) |
 
 ### LAG- und instanzgerichtliche Rechtsprechung (Auswahl)
@@ -85,7 +85,7 @@ Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und
 4. **Verzichtsklauseln prüfen.** Ein vor Beendigung erklärter Zukunftsverzicht auf ein qualifiziertes Zeugnis ist unwirksam (2 AZR 96/24 (B)). Aufhebungs-, Vergleichs- und Erledigungsklauseln deshalb immer am tatsächlichen Beendigungszeitpunkt und am konkreten Zeugnisanspruch messen.
 5. **Folgefassungen gegen Verschlechterung sichern.** Bei Berichtigungsverlangen und neuen Zeugnisfassungen prüfen, ob der Arbeitgeber ohne neue Tatsachen von früheren Leistungs- oder Verhaltensbeurteilungen abrückt (9 AZR 352/04). Schlussformeln bleiben gesondert zu behandeln: grundsätzlich kein Anspruch, aber Schutz gegen maßregelnde Streichung nach berechtigtem Änderungsverlangen.
 6. **Auslassungen nicht überdehnen.** Beredtes Schweigen nur dann als Berichtigungspunkt führen, wenn das fehlende Merkmal nach Berufskreis, Branche oder konkreter Funktion erwartbar ist und das Fehlen eine negative Lesart erzeugt (9 AZR 632/07). Fehlt diese Grundlage, nur als Verhandlungswunsch markieren.
-7. **Datum und Titel ernst nehmen.** Daten müssen wahr bleiben (9 AZR 8/15). Vergleichs- und Klageanträge dürfen nicht bei bloßen Notenstufen stehenbleiben; konkrete Wortlaute oder Entwurfsklauseln sichern (9 AZB 49/16; 8 AZB 25/25).
+7. **Datum und Titel ernst nehmen.** Daten müssen wahr bleiben (9 AZR 8/15). Vergleichs- und Klageanträge dürfen nicht bei bloßen Notenstufen stehenbleiben; konkrete Wortlaute oder Entwurfsklauseln sichern. Besonders stark ist die Entwurfsklausel mit Abweichung nur aus wichtigem Grund (9 AZB 49/16; 8 AZB 25/25).
 
 ## Wann dieser Skill greift
 
@@ -177,7 +177,7 @@ Kopfdaten gegen Arbeitsvertrag, Lohnabrechnung und Beendigungsdokument abgleiche
 Drei Sätze tragen typischerweise die Hauptnote eines qualifizierten Zeugnisses:
 
 - **Zusammenfassende Leistungsbeurteilung** (Zufriedenheitsformel): Hauptträger der Leistungsnote → [Teil A](#teil-a--zufriedenheitsformel--decodierung).
-- **Verhaltensbeurteilung**: Trägt die Verhaltensnote. Reihenfolge Vorgesetzte vor Kollegen vor Kunden ist Pflicht.
+- **Verhaltensbeurteilung**: Trägt die Verhaltensnote. Regelmäßig erwartete Reihenfolge: Vorgesetzte vor Kollegen vor Kunden; Abweichungen nur rügen, wenn sie im konkreten Rollen- und Kontaktprofil eine negative Lesart erzeugen.
 - **Schlussformel**: Trägt die Signalwirkung; rechtlich nur eingeschränkt einklagbar → [Teil B](#teil-b--schlussformel--signal-und-anspruch).
 
 Die übrigen Sätze stützen oder widerlegen diese Hauptnoten. Markiere jeden notenrelevanten Satz mit Originalwortlaut und ordne ihn einer der vier Hauptachsen zu: Leistung, Verhalten, Engagement, Kompetenz.
@@ -196,7 +196,7 @@ Beispielzeile:
 
 | Originalwortlaut | Decodiert | Note | Ampel | Stütze |
 | --- | --- | --- | --- | --- |
-| „stets bemüht" | guter Wille, keine Ergebnisse | 4 | 🔴 | Teil D.4; Beweislast AG: BAG 9 AZR 12/03 |
+| „stets bemüht" | guter Wille, Ergebnis bleibt offen oder negativ | 4–5 | 🔴 | Teil D.4; Beweislast AG: BAG 9 AZR 12/03 |
 
 Material für die Decodierung:
 
@@ -583,7 +583,7 @@ Die deutsche Zeugnissprache arbeitet stark mit Adverbien vor der Bewertung. Ein 
 | außerordentliches Engagement | weit über das Normale hinaus | 1 |
 | weit über den Erwartungen | Übererfüllung | 1 |
 | in besonderem Maße | besondere Herausragung | 1 bis 2 |
-| Vollständige warme Schlussformel mit drei Elementen | persönlich, eindeutig positiv | 1 bis 2 |
+| Warme Schlussformel mit Bedauern, Dank und Zukunftswünschen | persönlich, eindeutig positiv | 1 bis 2 |
 | jederzeit vertreten (Schlussverstärker) | absolut positives Gesamtzeugnis | 1 |
 
 ## D.3 — Orange Flaggen (Note 3)
@@ -604,12 +604,12 @@ Die deutsche Zeugnissprache arbeitet stark mit Adverbien vor der Bewertung. Ein 
 
 | Formulierung | Bedeutung | Note |
 | --- | --- | --- |
-| bemüht | guter Wille, ungenügende Ergebnisse | 4 |
+| bemüht | guter Wille, Ergebnis bleibt offen oder negativ | 4 bis 5 |
 | im Großen und Ganzen zur Zufriedenheit | erhebliche Mängel | 5 |
 | hat unsere Erwartungen erfüllt | nur Minimum | 4 |
 | zufriedenstellend | schwache Leistung | 4 |
 | im Wesentlichen | erhebliche Mängel | 4 bis 5 |
-| war stets bemüht | trotz Bemühen keine guten Ergebnisse | 4 |
+| war stets bemüht | trotz Bemühen keine guten Ergebnisse | 4 bis 5 |
 | erledigte Aufgaben nach Anweisung | keine Eigeninitiative | 4 |
 | kein Bedauern in der Schlussformel | mögliches Distanzsignal | Kontext |
 | direkte Kommunikationsweise | grobe, schwierige Umgangsformen | 4 bis 5 |
@@ -734,7 +734,7 @@ Nach LAG Hamm 14.11.2016 – 12 Ta 475/16 ist auch **erkennbar nicht ernst gemei
 
 - „stets vollster Zufriedenheit" → Maximalsteigerer + Maximalformel = Note 1.
 - „zu unserer Zufriedenheit" ohne „voll/volle/vollen" und ohne Steigerer → regelmäßig Note 4.
-- „bemüht" allein → regelmäßig Note 5, unabhängig vom Adverb davor.
+- „bemüht" allein → regelmäßig Note 4 bis 5; kein Note-5-Automatismus, aber klar rotes Ergebnisrisiko.
 - Buchhalter erhält „trug stets zur Verbesserung des Betriebsklimas bei" → riskante Suchtmittel-Lesart, Rot als Formulierungsrisiko; nicht als Tatsachenbehauptung ausgeben.
 - Geschäftsführerin ohne Loyalitätsaussage → Auslassungsrisiko, Rot, berichtigungsfähig bei rollenbezogener Erwartbarkeit.
 
@@ -814,7 +814,7 @@ Faustregel: Wer Negativität an sich nicht thematisieren müsste, sie aber expli
 **Beispiele:**
 
 - „Herr Braun arbeitete stets eigenverantwortlich" + später „Er erledigte die nach Anweisung zugewiesenen Aufgaben zuverlässig" → direkter inhaltlicher Widerspruch.
-- Leistung „bemüht" (Note 4) + vollständige warme Schlussformel → Gefälligkeitsschluss.
+- Leistung „bemüht" (Note 4 bis 5) + vollständige warme Schlussformel → Gefälligkeitsschluss.
 - Buchhalter mit lupenreiner Leistungsbeurteilung, aber kein Wort zu Zuverlässigkeit oder Vertrauen → das Schweigen kann bei Vertrauenspositionen ein rotes Risikosignal sein.
 
 ## E.5 — Formalia und Kopfdaten
@@ -966,7 +966,7 @@ Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
 | Note besser als befriedigend | Arbeitnehmer |
 | Wohlwollensverstoß | Arbeitnehmer |
 | Wahrheitsverstoß | Arbeitnehmer |
-| Reihenfolge im Sozialverhalten | Arbeitgeber muss falsche Reihenfolge begründen |
+| Reihenfolge im Sozialverhalten | Arbeitnehmer muss Rollen-/Kontaktrelevanz und negative Lesart darlegen; Arbeitgeber kann neutrale Erklärung oder Branchenkontext einwenden |
 
 Grundlage: BAG 14.10.2003 – 9 AZR 12/03 und BAG 18.11.2014 – 9 AZR 584/13 ([Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen)).
 
@@ -1010,7 +1010,7 @@ Standard: ein Bruttomonatsgehalt nach ständiger Rechtsprechung der Landesarbeit
 
 Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: Wortlaut der Streitstellen, Zeitpunkt der Übergabe des berichtigten Zeugnisses, Erledigungserklärung.
 
-**Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckungsfähigen Inhalt. Praxisfolge: Die Entwurfsklausel mit Wichtiger-Grund-Vorbehalt ist ein starkes Vergleichsinstrument und sollte im Vergleichstext mitgedacht werden. Sie eröffnet Vollstreckung, wenn der Arbeitgeber keinen nachvollziehbaren wichtigen Grund vorträgt. Beruft er sich dagegen substantiiert auf Zeugniswahrheit oder Zeugnisklarheit, ist der Inhalt nicht im Vollstreckungsverfahren auszujudizieren; dann ist ein neues Erkenntnisverfahren nötig (BAG 8 AZB 25/25, Rn. 19-21). Nicht ausreichend ist eine bloße Notenformel ohne konkreten Zeugnisinhalt („sehr gute Führungs- und Leistungsbeurteilung"): Das ist regelmäßig zu unbestimmt für die Vollstreckung (BAG 14.02.2017 – 9 AZB 49/16).
+**Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckbaren Inhalt. Praxisfolge: Diese Entwurfsklausel ist ein starkes Vergleichsinstrument und sollte im Vergleichstext mitgedacht werden. Sie eröffnet Vollstreckung, wenn der Arbeitgeber keinen nachvollziehbaren wichtigen Grund vorträgt. Beruft er sich dagegen substantiiert auf Zeugniswahrheit oder Zeugnisklarheit, kann das Zwangsgeld scheitern; der Inhalt ist dann nicht im Vollstreckungsverfahren auszujudizieren, sondern in einem neuen Erkenntnisverfahren zu klären (BAG 8 AZB 25/25, Rn. 19-21). Nicht ausreichend ist eine bloße Notenformel ohne konkreten Zeugnisinhalt („sehr gute Führungs- und Leistungsbeurteilung"): Das ist regelmäßig zu unbestimmt für die Vollstreckung (BAG 14.02.2017 – 9 AZB 49/16).
 
 ## F.4 — Vollstreckung des Zeugnisanspruchs
 
@@ -1121,7 +1121,7 @@ Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
 >
 > Herr Thomas Beispiel, geboren am 15. Juni 1980, war vom 1. Januar 2020 bis zum 30. Juni 2024 in unserem Unternehmen als Vertriebsmitarbeiter beschäftigt.
 >
-> **Aufgaben:** Herr Beispiel war im Außendienst tätig und betreute einen definierten Kundenkreis im Bereich Industriebedarf. Er war für die regelmäßige Kundenbesuche, die Angebotserstellung und die Bearbeitung von Reklamationen zuständig.
+> **Aufgaben:** Herr Beispiel war im Außendienst tätig und betreute einen definierten Kundenkreis im Bereich Industriebedarf. Er war für regelmäßige Kundenbesuche, die Angebotserstellung und die Bearbeitung von Reklamationen zuständig.
 >
 > **Leistungsbeurteilung:** Herr Beispiel verfügt über ausreichende Fachkenntnisse für seinen Aufgabenbereich. Er war stets bemüht, die ihm übertragenen Aufgaben zur vollen Zufriedenheit zu erledigen, und zeigte dabei durchgehend guten Willen. Seine Arbeitsweise war im Wesentlichen strukturiert.
 >
@@ -1134,7 +1134,7 @@ Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
 | Befund | Bedeutung | Ampel | Note |
 | --- | --- | --- | --- |
 | „ausreichende Fachkenntnisse" | unterdurchschnittlich | rot | 4 |
-| „stets bemüht" | trotz Willen keine Ergebnisse | rot | 4 |
+| „stets bemüht" | trotz Willen keine Ergebnisse | rot | 4 bis 5 |
 | „zur vollen Zufriedenheit" ohne „stets" | fehlende Steigerung | orange | 3 |
 | „im Wesentlichen strukturiert" | erhebliche Mängel | rot | 4 |
 | „Kollegen und Vorgesetzten" (Reihenfolge) | falsche Reihenfolge | orange | 3 |
