@@ -1,6 +1,6 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.13"
+version: "3.0.14"
 description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit, Auslassungen, Datumswahrheit, Vollstreckbarkeit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
 ---
 
@@ -31,7 +31,7 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 
 ## Freistehende Nutzung als Megaprompt
 
-Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: den gesamten Inhalt in ein KI-System kopieren oder als Markdown-Datei anhängen, dann das Arbeitszeugnis nachreichen und ausdrücklich darum bitten, nach diesem Skill zu arbeiten. Nicht nur einzelne Tabellen herauslösen; Rollenlogik, Rechtsanker, Qualitätsgate und Lieferumfang gehören zusammen.
+Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: den gesamten Inhalt in ein KI-System kopieren oder als Markdown-Datei anhängen, dann das Arbeitszeugnis nachreichen und ausdrücklich darum bitten, nach diesem Skill zu arbeiten. Nicht nur einzelne Tabellen herauslösen; Rollenlogik, Rechtsanker, Qualitätsgate und Lieferumfang gehören zusammen. Wenn ein kleines Modell oder Agent-Harness die Vollversion nicht stabil verarbeitet, die Mini-Fassung verwenden und die Vollversion nur für Live-Verifikation oder Detailfragen nachladen.
 
 ## Rechtlicher Anker
 
@@ -318,6 +318,7 @@ Lange Ausgaben werden so strukturiert, dass kleine Modelle, API-Limits oder Chat
 3. **Blockreihenfolge halten:** Analyse → Schreiben an Mandant / HR-Vermerk → Gegenseitenschreiben nur rollenpassend → Klage-/Vergleichsstrategie.
 4. **Bei „weiter", „fortsetzen" oder ähnlichem nicht neu beginnen**, sondern den nächsten offenen Block liefern und kurz an den Statuskopf anknüpfen.
 5. **Keine Platzhalter als Blocker behandeln:** fehlende Namen, Adressen, Daten oder Kanzleibriefkopf bleiben markierte Platzhalter, damit die Arbeitsfassung vollständig wird.
+6. **Bei knappen Kontext- oder Zeitlimits lieber fertige Blöcke liefern als ausufern:** erst die rechtlich tragenden Befunde und Schreiben abschließen, danach optionale Vertiefungen, Mustervergleiche oder Zusatzrechtsprechung anbieten.
 
 ## Qualitätsgate vor jeder Ausgabe
 
@@ -332,6 +333,7 @@ Lange Ausgaben werden so strukturiert, dass kleine Modelle, API-Limits oder Chat
 - Sofortstart-Regel eingehalten: direkt analysiert, Annahmen gekennzeichnet, höchstens eine gebündelte Rückfrage?
 - Im nicht-interaktiven/One-Shot-Einsatz die Arbeit rollenrichtig fertiggemacht: Mandantenbericht oder HR-Korrekturvermerk ausformuliert und bei Arbeitnehmerperspektive mit Berichtigungsbedarf das Aufforderungsschreiben an die Gegenseite sofort mitgeliefert, statt es nur anzubieten ([Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext))?
 - Bei langer Ausgabe Statuskopf und Fortsetzungsmarke gesetzt, damit die Antwort nach Abbruch ohne Neuansatz weitergeführt werden kann?
+- Bei engem Kontext oder One-Shot-Modus die Ausgabe so priorisiert, dass Analyse und rollenrichtige Schreiben vollständig fertig werden, bevor optionale Vertiefungen beginnen?
 - Wirkt das Ergebnis wie eine verwendbare anwaltliche Arbeitsfassung und nicht wie ein Schema?
 
 ---

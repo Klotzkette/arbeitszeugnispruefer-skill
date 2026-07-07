@@ -20,6 +20,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 MINI_LIMIT = 7500
+PROCESS_TIMEOUT_SECONDS = 30
 
 MARKDOWN_WITH_ANCHORS = [
     Path("README.md"),
@@ -68,6 +69,17 @@ PUBLIC_ARTIFACTS = [
         Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
         None,
     ),
+]
+
+RELEASE_ASSET_CANDIDATES = [
+    Path("docs/SKILL.md"),
+    Path("docs/SKILL-mini.md"),
+    Path("docs/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip"),
+    Path("docs/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf"),
+    Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"),
+    Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
+    Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
+    Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
 ]
 
 COMBINED_PDF_DETAILS = [
@@ -260,6 +272,12 @@ def check_public_artifacts(checker: Checker) -> None:
     checker.require(len(general_pdfs) == 10, "general test set has 10 individual PDFs")
 
 
+def check_release_asset_candidates(checker: Checker) -> None:
+    for rel in RELEASE_ASSET_CANDIDATES:
+        path = ROOT / rel
+        checker.require(path.exists() and path.stat().st_size > 0, f"{rel} is ready for release upload")
+
+
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
@@ -270,7 +288,13 @@ def check_pdf_details(checker: Checker) -> None:
             continue
 
         if pdfinfo:
-            info = subprocess.run([pdfinfo, str(combined)], text=True, capture_output=True, check=True).stdout
+            info = subprocess.run(
+                [pdfinfo, str(combined)],
+                text=True,
+                capture_output=True,
+                check=True,
+                timeout=PROCESS_TIMEOUT_SECONDS,
+            ).stdout
             checker.require("Encrypted:       no" in info, f"{label} combined PDF is not encrypted")
             page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
             checker.require(
@@ -281,7 +305,13 @@ def check_pdf_details(checker: Checker) -> None:
             checker.warn("pdfinfo not found; skipped detailed PDF metadata check")
 
         if pdftotext:
-            text = subprocess.run([pdftotext, str(combined), "-"], text=True, capture_output=True, check=True).stdout
+            text = subprocess.run(
+                [pdftotext, str(combined), "-"],
+                text=True,
+                capture_output=True,
+                check=True,
+                timeout=PROCESS_TIMEOUT_SECONDS,
+            ).stdout
             headings = sum(
                 1
                 for line in text.splitlines()
@@ -310,6 +340,7 @@ def main() -> int:
         check_markdown_anchors(checker)
         check_html_links(checker)
         check_public_artifacts(checker)
+        check_release_asset_candidates(checker)
         check_pdf_details(checker)
     except Exception as exc:  # pragma: no cover - top-level diagnostics
         checker.fail(f"unexpected check error: {exc}")

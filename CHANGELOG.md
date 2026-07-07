@@ -5,6 +5,30 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.14] — 2026-07-07
+
+### Geändert
+- Finaler Bug-Hunt und Usability-Sweep nach Version 3.0.13.
+- README und Download-Seite um den direkten Weg zum neuesten GitHub-Release
+  ergänzt; neue Releases tragen die freistehenden Markdown-Dateien und die
+  Testakten-PDFs/-ZIPs als versionierte Assets.
+- Freistehende Nutzung und Fortsetzungslogik leicht geschärft: kleine Modelle
+  sollen bei Bedarf auf die Mini-Fassung ausweichen und in langen One-Shot-Läufen
+  zuerst Pflichtblöcke fertigstellen, bevor optionale Vertiefungen beginnen.
+- Build- und Prüfskripte gegen hängende externe Prozesse gehärtet
+  (`cupsfilter`, `pdfunite`, `pdfinfo`, `pdftotext` laufen nun mit Timeouts).
+- Release-Integritätscheck prüft zusätzlich, ob alle lokalen Kandidaten für den
+  Release-Upload vorhanden und nicht leer sind.
+- Versionsbump auf 3.0.14 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Testakten-Artefakte wurden reproduzierbar neu gebaut und in `docs/testakten/`
+  gespiegelt.
+- Gesetzesanker und aktuelle BAG-Anker aus 3.0.13 bleiben anhand frei
+  verfügbarer Primärquellen stimmig; keine neue größere Zeugnisrecht-Umsteuerung
+  gegenüber dem vorherigen Stand festgestellt.
+
 ## [3.0.13] — 2026-07-07
 
 ### Geändert
@@ -232,6 +256,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.14]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.14
 [3.0.13]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.13
 [3.0.12]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.12
 [3.0.11]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.11

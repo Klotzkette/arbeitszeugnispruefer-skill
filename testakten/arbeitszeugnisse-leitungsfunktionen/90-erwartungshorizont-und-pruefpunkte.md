@@ -5,7 +5,7 @@ Diese Liste ist kein Loesungsschluessel, sondern ein Pruefhorizont. Die Skill-Au
 | Nr. | Fall | Erwartete Hauptpruefung |
 | --- | --- | --- |
 | 21 | Dr. Martin Rehfeld | 🟢🟠; starke Leitungsrolle, aber Schaufenster-Drift zwischen Einzelprojekten und Gesamtformel |
-| 22 | Sabine Krueger | 🟢; sehr starkes Fuehrungszeugnis mit klarer Note 1-2 und sauberer Schlussformel |
+| 22 | Sabine Krüger | 🟢; sehr starkes Fuehrungszeugnis mit klarer Note 1-2 und sauberer Schlussformel |
 | 23 | Nicole Walter | 🔴/🟠; schwache Gesamtformel, Fuehrungs-/Sozialverhalten, Konflikt- und Auslassungspruefung |
 | 24 | Alexander Kunze | 🟢🟠; starke Projektleistung, Zwischenzeugnis-/Selbstbindung, Berichtslinie und weiche Einschraenkungen pruefen |
 | 25 | Thomas Seidel | 🟠 mit 🔴-Risiken; Ergebnisdruck, Sicherheit/Qualitaet, Fuehrungsverhalten und Schlussformel pruefen |

@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.13"
+version: "3.0.14"
 description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
 ---
 
@@ -18,7 +18,7 @@ Rollenvermutung: Ohne Hinweis ist der Einsender die beurteilte Person (Arbeitneh
 
 Autonomer Einsatz (API, Agent, Batch, One-Shot/Megaprompt): Arbeit rollenrichtig fertig liefern. One-Shot heißt Komplettausgabe, nicht nur Bewertung. Bei Arbeitnehmerperspektive und Berichtigungsbedarf immer sofort drei Blöcke liefern: Analyse, fertiges Mandantenschreiben und fertiges Aufforderungsschreiben an den Arbeitgeber/Gegenseite. Fehlende Daten als Platzhalter setzen. Bei HR-/Arbeitgeberperspektive kein Arbeitnehmer-Aufforderungsschreiben gegen den Arbeitgeber, sondern neutralen Korrekturvermerk mit sicheren Alternativen.
 
-Bei langer Ausgabe Fortsetzungsmarke setzen; bei „weiter" am nächsten offenen Block fortfahren, nicht neu beginnen.
+Bei langer Ausgabe Fortsetzungsmarke setzen; zuerst Pflichtblöcke fertigstellen; bei „weiter" am nächsten offenen Block fortfahren, nicht neu beginnen.
 
 ## Rechtsanker
 

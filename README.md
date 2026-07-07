@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.13) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.13 schärft die juristische Feinkalibrierung bei Entwurfsklauseln, Sozialverhaltens-Reihenfolge und Notenlogik zu „bemüht".
+Konsolidierter Skill (Version 3.0.14) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.14 verbessert Zugriff, Release-Artefakte und hängerarme Prüf-/Buildläufe, ohne die Kernlogik umzubauen.
 
 ## Schnellzugriff
 
@@ -15,6 +15,7 @@ Konsolidierter Skill (Version 3.0.13) für die Prüfung deutscher Arbeitszeugnis
 | Vollversion herunterladen | [SKILL.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) | Startet den Markdown-Download mit Fallback-Button. |
 | Kurzversion herunterladen | [SKILL-mini.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) | Kompaktfassung unter 7.500 Zeichen. |
 | Öffentliche Downloadseite | [GitHub Pages öffnen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) | Vollversion, Mini-Version und Testakten an einem Ort. |
+| Neueste Release-Assets | [GitHub Release öffnen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) | Markdown-Dateien, PDFs und ZIPs als versionierte Anhänge. |
 | Skill-Quelltext ansehen | [`skill/SKILL.md`](skill/SKILL.md) | Formatierte Repository-Ansicht zum Prüfen oder Kopieren. |
 | Mini-Quelltext ansehen | [`skill/SKILL-mini.md`](skill/SKILL-mini.md) | Freistehende Kurzfassung für kleine Assistenten. |
 | Release-Historie | [`CHANGELOG.md`](CHANGELOG.md) | Änderungen und Prüfpunkte je Version. |
@@ -30,6 +31,8 @@ Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Har
 Ein Klick genügt — die neuen Download-Startseiten stoßen den Download der ausgewählten Markdown-Datei automatisch an und zeigen zusätzlich einen großen Fallback-Button, falls eine App den automatischen Download blockiert. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
 Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): Die Startseite geöffnet lassen und den sichtbaren Download-Button antippen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort stehen Vollversion, Mini-Version und Testakten nebeneinander.
+
+Versionierte Komplettpakete stehen zusätzlich im jeweils neuesten [GitHub Release](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest): Dort hängen die Vollversion, die Mini-Version sowie die PDF-/ZIP-Testakten als Release-Assets. Das ist der robusteste Weg, wenn ein Browser den `download`-Hinweis ignoriert oder ein bestimmter Versionsstand archiviert werden soll.
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
@@ -121,7 +124,7 @@ python3 scripts/check_release_integrity.py
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, Release-Asset-Kandidaten, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. |
 | [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte aus den vorhandenen Buildern neu. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |

@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "testakten" / "arbeitszeugnisse-jura-und-wissenschaft"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
 WIDTH = 76
+PROCESS_TIMEOUT_SECONDS = 120
 
 
 CASES = [
@@ -90,7 +91,7 @@ CASES = [
         "nr": "12",
         "slug": "tobias-rauch-wissmit-strafrecht",
         "name": "Tobias Rauch",
-        "role": "Wissenschaftlicher Mitarbeiter am Lehrstuhl fuer Strafrecht",
+        "role": "Wissenschaftlicher Mitarbeiter am Lehrstuhl für Strafrecht",
         "sector": "Universität / Strafrecht",
         "type": "Endzeugnis",
         "reason": "Auslaufen der Projektbefristung",
@@ -309,7 +310,7 @@ CASES = [
         "nr": "16",
         "slug": "markus-lentner-kanzleigeschaeftsfuehrer",
         "name": "Markus Lentner",
-        "role": "Fremdgeschaeftsfuehrer / Kanzleileiter ohne Anwaltszulassung",
+        "role": "Fremdgeschäftsführer / Kanzleileiter ohne Anwaltszulassung",
         "sector": "Große Wirtschaftskanzlei",
         "type": "Endzeugnis",
         "reason": "Aufhebungsvereinbarung",
@@ -370,7 +371,7 @@ CASES = [
         "role": "Junior Associate",
         "sector": "Internationale Kanzlei / M&A",
         "type": "Endzeugnis",
-        "reason": "Beendigung waehrend der Probezeit",
+        "reason": "Beendigung während der Probezeit",
         "expected": "🔴; Probezeit, Nachbearbeitungsbedarf, Note 4-5, Mandatskontakt und knappe Schlussformel",
         "text": """
         BERGNER FIELDING LLP
@@ -423,7 +424,7 @@ CASES = [
         "role": "Rechtsanwaltsfachangestellte / ReNo-Fachkraft",
         "sector": "Kleine Kanzlei",
         "type": "Endzeugnis",
-        "reason": "Eigenkuendigung",
+        "reason": "Eigenkündigung",
         "expected": "🟠; Fristen-/beA-/RVG-Profil, Ruecksprachebedarf, Reihenfolge im Sozialverhalten und Code-Lesarten pruefen",
         "text": """
         KANZLEI HANSEN & KOLLEGEN
@@ -614,6 +615,7 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
                 stdout=out,
                 stderr=subprocess.DEVNULL,
                 check=True,
+                timeout=PROCESS_TIMEOUT_SECONDS,
             )
     finally:
         txt_path.unlink(missing_ok=True)
@@ -621,46 +623,53 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
 
 def write_readme() -> None:
     rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']} | {c['reason']} |"
+        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']}, {c['reason']} | "
+        f"[`PDF`]({c['nr']}-{c['slug']}/Arbeitszeugnis_{c['nr']}-{c['slug']}.pdf) |"
         for c in CASES
     )
     text = f"""# Testakte: Arbeitszeugnisse — Jura und Wissenschaft
 
-Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als juristisch-akademisches Trainingsmaterial. Sie enthaelt zehn weitere fiktive Arbeitszeugnisse: fuenf aus dem akademischen Bereich juristischer Lehrstuehle und fuenf aus Kanzlei- beziehungsweise juristischen Praxisrollen. Alle Personen, Universitaeten, Kanzleien, Adressen und Kommunikationsdaten sind frei erfunden.
+Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als juristisch-akademisches Trainingsmaterial. Sie enthält zehn fiktive Arbeitszeugnisse: fünf aus dem akademischen Bereich juristischer Lehrstühle und fünf aus Kanzlei- beziehungsweise juristischen Praxisrollen. Alle Personen, Universitäten, Kanzleien, Adressen und Kommunikationsdaten sind frei erfunden.
 
-## Akte komplett lesen
+## Schnellzugriff
 
-| Was | Format | Datei |
-| --- | --- | --- |
-| Gesamt-PDF (alle zehn Zeugnisse) | PDF | [`gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf`](gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
-| Erwartungshorizont und Pruefpunkte | Markdown | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
+| Ziel | Link |
+| --- | --- |
+| Zur Hauptübersicht | [`README.md`](../../README.md) |
+| Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
+| ZIP mit allen 10 Einzel-PDFs | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) |
+| Gesamt-PDF aller 10 Zeugnisse | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
+| Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
 
 ## Zweck der Akte
 
-Die Zeugnisse trainieren Rollen, die im klassischen Zeugnisfundus oft fehlen: wissenschaftliche Mitarbeit an juristischen Lehrstuehlen, Postdoc-/Drittmittelkontexte, Probezeit in der Grosskanzlei, Kanzleileitung ohne Anwaltszulassung, ReNo-/Fristenarbeit und Senior-Associate-Bewertungen in kleinen und grossen Kanzleien.
+Die Zeugnisse trainieren Rollen, die im klassischen Zeugnisfundus oft fehlen: wissenschaftliche Mitarbeit an juristischen Lehrstühlen, Postdoc-/Drittmittelkontexte, Probezeit in der Großkanzlei, Kanzleileitung ohne Anwaltszulassung, ReNo-/Fristenarbeit und Senior-Associate-Bewertungen in kleinen und großen Kanzleien.
 
-Die Briefkoepfe sind absichtlich ausfuehrlicher gestaltet als in einfachen Musterzeugnissen. Personalzeichen, Projektbezug, Registerangaben, HR-/Ausstellerrolle, Dienstsiegel oder Kanzleistempel sollen mitgeprueft werden: Sie koennen helfen, Zeugnisart, Ausstellerkompetenz, Rollenabgrenzung und formale Plausibilitaet zu erkennen.
+Die Briefköpfe sind absichtlich ausführlicher gestaltet als in einfachen Musterzeugnissen. Personalzeichen, Projektbezug, Registerangaben, HR-/Ausstellerrolle, Dienstsiegel oder Kanzleistempel sollen mitgeprüft werden: Sie helfen, Zeugnisart, Ausstellerkompetenz, Rollenabgrenzung und formale Plausibilität zu erkennen.
 
-Die Bewertungen sind absichtlich gemischt. Einige Zeugnisse sind sehr gut, andere enthalten typische Drift-, Auslassungs-, Rollen- oder Schlussformelprobleme. Der Skill soll nicht nur Codewoerter suchen, sondern Rolle, Zeugnisart, Aufgabenprofil, Beendigungsgrund und Erwartungshorizont zusammenfuehren.
+Die Bewertungen sind absichtlich gemischt. Einige Zeugnisse sind sehr gut, andere enthalten typische Drift-, Auslassungs-, Rollen- oder Schlussformelprobleme. Der Skill soll nicht nur Codewörter suchen, sondern Rolle, Zeugnisart, Aufgabenprofil, Beendigungsgrund und Erwartungshorizont zusammenführen.
 
-## Aktenuebersicht
+## Aktenübersicht
 
-| Nr. | Name | Rolle | Umfeld | Zeugnistyp | Anlass |
+| Nr. | Person | Rolle | Umfeld | Typ / Anlass | Einzel-PDF |
 | --- | --- | --- | --- | --- | --- |
 {rows}
 
-## Struktur
+## Prüfprofil
 
-Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname folgt dem Schema `Arbeitszeugnis_<nr>-<slug>.pdf`.
+| Bereich | Worauf der Skill achten soll |
+| --- | --- |
+| Akademische Rollen | Lehrstuhlorganisation, Drittmittel, Veröffentlichungen, Lehre, Forschung und Projektbefristung nicht schematisch behandeln. |
+| Kanzleirollen | Akquisenähe, Mandatsarbeit, Fristen, beA/RVG, Teamarbeit, Associate-Entwicklung und Kanzleileitung sauber trennen. |
+| Form und Aussteller | Briefkopf, Personalzeichen, Dienstsiegel, Kanzleistempel, HR-/Ausstellerrolle und Registerangaben mitprüfen. |
+| Bewertung | Gemischte Noten, Drift, Auslassungen, Schlussformeln, Probezeit- und Befristungssignale rollenbewusst würdigen. |
 
-## Mögliche Arbeitsauftraege an den Skill
+## Mögliche Arbeitsaufträge an den Skill
 
-- Briefkopf, Aussteller, Personalzeichen, Projekt- oder Registerbezug formal einordnen
-- akademische und kanzleispezifische Aufgabenprofile vom Bewertungsinhalt trennen
-- Besonderheiten von Zwischenzeugnis, Befristung, Probezeit und Kanzleileitung einordnen
-- Schlussformel, Beendigungsgrund und Sozialverhalten rollenbewusst pruefen
-- typische Auslassungen bei Lehrstuhl-, Associate-, ReNo- und Managementrollen erkennen
-- bei Arbeitnehmerperspektive aus den Befunden Mandantenbericht und Berichtigungsverlangen erstellen
+- Einzelnes PDF mit Ampel-Bilanz, Notenspanne und Ersatzformulierungen prüfen.
+- Alle zehn Zeugnisse als Batch auswerten und die stärksten roten/orangen Befunde priorisieren.
+- Bei Arbeitnehmerperspektive Mandantenbericht und Berichtigungsverlangen erstellen.
+- Bei HR-/Arbeitgeberperspektive neutralen Korrekturvermerk mit sicheren Alternativen erstellen.
 """
     (OUT / "README.md").write_text(text, encoding="utf-8")
 
@@ -710,7 +719,7 @@ def main() -> None:
         pdfs.append(pdf)
 
     combined = OUT / "gesamt-pdf" / "arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"
-    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True)
+    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True, timeout=PROCESS_TIMEOUT_SECONDS)
 
     zip_path = OUT / "arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:

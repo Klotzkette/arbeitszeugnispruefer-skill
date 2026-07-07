@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "testakten" / "arbeitszeugnisse-leitungsfunktionen"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
 WIDTH = 76
+PROCESS_TIMEOUT_SECONDS = 120
 
 
 CASES = [
@@ -102,9 +103,9 @@ CASES = [
     {
         "nr": "22",
         "slug": "sabine-krueger-kaufmaennische-leiterin",
-        "name": "Sabine Krueger",
-        "role": "Kaufmaennische Leiterin / CFO",
-        "sector": "Familiengefuehrter Anlagenbauer",
+        "name": "Sabine Krüger",
+        "role": "Kaufmännische Leiterin / CFO",
+        "sector": "Familiengeführter Anlagenbauer",
         "type": "Endzeugnis",
         "reason": "Ruhestand nach geordneter Nachfolge",
         "expected": "🟢; sehr starkes Fuehrungszeugnis mit klarer Note 1-2 und sauberer Schlussformel",
@@ -309,7 +310,7 @@ CASES = [
         "role": "Werkleiter / Standortleiter",
         "sector": "Chemie- und Verpackungsindustrie",
         "type": "Endzeugnis",
-        "reason": "Nichtverlaengerung nach Transformationsprogramm",
+        "reason": "Nichtverlängerung nach Transformationsprogramm",
         "expected": "🟠 mit 🔴-Risiken; Ergebnisdruck, Sicherheit/Qualitaet, Fuehrungsverhalten und Schlussformel pruefen",
         "text": """
         ELBTAL PACKAGING & CHEMICALS GMBH
@@ -406,6 +407,7 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
                 stdout=out,
                 stderr=subprocess.DEVNULL,
                 check=True,
+                timeout=PROCESS_TIMEOUT_SECONDS,
             )
     finally:
         txt_path.unlink(missing_ok=True)
@@ -413,43 +415,51 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
 
 def write_readme() -> None:
     rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']} | {c['reason']} |"
+        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']}, {c['reason']} | "
+        f"[`PDF`]({c['nr']}-{c['slug']}/Arbeitszeugnis_{c['nr']}-{c['slug']}.pdf) |"
         for c in CASES
     )
     text = f"""# Testakte: Arbeitszeugnisse — Leitungsfunktionen
 
-Diese dritte Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainingsmaterial fuer leitende Angestellte und obere Fuehrungsfunktionen. Sie enthaelt fuenf fiktive, bewusst ausfuehrliche Arbeitszeugnisse aus Unternehmensrecht, Finanzen, Personal, Compliance und operativer Standortleitung. Alle Personen, Unternehmen, Registerdaten, Adressen und Kommunikationsdaten sind frei erfunden.
+Diese dritte Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainingsmaterial für leitende Angestellte und obere Führungsfunktionen. Sie enthält fünf fiktive, bewusst ausführliche Arbeitszeugnisse aus Unternehmensrecht, Finanzen, Personal, Compliance und operativer Standortleitung. Alle Personen, Unternehmen, Registerdaten, Adressen und Kommunikationsdaten sind frei erfunden.
 
-## Akte komplett lesen
+## Schnellzugriff
 
-| Was | Format | Datei |
-| --- | --- | --- |
-| Gesamt-PDF (alle fuenf Zeugnisse) | PDF | [`gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf`](gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
-| Erwartungshorizont und Pruefpunkte | Markdown | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
+| Ziel | Link |
+| --- | --- |
+| Zur Hauptübersicht | [`README.md`](../../README.md) |
+| Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
+| ZIP mit allen 5 Einzel-PDFs | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) |
+| Gesamt-PDF aller 5 Zeugnisse | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
+| Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
 
 ## Zweck der Akte
 
-Die Zeugnisse trainieren typische Pruffield-Schwerpunkte bei Leitungsrollen: Berichtslinie, Budget- und Personalverantwortung, Organ- und Gremiennaehe, Fuehrungsspanne, Transformationsdruck, Compliance- und Governance-Aufgaben, Betriebsratskontakt, externe Stakeholder sowie die Trennung zwischen operativem Erfolg und Fuehrungs-/Sozialverhalten.
+Die Zeugnisse trainieren typische Prüffeld-Schwerpunkte bei Leitungsrollen: Berichtslinie, Budget- und Personalverantwortung, Organ- und Gremiennähe, Führungsspanne, Transformationsdruck, Compliance- und Governance-Aufgaben, Betriebsratskontakt, externe Stakeholder sowie die Trennung zwischen operativem Erfolg und Führungs-/Sozialverhalten.
 
-Die Bewertungen sind bewusst durchwachsen. Einige Zeugnisse sind sehr stark, andere enthalten trotz gehobener Rolle eine abgeschwaechte Gesamtformel, Drift zwischen Projektlob und Hauptnote, fehlende strategische oder fuehrungsbezogene Kernpunkte, auffaellige Schlussformeln oder heikle Beendigungsgruende.
+Die Bewertungen sind bewusst durchwachsen. Einige Zeugnisse sind sehr stark, andere enthalten trotz gehobener Rolle eine abgeschwächte Gesamtformel, Drift zwischen Projektlob und Hauptnote, fehlende strategische oder führungsbezogene Kernpunkte, auffällige Schlussformeln oder heikle Beendigungsgründe.
 
-## Aktenuebersicht
+## Aktenübersicht
 
-| Nr. | Name | Rolle | Umfeld | Zeugnistyp | Anlass |
+| Nr. | Person | Rolle | Umfeld | Typ / Anlass | Einzel-PDF |
 | --- | --- | --- | --- | --- | --- |
 {rows}
 
-## Struktur
+## Prüfprofil
 
-Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname folgt dem Schema `Arbeitszeugnis_<nr>-<slug>.pdf`.
+| Bereich | Worauf der Skill achten soll |
+| --- | --- |
+| Leitungsprofil | Berichtslinie, Budget, Personalverantwortung, Gremiennähe und Entscheidungsspielraum aus dem Text herausarbeiten. |
+| Leistungsbild | Projektlob, Transformationsbeiträge und operative Ergebnisse gegen Hauptnote und Schlussformel abgleichen. |
+| Auslassungen | Strategie, Führung, Stakeholder, Betriebsrat, Compliance, Governance und Nachfolgeplanung rollenbezogen prüfen. |
+| Mandatsoutput | Berichtigungsbedarf mit konkreten Ersatzformulierungen, Mandantenbericht und Aufforderungsschreiben verbinden. |
 
-## Mögliche Arbeitsauftraege an den Skill
+## Mögliche Arbeitsaufträge an den Skill
 
-- Leitungsrolle, Berichtslinie, Budget- und Personalverantwortung aus dem Zeugnis herausarbeiten
-- Projektlob gegen Zufriedenheitsformel und Schlussformel abgleichen
-- Auslassungen bei Strategie, Fuehrung, Stakeholdern, Betriebsrat, Compliance und Governance pruefen
-- Beendigungsgrund, Zwischenzeugnisanlass und moegliche Selbstbindung einordnen
-- bei Arbeitnehmerperspektive Mandantenbericht und Berichtigungsverlangen mit konkreten Ersatzformulierungen erstellen
+- Einzelnes Führungszeugnis auf Gesamtbild, Drift und fehlende Leitungsmerkmale prüfen.
+- Alle fünf Zeugnisse als Vergleichslauf auswerten und die stärksten Risiken priorisieren.
+- Zwischenzeugnis und Endzeugnis auf Selbstbindung und Verschlechterung ohne Tatsachengrundlage prüfen.
+- Bei HR-/Arbeitgeberperspektive sichere Ersatzformulierungen für Leitungsrollen formulieren.
 """
     (OUT / "README.md").write_text(text, encoding="utf-8")
 
@@ -498,7 +508,7 @@ def main() -> None:
         pdfs.append(pdf)
 
     combined = OUT / "gesamt-pdf" / "arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"
-    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True)
+    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True, timeout=PROCESS_TIMEOUT_SECONDS)
 
     zip_path = OUT / "arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
