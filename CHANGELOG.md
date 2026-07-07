@@ -5,6 +5,26 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.15] — 2026-07-07
+
+### Geändert
+- Finaler Bug-Hunt nach Version 3.0.14 mit Fokus auf echten Zugriff,
+  Release-Assets und hängerarme Nachprüfung.
+- Download-Startseiten für Voll- und Mini-Fassung um direkte Fallback-Links auf
+  `releases/latest/download/...` ergänzt, falls eine Umgebung den GitHub-Pages-
+  Download blockiert.
+- Release-Integritätscheck um `--github-release TAG` erweitert: Nach dem
+  Veröffentlichen prüft das Skript den realen GitHub-Release auf Tag,
+  Zielbranch, Draft-/Prerelease-Status, erwartete Asset-Namen und Dateigrößen.
+- README und Pages-Wartungshinweise um die neue Nach-Release-Prüfung ergänzt.
+- Versionsbump auf 3.0.15 in Voll- und Mini-Skill; README und Download-Seite
+  aktualisiert.
+
+### Geprüft
+- Aktuelle BAG-/Normenlage erneut gegen frei verfügbare Primärquellen
+  plausibilisiert; keine neue größere Zeugnisrecht-Umsteuerung gegenüber
+  3.0.14 festgestellt.
+
 ## [3.0.14] — 2026-07-07
 
 ### Geändert
@@ -256,6 +276,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.15]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.15
 [3.0.14]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.14
 [3.0.13]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.13
 [3.0.12]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.12

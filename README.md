@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.14) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.14 verbessert Zugriff, Release-Artefakte und hängerarme Prüf-/Buildläufe, ohne die Kernlogik umzubauen.
+Konsolidierter Skill (Version 3.0.15) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.15 verbessert die Download-Fallbacks und prüft nach Veröffentlichung auch die realen GitHub-Release-Assets gegen die lokalen Dateien.
 
 ## Schnellzugriff
 
@@ -124,7 +124,7 @@ python3 scripts/check_release_integrity.py
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, Release-Asset-Kandidaten, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, Release-Asset-Kandidaten, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Nach Veröffentlichung kann es mit `--github-release vX.Y.Z` zusätzlich die realen GitHub-Release-Assets gegen die lokalen Dateien prüfen. |
 | [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte aus den vorhandenen Buildern neu. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
@@ -133,6 +133,12 @@ Alle generierten Testakten-Artefakte gemeinsam neu bauen:
 
 ```bash
 python3 scripts/build_generated_testakten.py
+```
+
+Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
+
+```bash
+python3 scripts/check_release_integrity.py --github-release v3.0.15
 ```
 
 ## Workflow in acht Stufen

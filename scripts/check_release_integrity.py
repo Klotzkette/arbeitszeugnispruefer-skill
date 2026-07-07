@@ -8,6 +8,8 @@ oversized mini skill files and missing public test artifacts.
 
 from __future__ import annotations
 
+import argparse
+import json
 import re
 import shutil
 import subprocess
@@ -19,6 +21,7 @@ from urllib.parse import unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
+REPOSITORY = "Klotzkette/arbeitszeugnispruefer-skill"
 MINI_LIMIT = 7500
 PROCESS_TIMEOUT_SECONDS = 30
 
@@ -278,6 +281,57 @@ def check_release_asset_candidates(checker: Checker) -> None:
         checker.require(path.exists() and path.stat().st_size > 0, f"{rel} is ready for release upload")
 
 
+def check_github_release_assets(checker: Checker, tag: str) -> None:
+    gh = shutil.which("gh")
+    if not gh:
+        checker.fail("gh not found; cannot verify published GitHub release assets")
+        return
+
+    try:
+        result = subprocess.run(
+            [
+                gh,
+                "release",
+                "view",
+                tag,
+                "--repo",
+                REPOSITORY,
+                "--json",
+                "assets,isDraft,isPrerelease,tagName,targetCommitish,url",
+            ],
+            text=True,
+            capture_output=True,
+            check=True,
+            timeout=PROCESS_TIMEOUT_SECONDS,
+        )
+    except subprocess.CalledProcessError as exc:
+        checker.fail(f"GitHub release {tag} could not be read: {exc.stderr.strip() or exc}")
+        return
+
+    release = json.loads(result.stdout)
+    checker.require(release.get("tagName") == tag, f"GitHub release tag is {tag}")
+    checker.require(release.get("targetCommitish") == "main", "GitHub release targets main")
+    checker.require(not release.get("isDraft"), "GitHub release is published, not draft")
+    checker.require(not release.get("isPrerelease"), "GitHub release is not a prerelease")
+
+    expected_sizes = {
+        rel.name: (ROOT / rel).stat().st_size
+        for rel in RELEASE_ASSET_CANDIDATES
+    }
+    assets = {asset["name"]: asset for asset in release.get("assets", [])}
+    missing = sorted(set(expected_sizes) - set(assets))
+    extra = sorted(set(assets) - set(expected_sizes))
+    checker.require(not missing, f"GitHub release has all expected assets ({len(expected_sizes)})")
+    checker.require(not extra, "GitHub release has no unexpected assets")
+
+    for name, local_size in sorted(expected_sizes.items()):
+        asset = assets.get(name)
+        if not asset:
+            continue
+        checker.require(asset.get("state") == "uploaded", f"GitHub release asset {name} is uploaded")
+        checker.require(asset.get("size") == local_size, f"GitHub release asset {name} size matches local file")
+
+
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
@@ -331,7 +385,18 @@ def check_pdf_details(checker: Checker) -> None:
             checker.warn("pdftotext not found; skipped PDF text extraction check")
 
 
-def main() -> int:
+def parse_args(argv: list[str]) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--github-release",
+        metavar="TAG",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.15",
+    )
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(sys.argv[1:] if argv is None else argv)
     checker = Checker()
     try:
         version = check_versions(checker)
@@ -342,6 +407,8 @@ def main() -> int:
         check_public_artifacts(checker)
         check_release_asset_candidates(checker)
         check_pdf_details(checker)
+        if args.github_release:
+            check_github_release_assets(checker, args.github_release)
     except Exception as exc:  # pragma: no cover - top-level diagnostics
         checker.fail(f"unexpected check error: {exc}")
         version = "unknown"
