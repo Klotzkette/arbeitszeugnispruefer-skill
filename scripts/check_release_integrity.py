@@ -9,6 +9,7 @@ oversized mini skill files and missing public test artifacts.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -74,7 +75,7 @@ PUBLIC_ARTIFACTS = [
     ),
 ]
 
-RELEASE_ASSET_CANDIDATES = [
+CHECKSUM_ASSET_CANDIDATES = [
     Path("docs/SKILL.md"),
     Path("docs/SKILL-mini.md"),
     Path("docs/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip"),
@@ -83,6 +84,10 @@ RELEASE_ASSET_CANDIDATES = [
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+]
+
+RELEASE_ASSET_CANDIDATES = CHECKSUM_ASSET_CANDIDATES + [
+    Path("docs/SHA256SUMS.txt"),
 ]
 
 COMBINED_PDF_DETAILS = [
@@ -281,6 +286,22 @@ def check_release_asset_candidates(checker: Checker) -> None:
         checker.require(path.exists() and path.stat().st_size > 0, f"{rel} is ready for release upload")
 
 
+def expected_release_checksums() -> str:
+    lines = []
+    for rel in CHECKSUM_ASSET_CANDIDATES:
+        digest = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
+        lines.append(f"{digest}  {rel.name}")
+    return "\n".join(lines) + "\n"
+
+
+def check_release_checksums(checker: Checker) -> None:
+    rel = Path("docs/SHA256SUMS.txt")
+    path = ROOT / rel
+    checker.require(path.exists(), f"{rel} exists")
+    if path.exists():
+        checker.require(path.read_text(encoding="utf-8") == expected_release_checksums(), f"{rel} matches release assets")
+
+
 def check_github_release_assets(checker: Checker, tag: str) -> None:
     gh = shutil.which("gh")
     if not gh:
@@ -390,7 +411,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--github-release",
         metavar="TAG",
-        help="also verify the published GitHub release assets for TAG, e.g. v3.0.16",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.17",
     )
     return parser.parse_args(argv)
 
@@ -405,6 +426,7 @@ def main(argv: list[str] | None = None) -> int:
         check_markdown_anchors(checker)
         check_html_links(checker)
         check_public_artifacts(checker)
+        check_release_checksums(checker)
         check_release_asset_candidates(checker)
         check_pdf_details(checker)
         if args.github_release:

@@ -1,6 +1,6 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.16"
+version: "3.0.17"
 description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Prüft deutsche Arbeitszeugnisse mit Ampel, Rollenlogik und kompaktem Workflow; liefert Satzmatrix, Notenspanne, Mandantenhinweis in Alltagssprache und Schreiben an Arbeitgeber/Gegenseite."
 ---
 

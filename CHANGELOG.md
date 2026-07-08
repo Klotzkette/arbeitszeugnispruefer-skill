@@ -5,6 +5,24 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.17] — 2026-07-08
+
+### Geändert
+- Release-Paket um `SHA256SUMS.txt` ergänzt; die Datei enthält SHA-256-Werte
+  für Vollskill, Mini-Skill sowie alle PDF-/ZIP-Testakten-Assets.
+- Integritätscheck prüft nun, ob `SHA256SUMS.txt` exakt zu den lokalen
+  Release-Kandidaten passt, und bezieht die Prüfsummenliste in die
+  GitHub-Release-Asset-Prüfung ein.
+- README und Downloadseite verlinken die Prüfsummenliste sichtbar neben den
+  übrigen Download- und Release-Artefakten.
+- Versionsbump auf 3.0.17 in Voll- und Mini-Skill; docs-Spiegel, README und
+  Release-Check-Hinweis aktualisiert.
+
+### Geprüft
+- Lokaler Integritätscheck deckt Versionen, Spiegeldateien, Mini-Limit,
+  interne Anker, lokale HTML-Links, Prüfsummen, PDF-/ZIP-Sanity und
+  Release-Kandidaten ab.
+
 ## [3.0.16] — 2026-07-08
 
 ### Geändert
@@ -292,6 +310,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.17]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.17
 [3.0.16]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.16
 [3.0.15]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.15
 [3.0.14]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.14
