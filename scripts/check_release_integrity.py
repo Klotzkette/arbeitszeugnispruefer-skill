@@ -390,7 +390,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--github-release",
         metavar="TAG",
-        help="also verify the published GitHub release assets for TAG, e.g. v3.0.15",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.16",
     )
     return parser.parse_args(argv)
 

@@ -6,14 +6,14 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.15) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.15 verbessert die Download-Fallbacks und prüft nach Veröffentlichung auch die realen GitHub-Release-Assets gegen die lokalen Dateien.
+Konsolidierter Skill (Version 3.0.16) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.16 schärft die Mini-Fassung als direkt herunterladbaren Kurzprompt mit Satzmatrix, Notenspanne, Mandantenerklärung in Alltagssprache und Schreiben an Arbeitgeber/Gegenseite.
 
 ## Schnellzugriff
 
 | Ziel | Direktlink | Hinweis |
 | --- | --- | --- |
 | Vollversion herunterladen | [SKILL.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) | Startet den Markdown-Download mit Fallback-Button. |
-| Kurzversion herunterladen | [SKILL-mini.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) | Kompaktfassung unter 7.500 Zeichen. |
+| Kurzversion herunterladen | [SKILL-mini.md Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) | Kompaktfassung unter 7.500 Zeichen mit Matrix, Note, Mandantenerklärung und Arbeitgeber-Schreiben. |
 | Öffentliche Downloadseite | [GitHub Pages öffnen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) | Vollversion, Mini-Version und Testakten an einem Ort. |
 | Neueste Release-Assets | [GitHub Release öffnen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) | Markdown-Dateien, PDFs und ZIPs als versionierte Anhänge. |
 | Skill-Quelltext ansehen | [`skill/SKILL.md`](skill/SKILL.md) | Formatierte Repository-Ansicht zum Prüfen oder Kopieren. |
@@ -26,7 +26,7 @@ Konsolidierter Skill (Version 3.0.15) für die Prüfung deutscher Arbeitszeugnis
 
 [📥 SKILL.md jetzt herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html)
 
-Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion: [SKILL-mini.md herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html). Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist nicht so tief wie die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, HR-Gate und Ausgabeformaten ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
+Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion: [SKILL-mini.md herunterladen](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html). Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist nicht so tief wie die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
 Ein Klick genügt — die neuen Download-Startseiten stoßen den Download der ausgewählten Markdown-Datei automatisch an und zeigen zusätzlich einen großen Fallback-Button, falls eine App den automatischen Download blockiert. Kein Rechtsklick, kein „Speichern unter…", kein Umweg über Menüs.
 
@@ -138,7 +138,7 @@ python3 scripts/build_generated_testakten.py
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.15
+python3 scripts/check_release_integrity.py --github-release v3.0.16
 ```
 
 ## Workflow in acht Stufen

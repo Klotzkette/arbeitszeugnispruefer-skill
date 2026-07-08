@@ -5,6 +5,22 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [3.0.16] — 2026-07-08
+
+### Geändert
+- Mini-Fassung als eigenständigen Kurzprompt geschärft: Sie verlangt nun
+  ausdrücklich Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache
+  und ein ausformuliertes Schreiben an Arbeitgeber/Gegenseite.
+- README und Downloadseite stellen klarer heraus, dass `SKILL-mini.md` unter
+  7.500 Zeichen bleibt und per einem Klick als Markdown-Datei herunterladbar ist.
+- Versionsbump auf 3.0.16 in Voll- und Mini-Skill; docs-Spiegel, README und
+  Release-Check-Hinweis aktualisiert.
+
+### Geprüft
+- Mini-Fassung bleibt unter 7.500 Zeichen; `skill/` und `docs/` sind
+  byte-identisch spiegelbar; direkte Download- und Release-Fallback-Logik bleibt
+  unverändert.
+
 ## [3.0.15] — 2026-07-07
 
 ### Geändert
@@ -276,6 +292,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.16]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.16
 [3.0.15]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.15
 [3.0.14]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.14
 [3.0.13]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.13

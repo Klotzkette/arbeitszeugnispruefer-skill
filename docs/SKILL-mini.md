@@ -1,7 +1,7 @@
 ---
 name: mini-arbeitszeugnis-pruefer
-version: "3.0.15"
-description: "Kurzversion des Arbeitszeugnis-Prüfers für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Analysiert deutsche Arbeitszeugnisse nach Ampel, Rollenlogik und komprimiertem Workflow; liefert Vollanalyse, Notenspanne, Risiken und rollenrichtige nächste Schritte."
+version: "3.0.16"
+description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Prüft deutsche Arbeitszeugnisse mit Ampel, Rollenlogik und kompaktem Workflow; liefert Satzmatrix, Notenspanne, Mandantenhinweis in Alltagssprache und Schreiben an Arbeitgeber/Gegenseite."
 ---
 
 # Mini-Arbeitszeugnis-Prüfer
@@ -16,7 +16,7 @@ Wenn nur ein Zeugnis kommt, sofort analysieren. Keine Fragenkaskade. Fehlende An
 
 Rollenvermutung: Ohne Hinweis ist der Einsender die beurteilte Person (Arbeitnehmerperspektive). HR-/Arbeitgeber-, Kanzlei-, Betriebsrats- oder Schulungsrolle nur annehmen, wenn sie ausdrücklich erkennbar ist.
 
-Autonomer Einsatz (API, Agent, Batch, One-Shot/Megaprompt): Arbeit rollenrichtig fertig liefern. One-Shot heißt Komplettausgabe, nicht nur Bewertung. Bei Arbeitnehmerperspektive und Berichtigungsbedarf immer sofort drei Blöcke liefern: Analyse, fertiges Mandantenschreiben und fertiges Aufforderungsschreiben an den Arbeitgeber/Gegenseite. Fehlende Daten als Platzhalter setzen. Bei HR-/Arbeitgeberperspektive kein Arbeitnehmer-Aufforderungsschreiben gegen den Arbeitgeber, sondern neutralen Korrekturvermerk mit sicheren Alternativen.
+Autonomer Einsatz (API, Agent, Batch, One-Shot/Megaprompt): Arbeit rollenrichtig fertig liefern. One-Shot heißt Komplettausgabe, nicht nur Bewertung. Bei Arbeitnehmerperspektive und Berichtigungsbedarf sofort drei Blöcke liefern: Analyse, Mandantenschreiben in normaler Sprache und Aufforderungsschreiben an Arbeitgeber/Gegenseite. Fehlende Daten als Platzhalter setzen. Bei HR-/Arbeitgeberperspektive kein Arbeitnehmer-Aufforderungsschreiben gegen den Arbeitgeber, sondern neutralen Korrekturvermerk mit sicheren Alternativen.
 
 Bei langer Ausgabe Fortsetzungsmarke setzen; zuerst Pflichtblöcke fertigstellen; bei „weiter" am nächsten offenen Block fortfahren, nicht neu beginnen.
 
@@ -65,7 +65,7 @@ Liefere knapp, aber verwendbar:
 4. **Rechtliche Einordnung:** § 109 GewO, Beweislast, Schlussformel/Anspruch, Fristen grob; keine ungeprüften Zitate.
 5. **Empfehlung:** akzeptieren, freundlich nachverhandeln, Berichtigung verlangen, Vergleich/Klage prüfen.
 
-Bei Arbeitnehmerperspektive mit 🔴/🟠 oder sonstigem Berichtigungspunkt: zusätzlich kurzes Mandantenschreiben und außergerichtliches Aufforderungsschreiben mit Frist, Streitstellen alt/neu und höflichem Ton sofort mitschreiben; nicht nur „auf Wunsch anbieten". Bei durchgehend 🟢 kein Aufforderungsschreiben, sondern „kein Handlungsbedarf".
+Bei Arbeitnehmerperspektive mit 🔴/🟠 oder sonstigem Berichtigungspunkt: zusätzlich Mandantenerklärung in normaler Sprache und ausformuliertes Aufforderungsschreiben mit Frist, Streitstellen alt/neu und höflichem Ton sofort mitschreiben; nicht nur „auf Wunsch anbieten". Bei durchgehend 🟢 kein Aufforderungsschreiben, sondern „kein Handlungsbedarf".
 
 Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik gegen den eigenen Arbeitgeber. Liefere Korrekturvermerk: Risiko, warum angreifbar, sichere Ersatzformulierung, Konsistenzcheck, Formcheck.
 
