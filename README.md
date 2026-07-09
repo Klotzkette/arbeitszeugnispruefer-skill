@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Skill steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Anhänge, ohne externe Referenzen. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation, kein Konto und kein zusätzliches Werkzeug erforderlich — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.17) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.17 ergänzt eine SHA-256-Prüfsummenliste für die Release-Dateien und verifiziert sie im Integritätscheck.
+Konsolidierter Skill (Version 3.0.18) für die Prüfung deutscher Arbeitszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.18 präzisiert Noten- und Beweislastlogik und verifiziert veröffentlichte Release-Dateien nun anhand ihrer SHA-256-Inhalte sowie des tatsächlichen Tag-Ziels.
 
 ## Schnellzugriff
 
@@ -34,6 +34,16 @@ Ein Klick genügt — die neuen Download-Startseiten stoßen den Download der au
 Wenn einer der Download-Links in einer App nicht direkt funktioniert (manche In-App-Browser ignorieren Download-Anweisungen): Die Startseite geöffnet lassen und den sichtbaren Download-Button antippen. Oder die [komfortable Download-Seite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) im normalen Browser öffnen — dort stehen Vollversion, Mini-Version und Testakten nebeneinander.
 
 Versionierte Komplettpakete stehen zusätzlich im jeweils neuesten [GitHub Release](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest): Dort hängen die Vollversion, die Mini-Version sowie die PDF-/ZIP-Testakten als Release-Assets. Das ist der robusteste Weg, wenn ein Browser den `download`-Hinweis ignoriert oder ein bestimmter Versionsstand archiviert werden soll. Die Datei [SHA256SUMS.txt](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SHA256SUMS.txt) enthält die Prüfsummen der freigegebenen Markdown-, PDF- und ZIP-Dateien.
+
+Downloads selbst prüfen: `SHA256SUMS.txt` und die gewünschten Release-Assets in denselben Ordner laden und dort einen der folgenden Befehle ausführen. Nicht mitgeladene Assets werden vom Sammelcheck als fehlend gemeldet; die vorhandenen Dateien werden trotzdem einzeln geprüft.
+
+```bash
+# Linux
+sha256sum -c SHA256SUMS.txt
+
+# macOS
+shasum -a 256 -c SHA256SUMS.txt
+```
 
 Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`](skill/SKILL.md) oder die Kurzfassung [`skill/SKILL-mini.md`](skill/SKILL-mini.md) — das sind die formatierten Ansichten hier im Repository. Der gesamte Text lässt sich dort mit `Strg+A` / `Cmd+A` markieren und kopieren.
 
@@ -125,7 +135,7 @@ python3 scripts/check_release_integrity.py
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, Release-Asset-Kandidaten, `SHA256SUMS.txt`, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Nach Veröffentlichung kann es mit `--github-release vX.Y.Z` zusätzlich die realen GitHub-Release-Assets gegen die lokalen Dateien prüfen. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, interne Markdown-Anker, lokale Download-Links, Release-Asset-Kandidaten, `SHA256SUMS.txt`, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag und `main`-Commit sowie Namen, Größen und SHA-256-Digests der realen GitHub-Release-Assets mit den lokalen Dateien. |
 | [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte aus den vorhandenen Buildern neu. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
@@ -139,7 +149,7 @@ python3 scripts/build_generated_testakten.py
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.17
+python3 scripts/check_release_integrity.py --github-release v3.0.18
 ```
 
 ## Workflow in acht Stufen

@@ -3,7 +3,36 @@
 Alle nennenswerten Änderungen an diesem Skill werden hier festgehalten.
 Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1.1.0/);
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
-Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill/SKILL-mini.md`.
+Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `skill/SKILL-mini.md`.
+
+## [3.0.18] — 2026-07-09
+
+### Geändert
+- Notenmatrix anhand BAG 18.11.2014 – 9 AZR 584/13 korrigiert:
+  „stets zu unserer Zufriedenheit" wird in der Vollfassung als Note 3
+  eingeordnet; die Mini-Fassung trennt „im Großen und Ganzen zu unserer
+  Zufriedenheit" (Note 5) wieder sauber von „bemüht" (Note 4 bis 5).
+- Klagbarkeits- und Beweislasttabelle juristisch präzisiert: Die BAG-Notenregel
+  gilt für die zusammenfassende Leistungsbewertung und wird nicht mehr
+  schematisch auf Tatsachen-, Klarheits-, Auslassungs- oder Formmängel
+  übertragen.
+- Falsche Beweislastaussage im Drift-Muster berichtigt und ausgabenahe
+  Mustertabellen konsequent auf Ampelsymbole 🔴/🟠/🟢 umgestellt.
+- Nach-Release-Prüfung vergleicht veröffentlichte GitHub-Assets zusätzlich per
+  SHA-256 mit den lokalen Dateien und stellt sicher, dass der Release-Tag auf
+  dem aktuellen `main`-Commit liegt.
+- README und Downloadseite erklären den lokalen Prüfsummenabgleich unter Linux
+  und macOS; Versionsbump auf 3.0.18 in Voll- und Mini-Skill sowie Pages-Spiegel.
+- Nicht standardkonformes `version`-Feld aus dem YAML-Frontmatter entfernt; die
+  Versionsangabe steht nun sichtbar unter der jeweiligen Überschrift, sodass
+  Voll- und Mini-Datei als Skill validierbar bleiben.
+
+### Geprüft
+- Normtext des § 109 GewO und BAG-Leitlinien zu Notenskala, Beweislast,
+  objektivem Empfängerhorizont und Auslassungen erneut anhand amtlicher Quellen
+  abgeglichen.
+- Mini-Fassung bleibt unter 7.500 Zeichen; lokale und veröffentlichte Assets
+  werden nach dem Release auf Name, Größe und SHA-256-Inhalt geprüft.
 
 ## [3.0.17] — 2026-07-08
 
@@ -310,6 +339,7 @@ Die Versionsnummer steht zugleich im Frontmatter von `skill/SKILL.md` und `skill
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.18]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.18
 [3.0.17]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.17
 [3.0.16]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.16
 [3.0.15]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.15

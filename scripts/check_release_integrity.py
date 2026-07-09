@@ -141,10 +141,10 @@ def read_text(rel: Path) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
 
 
-def frontmatter_version(rel: Path) -> str:
-    match = re.search(r'^version:\s*["\']?([^"\'\n]+)', read_text(rel), re.MULTILINE)
+def skill_version(rel: Path) -> str:
+    match = re.search(r'^Version:\s*([^\n]+)', read_text(rel), re.MULTILINE)
     if not match:
-        raise ValueError(f"missing frontmatter version in {rel}")
+        raise ValueError(f"missing visible version in {rel}")
     return match.group(1).strip()
 
 
@@ -179,10 +179,10 @@ def markdown_headings(text: str) -> set[str]:
 
 
 def check_versions(checker: Checker) -> str:
-    version = frontmatter_version(Path("skill/SKILL.md"))
-    mini_version = frontmatter_version(Path("skill/SKILL-mini.md"))
-    docs_version = frontmatter_version(Path("docs/SKILL.md"))
-    docs_mini_version = frontmatter_version(Path("docs/SKILL-mini.md"))
+    version = skill_version(Path("skill/SKILL.md"))
+    mini_version = skill_version(Path("skill/SKILL-mini.md"))
+    docs_version = skill_version(Path("docs/SKILL.md"))
+    docs_mini_version = skill_version(Path("docs/SKILL-mini.md"))
     checker.require(
         len({version, mini_version, docs_version, docs_mini_version}) == 1,
         f"skill and docs versions agree at {version}",
@@ -286,10 +286,14 @@ def check_release_asset_candidates(checker: Checker) -> None:
         checker.require(path.exists() and path.stat().st_size > 0, f"{rel} is ready for release upload")
 
 
+def sha256_digest(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def expected_release_checksums() -> str:
     lines = []
     for rel in CHECKSUM_ASSET_CANDIDATES:
-        digest = hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
+        digest = sha256_digest(ROOT / rel)
         lines.append(f"{digest}  {rel.name}")
     return "\n".join(lines) + "\n"
 
@@ -302,7 +306,18 @@ def check_release_checksums(checker: Checker) -> None:
         checker.require(path.read_text(encoding="utf-8") == expected_release_checksums(), f"{rel} matches release assets")
 
 
-def check_github_release_assets(checker: Checker, tag: str) -> None:
+def github_commit_sha(gh: str, ref: str) -> str:
+    result = subprocess.run(
+        [gh, "api", f"repos/{REPOSITORY}/commits/{ref}", "--jq", ".sha"],
+        text=True,
+        capture_output=True,
+        check=True,
+        timeout=PROCESS_TIMEOUT_SECONDS,
+    )
+    return result.stdout.strip()
+
+
+def check_github_release_assets(checker: Checker, tag: str, version: str) -> None:
     gh = shutil.which("gh")
     if not gh:
         checker.fail("gh not found; cannot verify published GitHub release assets")
@@ -330,27 +345,40 @@ def check_github_release_assets(checker: Checker, tag: str) -> None:
         return
 
     release = json.loads(result.stdout)
+    checker.require(tag == f"v{version}", f"requested GitHub release tag matches local version v{version}")
     checker.require(release.get("tagName") == tag, f"GitHub release tag is {tag}")
     checker.require(release.get("targetCommitish") == "main", "GitHub release targets main")
     checker.require(not release.get("isDraft"), "GitHub release is published, not draft")
     checker.require(not release.get("isPrerelease"), "GitHub release is not a prerelease")
 
-    expected_sizes = {
-        rel.name: (ROOT / rel).stat().st_size
+    expected_assets = {
+        rel.name: {
+            "size": (ROOT / rel).stat().st_size,
+            "digest": f"sha256:{sha256_digest(ROOT / rel)}",
+        }
         for rel in RELEASE_ASSET_CANDIDATES
     }
     assets = {asset["name"]: asset for asset in release.get("assets", [])}
-    missing = sorted(set(expected_sizes) - set(assets))
-    extra = sorted(set(assets) - set(expected_sizes))
-    checker.require(not missing, f"GitHub release has all expected assets ({len(expected_sizes)})")
+    missing = sorted(set(expected_assets) - set(assets))
+    extra = sorted(set(assets) - set(expected_assets))
+    checker.require(not missing, f"GitHub release has all expected assets ({len(expected_assets)})")
     checker.require(not extra, "GitHub release has no unexpected assets")
 
-    for name, local_size in sorted(expected_sizes.items()):
+    for name, expected in sorted(expected_assets.items()):
         asset = assets.get(name)
         if not asset:
             continue
         checker.require(asset.get("state") == "uploaded", f"GitHub release asset {name} is uploaded")
-        checker.require(asset.get("size") == local_size, f"GitHub release asset {name} size matches local file")
+        checker.require(asset.get("size") == expected["size"], f"GitHub release asset {name} size matches local file")
+        checker.require(asset.get("digest") == expected["digest"], f"GitHub release asset {name} SHA-256 matches local file")
+
+    try:
+        tag_sha = github_commit_sha(gh, tag)
+        main_sha = github_commit_sha(gh, "main")
+    except subprocess.CalledProcessError as exc:
+        checker.fail(f"GitHub commit target could not be verified: {exc.stderr.strip() or exc}")
+    else:
+        checker.require(tag_sha == main_sha, f"GitHub tag {tag} points to the current main commit")
 
 
 def check_pdf_details(checker: Checker) -> None:
@@ -411,7 +439,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--github-release",
         metavar="TAG",
-        help="also verify the published GitHub release assets for TAG, e.g. v3.0.17",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.18",
     )
     return parser.parse_args(argv)
 
@@ -430,7 +458,7 @@ def main(argv: list[str] | None = None) -> int:
         check_release_asset_candidates(checker)
         check_pdf_details(checker)
         if args.github_release:
-            check_github_release_assets(checker, args.github_release)
+            check_github_release_assets(checker, args.github_release, version)
     except Exception as exc:  # pragma: no cover - top-level diagnostics
         checker.fail(f"unexpected check error: {exc}")
         version = "unknown"

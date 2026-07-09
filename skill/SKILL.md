@@ -1,10 +1,11 @@
 ---
 name: arbeitszeugnis-pruefer
-version: "3.0.17"
-description: "Vollständige anwaltliche Arbeitsroute für deutsche Arbeitszeugnisse nach dem Ampelsystem (🔴/🟠/🟢). Erkennt Geheimcodes, Zufriedenheits- und Schlussformeln, Steigerungsadverbien, Schaufenster-Drift, Auslassungen und Widersprüche. Liefert satzweise Einschätzungsmatrix mit Rechtsprechungsstütze, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben an den Arbeitgeber, Klagestrategie und Vollstreckungsmodul zur Zeugnisberichtigung. Im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird die Arbeit rollenrichtig fertiggemacht: ein außergerichtliches Aufforderungsschreiben wird nur bei Arbeitnehmerperspektive oder ausdrücklich verlangter Berichtigung miterstellt; HR-/Arbeitgeberprüfungen erhalten stattdessen eine neutrale Korrekturprüfung. Stützt sich auf § 109 GewO, § 16 BBiG, § 241 II, § 280 I BGB und die BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit, Auslassungen, Datumswahrheit, Vollstreckbarkeit und äußerer Form; weicht auf §§ 1004, 823 BGB nur in Ausnahmefällen aus."
+description: "Prüft deutsche einfache, qualifizierte, Zwischen- und Ausbildungszeugnisse vollständig nach dem Ampelsystem (🔴/🟠/🟢). Einsetzen für Arbeitnehmer-, Kanzlei-, HR-/Arbeitgeber- und Betriebsratsprüfungen. Erkennt Zufriedenheits- und Schlussformeln, Geheimcodes, Drift, Auslassungen, Widersprüche und Formfehler. Liefert satzweise Einschätzungsmatrix, begründete Gesamtnotenspanne, Mandantenbericht, Aufforderungsschreiben, Klagestrategie und Vollstreckungsmodul. In API-, Agent-, Batch- und One-Shot-Einsätzen wird das rollenrichtige Paket fertig geliefert: Arbeitnehmerperspektive erhält bei Berichtigungsbedarf das Arbeitgeber-Schreiben, HR-/Arbeitgeberseite einen neutralen Korrekturvermerk. Stützt sich insbesondere auf § 109 GewO, § 16 BBiG und BAG-Leitentscheidungen zu Noten, Beweislast, Klarheit, Auslassungen, Schlussformel, Form und Vollstreckung."
 ---
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
+
+Version: 3.0.18
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine externen Referenzen nötig.
 
@@ -351,7 +352,7 @@ Die Hauptformel der zusammenfassenden Leistungsbeurteilung. Ihre Bestandteile tr
 | „stets zu unserer vollen Zufriedenheit" | 2 | Grün |
 | „zu unserer vollsten Zufriedenheit" (ohne „stets") | 2 | Grün/Orange |
 | „zu unserer vollen Zufriedenheit" | 3 | Orange |
-| „stets zu unserer Zufriedenheit" | 3–4 | Orange |
+| „stets zu unserer Zufriedenheit" | 3 | Orange |
 | „zu unserer Zufriedenheit" | 4 | Rot |
 | „im Großen und Ganzen zu unserer Zufriedenheit" | 5 | Rot |
 | „hat unsere Erwartungen erfüllt" | 4 (Ersatzformel) | Rot |
@@ -922,9 +923,10 @@ Drei Aufgaben: faire Korrekturgelegenheit, Schärfung der Streitpunkte, Grundlag
 
 ## F.2 — Verbesserungsvorschläge: Wortlaut-Tabelle
 
-Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
+Operative Umformulierungen vom beanstandeten zum tragfähigen Wortlaut.
+Jeder Zielwortlaut steht unter Zeugniswahrheit: nicht automatisch aufwerten, sondern nur eine durch Tatsachen und Gesamtbild gedeckte Formulierung verlangen.
 
-| Original (rot/orange) | Operation | Ergebnis (grün) |
+| Original (🔴/🟠) | Operation | Ergebnis (🟢) |
 | --- | --- | --- |
 | „zur Zufriedenheit" | stets + vollsten ergänzen | „stets zur vollsten Zufriedenheit" |
 | „bemüht" | Ergebnis statt Wille | „stets mit Erfolg erledigt" |
@@ -940,37 +942,37 @@ Operative Umformulierungen vom roten/orangen zum grünen Wortlaut.
 
 ### Operationsprinzipien
 
-1. **Adverb zuerst** — „stets/jederzeit/vollsten" entscheidet die Note. Ohne Adverb kein Note-1-Wortlaut.
+1. **Adverb und Prädikat zusammen lesen** — „stets/jederzeit" prägt die Beständigkeit, „voll/vollsten" die Bewertungsstufe. Kein einzelnes Wort entscheidet ohne Satz- und Gesamtkontext die Note.
 2. **Ergebnis statt Wille** — „bemüht" und „in der Lage" durch konkrete Erfolgsaussage ersetzen.
-3. **Reihenfolge im Verhaltensteil** — Vorgesetzte vor Kollegen vor Kunden (oder branchenüblich begründet). Reihenfolge ist Berichtigungspunkt.
+3. **Reihenfolge im Verhaltensteil** — Vorgesetzte vor Kollegen vor Kunden ist ein verbreiteter Regelfall. Eine Abweichung wird erst bei rollenrelevantem Kontakt und objektiv negativer Lesart zum Berichtigungspunkt.
 4. **Schlussformel in drei Elementen** — Bedauern, Dank, Wunsch. Vollständigkeit ist Verhandlungspunkt, kein automatischer Klageanspruch.
 
 ## F.3 — Klagestrategie Zeugnisberichtigung
 
 ### Erfolgsaussichten je Befundtyp
 
-| Befund | Klagbarkeit | Erfolgsaussicht |
+| Befund | Rechtliche Einordnung | Erfolgsaussicht |
 | --- | --- | --- |
-| „bemüht" als Leistungsformel | klagbar | hoch |
-| falsche Reihenfolge im Sozialverhalten | klagbar bei rollenrelevantem Kontakt und fehlender neutraler Erklärung | mittel bis hoch |
-| unvollständige Schlussformel | meist Verhandlungspunkt, Klage nur mit Zusatzkontext | niedrig bis mittel |
-| negatives Codewort aus dem Katalog | klagbar bei objektiv verdeckter Negativaussage | mittel bis hoch |
-| Drift im selben Themenbereich | klagbar bei nachgewiesenem Schaufenster | mittel |
-| konstante Note 3 in weichen Bereichen | klagbar bei Wohlwollensverstoß | mittel |
-| Note 3 bei aktenkundig besserer Leistung | klagbar (Arbeitnehmer beweisbelastet) | mittel |
-| Note 4 im Standardfall | klagbar (Arbeitgeber beweisbelastet) | hoch |
+| „bemüht" als zusammenfassende Leistungsformel | Berichtigung einer unterdurchschnittlichen Bewertung; der Arbeitgeber muss die Tatsachengrundlage für eine Bewertung unterhalb von Note 3 darlegen und beweisen | mittel bis hoch, abhängig vom Gesamtzeugnis |
+| abweichende Reihenfolge im Sozialverhalten | kein Automatismus; Berichtigung nur bei rollenrelevantem Kontakt und objektiv negativer Lesart ohne neutrale Erklärung | niedrig bis mittel |
+| unvollständige Schlussformel | regelmäßig nur Verhandlungspunkt; grundsätzlich kein Anspruch auf Dank, Bedauern oder gute Wünsche | niedrig |
+| vermeintliches negatives Codewort | Berichtigung nur, wenn Wortlaut und Gesamtkontext aus objektivem Empfängerhorizont eine verdeckte Negativaussage tragen | einzelfallabhängig |
+| Drift oder Widerspruch im selben Themenbereich | kein eigener Anspruchstatbestand; relevant, wenn das Gesamtzeugnis dadurch unwahr, unklar oder objektiv irreführend wird | einzelfallabhängig |
+| Note 3 bei verlangter Aufwertung | bessere Bewertung nur bei konkretem Zielwortlaut und Tatsachen für überdurchschnittliche Leistung | niedrig bis mittel; Arbeitnehmer beweisbelastet |
+| Note 4 als Gesamtbewertung | Arbeitgeber muss Tatsachen für die unterdurchschnittliche Leistung darlegen und beweisen | mittel bis hoch |
 
 ### Beweislast
 
-| Streitfrage | Beweislast |
+| Streitfrage | Darlegungs- und Beweislast |
 | --- | --- |
-| Note schlechter als befriedigend | Arbeitgeber |
-| Note besser als befriedigend | Arbeitnehmer |
-| Wohlwollensverstoß | Arbeitnehmer |
-| Wahrheitsverstoß | Arbeitnehmer |
+| verlangte Gesamtbewertung besser als befriedigend | Arbeitnehmer: konkrete Tatsachen für die überdurchschnittliche Leistung |
+| erteilte Gesamtbewertung schlechter als befriedigend | Arbeitgeber: konkrete Tatsachen für die unterdurchschnittliche Leistung |
+| unrichtige Kopfdaten oder Tatsachenangaben | beanstandete Abweichung und verlangten richtigen Inhalt konkret darlegen; Beweislast nach der jeweils streitigen Tatsache, nicht schematisch nach der Notenregel |
+| Geheimzeichen oder unklare Formulierung | Arbeitnehmer legt Wortlaut, Kontext und objektiv verdeckte bzw. unklare Lesart dar; bloß subjektives Missfallen genügt nicht |
+| rollen- oder branchenbezogene Auslassung | Arbeitnehmer legt dar, warum die positive Hervorhebung nach Funktion oder Branchenbrauch erwartet wird und ihr Fehlen nachteilig wirkt (BAG 9 AZR 632/07) |
 | Reihenfolge im Sozialverhalten | Arbeitnehmer muss Rollen-/Kontaktrelevanz und negative Lesart darlegen; Arbeitgeber kann neutrale Erklärung oder Branchenkontext einwenden |
 
-Grundlage: BAG 14.10.2003 – 9 AZR 12/03 und BAG 18.11.2014 – 9 AZR 584/13 ([Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen)).
+Die BAG-Notenregel betrifft die zusammenfassende Leistungsbewertung. Sie darf nicht mechanisch auf jedes Adjektiv, jeden Formmangel oder jede Tatsachenangabe übertragen werden. Grundlage: BAG 14.10.2003 – 9 AZR 12/03 und BAG 18.11.2014 – 9 AZR 584/13; für Klarheit, Empfängerhorizont und Auslassungen BAG 15.11.2011 – 9 AZR 386/10 und BAG 12.08.2008 – 9 AZR 632/07 ([Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen)).
 
 ### Streitwert
 
@@ -1063,13 +1065,13 @@ Diese Sektion hält drei vollständige Musterzeugnisse (Note 1, gemischt mit Dri
 
 | Element | Ampel | Note |
 | --- | --- | --- |
-| „stets zur vollsten Zufriedenheit" | grün | 1 |
-| „hervorragende Fachkenntnisse" | grün | 1 |
-| „außerordentliches Engagement" | grün | 1 |
-| „stets einwandfrei" (Verhalten) | grün | 1 |
-| Warme Schlussformel mit Bedauern, Dank, Wunsch | grün | 1 |
+| „stets zur vollsten Zufriedenheit" | 🟢 | 1 |
+| „hervorragende Fachkenntnisse" | 🟢 | 1 |
+| „außerordentliches Engagement" | 🟢 | 1 |
+| „stets einwandfrei" (Verhalten) | 🟢 | 1 |
+| Warme Schlussformel mit Bedauern, Dank, Wunsch | 🟢 | 1 |
 
-Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
+Konsistent 🟢, keine Drift, keine Auslassung. Gesamtnote 1.
 
 ## G.2 — Muster 2: Schaufenster-Drift (Note 2 bis 3 nach Aggregation)
 
@@ -1099,19 +1101,19 @@ Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
 
 | Themenbereich | Höchste Note | Niedrigste Note | Drift | Ampel |
 | --- | --- | --- | --- | --- |
-| Fachkenntnisse | 1 | 1 | keine | grün |
-| Lernbereitschaft | 1 (indirekt) | 3 | zwei Stufen | rot |
-| Strategisches Denken | 1 | 1 | keine | grün |
-| Flexibilität | 3 | 3 | keine | orange |
-| Engagement | 1 | 1 | keine | grün |
-| Arbeitsweise | 1 | 1 | keine | grün |
-| Innovation | 3 | 3 | keine | orange |
-| Sozialverhalten | 3 | 3 | keine | orange |
-| Gesamtbeurteilung und Schluss | 1 | 1 | keine | grün |
+| Fachkenntnisse | 1 | 1 | keine | 🟢 |
+| Lernbereitschaft | 1 (indirekt) | 3 | zwei Stufen | 🔴 |
+| Strategisches Denken | 1 | 1 | keine | 🟢 |
+| Flexibilität | 3 | 3 | keine | 🟠 |
+| Engagement | 1 | 1 | keine | 🟢 |
+| Arbeitsweise | 1 | 1 | keine | 🟢 |
+| Innovation | 3 | 3 | keine | 🟠 |
+| Sozialverhalten | 3 | 3 | keine | 🟠 |
+| Gesamtbeurteilung und Schluss | 1 | 1 | keine | 🟢 |
 
 **Aggregation:** Spitzensätze authentisch (Fachkenntnisse, Arbeitsweise, Engagement). Drift zwei Stufen im Themenblock Lernbereitschaft. Konstante Note 3 in Innovation und Sozialverhalten. Gesamtnote nach Aggregation: 2 bis 3.
 
-**Empfehlung:** Nachverhandlung der Sätze zu Lernbereitschaft, Innovation und Sozialverhalten. Beweislast nach BAG: bei Gesamtnote schlechter als befriedigend liegt sie beim Arbeitgeber — hier aus den Formulierungen selbst herauslesbar.
+**Empfehlung:** Nachverhandlung der Sätze zu Lernbereitschaft, Innovation und Sozialverhalten. Wird eine eindeutige Gesamtnote 2 oder die Aufwertung einzelner durchschnittlicher Aussagen verlangt, muss der Arbeitnehmer die dafür sprechenden überdurchschnittlichen Leistungen konkret darlegen und gegebenenfalls beweisen; die vorhandenen Spitzensätze sind dafür Indizien, ersetzen den Tatsachenvortrag aber nicht.
 
 ## G.3 — Muster 3: Rote Flaggen (Note 4)
 
@@ -1135,15 +1137,15 @@ Konsistent grün, keine Drift, keine Auslassung. Gesamtnote 1.
 
 | Befund | Bedeutung | Ampel | Note |
 | --- | --- | --- | --- |
-| „ausreichende Fachkenntnisse" | unterdurchschnittlich | rot | 4 |
-| „stets bemüht" | trotz Willen keine Ergebnisse | rot | 4 bis 5 |
-| „zur vollen Zufriedenheit" ohne „stets" | fehlende Steigerung | orange | 3 |
-| „im Wesentlichen strukturiert" | erhebliche Mängel | rot | 4 |
-| „Kollegen und Vorgesetzten" (Reihenfolge) | falsche Reihenfolge | orange | 3 |
-| „korrekt" (Verhalten) | schwache Formel | orange | 3 |
-| „direkte Kommunikationsweise" | grob, schwierig | rot | 4 bis 5 |
-| Schweigen zu Kunden bei Vertriebsjob | Kundenproblem | rot | — |
-| Schlussformel ohne Bedauern | Distanz | orange | — |
+| „ausreichende Fachkenntnisse" | unterdurchschnittlich | 🔴 | 4 |
+| „stets bemüht" | trotz Willen keine Ergebnisse | 🔴 | 4 bis 5 |
+| „zur vollen Zufriedenheit" ohne „stets" | fehlende Steigerung | 🟠 | 3 |
+| „im Wesentlichen strukturiert" | erhebliche Mängel | 🔴 | 4 |
+| „Kollegen und Vorgesetzten" (Reihenfolge) | auffällige Reihenfolge; Kontext prüfen | 🟠 | 3 |
+| „korrekt" (Verhalten) | schwache Formel | 🟠 | 3 |
+| „direkte Kommunikationsweise" | riskiert Lesart „grob/schwierig" | 🔴 | 4 bis 5 |
+| Schweigen zu Kunden bei Vertriebsjob | riskiert negative Lesart zum Kundenkontakt | 🔴 | — |
+| Schlussformel ohne Bedauern | Distanzsignal, grundsätzlich kein Anspruch | 🟠 | — |
 
 **Gesamtbild:** Leistung 4, Verhalten 4, Schluss 3 bis 4. Gesamtnote 4.
 
@@ -1155,17 +1157,17 @@ Führungskräftezeugnisse haben typische Erwartungsbausteine. Ihr Fehlen ist nic
 
 | Erwartungsbaustein | Fehlen kann gelesen werden als | Ampel |
 | --- | --- | --- |
-| Mitarbeiterführung und -entwicklung | Führungsleistung ausgeklammert | rot |
-| Strategische Verantwortung | Strategiebeteiligung unklar oder nicht belegt | orange bis rot |
-| Budget- und P&L-Verantwortung | wirtschaftliche Führungsrolle unklar | orange |
-| Repräsentation nach außen | externe Wirkung ausgeklammert | orange |
-| Loyalitätsaussage gegenüber Gesellschaftern oder Vorstand | Loyalitäts- oder Vertraulichkeitsfrage | rot |
+| Mitarbeiterführung und -entwicklung | Führungsleistung ausgeklammert | 🔴 |
+| Strategische Verantwortung | Strategiebeteiligung unklar oder nicht belegt | 🟠🔴 |
+| Budget- und P&L-Verantwortung | wirtschaftliche Führungsrolle unklar | 🟠 |
+| Repräsentation nach außen | externe Wirkung ausgeklammert | 🟠 |
+| Loyalitätsaussage gegenüber Gesellschaftern oder Vorstand | Loyalitäts- oder Vertraulichkeitsfrage | 🔴 |
 
-**Beispiel grüne Führungsaussage (Note 1):** „Frau Dr. Hoffmann führte ihre über 80 Mitarbeiter mit klarem Ziel, hoher Empathie und nachhaltigem Erfolg. Unter ihrer Leitung verzeichnete der Bereich eine Steigerung der Mitarbeiterzufriedenheit und eine signifikante Verbesserung der Ergebnisse."
+**Beispiel 🟢 Führungsaussage (Note 1):** „Frau Dr. Hoffmann führte ihre über 80 Mitarbeiter mit klarem Ziel, hoher Empathie und nachhaltigem Erfolg. Unter ihrer Leitung verzeichnete der Bereich eine Steigerung der Mitarbeiterzufriedenheit und eine signifikante Verbesserung der Ergebnisse."
 
-**Beispiel orange Führungsaussage (Note 3):** „Herr Vogel pflegte einen kooperativen Führungsstil und wurde von seinen Mitarbeitern geschätzt." — passiv, kein Erfolgsnachweis.
+**Beispiel 🟠 Führungsaussage (Note 3):** „Herr Vogel pflegte einen kooperativen Führungsstil und wurde von seinen Mitarbeitern geschätzt." — passiv, kein Erfolgsnachweis.
 
-**Beispiel rotes Schweigen:** Abteilungsleiter mit 15 Mitarbeitenden ohne eine einzige Aussage zur Mitarbeiterführung — starkes rotes Signal.
+**Beispiel 🔴 Schweigen:** Abteilungsleiter mit 15 Mitarbeitenden ohne eine einzige Aussage zur Mitarbeiterführung — starkes Risikosignal, dessen Branchen- und Rollenerwartung konkret zu belegen ist.
 
 ## G.5 — Sonderfall B: Ausbildungszeugnis (§ 16 BBiG)
 
@@ -1179,14 +1181,14 @@ Führungskräftezeugnisse haben typische Erwartungsbausteine. Ihr Fehlen ist nic
 
 | Formulierung | Bedeutung | Ampel |
 | --- | --- | --- |
-| „schnell und sicher aufgenommen" | hervorragender Lernfortschritt | grün |
-| „zuverlässig die Ausbildungsinhalte angeeignet" | guter Lernfortschritt | grün |
-| „hat sich die Inhalte erarbeitet" | befriedigender Fortschritt | orange |
-| „war bereit zu erlernen" | unterdurchschnittlicher Fortschritt | rot |
-| fehlender Berufsschulabschnitt (duale Ausbildung) | Schulprobleme möglich | orange |
-| „hat sich positiv entwickelt" (im Azubi-Kontext) | gut | grün |
-| „pünktlich und zuverlässig" | wichtiges Grundverhalten | grün |
-| fehlende Pünktlichkeitsaussage | Fehlzeiten oder Verspätungen | orange |
+| „schnell und sicher aufgenommen" | hervorragender Lernfortschritt | 🟢 |
+| „zuverlässig die Ausbildungsinhalte angeeignet" | guter Lernfortschritt | 🟢 |
+| „hat sich die Inhalte erarbeitet" | befriedigender Fortschritt | 🟠 |
+| „war bereit zu erlernen" | unterdurchschnittlicher Fortschritt | 🔴 |
+| fehlender Berufsschulabschnitt (duale Ausbildung) | Schulprobleme möglich; Kontext prüfen | 🟠 |
+| „hat sich positiv entwickelt" (im Azubi-Kontext) | gut | 🟢 |
+| „pünktlich und zuverlässig" | wichtiges Grundverhalten | 🟢 |
+| fehlende Pünktlichkeitsaussage | mögliche Auffälligkeit; Branchenbrauch prüfen | 🟠 |
 
 ### Triage
 
@@ -1195,9 +1197,9 @@ Führungskräftezeugnisse haben typische Erwartungsbausteine. Ihr Fehlen ist nic
 3. Ausbildung abgebrochen → nicht automatisch nur einfaches Zeugnis; Angaben zu Verhalten und Leistung nach § 16 Abs. 2 BBiG auf Verlangen prüfen.
 4. Beendigungsgrund: bestandene Prüfung oder Kündigung/Aufhebung?
 
-**Beispiel grün:** „Herr Müller hat die Ausbildungsinhalte stets schnell und sicher aufgenommen, zeigte großes Interesse an seinem Ausbildungsberuf und zeichnete sich durch hervorragende Berufsschulleistungen aus."
+**Beispiel 🟢:** „Herr Müller hat die Ausbildungsinhalte stets schnell und sicher aufgenommen, zeigte großes Interesse an seinem Ausbildungsberuf und zeichnete sich durch hervorragende Berufsschulleistungen aus."
 
-**Beispiel rot:** „Herr Bauer war stets bereit, die Ausbildungsinhalte zu erlernen, und hat die Anforderungen im Wesentlichen erfüllt." — doppeltes Negativsignal.
+**Beispiel 🔴:** „Herr Bauer war stets bereit, die Ausbildungsinhalte zu erlernen, und hat die Anforderungen im Wesentlichen erfüllt." — doppeltes Negativsignal.
 
 ## G.6 — Sonderfall C: Branchenspezifische Pflichtaussagen
 
@@ -1214,8 +1216,8 @@ Wer im Vertrieb ohne Zielerreichungssatz dasteht oder in der Pflege ohne Patient
 | Einzelhandel | Kassenführung, Warenkenntnis | Kassenproblem |
 | Öffentlicher Dienst | Gesetzeskenntnis, Verfahrensführung, Bürgerkontakt | mangelhafte Amtsführung |
 
-**Beispiel Vertrieb grün:** „Herr Kurz übertraf seine Vertriebsziele im Beobachtungszeitraum durchgehend und war maßgeblich an der Neukundengewinnung beteiligt."
+**Beispiel Vertrieb 🟢:** „Herr Kurz übertraf seine Vertriebsziele im Beobachtungszeitraum durchgehend und war maßgeblich an der Neukundengewinnung beteiligt."
 
-**Beispiel IT orange:** „Frau Kramer hat an mehreren Softwareprojekten mitgewirkt und dabei ihre technischen Fähigkeiten eingesetzt." — passiv, keine Erfolgs- oder Verantwortungsaussage.
+**Beispiel IT 🟠:** „Frau Kramer hat an mehreren Softwareprojekten mitgewirkt und dabei ihre technischen Fähigkeiten eingesetzt." — passiv, keine Erfolgs- oder Verantwortungsaussage.
 
-**Beispiel Pflege rot durch Schweigen:** Stationsschwester-Zeugnis ohne eine einzige Aussage zu Patientenversorgung oder Empathie.
+**Beispiel Pflege 🔴 durch Schweigen:** Stationsschwester-Zeugnis ohne eine einzige Aussage zu Patientenversorgung oder Empathie; erst nach belegter Rollen- und Branchenerwartung als Berichtigungspunkt führen.
