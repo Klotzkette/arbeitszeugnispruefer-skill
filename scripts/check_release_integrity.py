@@ -268,10 +268,20 @@ def check_ci_workflow(checker: Checker) -> None:
         return
 
     workflow = path.read_text(encoding="utf-8")
+    checkout_action = re.search(r"uses:\s*actions/checkout@v(\d+)", workflow)
+    python_action = re.search(r"uses:\s*actions/setup-python@v(\d+)", workflow)
     checker.require("pull_request:" in workflow and "branches: [main]" in workflow, "integrity CI covers pull requests and main")
     checker.require("python3 scripts/check_release_integrity.py" in workflow, "integrity CI runs the repository checker")
     checker.require("contents: read" in workflow, "integrity CI uses read-only repository permissions")
     checker.require("git push" not in workflow and "contents: write" not in workflow, "integrity CI cannot mutate main")
+    checker.require(
+        checkout_action is not None and int(checkout_action.group(1)) >= 5,
+        "integrity CI uses a Node 24-compatible checkout action",
+    )
+    checker.require(
+        python_action is not None and int(python_action.group(1)) >= 6,
+        "integrity CI uses a Node 24-compatible Python setup action",
+    )
 
 
 def check_docs_sync(checker: Checker) -> None:

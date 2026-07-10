@@ -44,7 +44,9 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   Rechtsstatus werden jetzt als eigene Release-Invarianten geprüft.
 - Schreibender Pages-Synchronisationsworkflow durch eine strikt lesende
   Integritätsprüfung für Pull Requests und `main` ersetzt; ein Release-Tag kann
-  dadurch nicht mehr von einem nachgelagerten Bot-Commit überholt werden.
+  dadurch nicht mehr von einem nachgelagerten Bot-Commit überholt werden. Die
+  verwendeten offiziellen Actions sind auf Node-24-kompatible Hauptversionen
+  aktualisiert und werden gegen einen Versionsrückfall geprüft.
 - Downloadseite um amtliche Rechtsquellen und statusrichtige One-Shot-Hinweise
   ergänzt; README, Downloadhilfen und Testakten-Navigation vereinheitlicht.
 
