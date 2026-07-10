@@ -54,12 +54,28 @@
     margin: 0 0 2rem;
     font-size: 1.05rem;
   }
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: -0.75rem 0 1.5rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-nav a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .site-nav a:hover, .site-nav a:focus { text-decoration: underline; }
   .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 1.25rem;
+    scroll-margin-top: 1rem;
   }
   .card h2 {
     font-size: 1.1rem;
@@ -162,7 +178,17 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeitszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.18.</p>
+  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.19.</p>
+
+  <nav class="site-nav" aria-label="Seitennavigation">
+    <a href="#skills">Skills</a>
+    <a href="#testakten">Testakten</a>
+    <a href="#wegweiser">Repository</a>
+    <a href="#anwendung">Anwendung</a>
+    <a href="#rechtsanker">Rechtsanker</a>
+    <a href="#wartung">Prüfsummen</a>
+    <a href="#hinweis">Hinweise</a>
+  </nav>
 
   <div class="card">
     <h2>Schnellzugriff</h2>
@@ -172,12 +198,13 @@
       <li><span>Mini-Version</span><a href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">SKILL-mini.md herunterladen</a></li>
       <li><span>Release-Paket</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest">versionierte Assets</a></li>
       <li><span>Prüfsummen</span><a href="SHA256SUMS.txt" download="SHA256SUMS.txt" type="text/plain">SHA256SUMS.txt</a></li>
+      <li><span>Gesamtes Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip" download>ZIP herunterladen</a></li>
       <li><span>Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">README und Quelltext</a></li>
       <li><span>Release-Historie</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">CHANGELOG.md</a></li>
     </ul>
   </div>
 
-  <div class="card">
+  <div class="card" id="skills">
     <h2>📥 Vollversion</h2>
     <p>Die beste Variante mit vollständigem Workflow, Katalogen, Mandatsmodulen und Musterzeugnissen. Auch ohne Skill-Loader als Megaprompt nutzbar.</p>
     <a class="btn" href="SKILL.md" download="SKILL.md" type="text/markdown">
@@ -187,13 +214,13 @@
 
   <div class="card">
     <h2>Mini-Version</h2>
-    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen; mit Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Arbeitgeber-Schreiben.</p>
+    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen; mit Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und statusrichtigem Gegenseitenschreiben.</p>
     <a class="btn secondary" href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">
       SKILL-mini.md herunterladen
     </a>
   </div>
 
-  <div class="card">
+  <div class="card" id="testakten">
     <h2>🧪 Testakten zum Üben</h2>
     <p>Fünfundzwanzig fiktive Arbeitszeugnisse — zehn allgemeine Branchen, zehn vertiefte juristisch-akademische Fälle und fünf ausführliche Zeugnisse für obere Leitungsfunktionen.</p>
     <p><strong>Allgemeine Branchen</strong></p>
@@ -228,19 +255,33 @@
     </p>
   </div>
 
-  <div class="card">
+  <div class="card" id="wegweiser">
+    <h2>Repository-Wegweiser</h2>
+    <p>Alle README-Einstiege und Quelldateien ohne Ordnersuche.</p>
+    <ul class="link-list">
+      <li><span>Haupt-README</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/README.md">Projektübersicht</a></li>
+      <li><span>Skills ansehen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/skill">Voll- und Mini-Quelltext</a></li>
+      <li><span>Allgemeine Branchen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md">10 Einzelzeugnisse</a></li>
+      <li><span>Jura und Wissenschaft</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md">10 Einzelzeugnisse</a></li>
+      <li><span>Leitungsfunktionen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md">5 Einzelzeugnisse</a></li>
+      <li><span>Alle Dateien</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">Repository öffnen</a></li>
+    </ul>
+  </div>
+
+  <div class="card" id="wartung">
     <h2>Für Wartung und Release</h2>
-    <p>Die Projektdateien sind offen einsehbar; der Release-Check prüft Versionen, Links, Pages-Spiegel, Prüfsummen, Testakten-Artefakte und optional Tag-Ziel sowie SHA-256-Inhalte der tatsächlich veröffentlichten Release-Assets.</p>
+    <p>Die Projektdateien sind offen einsehbar; der lesende Release-Check prüft Skill-Frontmatter, Versionen, Links, Rechtsanker, Pages-Spiegel, Prüfsummen, Testakten-Artefakte und optional Tag-Ziel sowie SHA-256-Inhalte der tatsächlich veröffentlichten Release-Assets.</p>
     <ul class="link-list">
       <li><span>Changelog</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">Release-Historie öffnen</a></li>
       <li><span>Integritätscheck</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/check_release_integrity.py">check_release_integrity.py</a></li>
+      <li><span>GitHub-Prüfung</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/.github/workflows/verify-integrity.yml">verify-integrity.yml</a></li>
       <li><span>SHA-256</span><a href="SHA256SUMS.txt" download="SHA256SUMS.txt" type="text/plain">SHA256SUMS.txt</a></li>
       <li><span>Testakten-Build</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/build_generated_testakten.py">build_generated_testakten.py</a></li>
     </ul>
     <p style="margin-top:1rem;">Lokaler Abgleich im Download-Ordner: unter Linux <code>sha256sum -c SHA256SUMS.txt</code>, unter macOS <code>shasum -a 256 -c SHA256SUMS.txt</code>.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="download-hilfe">
     <h2>Was passiert beim Klick?</h2>
     <ul>
       <li><strong>Desktop:</strong> Die ausgewählte Datei landet automatisch im Downloads-Ordner.</li>
@@ -251,24 +292,39 @@
     </ul>
   </div>
 
-  <div class="card">
+  <div class="card" id="anwendung">
     <h2>Und dann?</h2>
     <p>Die heruntergeladene <code>SKILL.md</code> oder <code>SKILL-mini.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
     <p><em>„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."</em></p>
     <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch.</p>
   </div>
 
-  <div class="card">
+  <div class="card" id="ausgabe">
     <h2>Welche Ausgabe?</h2>
     <ul>
       <li><strong>Erster Blick:</strong> Analyse, Ampel-Bilanz, Notenspanne und nächste Weiche.</li>
-      <li><strong>One-Shot:</strong> bei Arbeitnehmerperspektive und Berichtigungsbedarf Analyse, Mandantenschreiben und Arbeitgeber-Schreiben.</li>
+      <li><strong>One-Shot:</strong> aus der Perspektive der beurteilten Person bei Berichtigungsbedarf Analyse, Mandantenschreiben und Aufforderung an Arbeitgeber, Dienstgeber oder Ausbildende.</li>
       <li><strong>HR/Arbeitgeber:</strong> neutraler Korrekturvermerk mit sicheren Ersatzformulierungen.</li>
       <li><strong>Abbruch:</strong> „Bitte fahre mit dem nächsten offenen Block fort."</li>
     </ul>
   </div>
 
-  <div class="card">
+  <div class="card" id="rechtsanker">
+    <h2>Amtliche Rechtsanker</h2>
+    <p>Die Anspruchsnorm richtet sich nach dem Rechtsstatus, nicht nur nach der Rolle im Chat. Tragende Fundstellen vor Schriftsatznutzung stets live prüfen.</p>
+    <ul class="link-list">
+      <li><span>Arbeitnehmer</span><a href="https://www.gesetze-im-internet.de/gewo/__109.html">§ 109 GewO</a></li>
+      <li><span>Sonstige Dienstverhältnisse</span><a href="https://www.gesetze-im-internet.de/bgb/__630.html">§ 630 BGB</a></li>
+      <li><span>Berufsausbildung</span><a href="https://www.gesetze-im-internet.de/bbig_2005/__16.html">§ 16 BBiG</a></li>
+      <li><span>Andere Lernverhältnisse</span><a href="https://www.gesetze-im-internet.de/bbig_2005/__26.html">§ 26 BBiG</a></li>
+      <li><span>Arbeitsrechtsweg</span><a href="https://www.gesetze-im-internet.de/arbgg/__2.html">§ 2 ArbGG</a></li>
+      <li><span>Organpersonen</span><a href="https://www.gesetze-im-internet.de/arbgg/__5.html">§ 5 ArbGG</a></li>
+      <li><span>Kosten erster Instanz</span><a href="https://www.gesetze-im-internet.de/arbgg/__12a.html">§ 12a ArbGG</a></li>
+      <li><span>BAG-Entscheidungen</span><a href="https://www.bundesarbeitsgericht.de/entscheidungen/">amtliche Datenbank</a></li>
+    </ul>
+  </div>
+
+  <div class="card" id="hinweis">
     <h2>⚖️ Wichtiger Hinweis</h2>
     <p>Experimenteller Skill, keine Rechtsberatung, keine Gewähr. Der Skill ersetzt
     keine anwaltliche Prüfung; zitierte Rechtsprechung und Normen sind vor jeder

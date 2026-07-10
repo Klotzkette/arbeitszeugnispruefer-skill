@@ -5,6 +5,58 @@ Das Format orientiert sich an [Keep a Changelog](https://keepachangelog.com/de/1
 die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `skill/SKILL-mini.md`.
 
+## [Unreleased]
+
+## [3.0.19] — 2026-07-11
+
+### Geändert
+- Root-README mit kompakter Hauptnavigation, eindeutig getrennten Download- und
+  Ansichtslinks sowie einer klickbaren Repository-Landkarte neu geordnet.
+- Alle drei Testakten-READMEs mit einheitlicher Quernavigation, direkten
+  Release-Downloads für ZIP/Gesamt-PDF und separaten Vorschau-/Downloadlinks
+  für jedes der 25 Einzel-PDFs ausgestattet.
+- Pages-Startseite um Sprungmenü und README-Wegweiser ergänzt; beide
+  Download-Zwischenseiten führen nun zu Schwester-Skill, Testakten,
+  Haupt-README und Downloadübersicht zurück.
+- Integritätscheck prüft jetzt sämtliche lokalen Markdown-Ziele sowie interne
+  und dateiübergreifende HTML-Menüanker.
+- Rechtsprechungs- und Normenaudit gegen amtliche Quellen: Datum von BAG
+  9 AZR 8/15 berichtigt, LAG Hamm 12 Ta 475/16 (ironische Übererfüllung) und
+  4 Ta 118/16 (Unterschrift) sauber getrennt sowie 9 Ta 319/25 (Briefkopf)
+  ergänzt; BAG 9 AZR 248/07 ist nun der direkte Anker für die Bindung des
+  Endzeugnisses an ein Zwischenzeugnis.
+- Rechtsstatus-Gate in Voll- und Mini-Skill geschärft: § 109 GewO für
+  Arbeitnehmer-Endzeugnisse, § 630 BGB für sonstige dauernde
+  Dienstverhältnisse, §§ 16, 26 BBiG für Berufsausbildung und bestimmte
+  andere Lernverhältnisse sowie § 241 Abs. 2 BGB für Zwischenzeugnisse bei
+  triftigem Grund; Organpersonen erhalten eine
+  gesonderte Rechtsweg- und Kostenprüfung nach §§ 2, 5, 12a ArbGG.
+- Rollenlogik von Rechtsstatus getrennt: In One-Shot-Fällen erhält die
+  beurteilte Person das Korrekturschreiben an Arbeitgeber, Dienstgeber oder
+  Ausbildende; HR-/Arbeitgeberrollen erhalten weiterhin nur den neutralen
+  Korrekturvermerk.
+- Unpassende oder überbreite Rechtsanker entfernt bzw. präzisiert, darunter
+  § 288 BGB als pauschale Verzugsgrundlage, § 13 BBiG im Zeugnisblock und die
+  pauschale Zuordnung besonderer Datenkategorien zu jedem Arbeitszeugnis.
+- Integritätscheck um 26 kanonische Entscheidungsdaten, zentrale Normanker
+  und Regressionstests gegen bekannte Fehlzuordnungen erweitert.
+- Skill-Frontmatter, aktuelle Versionshinweise und die Trennung von Rolle und
+  Rechtsstatus werden jetzt als eigene Release-Invarianten geprüft.
+- Schreibender Pages-Synchronisationsworkflow durch eine strikt lesende
+  Integritätsprüfung für Pull Requests und `main` ersetzt; ein Release-Tag kann
+  dadurch nicht mehr von einem nachgelagerten Bot-Commit überholt werden.
+- Downloadseite um amtliche Rechtsquellen und statusrichtige One-Shot-Hinweise
+  ergänzt; README, Downloadhilfen und Testakten-Navigation vereinheitlicht.
+
+### Geprüft
+- Alle 26 Entscheidungsdaten und ihre Kernaussagen gegen amtliche oder
+  gerichtseigene Quellen abgeglichen; bekannte Fehlzuordnungen sind durch
+  Regressionstests gesperrt.
+- Voll- und Mini-Fassung sind mit den Pages-Spiegeln byte-identisch; sämtliche
+  lokalen Links und Anker lösen auf, die Mini-Fassung bleibt unter 7.500 Zeichen.
+- Neun Release-Assets werden vor und nach Veröffentlichung nach Name, Größe und
+  SHA-256-Inhalt geprüft; der Release-Tag muss auf dem aktuellen `main` liegen.
+
 ## [3.0.18] — 2026-07-09
 
 ### Geändert
@@ -339,6 +391,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.19]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.19
 [3.0.18]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.18
 [3.0.17]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.17
 [3.0.16]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.16

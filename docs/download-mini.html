@@ -61,6 +61,10 @@
   }
   a.btn:hover, a.btn:focus { background: var(--accent-hover); }
   a.link { color: var(--accent); }
+  .route-links {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
 </style>
 </head>
 <body>
@@ -71,7 +75,12 @@
   <p style="margin-top:1rem;">Wenn dein Browser den Pages-Download blockiert:
     <a class="link" href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md">SKILL-mini.md aus dem neuesten Release laden</a>.
   </p>
-  <p style="margin-top:1rem;">Zurück zur <a class="link" href="./">Download-Übersicht</a>.</p>
+  <p class="route-links">Weitere Wege:
+    <a class="link" href="SKILL.md" download="SKILL.md">Vollversion herunterladen</a> ·
+    <a class="link" href="./#testakten">Testakten</a> ·
+    <a class="link" href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/README.md">Haupt-README</a> ·
+    <a class="link" href="./">Download-Übersicht</a>
+  </p>
 </main>
 <script>
   window.addEventListener("load", function () {
