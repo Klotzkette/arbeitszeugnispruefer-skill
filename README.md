@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.19) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.19 trennt Perspektive und Rechtsstatus konsequent, härtet die amtlich verifizierten Rechtsanker und sichert Releases durch eine strikt lesende Integritätsprüfung gegen nachträglichen Branch-Drift ab.
+Konsolidierter Skill (Version 3.0.20) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Mandanten-Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.20 macht die Testakten-Builds byte-reproduzierbar, schützt kuratierte READMEs vor Überschreiben und sichert die drei bisherigen Codex-Review-Hinweise durch Regressionstests ab.
 
 ## Navigation
 
@@ -125,7 +125,7 @@ python3 scripts/check_release_integrity.py
 | Skript | Zweck |
 | --- | --- |
 | [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, zentrale Rechtsfundstellen und bekannte Fehlzuordnungen, sämtliche lokalen Markdown-Ziele, interne Markdown- und HTML-Menüanker, die lesende CI-Konfiguration, Release-Asset-Kandidaten, `SHA256SUMS.txt`, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag und `main`-Commit sowie Namen, Größen und SHA-256-Digests der realen GitHub-Release-Assets mit den lokalen Dateien. |
-| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte aus den vorhandenen Buildern neu. |
+| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte neu, ohne kuratierte READMEs zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
 
@@ -133,12 +133,15 @@ Alle generierten Testakten-Artefakte gemeinsam neu bauen:
 
 ```bash
 python3 scripts/build_generated_testakten.py
+
+# Strenger Release-Lauf: zweimal bauen und Byte-Reproduzierbarkeit prüfen
+python3 scripts/build_generated_testakten.py --verify-reproducible
 ```
 
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.19
+python3 scripts/check_release_integrity.py --github-release v3.0.20
 ```
 
 ## Workflow in acht Stufen

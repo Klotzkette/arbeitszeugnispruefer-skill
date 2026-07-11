@@ -10,8 +10,9 @@ from __future__ import annotations
 import shutil
 import subprocess
 import textwrap
-import zipfile
 from pathlib import Path
+
+from reproducible_test_artifacts import normalize_pdf, write_reproducible_zip
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -411,57 +412,7 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
             )
     finally:
         txt_path.unlink(missing_ok=True)
-
-
-def write_readme() -> None:
-    rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']}, {c['reason']} | "
-        f"[`PDF`]({c['nr']}-{c['slug']}/Arbeitszeugnis_{c['nr']}-{c['slug']}.pdf) |"
-        for c in CASES
-    )
-    text = f"""# Testakte: Arbeitszeugnisse — Leitungsfunktionen
-
-Diese dritte Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainingsmaterial für leitende Angestellte und obere Führungsfunktionen. Sie enthält fünf fiktive, bewusst ausführliche Arbeitszeugnisse aus Unternehmensrecht, Finanzen, Personal, Compliance und operativer Standortleitung. Alle Personen, Unternehmen, Registerdaten, Adressen und Kommunikationsdaten sind frei erfunden.
-
-## Schnellzugriff
-
-| Ziel | Link |
-| --- | --- |
-| Zur Hauptübersicht | [`README.md`](../../README.md) |
-| Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
-| ZIP mit allen 5 Einzel-PDFs | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) |
-| Gesamt-PDF aller 5 Zeugnisse | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
-| Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
-
-## Zweck der Akte
-
-Die Zeugnisse trainieren typische Prüffeld-Schwerpunkte bei Leitungsrollen: Berichtslinie, Budget- und Personalverantwortung, Organ- und Gremiennähe, Führungsspanne, Transformationsdruck, Compliance- und Governance-Aufgaben, Betriebsratskontakt, externe Stakeholder sowie die Trennung zwischen operativem Erfolg und Führungs-/Sozialverhalten.
-
-Die Bewertungen sind bewusst durchwachsen. Einige Zeugnisse sind sehr stark, andere enthalten trotz gehobener Rolle eine abgeschwächte Gesamtformel, Drift zwischen Projektlob und Hauptnote, fehlende strategische oder führungsbezogene Kernpunkte, auffällige Schlussformeln oder heikle Beendigungsgründe.
-
-## Aktenübersicht
-
-| Nr. | Person | Rolle | Umfeld | Typ / Anlass | Einzel-PDF |
-| --- | --- | --- | --- | --- | --- |
-{rows}
-
-## Prüfprofil
-
-| Bereich | Worauf der Skill achten soll |
-| --- | --- |
-| Leitungsprofil | Berichtslinie, Budget, Personalverantwortung, Gremiennähe und Entscheidungsspielraum aus dem Text herausarbeiten. |
-| Leistungsbild | Projektlob, Transformationsbeiträge und operative Ergebnisse gegen Hauptnote und Schlussformel abgleichen. |
-| Auslassungen | Strategie, Führung, Stakeholder, Betriebsrat, Compliance, Governance und Nachfolgeplanung rollenbezogen prüfen. |
-| Mandatsoutput | Berichtigungsbedarf mit konkreten Ersatzformulierungen, Mandantenbericht und Aufforderungsschreiben verbinden. |
-
-## Mögliche Arbeitsaufträge an den Skill
-
-- Einzelnes Führungszeugnis auf Gesamtbild, Drift und fehlende Leitungsmerkmale prüfen.
-- Alle fünf Zeugnisse als Vergleichslauf auswerten und die stärksten Risiken priorisieren.
-- Zwischenzeugnis und Endzeugnis auf Selbstbindung und Verschlechterung ohne Tatsachengrundlage prüfen.
-- Bei HR-/Arbeitgeberperspektive sichere Ersatzformulierungen für Leitungsrollen formulieren.
-"""
-    (OUT / "README.md").write_text(text, encoding="utf-8")
+    normalize_pdf(pdf_path)
 
 
 def write_expectations() -> None:
@@ -493,10 +444,20 @@ def main() -> None:
         if not shutil.which(tool):
             raise SystemExit(f"missing required tool: {tool}")
 
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    OUT.mkdir(parents=True)
-    (OUT / "gesamt-pdf").mkdir()
+    OUT.mkdir(parents=True, exist_ok=True)
+    for child in OUT.iterdir():
+        is_generated_case = (
+            child.is_dir()
+            and len(child.name) > 3
+            and child.name[:2].isdigit()
+            and child.name[2] == "-"
+        )
+        if is_generated_case:
+            shutil.rmtree(child)
+    combined_dir = OUT / "gesamt-pdf"
+    if combined_dir.exists():
+        shutil.rmtree(combined_dir)
+    combined_dir.mkdir()
     DOCS_TESTAKTEN.mkdir(parents=True, exist_ok=True)
 
     pdfs: list[Path] = []
@@ -507,15 +468,17 @@ def main() -> None:
         write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
         pdfs.append(pdf)
 
-    combined = OUT / "gesamt-pdf" / "arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"
-    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True, timeout=PROCESS_TIMEOUT_SECONDS)
+    combined = combined_dir / "arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"
+    subprocess.run(
+        ["pdfunite", *map(str, pdfs), str(combined)],
+        check=True,
+        timeout=PROCESS_TIMEOUT_SECONDS,
+    )
+    normalize_pdf(combined)
 
     zip_path = OUT / "arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for pdf in pdfs:
-            zf.write(pdf, arcname=str(pdf.relative_to(OUT)))
+    write_reproducible_zip(zip_path, OUT, pdfs)
 
-    write_readme()
     write_expectations()
 
     shutil.copy2(zip_path, DOCS_TESTAKTEN / zip_path.name)

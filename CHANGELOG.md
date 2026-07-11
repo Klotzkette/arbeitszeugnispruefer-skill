@@ -7,6 +7,34 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.20] — 2026-07-11
+
+### Behoben
+- Fiesen Generatorfehler beseitigt: Ein dokumentierter Testakten-Neubau
+  überschrieb die kuratierten Jura-/Wissenschafts- und Leitungs-READMEs mit
+  älteren Vorlagen und änderte bei unverändertem Inhalt sämtliche erzeugten
+  PDF-/ZIP-Dateien durch Zeitstempel, zufällige PDF-IDs und ZIP-Metadaten.
+- Builder löschen nur noch ihre erzeugten Fallordner und Artefakte; Navigation,
+  Direktdownloads und redaktionelle Ergänzungen in den Testakten-READMEs bleiben
+  bei jedem Neubau erhalten.
+- PDF-Zeitstempel und Datei-IDs sowie Reihenfolge, Zeitstempel und Dateimodus der
+  ZIP-Einträge werden kanonisiert. `--verify-reproducible` baut zweimal und
+  bricht bei jedem Byte-Unterschied oder einer README-Veränderung ab.
+- One-Shot-Ausgabe unterscheidet jetzt ausdrücklich zwischen verständlicher
+  Erklärung bei Selbstprüfung und anwaltlichem Mandantenschreiben bei
+  Kanzleiprüfung; Gegenseite und Anspruchsnorm bleiben statusrichtig.
+
+### Geprüft
+- Sämtliche drei Codex-Automatic-Review-Hinweise des Repositories erneut
+  ausgewertet: Rollen-Gate, § 109 Abs. 2 für jedes Zeugnis sowie Wahrheit und
+  Wohlwollen in der Mini-Fassung sind umgesetzt und nun durch ausdrückliche
+  Regressionstests geschützt.
+- Zwei vollständige Generatorläufe ergaben 27 byte-identische Dateien; alle 15
+  erzeugten Einzel-PDFs, beide Gesamt-PDFs und beide ZIP-Pakete wurden neu
+  erstellt und in die Pages-Downloads gespiegelt.
+- Voll- und Mini-Skill bleiben mit den Pages-Spiegeln byte-identisch; die
+  Mini-Fassung bleibt unter 7.500 Zeichen.
+
 ## [3.0.19] — 2026-07-11
 
 ### Geändert
@@ -393,6 +421,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.20]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.20
 [3.0.19]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.19
 [3.0.18]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.18
 [3.0.17]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.17

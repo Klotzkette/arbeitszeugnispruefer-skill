@@ -20,6 +20,12 @@ import zipfile
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from reproducible_test_artifacts import (
+    CANONICAL_PDF_DATE,
+    ZIP_FILE_MODE,
+    ZIP_TIMESTAMP,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "Klotzkette/arbeitszeugnispruefer-skill"
@@ -423,6 +429,95 @@ def check_legal_citations(checker: Checker) -> None:
         "Briefkopf" in lag_9 and "Firmenbogen" in lag_9,
         "9 Ta 319/25 carries the letterhead rule",
     )
+    checker.require(
+        "Aufforderungsschreiben nur bei passender Rolle" in full
+        and "Bei HR-, Arbeitgeber-, Betriebsrats- oder neutraler Schulungsperspektive"
+        in full
+        and "Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik"
+        in mini,
+        "Codex review regression: autonomous demand letters remain role-gated",
+    )
+    checker.require(
+        "Klarheit, Verständlichkeit und Verbot kodierter Negativaussagen gelten"
+        " für jedes Zeugnis" in full
+        and "Klarheit/Geheimzeichenverbot für jedes" in mini,
+        "Codex review regression: section 109(2) remains applicable to every certificate",
+    )
+    checker.require(
+        "Wahrheit und verständiges Wohlwollen" in mini,
+        "Codex review regression: mini skill retains truth and goodwill",
+    )
+
+
+def check_generated_build_contract(checker: Checker) -> None:
+    aggregate = read_text(Path("scripts/build_generated_testakten.py"))
+    checker.require(
+        "--verify-reproducible" in aggregate and "CURATED_FILES" in aggregate,
+        "aggregate builder verifies reproducibility and protects curated files",
+    )
+
+    builders = [
+        Path("scripts/build_jura_und_wissenschaft_testakten.py"),
+        Path("scripts/build_leitungsfunktionen_testakten.py"),
+    ]
+    for rel in builders:
+        source = read_text(rel)
+        checker.require(
+            "normalize_pdf" in source and "write_reproducible_zip" in source,
+            f"{rel} normalizes PDFs and ZIP metadata",
+        )
+        checker.require(
+            "shutil.rmtree(OUT)" not in source,
+            f"{rel} preserves curated archive files",
+        )
+        checker.require(
+            "\n    write_readme()\n" not in source,
+            f"{rel} does not overwrite its curated README",
+        )
+
+    generated_case_pdfs = [
+        *sorted(
+            (ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
+        *sorted(
+            (ROOT / "testakten/arbeitszeugnisse-leitungsfunktionen").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
+    ]
+    checker.require(
+        len(generated_case_pdfs) == 15
+        and all(
+            pdf.read_bytes().count(CANONICAL_PDF_DATE) == 2
+            for pdf in generated_case_pdfs
+        ),
+        "all 15 generated case PDFs use canonical creation and modification dates",
+    )
+
+    generated_zips = [
+        Path(
+            "testakten/arbeitszeugnisse-jura-und-wissenschaft/"
+            "arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"
+        ),
+        Path(
+            "testakten/arbeitszeugnisse-leitungsfunktionen/"
+            "arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"
+        ),
+    ]
+    zip_metadata_is_stable = True
+    for rel in generated_zips:
+        with zipfile.ZipFile(ROOT / rel) as archive:
+            zip_metadata_is_stable = zip_metadata_is_stable and all(
+                info.date_time == ZIP_TIMESTAMP
+                and info.external_attr >> 16 == ZIP_FILE_MODE
+                for info in archive.infolist()
+            )
+    checker.require(
+        zip_metadata_is_stable,
+        "generated ZIP archives use canonical entry metadata",
+    )
 
 
 def check_markdown_anchors(checker: Checker) -> None:
@@ -705,7 +800,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--github-release",
         metavar="TAG",
-        help="also verify the published GitHub release assets for TAG, e.g. v3.0.19",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.20",
     )
     return parser.parse_args(argv)
 
@@ -720,6 +815,7 @@ def main(argv: list[str] | None = None) -> int:
         check_docs_sync(checker)
         check_mini_size(checker)
         check_legal_citations(checker)
+        check_generated_build_contract(checker)
         check_markdown_anchors(checker)
         check_markdown_local_links(checker)
         check_html_links(checker)

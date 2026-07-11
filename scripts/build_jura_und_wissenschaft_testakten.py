@@ -10,8 +10,9 @@ from __future__ import annotations
 import shutil
 import subprocess
 import textwrap
-import zipfile
 from pathlib import Path
+
+from reproducible_test_artifacts import normalize_pdf, write_reproducible_zip
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -619,59 +620,7 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
             )
     finally:
         txt_path.unlink(missing_ok=True)
-
-
-def write_readme() -> None:
-    rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['role']} | {c['sector']} | {c['type']}, {c['reason']} | "
-        f"[`PDF`]({c['nr']}-{c['slug']}/Arbeitszeugnis_{c['nr']}-{c['slug']}.pdf) |"
-        for c in CASES
-    )
-    text = f"""# Testakte: Arbeitszeugnisse — Jura und Wissenschaft
-
-Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als juristisch-akademisches Trainingsmaterial. Sie enthält zehn fiktive Arbeitszeugnisse: fünf aus dem akademischen Bereich juristischer Lehrstühle und fünf aus Kanzlei- beziehungsweise juristischen Praxisrollen. Alle Personen, Universitäten, Kanzleien, Adressen und Kommunikationsdaten sind frei erfunden.
-
-## Schnellzugriff
-
-| Ziel | Link |
-| --- | --- |
-| Zur Hauptübersicht | [`README.md`](../../README.md) |
-| Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
-| ZIP mit allen 10 Einzel-PDFs | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) |
-| Gesamt-PDF aller 10 Zeugnisse | [öffentlicher Download](https://klotzkette.github.io/arbeitszeugnispruefer-skill/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
-| Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
-
-## Zweck der Akte
-
-Die Zeugnisse trainieren Rollen, die im klassischen Zeugnisfundus oft fehlen: wissenschaftliche Mitarbeit an juristischen Lehrstühlen, Postdoc-/Drittmittelkontexte, Probezeit in der Großkanzlei, Kanzleileitung ohne Anwaltszulassung, ReNo-/Fristenarbeit und Senior-Associate-Bewertungen in kleinen und großen Kanzleien.
-
-Die Briefköpfe sind absichtlich ausführlicher gestaltet als in einfachen Musterzeugnissen. Personalzeichen, Projektbezug, Registerangaben, HR-/Ausstellerrolle, Dienstsiegel oder Kanzleistempel sollen mitgeprüft werden: Sie helfen, Zeugnisart, Ausstellerkompetenz, Rollenabgrenzung und formale Plausibilität zu erkennen.
-
-Die Bewertungen sind absichtlich gemischt. Einige Zeugnisse sind sehr gut, andere enthalten typische Drift-, Auslassungs-, Rollen- oder Schlussformelprobleme. Der Skill soll nicht nur Codewörter suchen, sondern Rolle, Zeugnisart, Aufgabenprofil, Beendigungsgrund und Erwartungshorizont zusammenführen.
-
-## Aktenübersicht
-
-| Nr. | Person | Rolle | Umfeld | Typ / Anlass | Einzel-PDF |
-| --- | --- | --- | --- | --- | --- |
-{rows}
-
-## Prüfprofil
-
-| Bereich | Worauf der Skill achten soll |
-| --- | --- |
-| Akademische Rollen | Lehrstuhlorganisation, Drittmittel, Veröffentlichungen, Lehre, Forschung und Projektbefristung nicht schematisch behandeln. |
-| Kanzleirollen | Akquisenähe, Mandatsarbeit, Fristen, beA/RVG, Teamarbeit, Associate-Entwicklung und Kanzleileitung sauber trennen. |
-| Form und Aussteller | Briefkopf, Personalzeichen, Dienstsiegel, Kanzleistempel, HR-/Ausstellerrolle und Registerangaben mitprüfen. |
-| Bewertung | Gemischte Noten, Drift, Auslassungen, Schlussformeln, Probezeit- und Befristungssignale rollenbewusst würdigen. |
-
-## Mögliche Arbeitsaufträge an den Skill
-
-- Einzelnes PDF mit Ampel-Bilanz, Notenspanne und Ersatzformulierungen prüfen.
-- Alle zehn Zeugnisse als Batch auswerten und die stärksten roten/orangen Befunde priorisieren.
-- Bei Arbeitnehmerperspektive Mandantenbericht und Berichtigungsverlangen erstellen.
-- Bei HR-/Arbeitgeberperspektive neutralen Korrekturvermerk mit sicheren Alternativen erstellen.
-"""
-    (OUT / "README.md").write_text(text, encoding="utf-8")
+    normalize_pdf(pdf_path)
 
 
 def write_expectations() -> None:
@@ -704,10 +653,20 @@ def main() -> None:
         if not shutil.which(tool):
             raise SystemExit(f"missing required tool: {tool}")
 
-    if OUT.exists():
-        shutil.rmtree(OUT)
-    OUT.mkdir(parents=True)
-    (OUT / "gesamt-pdf").mkdir()
+    OUT.mkdir(parents=True, exist_ok=True)
+    for child in OUT.iterdir():
+        is_generated_case = (
+            child.is_dir()
+            and len(child.name) > 3
+            and child.name[:2].isdigit()
+            and child.name[2] == "-"
+        )
+        if is_generated_case:
+            shutil.rmtree(child)
+    combined_dir = OUT / "gesamt-pdf"
+    if combined_dir.exists():
+        shutil.rmtree(combined_dir)
+    combined_dir.mkdir()
     DOCS_TESTAKTEN.mkdir(parents=True, exist_ok=True)
 
     pdfs: list[Path] = []
@@ -718,15 +677,17 @@ def main() -> None:
         write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
         pdfs.append(pdf)
 
-    combined = OUT / "gesamt-pdf" / "arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"
-    subprocess.run(["pdfunite", *map(str, pdfs), str(combined)], check=True, timeout=PROCESS_TIMEOUT_SECONDS)
+    combined = combined_dir / "arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"
+    subprocess.run(
+        ["pdfunite", *map(str, pdfs), str(combined)],
+        check=True,
+        timeout=PROCESS_TIMEOUT_SECONDS,
+    )
+    normalize_pdf(combined)
 
     zip_path = OUT / "arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for pdf in pdfs:
-            zf.write(pdf, arcname=str(pdf.relative_to(OUT)))
+    write_reproducible_zip(zip_path, OUT, pdfs)
 
-    write_readme()
     write_expectations()
 
     shutil.copy2(zip_path, DOCS_TESTAKTEN / zip_path.name)

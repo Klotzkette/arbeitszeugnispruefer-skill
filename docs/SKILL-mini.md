@@ -5,7 +5,7 @@ description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Pr�
 
 # Mini-Arbeitszeugnis-Prüfer
 
-Version: 3.0.19
+Version: 3.0.20
 
 Kurzskill für kleine Kontextfenster: weniger tief, aber praxistauglich. Keine Rechtsberatung oder Gewähr; Normen und Rechtsprechung vor Schriftsatznutzung live prüfen.
 
@@ -17,7 +17,7 @@ Wenn nur ein Zeugnis kommt, sofort analysieren. Keine Fragenkaskade. Fehlende An
 
 Rollenvermutung: Ohne Hinweis ist der Einsender die beurteilte Person (Betroffenenperspektive; meist Arbeitnehmer). HR-/Arbeitgeber-, Kanzlei-, Betriebsrats- oder Schulungsrolle nur bei Hinweis. Rolle und Rechtsstatus trennen.
 
-Autonom (API, Agent, Batch, One-Shot): rollenrichtig fertig liefern, nicht nur bewerten. Aus Betroffenenperspektive bei Berichtigungsbedarf sofort Analyse, Mandantenschreiben in Alltagssprache und Aufforderung an die statusrichtige Gegenseite liefern; fehlende Daten als Platzhalter. Bei HR-/Arbeitgeberperspektive stattdessen neutralen Korrekturvermerk.
+Autonom (API, Agent, Batch, One-Shot): rollenrichtig fertig liefern, nicht nur bewerten. Aus Betroffenenperspektive bei Berichtigungsbedarf sofort Analyse, bei Selbstprüfung eine direkte Erklärung in Alltagssprache, bei Kanzleiprüfung ein anwaltliches Mandantenschreiben sowie die Aufforderung an die statusrichtige Gegenseite liefern; fehlende Daten als Platzhalter. Bei HR-/Arbeitgeberperspektive stattdessen neutralen Korrekturvermerk.
 
 Bei langer Ausgabe Fortsetzungsmarke setzen; bei „weiter" am offenen Block fortfahren.
 
@@ -66,7 +66,7 @@ Liefere knapp, aber verwendbar:
 4. **Rechtliche Einordnung:** Rechtsstatus, passende Norm, Rechtsweg, Beweislast, Schlussformel und Fristen; keine ungeprüften Zitate.
 5. **Empfehlung:** akzeptieren, freundlich nachverhandeln, Berichtigung verlangen, Vergleich/Klage prüfen.
 
-Aus Betroffenenperspektive mit 🔴/🟠 oder sonstigem Berichtigungspunkt: Mandantenerklärung und ausformuliertes Aufforderungsschreiben an Arbeitgeber, Dienstgeber oder Ausbildende mit Frist, Streitstellen alt/neu und höflichem Ton sofort mitschreiben; nicht nur anbieten. Bei durchgehend 🟢: „kein Handlungsbedarf".
+Aus Betroffenenperspektive mit 🔴/🟠 oder sonstigem Berichtigungspunkt: rollenpassende Betroffenen-/Mandantenerklärung und ausformuliertes Aufforderungsschreiben an Arbeitgeber, Dienstgeber oder Ausbildende mit Frist, Streitstellen alt/neu und höflichem Ton sofort mitschreiben; nicht nur anbieten. Bei durchgehend 🟢: „kein Handlungsbedarf".
 
 Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik gegen den eigenen Arbeitgeber. Liefere Korrekturvermerk: Risiko, warum angreifbar, sichere Ersatzformulierung, Konsistenzcheck, Formcheck.
 

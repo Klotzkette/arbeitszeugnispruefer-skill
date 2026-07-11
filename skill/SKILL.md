@@ -5,7 +5,7 @@ description: "Prüft deutsche einfache, qualifizierte, Zwischen-, Dienst- und Au
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.0.19
+Version: 3.0.20
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 
@@ -122,16 +122,16 @@ Wenn dagegen nur ein Bewerbungsschreiben, eine Stellenausschreibung oder eine Be
 
 Der Skill läuft in zwei Umgebungstypen, und der Einsatzkontext bestimmt, wie viel in einer Antwort fertig geliefert wird:
 
-**Interaktiver Einsatz** — Claude-Apps, Claude Code, Chat-Oberfläche: Eine Folge-Runde mit dem Nutzer ist sicher verfügbar. Hier liefert der Skill zuerst Analyse und Mandantenbericht und bietet Aufforderungsschreiben sowie Klagestrategie am Ende als Option an (Sofortstart-Regel 4).
+**Interaktiver Einsatz** — Claude-Apps, Claude Code, Chat-Oberfläche: Eine Folge-Runde mit dem Nutzer ist sicher verfügbar. Hier liefert der Skill zuerst Analyse und eine rollenpassende Erklärung — bei Selbstprüfung direkt an die beurteilte Person, bei Kanzleiprüfung als anwaltliches Mandantenschreiben — und bietet Aufforderungsschreiben sowie Klagestrategie am Ende als Option an (Sofortstart-Regel 4).
 
 **Nicht-interaktiver / autonomer Einsatz** — API, Agent-SDK, Automatisierung, anderes Agenten-Harness, Batch- oder One-Shot-Aufruf, insbesondere freistehender Megaprompt plus Zeugnis in einem einzigen Prompt: Es gibt **keine** garantierte Folge-Runde; der Nutzer kann auf ein Angebot nicht antworten. Hier **macht der Skill die Arbeit immer rollenrichtig fertig** und liefert in einer einzigen Antwort das passende vollständige Paket:
 
 1. **Vollanalyse** — Einschätzungsmatrix, Drift-/Auslassungsprüfung, Gesamtnotenspanne, Ampel-Bilanz.
-2. **Schreiben an den Mandanten / Mandantenbericht** — bei Arbeitnehmer-/Kanzleiperspektive immer als fertiges Schreiben ausformuliert, nicht nur als Stichpunktliste: Ergebnis, Hauptkritik, Beweislast, Risiken, taktische Empfehlung und nächster Schritt.
-3. **Schreiben an die Gegenseite / außergerichtliches Aufforderungsschreiben** nach [Teil F.1](#f1--aufforderungsschreiben-an-den-arbeitgeber) — aus Betroffenenperspektive (einschließlich der Rollenvermutung) oder bei ausdrücklich genanntem Berichtigungsziel **sofort miterstellen**, sobald mindestens eine 🔴- oder 🟠-Beanstandung oder ein sonstiger Berichtigungspunkt vorliegt. Adressat und Bezeichnung statusrichtig wählen: Arbeitgeber, Dienstgeber oder Ausbildende.
+2. **Rollenpassende Erklärung / Mandantenbericht** — bei Selbstprüfung als verständliche, direkt an die beurteilte Person gerichtete Erklärung; bei anwaltlicher/Kanzleiprüfung als fertiges Schreiben des Anwalts an den Mandanten. Immer ausformuliert, nicht nur als Stichpunktliste: Ergebnis, Hauptkritik, Beweislast, Risiken, taktische Empfehlung und nächster Schritt.
+3. **Schreiben an die Gegenseite / außergerichtliches Aufforderungsschreiben** nach [Teil F.1](#f1--aufforderungsschreiben-an-die-statusrichtige-gegenseite) — aus Betroffenenperspektive (einschließlich der Rollenvermutung) oder bei ausdrücklich genanntem Berichtigungsziel **sofort miterstellen**, sobald mindestens eine 🔴- oder 🟠-Beanstandung oder ein sonstiger Berichtigungspunkt vorliegt. Adressat und Bezeichnung statusrichtig wählen: Arbeitgeber, Dienstgeber oder Ausbildende.
 4. **HR-/Arbeitgeberseite** — statt Arbeitnehmer-Aufforderungsschreiben ein neutraler Korrekturvermerk mit sicheren Alternativformulierungen, Risiko-, Klarheits- und Formcheck.
 
-**One-Shot-Ausgabe heißt Komplettausgabe.** In nicht-interaktiven oder nur möglicherweise interaktiven Aufrufen darf die Antwort nicht mit „Auf Wunsch erstelle ich das Schreiben" enden, wenn Berichtigungsbedarf aus Betroffenenperspektive vorliegt. Die fertige Antwort enthält dann mindestens diese drei Blöcke: **Analyse**, **Schreiben an den Mandanten**, **Schreiben an die Gegenseite**. Fehlende Namen, Daten, Adressen oder Kanzleibriefkopf werden als Platzhalter geführt.
+**One-Shot-Ausgabe heißt Komplettausgabe.** In nicht-interaktiven oder nur möglicherweise interaktiven Aufrufen darf die Antwort nicht mit „Auf Wunsch erstelle ich das Schreiben" enden, wenn Berichtigungsbedarf aus Betroffenenperspektive vorliegt. Die fertige Antwort enthält dann mindestens diese drei Blöcke: **Analyse**, **rollenpassende Erklärung bzw. Mandantenschreiben**, **Schreiben an die Gegenseite**. Fehlende Namen, Daten, Adressen oder Kanzleibriefkopf werden als Platzhalter geführt.
 
 **Aufforderungsschreiben nur bei passender Rolle.** Ist das Zeugnis durchgehend 🟢, ohne Beanstandung und ohne Berichtigungspunkt, wird **kein** Aufforderungsschreiben erzeugt. Bei HR-, Arbeitgeber-, Betriebsrats- oder neutraler Schulungsperspektive wird ebenfalls kein Arbeitnehmer-Aufforderungsschreiben gegen den Arbeitgeber erzeugt, außer der Nutzer verlangt ausdrücklich ein Berichtigungsverlangen. Stattdessen liefert der Skill eine neutrale Korrekturprüfung mit Risiko-, Klarheits- und Alternativformulierungen.
 
@@ -242,7 +242,7 @@ Halte folgende Trennungen sauber:
 
 ### 7 — Mandantenbericht und Verhandlungsmodul
 
-Liefere dem Mandanten:
+Liefere bei Selbstprüfung der beurteilten Person eine verständliche direkte Erklärung; bei anwaltlicher Prüfung ein ausformuliertes Schreiben des Anwalts an den Mandanten. Beide Fassungen enthalten:
 
 - Eine knappe Zusammenfassung (Notenspanne, Ampel-Verteilung, Hauptkritikpunkte).
 - Streitstellen-Tabelle: Originalwortlaut, gewünschte Neufassung, Begründung, Beweisbedarf.
@@ -251,7 +251,7 @@ Liefere dem Mandanten:
 
 Wenn aus Betroffenenperspektive nachverhandelt oder aufgefordert werden soll, baue daraus das **Aufforderungsschreiben** an die statusrichtige Gegenseite: vorgerichtlich, höflich, mit klaren Streitstellen und einer angemessenen Frist (in der Praxis zwei bis drei Wochen). Material und Mustertext: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie). Bei HR-/Arbeitgeberperspektive wird daraus stattdessen ein neutraler Korrekturvermerk mit sicheren Alternativformulierungen.
 
-Im **nicht-interaktiven Einsatz** (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird hier nicht gefragt und nichts nur angeboten, sondern rollenrichtig fertig geliefert: der Mandantenbericht oder HR-Korrekturvermerk wird immer ausformuliert; aus Betroffenenperspektive wird bei Berichtigungsbedarf zusätzlich das Schreiben an die Gegenseite sofort mitgeliefert. Es entfällt nur beim durchgehend sauberen Zeugnis und bei HR-/Arbeitgeberprüfung ohne Berichtigungsauftrag. Einzelheiten: [Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext).
+Im **nicht-interaktiven Einsatz** (API, Agent-SDK, Automatisierung, One-Shot/Megaprompt) wird hier nicht gefragt und nichts nur angeboten, sondern rollenrichtig fertig geliefert: Betroffenenerklärung, anwaltlicher Mandantenbericht oder HR-Korrekturvermerk wird passend zur erkennbaren Perspektive ausformuliert; aus Betroffenenperspektive wird bei Berichtigungsbedarf zusätzlich das Schreiben an die Gegenseite sofort mitgeliefert. Es entfällt nur beim durchgehend sauberen Zeugnis und bei HR-/Arbeitgeberprüfung ohne Berichtigungsauftrag. Einzelheiten: [Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext).
 
 ### 8 — Klagestrategie Zeugnisberichtigung
 
@@ -317,11 +317,11 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 
 ### Mandatsoutput
 
-- Zusammenfassung für Mandant oder Mandantin in vier bis acht Sätzen.
+- Rollenpassende Erklärung in vier bis acht Sätzen: direkt und alltagssprachlich bei Selbstprüfung, als anwaltliches Mandantenschreiben bei Kanzleiprüfung.
 - Streitstellen-Tabelle mit Originalwortlaut und gewünschter Neufassung.
 - Beweislast und Belegbedarf pro Streitstelle.
 - Empfehlung: akzeptieren, nachverhandeln, auffordern, klagen oder Vergleich nutzen.
-- Im One-Shot-/nicht-interaktiven Arbeitnehmerfall mit Berichtigungsbedarf direkt danach: **fertiges Schreiben an den Mandanten** und **fertiges Aufforderungsschreiben an die Gegenseite** mit Platzhaltern für fehlende Daten.
+- Im One-Shot-/nicht-interaktiven Betroffenenfall mit Berichtigungsbedarf direkt danach: **fertige Betroffenenerklärung bzw. fertiges Mandantenschreiben** und **fertiges Aufforderungsschreiben an die Gegenseite** mit Platzhaltern für fehlende Daten.
 
 ## Fortsetzungs- und Abbruchprotokoll
 
@@ -887,7 +887,7 @@ Diese Sektion hält die anwaltlichen Output-Bausteine bereit: außergerichtliche
 - §§ 2, 5 ArbGG — Arbeitsrechtsweg statusabhängig; bei Organpersonen gesondert prüfen. Nur bei eröffnetem Arbeitsrechtsweg: § 46 ArbGG zum Verfahren und § 12a ArbGG zum Ausschluss der Anwaltskostenerstattung in erster Instanz.
 - BAG 18.06.2025 – 2 AZR 96/24 (B) — vor Beendigung kein wirksamer Zukunftsverzicht auf das qualifizierte Zeugnis; Verzichts- und Erledigungsklauseln nicht ungeprüft gegen den Zeugnisanspruch halten.
 
-## F.1 — Aufforderungsschreiben an den Arbeitgeber
+## F.1 — Aufforderungsschreiben an die statusrichtige Gegenseite
 
 ### Funktion
 
