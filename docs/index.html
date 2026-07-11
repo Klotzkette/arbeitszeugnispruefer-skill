@@ -178,26 +178,35 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.20.</p>
+  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.21.</p>
 
   <nav class="site-nav" aria-label="Seitennavigation">
+    <a href="#schnellzugriff">Alle Downloads</a>
     <a href="#skills">Skills</a>
     <a href="#testakten">Testakten</a>
-    <a href="#wegweiser">Repository</a>
     <a href="#anwendung">Anwendung</a>
+    <a href="#ausgabe">Ausgabe</a>
+    <a href="#wegweiser">Repository</a>
     <a href="#rechtsanker">Rechtsanker</a>
     <a href="#wartung">Prüfsummen</a>
+    <a href="#download-hilfe">Downloadhilfe</a>
     <a href="#hinweis">Hinweise</a>
   </nav>
 
-  <div class="card">
+  <div class="card" id="schnellzugriff">
     <h2>Schnellzugriff</h2>
-    <p>Die wichtigsten Ansichten und Dateien an einem Ort: Download, Quelltext, Testakten und Release-Historie.</p>
+    <p>Alle neun Dateien des neuesten Releases sowie Quelltext und Historie an einem Ort. Jeder als Download bezeichnete Link speichert die Datei unmittelbar.</p>
     <ul class="link-list">
       <li><span>Vollversion</span><a href="SKILL.md" download="SKILL.md" type="text/markdown">SKILL.md herunterladen</a></li>
       <li><span>Mini-Version</span><a href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">SKILL-mini.md herunterladen</a></li>
-      <li><span>Release-Paket</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest">versionierte Assets</a></li>
+      <li><span>Allgemeine Testakte: 10 Fälle</span><a href="testakten/arbeitszeugnis-testakten-einzel-pdfs.zip" download="arbeitszeugnis-testakten-einzel-pdfs.zip" type="application/zip">ZIP herunterladen</a></li>
+      <li><span>Allgemeine Testakte: gesammelt</span><a href="testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf" download="arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf" type="application/pdf">Gesamt-PDF herunterladen</a></li>
+      <li><span>Jura/Wissenschaft: 10 Fälle</span><a href="testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip" download="arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip" type="application/zip">ZIP herunterladen</a></li>
+      <li><span>Jura/Wissenschaft: gesammelt</span><a href="testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf" download="arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf" type="application/pdf">Gesamt-PDF herunterladen</a></li>
+      <li><span>Leitungsfunktionen: 5 Fälle</span><a href="testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip" download="arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip" type="application/zip">ZIP herunterladen</a></li>
+      <li><span>Leitungsfunktionen: gesammelt</span><a href="testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf" download="arbeitszeugnisse-leitungsfunktionen_gesamt.pdf" type="application/pdf">Gesamt-PDF herunterladen</a></li>
       <li><span>Prüfsummen</span><a href="SHA256SUMS.txt" download="SHA256SUMS.txt" type="text/plain">SHA256SUMS.txt</a></li>
+      <li><span>Release-Paket</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest">alle versionierten Assets</a></li>
       <li><span>Gesamtes Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip" download>ZIP herunterladen</a></li>
       <li><span>Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">README und Quelltext</a></li>
       <li><span>Release-Historie</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">CHANGELOG.md</a></li>
@@ -214,7 +223,7 @@
 
   <div class="card">
     <h2>Mini-Version</h2>
-    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen; mit Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und statusrichtigem Gegenseitenschreiben.</p>
+    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen; mit Satzmatrix, Notenspanne, direkter Erklärung bei Selbstprüfung oder Mandantenschreiben bei Kanzleiprüfung und statusrichtigem Gegenseitenschreiben.</p>
     <a class="btn secondary" href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">
       SKILL-mini.md herunterladen
     </a>
@@ -257,13 +266,17 @@
 
   <div class="card" id="wegweiser">
     <h2>Repository-Wegweiser</h2>
-    <p>Alle README-Einstiege und Quelldateien ohne Ordnersuche.</p>
+    <p>Alle README-Einstiege und zentralen Quelldateien ohne Ordnersuche.</p>
     <ul class="link-list">
       <li><span>Haupt-README</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/README.md">Projektübersicht</a></li>
-      <li><span>Skills ansehen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/skill">Voll- und Mini-Quelltext</a></li>
+      <li><span>Vollversion ansehen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/skill/SKILL.md">skill/SKILL.md</a></li>
+      <li><span>Mini-Version ansehen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/skill/SKILL-mini.md">skill/SKILL-mini.md</a></li>
       <li><span>Allgemeine Branchen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md">10 Einzelzeugnisse</a></li>
       <li><span>Jura und Wissenschaft</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md">10 Einzelzeugnisse</a></li>
       <li><span>Leitungsfunktionen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md">5 Einzelzeugnisse</a></li>
+      <li><span>Prüf- und Buildskripte</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/scripts">scripts/ öffnen</a></li>
+      <li><span>Lizenz Apache-2.0</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/LICENSE-APACHE">Lizenztext</a></li>
+      <li><span>Lizenz MIT</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/LICENSE-MIT">Lizenztext</a></li>
       <li><span>Alle Dateien</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">Repository öffnen</a></li>
     </ul>
   </div>
@@ -277,6 +290,7 @@
       <li><span>GitHub-Prüfung</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/.github/workflows/verify-integrity.yml">verify-integrity.yml</a></li>
       <li><span>SHA-256</span><a href="SHA256SUMS.txt" download="SHA256SUMS.txt" type="text/plain">SHA256SUMS.txt</a></li>
       <li><span>Testakten-Build</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/build_generated_testakten.py">build_generated_testakten.py</a></li>
+      <li><span>Reproduzierbare Artefakte</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/reproducible_test_artifacts.py">reproducible_test_artifacts.py</a></li>
     </ul>
     <p style="margin-top:1rem;">Lokaler Abgleich im Download-Ordner: unter Linux <code>sha256sum -c SHA256SUMS.txt</code>, unter macOS <code>shasum -a 256 -c SHA256SUMS.txt</code>.</p>
   </div>
@@ -303,7 +317,7 @@
     <h2>Welche Ausgabe?</h2>
     <ul>
       <li><strong>Erster Blick:</strong> Analyse, Ampel-Bilanz, Notenspanne und nächste Weiche.</li>
-      <li><strong>One-Shot:</strong> aus der Perspektive der beurteilten Person bei Berichtigungsbedarf Analyse, Mandantenschreiben und Aufforderung an Arbeitgeber, Dienstgeber oder Ausbildende.</li>
+      <li><strong>One-Shot:</strong> aus der Perspektive der beurteilten Person bei Berichtigungsbedarf Analyse, direkte Erklärung bei Selbstprüfung oder anwaltliches Mandantenschreiben bei Kanzleiprüfung und Aufforderung an Arbeitgeber, Dienstgeber oder Ausbildende.</li>
       <li><strong>HR/Arbeitgeber:</strong> neutraler Korrekturvermerk mit sicheren Ersatzformulierungen.</li>
       <li><strong>Abbruch:</strong> „Bitte fahre mit dem nächsten offenen Block fort."</li>
     </ul>

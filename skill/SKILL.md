@@ -5,7 +5,7 @@ description: "Prüft deutsche einfache, qualifizierte, Zwischen-, Dienst- und Au
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.0.20
+Version: 3.0.21
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 

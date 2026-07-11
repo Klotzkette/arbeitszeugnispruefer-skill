@@ -5,7 +5,7 @@ description: "Kurzversion f체r kleine Assistenten und knappe Kontextfenster. Pr�
 
 # Mini-Arbeitszeugnis-Pr체fer
 
-Version: 3.0.20
+Version: 3.0.21
 
 Kurzskill f체r kleine Kontextfenster: weniger tief, aber praxistauglich. Keine Rechtsberatung oder Gew채hr; Normen und Rechtsprechung vor Schriftsatznutzung live pr체fen.
 

@@ -17,6 +17,7 @@ import subprocess
 import sys
 import unicodedata
 import zipfile
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -98,6 +99,38 @@ RELEASE_ASSET_CANDIDATES = CHECKSUM_ASSET_CANDIDATES + [
     Path("docs/SHA256SUMS.txt"),
 ]
 
+LATEST_RELEASE_URL = f"https://github.com/{REPOSITORY}/releases/latest"
+
+README_NAVIGATION_TARGETS = [
+    Path("skill/SKILL.md"),
+    Path("skill/SKILL-mini.md"),
+    Path("docs/index.html"),
+    Path("docs/download-skill.html"),
+    Path("docs/download-mini.html"),
+    Path("docs/SHA256SUMS.txt"),
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md"),
+    Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
+    Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md"),
+    Path("testakten/arbeitszeugnisse-leitungsfunktionen/README.md"),
+    Path("testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md"),
+    Path("scripts/check_release_integrity.py"),
+    Path("scripts/build_generated_testakten.py"),
+    Path("scripts/reproducible_test_artifacts.py"),
+    Path("scripts/build_jura_und_wissenschaft_testakten.py"),
+    Path("scripts/build_leitungsfunktionen_testakten.py"),
+    Path("CHANGELOG.md"),
+    Path(".github/workflows/verify-integrity.yml"),
+    Path("LICENSE-APACHE"),
+    Path("LICENSE-MIT"),
+]
+
+TEST_READMES = [
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
+    Path("testakten/arbeitszeugnisse-leitungsfunktionen/README.md"),
+]
+
 COMBINED_PDF_DETAILS = [
     (
         Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf"),
@@ -174,8 +207,48 @@ class Checker:
             self.fail(message)
 
 
+class AnchorCollector(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.anchors: list[dict[str, str | None]] = []
+
+    def handle_starttag(
+        self,
+        tag: str,
+        attrs: list[tuple[str, str | None]],
+    ) -> None:
+        if tag == "a":
+            self.anchors.append(dict(attrs))
+
+
 def read_text(rel: Path) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
+
+
+def html_anchors(text: str) -> list[dict[str, str | None]]:
+    parser = AnchorCollector()
+    parser.feed(text)
+    parser.close()
+    return parser.anchors
+
+
+def markdown_section(text: str, heading: str) -> str:
+    match = re.search(
+        rf"^## {re.escape(heading)}\s*$\n(?P<body>.*?)(?=^## |\Z)",
+        text,
+        re.MULTILINE | re.DOTALL,
+    )
+    return match.group("body") if match else ""
+
+
+def first_markdown_table(text: str) -> str:
+    rows: list[str] = []
+    for line in text.splitlines():
+        if line.startswith("|"):
+            rows.append(line)
+        elif rows:
+            break
+    return "\n".join(rows)
 
 
 def frontmatter_fields(rel: Path) -> dict[str, str]:
@@ -618,6 +691,139 @@ def check_html_links(checker: Checker) -> None:
             checker.ok(f"{rel} local links resolve ({checked} checked)")
 
 
+def check_navigation_inventory(checker: Checker) -> None:
+    readme = read_text(Path("README.md"))
+    direct_section = markdown_section(readme, "Direktdownloads")
+    download_table = first_markdown_table(direct_section)
+    checker.require(bool(download_table), "README has a direct-download table")
+
+    missing_readme_assets = []
+    for rel in RELEASE_ASSET_CANDIDATES:
+        url = f"{LATEST_RELEASE_URL}/download/{rel.name}"
+        if url not in download_table:
+            missing_readme_assets.append(rel.name)
+    if missing_readme_assets:
+        checker.fail(
+            "README direct-download table misses release assets: "
+            + ", ".join(missing_readme_assets)
+        )
+    else:
+        checker.ok(
+            f"README direct-download table lists all {len(RELEASE_ASSET_CANDIDATES)} release assets"
+        )
+    checker.require(
+        f"https://github.com/{REPOSITORY}/archive/refs/heads/main.zip" in download_table,
+        "README direct-download table includes the complete repository archive",
+    )
+
+    map_section = markdown_section(readme, "Repository-Landkarte")
+    missing_targets = [
+        rel.as_posix()
+        for rel in README_NAVIGATION_TARGETS
+        if f"({rel.as_posix()})" not in map_section
+    ]
+    if missing_targets:
+        checker.fail(
+            "README repository map misses critical files: "
+            + ", ".join(missing_targets)
+        )
+    else:
+        checker.ok(
+            f"README repository map links all {len(README_NAVIGATION_TARGETS)} critical files"
+        )
+
+    index = read_text(Path("docs/index.html"))
+    quick_start = index.find('id="schnellzugriff"')
+    quick_end = index.find('id="skills"', quick_start + 1)
+    quick_access = index[quick_start:quick_end] if quick_start >= 0 and quick_end > quick_start else ""
+    checker.require(bool(quick_access), "download page has a bounded quick-access section")
+    quick_anchors = html_anchors(quick_access)
+    missing_page_assets = []
+    for rel in RELEASE_ASSET_CANDIDATES:
+        href = rel.relative_to("docs").as_posix()
+        matches = [anchor for anchor in quick_anchors if anchor.get("href") == href]
+        if not any("download" in anchor for anchor in matches):
+            missing_page_assets.append(rel.name)
+    if missing_page_assets:
+        checker.fail(
+            "download-page quick access misses direct assets: "
+            + ", ".join(missing_page_assets)
+        )
+    else:
+        checker.ok(
+            f"download-page quick access exposes all {len(RELEASE_ASSET_CANDIDATES)} release assets"
+        )
+
+    index_targets = [
+        "blob/main/README.md",
+        "blob/main/skill/SKILL.md",
+        "blob/main/skill/SKILL-mini.md",
+        "blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md",
+        "blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md",
+        "blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md",
+        "tree/main/scripts",
+        "blob/main/CHANGELOG.md",
+        "blob/main/.github/workflows/verify-integrity.yml",
+        "blob/main/scripts/check_release_integrity.py",
+        "blob/main/scripts/build_generated_testakten.py",
+        "blob/main/scripts/reproducible_test_artifacts.py",
+        "blob/main/LICENSE-APACHE",
+        "blob/main/LICENSE-MIT",
+    ]
+    missing_index_targets = [target for target in index_targets if target not in index]
+    if missing_index_targets:
+        checker.fail(
+            "download-page wayfinder misses critical destinations: "
+            + ", ".join(missing_index_targets)
+        )
+    else:
+        checker.ok(
+            f"download-page wayfinder links all {len(index_targets)} critical destinations"
+        )
+
+    helper_expectations = {
+        Path("docs/download-skill.html"): "SKILL.md",
+        Path("docs/download-mini.html"): "SKILL-mini.md",
+    }
+    for rel, filename in helper_expectations.items():
+        anchors = html_anchors(read_text(rel))
+        checker.require(
+            any(
+                anchor.get("href") == filename and "download" in anchor
+                for anchor in anchors
+            ),
+            f"{rel} keeps its visible direct-download fallback",
+        )
+        checker.require(
+            any(anchor.get("href") == LATEST_RELEASE_URL for anchor in anchors)
+            and any(
+                anchor.get("href") == "SHA256SUMS.txt" and "download" in anchor
+                for anchor in anchors
+            ),
+            f"{rel} links the release inventory and checksums",
+        )
+
+    readme_names = {rel.parent.name: rel for rel in TEST_READMES}
+    common_test_links = [
+        "../../README.md",
+        f"{LATEST_RELEASE_URL}/download/SKILL.md",
+        f"{LATEST_RELEASE_URL}/download/SKILL-mini.md",
+        f"{LATEST_RELEASE_URL}/download/SHA256SUMS.txt",
+        LATEST_RELEASE_URL,
+    ]
+    for current_name, rel in readme_names.items():
+        text = read_text(rel)
+        sibling_links = [
+            f"../{name}/README.md"
+            for name in readme_names
+            if name != current_name
+        ]
+        checker.require(
+            all(link in text for link in [*common_test_links, *sibling_links]),
+            f"{rel} links home, both skills, release inventory, checksums and sibling test sets",
+        )
+
+
 def check_public_artifacts(checker: Checker) -> None:
     for source, public, zip_count in PUBLIC_ARTIFACTS:
         source_path = ROOT / source
@@ -800,7 +1006,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--github-release",
         metavar="TAG",
-        help="also verify the published GitHub release assets for TAG, e.g. v3.0.20",
+        help="also verify the published GitHub release assets for TAG, e.g. v3.0.21",
     )
     return parser.parse_args(argv)
 
@@ -819,6 +1025,7 @@ def main(argv: list[str] | None = None) -> int:
         check_markdown_anchors(checker)
         check_markdown_local_links(checker)
         check_html_links(checker)
+        check_navigation_inventory(checker)
         check_public_artifacts(checker)
         check_release_checksums(checker)
         check_release_asset_candidates(checker)

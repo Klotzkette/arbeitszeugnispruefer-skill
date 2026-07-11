@@ -2,7 +2,7 @@
 
 Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als juristisch-akademisches Trainingsmaterial. Sie enthält zehn fiktive Arbeitszeugnisse: fünf aus dem akademischen Bereich juristischer Lehrstühle und fünf aus Kanzlei- beziehungsweise juristischen Praxisrollen. Alle Personen, Universitäten, Kanzleien, Adressen und Kommunikationsdaten sind frei erfunden.
 
-**Navigation:** [Hauptübersicht](../../README.md) · [Vollskill herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) · [Mini-Skill herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) · [Allgemeine Branchen](../arbeitszeugnis-analyse-bluehendes-leben/README.md) · [Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md) · [Leitungsfunktionen](../arbeitszeugnisse-leitungsfunktionen/README.md)
+**Navigation:** [Hauptübersicht](../../README.md) · [alle Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [Prüfsummen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) · [Allgemeine Branchen](../arbeitszeugnis-analyse-bluehendes-leben/README.md) · **Jura und Wissenschaft** · [Leitungsfunktionen](../arbeitszeugnisse-leitungsfunktionen/README.md)
 
 ## Schnellzugriff
 
@@ -11,6 +11,7 @@ Diese zweite Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/
 | Zur Hauptübersicht | [`README.md`](../../README.md) |
 | Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
 | Voll- und Mini-Skill | [Vollversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) · [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
+| Vollständiges Release und Prüfsummen | [alle neun Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) |
 | ZIP mit allen 10 Einzel-PDFs | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) |
 | Gesamt-PDF aller 10 Zeugnisse | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
 | Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |

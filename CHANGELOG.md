@@ -7,6 +7,33 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.21] — 2026-07-11
+
+### Geändert
+- Root-README um einen vollständigen Direktdownload-Katalog aller neun
+  Release-Assets und eine kurze Auswahlhilfe für Vollskill, Mini-Skill,
+  Einzeltest, Batch-Test, Prüfsummen und Projektarchiv erweitert.
+- Repository-Landkarte vervollständigt; insbesondere der zuvor nur indirekt
+  erreichbare Helfer für reproduzierbare PDF-/ZIP-Artefakte ist nun direkt
+  verlinkt.
+- Alle drei Testakten-READMEs führen jetzt einheitlich zur Release-Übersicht
+  und zu den Prüfsummen und markieren die jeweils geöffnete Akte eindeutig.
+- Pages-Schnellzugriff bündelt sämtliche Release-Dateien mit echten
+  Downloadattributen. Repository-Wegweiser, Seitennavigation und beide
+  Downloadhilfen erhielten zusätzliche direkte Rückwege zu Quelltext,
+  Releases, Prüfsummen, Skripten und Lizenzen.
+- Beschreibung der One-Shot-Ausgabe in README und Pages mit dem Skill
+  synchronisiert: direkte Erklärung bei Selbstprüfung, anwaltliches
+  Mandantenschreiben bei Kanzleiprüfung.
+
+### Geprüft
+- Neuer Navigations-Regressionscheck prüft den vollständigen Downloadkatalog,
+  Downloadattribute, zentrale Repository-Ziele sowie die Querverlinkung aller
+  README- und Downloadhilfeseiten.
+- Fachlogik und Rechtsanker bleiben unverändert; Voll- und Mini-Skill sind mit
+  ihren Pages-Spiegeln byte-identisch und die Mini-Fassung bleibt unter 7.500
+  Zeichen.
+
 ## [3.0.20] — 2026-07-11
 
 ### Behoben
@@ -421,6 +448,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.21]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.21
 [3.0.20]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.20
 [3.0.19]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.19
 [3.0.18]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.18

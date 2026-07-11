@@ -2,7 +2,7 @@
 
 Diese dritte Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainingsmaterial für leitende Angestellte und obere Führungsfunktionen. Sie enthält fünf fiktive, bewusst ausführliche Arbeitszeugnisse aus Unternehmensrecht, Finanzen, Personal, Compliance und operativer Standortleitung. Alle Personen, Unternehmen, Registerdaten, Adressen und Kommunikationsdaten sind frei erfunden.
 
-**Navigation:** [Hauptübersicht](../../README.md) · [Vollskill herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) · [Mini-Skill herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) · [Allgemeine Branchen](../arbeitszeugnis-analyse-bluehendes-leben/README.md) · [Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md) · [Leitungsfunktionen](../arbeitszeugnisse-leitungsfunktionen/README.md)
+**Navigation:** [Hauptübersicht](../../README.md) · [alle Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [Prüfsummen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) · [Allgemeine Branchen](../arbeitszeugnis-analyse-bluehendes-leben/README.md) · [Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md) · **Leitungsfunktionen**
 
 ## Schnellzugriff
 
@@ -11,6 +11,7 @@ Diese dritte Testakte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/
 | Zur Hauptübersicht | [`README.md`](../../README.md) |
 | Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
 | Voll- und Mini-Skill | [Vollversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) · [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
+| Vollständiges Release und Prüfsummen | [alle neun Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) |
 | ZIP mit allen 5 Einzel-PDFs | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) |
 | Gesamt-PDF aller 5 Zeugnisse | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
 | Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
