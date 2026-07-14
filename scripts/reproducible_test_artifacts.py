@@ -39,9 +39,12 @@ def _replace_hex_pdf_id(data: bytes) -> bytes | None:
 
 
 def _replace_literal_pdf_id(data: bytes) -> bytes | None:
-    start = data.rfind(b"/ID [")
-    if start < 0:
+    starts = [match.start() for match in re.finditer(rb"/ID \[", data)]
+    if not starts:
         return None
+    if len(starts) != 1:
+        raise ValueError(f"expected one literal PDF ID, found {len(starts)}")
+    start = starts[0]
     root = data.rfind(b"/Root")
     xref = data.rfind(b"\nxref", 0, start)
     if xref < 0 or root < start:
@@ -55,10 +58,15 @@ def _replace_literal_pdf_id(data: bytes) -> bytes | None:
     return data[:start] + stable + data[root:]
 
 
-def normalize_pdf(path: Path) -> None:
+def normalize_pdf(path: Path, *, expected_date_count: int | None = None) -> None:
     """Remove volatile timestamps and derive a stable PDF file identifier."""
 
     data = path.read_bytes()
+    date_count = len(_PDF_DATE_RE.findall(data))
+    if expected_date_count is not None and date_count != expected_date_count:
+        raise ValueError(
+            f"expected {expected_date_count} PDF date fields in {path}, found {date_count}"
+        )
     data = _PDF_DATE_RE.sub(
         lambda match: b"/" + match.group(1) + b" (" + CANONICAL_PDF_DATE + b")",
         data,
@@ -68,16 +76,37 @@ def normalize_pdf(path: Path) -> None:
         normalized = _replace_literal_pdf_id(data)
     if normalized is None:
         raise ValueError(f"no supported PDF file identifier found in {path}")
+    if normalized.count(CANONICAL_PDF_DATE) != date_count:
+        raise ValueError(f"PDF dates were not normalized completely in {path}")
     path.write_bytes(normalized)
 
 
 def write_reproducible_zip(path: Path, root: Path, files: Iterable[Path]) -> None:
     """Write files in a stable order with fixed ZIP metadata."""
 
+    root = root.resolve()
+    entries: list[tuple[Path, Path]] = []
+    seen: set[str] = set()
+    for source in files:
+        resolved = source.resolve()
+        if not resolved.is_file():
+            raise ValueError(f"ZIP input is not a file: {source}")
+        try:
+            relative = resolved.relative_to(root)
+        except ValueError as exc:
+            raise ValueError(f"ZIP input is outside {root}: {source}") from exc
+        archive_name = relative.as_posix()
+        if archive_name in seen:
+            raise ValueError(f"duplicate ZIP input: {archive_name}")
+        seen.add(archive_name)
+        entries.append((relative, resolved))
+    if not entries:
+        raise ValueError("refusing to write an empty ZIP archive")
+
     with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for source in sorted(files, key=lambda item: item.relative_to(root).as_posix()):
+        for relative, source in sorted(entries, key=lambda item: item[0].as_posix()):
             info = zipfile.ZipInfo(
-                source.relative_to(root).as_posix(),
+                relative.as_posix(),
                 date_time=ZIP_TIMESTAMP,
             )
             info.compress_type = zipfile.ZIP_DEFLATED

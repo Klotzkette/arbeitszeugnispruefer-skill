@@ -1,68 +1,163 @@
-# Ergänzende Zeugnisakte Blühendes Leben
+# Ergänzende Zeugnisakte „Blühendes Leben"
 
-## Vollständige Gesprächsnotiz
+Fiktive Übungsakte für die rollenrichtige One-Shot-Ausgabe. Namen, Unternehmen,
+Adressen und Vorgang sind frei erfunden. Die Akte zeigt bewusst, wie Analyse,
+Mandantenerklärung, Belegprüfung und Gegenseitenschreiben zusammengehören.
 
-Am 04.06.2026 schilderte Floristin Wiebke Hagedorn und Arbeitgeberin Blühendes Leben GmbH die Angelegenheit in einem längeren Telefonat. Gegenstand ist Zwischenzeugnis nach Elternzeit, Schlussformel, Geheimcodes, Leistungsbewertung und Streit um Kassendifferenzen, die nicht offen erwähnt werden sollen. Die Darstellung war nicht linear: Zunächst standen praktische Fristen und die Sorge vor Eskalation im Vordergrund, danach erst die rechtliche Einordnung. Für die weitere Bearbeitung ist deshalb wichtig, die Akte nicht nur nach Rechtsgebieten, sondern nach Entscheidungsdruck zu ordnen: Was muss sofort gesichert werden, was darf noch offen bleiben, und welche Erklärung kann später als Einlassung, Geständnis, Anerkenntnis oder zumindest als ungünstige Tatsachenbehauptung gelesen werden.
+## Mandats- und Tatsachenblatt
 
-Das Zeugnis lobt Freundlichkeit gegenüber Kunden, schweigt aber zu Warenpräsentation und Teamleitung. Die Schlussformel fehlt; gleichzeitig gibt es interne Mails über Kassendifferenzen, die nie abgemahnt wurden. Nach Durchsicht der bisherigen Unterlagen fällt auf, dass mehrere Beteiligte dieselben Worte unterschiedlich verwenden. “Freigabe”, “Kenntnis”, “Sicherung”, “Rüge” und “Abstimmung” tauchen in E-Mails, Tabellen und Gesprächsnotizen auf, ohne dass klar ist, ob damit eine rechtliche Erklärung, eine interne Arbeitsanweisung oder nur eine vorläufige Arbeitshypothese gemeint ist. Für die weitere Bearbeitung genügt deshalb kein bloßer Ergebnisvermerk. Erforderlich ist ein nachvollziehbarer Ablauf mit Tonfall, Unsicherheiten und Belegstellen, damit spätere Schreiben, Gespräche und Anträge auf derselben Tatsachengrundlage stehen.
+| Punkt | Aktenstand |
+| --- | --- |
+| Beurteilte Person | Wiebke Hagedorn, Floristin und stellvertretende Filialleiterin |
+| Gegenseite | Blühendes Leben GmbH, Arbeitgeberin |
+| Zeugnis | qualifiziertes Zwischenzeugnis vom 29.05.2026 |
+| Anlass | Rückkehr aus Elternzeit und Wechsel der Filialleitung |
+| Ziel | Zeugnis verstehen; belegbare Unvollständigkeiten und Bewertung korrigieren |
+| Offene Belege | Aufgabenprofil, Zielgespräche, Inventurprotokolle, Vorbeurteilung |
+| Kein gesicherter Befund | vereinzelte interne Hinweise auf Kassendifferenzen; Ursache und Zurechnung ungeklärt |
 
-## E-Mail der Arbeitnehmerin an Beratung
+Eine frühere Bemerkung, Frau Hagedorn sei zugleich „Arbeitgeberin", war falsch.
+Sie ist ausschließlich die beurteilte Arbeitnehmerin. Die Blühendes Leben GmbH
+ist Arbeitgeberin und Adressatin eines möglichen Berichtigungsverlangens.
 
-```
-Von:      wiebke.hagedorn@testmail.test
-An:       zeugnisberatung@kanzlei.test
-Datum:    Do 04.06.2026, 08:47 Uhr
-Betreff:  Arbeitszeugnis klingt nett, aber irgendwie falsch
-```
+## Für die Übung maßgeblicher Zeugnistext
 
-Guten Morgen,
+> Frau Wiebke Hagedorn ist seit dem 1. April 2019 als Floristin in unserem
+> Unternehmen tätig. Zu ihren Aufgaben gehören die Beratung unserer Kundschaft,
+> die Anfertigung floraler Werkstücke und die Pflege des Verkaufsraums.
+>
+> Frau Hagedorn verfügt über gute Fachkenntnisse. Sie erledigt die ihr
+> übertragenen Aufgaben zu unserer vollen Zufriedenheit. Gegenüber Kundinnen,
+> Kunden und Kolleginnen verhält sie sich einwandfrei.
+>
+> Dieses Zwischenzeugnis wird anlässlich ihrer Rückkehr aus der Elternzeit
+> erteilt.
 
-ich fasse den Stand noch einmal vollständig zusammen, weil mir nach dem gestrigen Gespräch aufgefallen ist, dass wir sonst zu schnell in die Bewertung springen. Wir haben einerseits Unterlagen, die wirklich belastbar sind, andererseits aber auch viele Aussagen, die nur als Hörensagen, Rückschau oder interne Erwartung formuliert wurden. Ich möchte vermeiden, dass wir aus einem ungeordneten Zwischenstand eine Erklärung machen, die später gegen uns verwendet wird.
+Nach Aktenangabe koordinierte Frau Hagedorn außerdem regelmäßig die
+Warenbestellung, die Kassenabschlüsse, die Einarbeitung zweier Aushilfen und die
+Filialöffnung bei Abwesenheit der Leitung. Ob diese Tätigkeiten dauerhaft,
+eigenverantwortlich und in welchem Umfang ausgeübt wurden, ist anhand der
+Unterlagen zu sichern.
 
-Wichtig ist mir außerdem, dass wir die Beteiligten nicht mit pauschalen Vorwürfen konfrontieren. Bitte bereiten Sie die nächsten Schritte so vor, dass wir konkrete Fragen stellen können: Wer wusste wann was, welches Dokument lag vor, wer durfte für wen handeln, welche Frist lief, und welche Alternative wäre realistisch gewesen? Wenn wir nur abstrakt “Compliance” oder “Rechtsrisiko” sagen, bekommen wir vermutlich Abwehr. Wenn wir dagegen sauber nach Datum, Dokument und Entscheidung fragen, bekommen wir verwertbare Antworten.
+## Prüfvermerk
 
-Bitte prüfen Sie Vollständigkeit, Wohlwollen, Wahrheit, Codes, Beweislast und eine verhandlungsfähige Ersatzformulierung. Bitte geben Sie mir bis morgen 12:00 Uhr eine Fassung, die ich intern weiterleiten kann. Sie darf gern klar sein, aber sie soll nicht dramatisieren. Wir brauchen eine Sprache, die die Sache ernst nimmt und trotzdem handhabbar bleibt.
+### Kurzbefund
 
-Viele Grüße
+Das Zwischenzeugnis ist freundlich, aber wahrscheinlich unvollständig. Die
+zusammenfassende Leistungsformel „zu unserer vollen Zufriedenheit" entspricht
+typischerweise Note 3. Aus „gute Fachkenntnisse" folgt für sich keine bessere
+Gesamtnote. Das Verhalten ist positiv, enthält aber weder Beständigkeitswort
+noch Vorgesetztenbezug. Ob daraus ein Anspruch auf eine bessere Fassung folgt,
+hängt von den tatsächlichen Leistungen, der Berichtslinie und den Belegen ab.
 
-Floristin Wiebke Hagedorn und Arbeitgeberin Blühendes Leben GmbH
+Die Elternzeit darf nicht als Leistungsdefizit behandelt werden. Ihre sachliche
+Nennung als Ausstellungsanlass ist aber nicht automatisch ein Rechtsmangel;
+Wortlaut, Erforderlichkeit und möglicher Nachteil sind einzelfallbezogen zu
+prüfen. Eine fehlende Dankes- oder Zukunftsformel ist bei einem Zwischenzeugnis
+allenfalls ein Verhandlungspunkt und keine automatisch geschuldete Ergänzung.
 
-## Interner Arbeitsvermerk
+### Einschätzungsmatrix
 
-Die Akte ist nicht entscheidungsreif, aber sie ist arbeitsfähig. Der nächste Schritt besteht nicht darin, eine abschließende Rechtsmeinung zu formulieren, sondern die beweisbaren Tatsachen von Wertungen zu trennen. Dabei sind vier Ebenen auseinanderzuhalten.
+| Originalwortlaut | Kontextlesart | Tendenz | Ampel | Rechtsstatus/Handlungsart |
+| --- | --- | --- | --- | --- |
+| „als Floristin" und drei Aufgaben | mögliche Unterzeichnung der Stellvertretungs- und Organisationsaufgaben | keine Note | 🔴 | Berichtigung plausibel, wenn die zusätzlichen Aufgaben belegt und wesentlich waren |
+| „gute Fachkenntnisse" | positive Einzelbewertung ohne Beständigkeits- oder Anwendungserfolg | etwa 2 bis 3 | 🟠 | erst Gesamttext und Belege prüfen |
+| „zu unserer vollen Zufriedenheit" | durchschnittliche Gesamtleistung | 3 | 🟠 | Aufwertung nur mit Tatsachen für überdurchschnittliche Leistung |
+| „Kundinnen, Kunden und Kolleginnen … einwandfrei" | positiv, aber Vorgesetzte und Beständigkeit bleiben offen | etwa 2 bis 3 | 🟠 | Berichtslinie und tatsächlichen Kontakt prüfen; kein Reihenfolgeautomatismus |
+| „anlässlich ihrer Rückkehr aus der Elternzeit" | sachlicher Anlass, kann aber unnötig personenbezogen wirken | keine Note | 🟠 | zunächst Klärungs-/Änderungsbitte; keinen sicheren Mangel behaupten |
+| keine Schlussformel | kühler Abschluss | keine Leistungsnote | 🟠 | nur freiwillige Änderungsbitte |
 
-Erstens: der dokumentierte Ablauf. Hierzu gehören E-Mails, Tabellen, Vermerke, Bescheide, Protokolle, Rechnungen, Fotos und Systemlogs. Diese Unterlagen sind nur dann hilfreich, wenn sie mit Datum, Urheber, Empfänger und Anlass erfasst werden. Ein Screenshot ohne Kontext ist kein guter Beleg; eine E-Mail ohne Anhänge kann missverständlich sein; ein Tabellenstand beweist selten, wer ihn verändert hat.
+### Beleg- und Wahrheitsgate
 
-Zweitens: die rechtliche Schwelle. Die Akte darf nicht so behandelt werden, als sei jede Unordnung bereits ein Rechtsverstoß. Zu prüfen ist jeweils, welche Tatbestandsmerkmale wirklich erfüllt sein müssen, welche Obliegenheiten nur vertraglich wirken, welche behördlichen Anforderungen formell sind und welche Punkte lediglich gute Praxis darstellen. Diese Trennung verhindert, dass die Gegenseite Nebensächlichkeiten als Hauptproblem setzt.
+Vor einer konkreten Aufwertung sind zu prüfen:
 
-Drittens: die Kommunikationslinie. Nach außen sollte nicht behauptet werden, was noch nicht belegt ist. Nach innen darf die Lage aber auch nicht verharmlost werden. Eine brauchbare Formulierung lautet: “Wir prüfen den Vorgang anhand der gesicherten Unterlagen, halten die tatsächliche Bewertung offen und melden uns nach Abschluss der Dokumentensichtung mit konkreten Korrektur- oder Verteidigungsvorschlägen.”
+- Stellenbeschreibung und Dienstpläne zur stellvertretenden Filialleitung;
+- Bestellfreigaben, Öffnungsprotokolle und dokumentierte Einarbeitung;
+- Zielgespräche, Lob-E-Mails und frühere Beurteilungen;
+- Tatsachen, Zeitraum und Verantwortlichkeit etwaiger Kassendifferenzen.
 
-Viertens: die Entscheidungsvorlage. Die Mandantschaft benötigt kein abstraktes Lehrbuch, sondern Optionen. Option A ist die kooperative Klärung mit begrenzter Offenlegung. Option B ist eine formelle Verteidigungslinie mit Akteneinsicht, Fristenkontrolle und Schweige-/Zurückbehaltungsrechten. Option C ist eine wirtschaftliche Bereinigung durch Vergleich, Nachbesserung oder interne Maßnahme, wenn das rechtlich zulässig und taktisch sinnvoll ist.
+Ungeklärte Kassendifferenzen werden weder als Fehlverhalten behauptet noch
+„versteckt". Einzelne, nicht repräsentative oder nicht zurechenbare Vorgänge
+dürfen nicht zur verdeckten Abwertung genutzt werden; umgekehrt darf der
+Prüfer keine positive Tatsachenbehauptung erfinden. Maßgeblich bleibt eine
+wahre Gesamtbeurteilung des gesamten Zeitraums.
 
-## Entwurf Änderungsverlangen an Arbeitgeber
+## Ausformulierte Erklärung an die Arbeitnehmerin
 
-Sehr geehrte Damen und Herren,
+Sehr geehrte Frau Hagedorn,
 
-wir zeigen die rechtliche Prüfung des oben genannten Vorgangs an. Damit die Angelegenheit sachgerecht bearbeitet werden kann, bitten wir zunächst um Übersendung der vollständigen Unterlagen, auf die Sie Ihre bisherige Bewertung stützen. Dazu gehören insbesondere sämtliche Ausgangsschreiben, Anlagen, Protokolle, Zustellnachweise, internen Vermerke, Lichtbilder, Tabellenstände und etwaige elektronische Kommunikationsdaten, soweit diese für den konkreten Vorgang herangezogen werden sollen.
+Ihr Zwischenzeugnis ist auf den ersten Blick positiv, bescheinigt mit der
+Formulierung „zu unserer vollen Zufriedenheit" aber im üblichen
+Zeugnisverständnis nur eine durchschnittliche Gesamtleistung. Der wichtigere
+Punkt ist derzeit die Tätigkeitsbeschreibung: Wenn Sie Warenbestellung,
+Kassenabschluss, Einarbeitung und Filialöffnung tatsächlich regelmäßig
+verantwortet haben, sollte das Zeugnis diese prägenden Aufgaben nennen. Beim
+Sozialverhalten sollten wir zunächst klären, wem Sie organisatorisch
+unterstanden und ob die fehlende Vorgesetztenaussage im konkreten Betrieb
+überhaupt nachteilig wirkt.
 
-Unsere Mandantschaft wird den Sachverhalt sorgfältig aufarbeiten. Eine abschließende Stellungnahme ist vor Einsicht in die vollständige Entscheidungsgrundlage nicht möglich. Vorsorglich weisen wir darauf hin, dass kurze Zusammenfassungen, telefonische Eindrücke oder einzelne Screenshots die vollständige Aktenlage nicht ersetzen. Entscheidend ist, welche konkrete Tatsache zu welchem Zeitpunkt dokumentiert war und welche rechtliche Folge daraus abgeleitet werden soll.
-
-Bitte teilen Sie außerdem mit, welche Frist Sie für die Stellungnahme zugrunde legen und ob eine Fristverlängerung bis zum 24.06.2026 gewährt wird. Die Verlängerung ist erforderlich, weil mehrere Unterlagen bei Dritten angefordert werden müssen und weil die Akte ohne diese Unterlagen nicht verantwortbar bewertet werden kann.
+Für eine bessere Gesamtnote benötigen wir konkrete Tatsachen, etwa
+Vorbeurteilungen, Zielerreichung oder dokumentiertes Lob. Die bloße Elternzeit
+ist kein Leistungsminus. Ob der Anlasssatz entfernt werden sollte, behandeln
+wir zunächst als Klärungs- und Verhandlungspunkt. Gleiches gilt für eine warme
+Schlussformel, auf die grundsätzlich kein eigener Anspruch besteht. Ich
+empfehle daher, zuerst die Tätigkeiten belastbar zu ergänzen und eine
+Notenaufwertung nur in der durch die Unterlagen gedeckten Höhe zu verlangen.
 
 Mit freundlichen Grüßen
 
-[Entwurf]
+[Kanzlei / beratende Person]
 
-## Beweis- und Fristenlogik
+## Entwurf an die Arbeitgeberin
 
-| Punkt | Konkrete Frage | Benötigter Beleg | Risiko, wenn offen |
-| --- | --- | --- | --- |
-| Zugang | Wann ging welches Schreiben tatsächlich zu? | Umschlag, Zustellnachweis, E-Mail-Header, Empfangsbestätigung | Frist falsch berechnet oder unklare Präklusion |
-| Urheberschaft | Wer hat die maßgebliche Erklärung abgegeben? | Signatur, Vollmacht, Rollenbeschreibung, Systemprotokoll | Erklärung wird falscher Person zugerechnet |
-| Inhalt | Was stand im vollständigen Dokument, nicht nur in der Zusammenfassung? | Volltext, Anlagen, vorherige Versionen | Akte wirkt dünn und angreifbar |
-| Reaktion | Wer reagierte wann und mit welchem Ziel? | Antwortmail, Gesprächsnotiz, Kalendertermin | Schweigen oder Eile wird falsch interpretiert |
-| Nächster Schritt | Was muss jetzt entschieden werden? | Fristenliste, Verantwortliche, Entscheidungsvermerk | Verfahren läuft weiter, ohne dass die Mandantschaft steuert |
+**Betreff: Zwischenzeugnis für Frau Wiebke Hagedorn vom 29.05.2026**
 
-## Weiterer Bearbeitungsvermerk
+Sehr geehrte Damen und Herren,
 
-Für die nächste Durchsicht wird vorgeschlagen, den Vorgang nicht vorschnell auf “richtig” oder “falsch” zu verkürzen. Zweckmäßiger ist ein dreistufiger Arbeitsgang: zunächst Tatsachen und Belege sichern, danach die rechtlichen Schwellen prüfen und erst anschließend einen Text erzeugen, der nach außen verwendbar ist. Offene, streitige und beweisbedürftige Punkte bleiben dabei ausdrücklich sichtbar; sie werden nicht zugeschüttet, sondern in eine Form gebracht, mit der die Beteiligten weiterarbeiten können.
+unter Beifügung der Vollmacht zeigen wir die Vertretung von Frau Wiebke
+Hagedorn an. Wir bitten um Überprüfung und teilweise Neufassung des
+qualifizierten Zwischenzeugnisses vom 29.05.2026.
+
+Nach den uns vorliegenden Unterlagen umfasst die Tätigkeit unserer Mandantin
+nicht nur Kundenberatung, florale Werkstücke und Verkaufsraumpflege. Sie nahm
+regelmäßig auch [belegte Stellvertretungs-, Bestell-, Kassenabschluss- und
+Einarbeitungsaufgaben mit Zeitraum und Umfang] wahr. Wir bitten, diese für ihr
+berufliches Profil wesentlichen Aufgaben vollständig und sachlich in die
+Tätigkeitsbeschreibung aufzunehmen.
+
+Die Leistungsformel „zu unserer vollen Zufriedenheit" bewerten wir als
+durchschnittlich. Aufgrund von [konkrete Zielerreichung/Vorbeurteilung/Beleg]
+bitten wir um die wahrheitsgemäße Fassung „[durch Belege gedeckter
+Zielwortlaut]". Sollte eine Aufwertung aus Ihrer Sicht nicht gerechtfertigt
+sein, bitten wir um Mitteilung der dafür maßgeblichen Tatsachengrundlage.
+
+Ferner bitten wir um Prüfung, ob das Sozialverhalten entsprechend dem
+tatsächlichen Kontaktprofil vollständig und mit einer durch die
+Gesamtbeurteilung gedeckten Beständigkeitsaussage gefasst werden kann. Den
+Hinweis auf die Rückkehr aus der Elternzeit sowie eine freundliche
+Zwischenzeugnis-Schlussformel stellen wir ausdrücklich als Änderungsbitte zur
+Disposition; einen eigenständigen Anspruch auf Dank oder Zukunftswünsche
+behaupten wir nicht.
+
+Bitte lassen Sie uns das in den belegten Tätigkeits- und Bewertungspunkten
+berichtigte Zeugnis bis zum [konkretes Datum] zukommen. Falls diese Punkte
+offenbleiben, werden wir nach vollständiger Belegprüfung die weiteren Schritte
+mit unserer Mandantin abstimmen.
+
+Mit freundlichen Grüßen
+
+[Kanzlei]
+
+Anlagen: Vollmacht, Zwischenzeugnis, Aufgaben-/Leistungsbelege
+
+## Abschlusskontrolle der Übungsakte
+
+- Rollen sind widerspruchsfrei: Arbeitnehmerin gegen Arbeitgeberin.
+- Tatsachen, Sprachsignal und Rechtsanspruch bleiben getrennt.
+- Note 2 oder 1 wird nicht ohne Beleg verlangt.
+- Elternzeit und Kassendifferenzen werden nicht als verdeckte Negativtatsachen
+  erfunden.
+- Freiwillige Schlusswünsche werden ohne Anspruchs- oder Klagebehauptung
+  formuliert.
+- Das Schreiben ist mit gekennzeichneten Platzhaltern one-shot-fähig, aber vor
+  realer Verwendung anhand der vollständigen Unterlagen zu finalisieren.

@@ -6,11 +6,11 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.21) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.21 führt alle Release-Dateien in einem vollständigen Direktdownload-Katalog zusammen und sichert die README-/Pages-Navigation durch zusätzliche Regressionstests ab.
+Konsolidierter Skill (Version 3.0.22) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.22 härtet den One-Shot-Workflow, OCR- und Bewertungslogik sowie die reproduzierbare, parallele Erzeugung und Prüfung sämtlicher Release-Artefakte anhand eines dokumentierten 100-Punkte-Qualitätsaudits.
 
 ## Navigation
 
-[Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Repository-Landkarte](#repository-landkarte) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
+[Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Ausführungsmodi](#schnell-stabil-und-vollständig) · [Repository-Landkarte](#repository-landkarte) · [100-Punkte-Audit](QUALITY-AUDIT-100.md) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
 
 ## Direktdownloads
 
@@ -53,6 +53,8 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 | --- | --- |
 | Ein Zeugnis gründlich prüfen | [Vollversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) |
 | Kleines Modell oder knappes Kontextfenster verwenden | [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
+| Ein Zeugnis schnell und trotzdem vollständig prüfen | Vollversion verwenden; sie wählt automatisch den verdichteten Kompaktmodus |
+| Komplexen Streit, Vergleich oder Klage vertiefen | Vollversion verwenden und ausdrücklich „Vollmodus" ergänzen |
 | Einen einzelnen Musterfall ausprobieren | In einer [Testakten-README](#testakten-im-überblick) auf **herunterladen** neben dem gewünschten PDF klicken |
 | Mehrere Fälle als Batch oder One-Shot prüfen | Passendes ZIP oder Gesamt-PDF im [vollständigen Downloadkatalog](#direktdownloads) wählen |
 | Downloadintegrität kontrollieren | [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) und wie oben beschrieben prüfen |
@@ -90,12 +92,24 @@ Weg B — Datei hineinziehen (Drag & Drop):
 2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
 3. Das Zeugnis nachreichen — fertig.
 
-Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Wird der Skill als One-Shot/Megaprompt mit Zeugnis genutzt, soll er aus Perspektive der beurteilten Person bei Berichtigungsbedarf zusätzlich sofort eine verständliche persönliche Erklärung bei Selbstprüfung oder ein anwaltliches Mandantenschreiben bei Kanzleiprüfung sowie ein außergerichtliches Aufforderungsschreiben an die statusrichtige Gegenseite mitliefern, nicht nur anbieten. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
+Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Die Matrix trennt dabei Ampelfarbe, Notentendenz und rechtliche Durchsetzbarkeit. Wird der Skill als One-Shot/Megaprompt mit Zeugnis genutzt, liefert er aus Perspektive der beurteilten Person bei einem belastbaren Korrektur- oder Verhandlungspunkt sofort eine persönliche Erklärung oder ein anwaltliches Mandantenschreiben sowie das passende Gegenseitenschreiben: bei einem Rechtsmangel ein Berichtigungsverlangen, bei ausschließlich freiwilligen Punkten eine freundliche Änderungsbitte ohne Anspruchs- oder Klagebehauptung. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
+
+### Schnell, stabil und vollständig
+
+Die Vollversion liest das Zeugnis einmal in ein Satz- und Evidenzregister ein und erzeugt daraus alle Blöcke. Dadurch bleiben Note, Ampel, Rechtsstatus, Beleg und Zielwortlaut in Erklärung, Schreiben und Matrix identisch; Volltext und Zitate werden nicht wiederholt.
+
+| Modus | Verwendung |
+| --- | --- |
+| **Kompakt** | Automatischer Standard für ein Zeugnis. Vollständiger Workflow, materielle Sätze einzeln, Gleichartiges gruppiert. |
+| **Voll** | Für komplexe Beweisfragen, Organstatus, Vergleich, Klage oder ausdrücklich gewünschte Satz-für-Satz-Vertiefung. |
+| **Batch** | Für mehrere Zeugnisse. Jeder Fall erhält ein strikt getrenntes Seiten-, Satz- und Ergebnisregister. |
+
+Im One-Shot kommen Kurzbefund, ausformulierte Erklärung/Mandantenschreiben und das gegebenenfalls geschuldete Gegenseitenschreiben **vor** der langen Detailmatrix. So bleiben die praktisch benötigten Schreiben auch bei knappen Ausgabelimits vollständig. Bei PDF, Scan oder Foto prüft der Skill zunächst Seitenzahl, Reihenfolge und OCR-Treue; unleserliche oder fehlende Seiten werden nicht durch erfundenen Wortlaut ersetzt.
 
 ### Welche Ausgabe bekomme ich?
 
 - **Erster Blick / Status:** Analyse, Ampel-Bilanz, Notenspanne, Hauptkritik und klare nächste Weiche.
-- **One-Shot / Megaprompt:** aus Perspektive der beurteilten Person bei Berichtigungsbedarf Analyse, persönliche Erklärung bei Selbstprüfung oder anwaltliches Mandantenschreiben bei Kanzleiprüfung und außergerichtliches Aufforderungsschreiben an Arbeitgeber, Dienstgeber oder Ausbildende in einem Durchgang.
+- **One-Shot / Megaprompt:** aus Perspektive der beurteilten Person bei einem belastbaren Punkt Analyse, persönliche Erklärung bzw. anwaltliches Mandantenschreiben und rechtlich abgestuftes Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende in einem Durchgang. Eine orange Ampel allein ist noch kein Korrekturanspruch.
 - **HR / Arbeitgeberseite:** neutraler Korrekturvermerk mit Risiko, sicherer Ersatzformulierung und Formcheck statt Arbeitnehmer-Aufforderungsschreiben.
 - **Antwort bricht ab:** „Bitte fahre mit dem nächsten offenen Block fort." Der Skill soll dann nicht neu anfangen, sondern an der Fortsetzungsmarke weiterarbeiten.
 
@@ -109,7 +123,7 @@ Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kenn
 | Jura und Wissenschaft | [`README`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) | 10 Einzel-PDFs · Gesamt-PDF · ZIP · [`Erwartungshorizont`](testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md) |
 | Leitungsfunktionen | [`README`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) | 5 Einzel-PDFs · Gesamt-PDF · ZIP · [`Erwartungshorizont`](testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md) |
 | Prüf- und Buildskripte | [`scripts/`](scripts/) | [`check_release_integrity.py`](scripts/check_release_integrity.py) · [`build_generated_testakten.py`](scripts/build_generated_testakten.py) · [`reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) · [`build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) · [`build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) |
-| Projektpflege | [`CHANGELOG.md`](CHANGELOG.md) · [Integritäts-Workflow](.github/workflows/verify-integrity.yml) · [neueste Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) | Release-Historie und lesende Prüfung von Skills, Pages-Spiegeln, Links, Rechtsankern und Artefakten |
+| Projektpflege | [`CHANGELOG.md`](CHANGELOG.md) · [`QUALITY-AUDIT-100.md`](QUALITY-AUDIT-100.md) · [Integritäts-Workflow](.github/workflows/verify-integrity.yml) · [neueste Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) | Release-Historie, 100 konkrete Befunde/Behebungen und lesende Prüfung von Skills, Pages-Spiegeln, Links, Rechtsankern und Artefakten |
 | Lizenzen | [`LICENSE-APACHE`](LICENSE-APACHE) · [`LICENSE-MIT`](LICENSE-MIT) | Dual-Lizenz Apache-2.0 OR MIT |
 
 Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
@@ -117,8 +131,8 @@ Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
 - Workflow in acht Stufen — Intake bis Klagestrategie, rechtlicher Anker, Antwortformate, Qualitätsgate.
 - Teil A — Zufriedenheitsformel — Notenstufen 1 bis 5 der Hauptformel.
 - Teil B — Schlussformel — Bedauern/Dank/Wunsch, Signal versus Anspruch.
-- Teil C — Geheimcode-Katalog — Standardphrasen nach Themenachsen.
-- Teil D — Ampel-Flaggen — Steigerungsadverbien, grüne/orange/rote Flaggen, negative Codeworte.
+- Teil C — Formulierungs- und Kontextkatalog — typische Formulierungen als kontextabhängige Prüfhypothesen, nicht als feste gerichtliche Codewortliste.
+- Teil D — Ampel-Flaggen — Steigerungsadverbien, grüne/orange/rote Flaggen und sensible Kontextsignale.
 - Teil E — Analyse-Techniken — Drift, Auslassungen, Negationen, Widersprüche, Formalia.
 - Teil F — Mandatsmodule — Aufforderungsschreiben, Wortlaut-Verbesserungen, Klageantrag.
 - Teil G — Musterzeugnisse und Sonderfälle — Drei Musterzeugnisse, leitende Positionen, Azubi, Branchen.
@@ -126,7 +140,7 @@ Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
 Zusätzlich enthält der Skill durchgängig:
 
 - Sofortstart und Rückfrage-Disziplin — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
-- Lieferumfang nach Einsatzkontext — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Die beurteilte Person erhält bei Berichtigungsbedarf das statusrichtige Aufforderungsschreiben, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
+- Lieferumfang nach Einsatzkontext — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Die beurteilte Person erhält bei einem belastbaren Punkt ein Berichtigungsverlangen oder eine ausdrücklich unverbindliche Änderungsbitte, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
 - Fortsetzungs- und Abbruchprotokoll — lange One-Shot-Ausgaben bekommen Statuskopf und Fortsetzungsmarke, damit kleine Modelle oder API-Limits nicht zum Neuansatz zwingen.
 - Ampel-Darstellung — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - Rechtsprechungsanker — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Auslassungen, Datumswahrheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
@@ -137,12 +151,18 @@ Vor einer neuen Version sollte der lokale Integritätscheck ausgeführt werden:
 
 ```bash
 python3 scripts/check_release_integrity.py
+
+# Schneller Editierlauf ohne externe PDF-Inspektion
+python3 scripts/check_release_integrity.py --quick
+
+# Alle erfolgreichen Einzelinvarianten anzeigen
+python3 scripts/check_release_integrity.py --verbose
 ```
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Versionsgleichlauf, byte-identische `skill/`- und `docs/`-Dateien, das 7.500-Zeichen-Limit der Mini-Fassung, zentrale Rechtsfundstellen und bekannte Fehlzuordnungen, sämtliche lokalen Markdown-Ziele, interne Markdown- und HTML-Menüanker, den vollständigen Direktdownload-Katalog und die Auffindbarkeit zentraler Projektdateien, die lesende CI-Konfiguration, Release-Asset-Kandidaten, `SHA256SUMS.txt`, öffentliche Testakten-Artefakte sowie PDF-/ZIP-Sanity der Trainingsakten. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag und `main`-Commit sowie Namen, Größen und SHA-256-Digests der realen GitHub-Release-Assets mit den lokalen Dateien. |
-| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle generierten Testakten-Artefakte neu, ohne kuratierte READMEs zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
+| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut beide generierten Testaktensätze und deren Einzel-PDFs parallel, ohne kuratierte READMEs zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
 | [`scripts/reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) | Gemeinsame Hilfsfunktionen für kanonische PDF-Metadaten und reproduzierbare ZIP-Dateien. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
@@ -159,7 +179,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.21
+python3 scripts/check_release_integrity.py --github-release v3.0.22
 ```
 
 ## Workflow in acht Stufen

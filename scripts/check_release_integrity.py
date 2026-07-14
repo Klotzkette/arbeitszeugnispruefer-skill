@@ -17,8 +17,10 @@ import subprocess
 import sys
 import unicodedata
 import zipfile
+from concurrent.futures import Future, ThreadPoolExecutor
+from functools import lru_cache
 from html.parser import HTMLParser
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
 
 from reproducible_test_artifacts import (
@@ -33,10 +35,12 @@ REPOSITORY = "Klotzkette/arbeitszeugnispruefer-skill"
 MINI_LIMIT = 7500
 PROCESS_TIMEOUT_SECONDS = 30
 INTEGRITY_WORKFLOW = Path(".github/workflows/verify-integrity.yml")
+QUALITY_AUDIT = Path("QUALITY-AUDIT-100.md")
 
 MARKDOWN_WITH_ANCHORS = [
     Path("README.md"),
     Path("CHANGELOG.md"),
+    QUALITY_AUDIT,
     Path("skill/SKILL.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
@@ -120,6 +124,7 @@ README_NAVIGATION_TARGETS = [
     Path("scripts/build_jura_und_wissenschaft_testakten.py"),
     Path("scripts/build_leitungsfunktionen_testakten.py"),
     Path("CHANGELOG.md"),
+    QUALITY_AUDIT,
     Path(".github/workflows/verify-integrity.yml"),
     Path("LICENSE-APACHE"),
     Path("LICENSE-MIT"),
@@ -170,7 +175,9 @@ CANONICAL_DECISION_DATES = {
     "9 AZR 8/15": "14.06.2016",
     "9 AZR 262/20": "27.04.2021",
     "9 AZR 272/22": "06.06.2023",
+    "9 AZR 48/24": "28.01.2025",
     "8 AZR 293/18": "28.11.2019",
+    "8 AZR 838/13": "11.12.2014",
     "7 AZR 292/17": "17.04.2019",
     "3 AZR 121/11": "12.02.2013",
     "2 AZR 96/24 (B)": "18.06.2025",
@@ -181,6 +188,7 @@ CANONICAL_DECISION_DATES = {
     "12 Ta 475/16": "14.11.2016",
     "4 Ta 118/16": "27.07.2016",
     "9 Ta 319/25": "19.02.2026",
+    "6 SLa 25/24": "05.12.2024",
     "5 Ca 80 b/13": "18.04.2013",
 }
 
@@ -221,6 +229,7 @@ class AnchorCollector(HTMLParser):
             self.anchors.append(dict(attrs))
 
 
+@lru_cache(maxsize=None)
 def read_text(rel: Path) -> str:
     return (ROOT / rel).read_text(encoding="utf-8")
 
@@ -384,7 +393,10 @@ def check_legal_citations(checker: Checker) -> None:
     readme = read_text(Path("README.md"))
     index = read_text(Path("docs/index.html"))
 
-    case_pattern = re.compile(r"\d+\s+(?:AZR|AZB|Ta|Ca)\s+\d+(?:\s+b)?/\d+(?:\s+\([A-Z]\))?")
+    case_pattern = re.compile(
+        r"\d+\s+(?:AZR|AZB|AZN|ABR|ABN|SLa|Sa|Ta|Ca)\s+"
+        r"\d+(?:\s+b)?/\d+(?:\s+\([A-Z]\))?"
+    )
     anchored_cases = {
         match
         for line in full.splitlines()
@@ -405,6 +417,57 @@ def check_legal_citations(checker: Checker) -> None:
         checker.fail(f"missing canonical decision citations: {', '.join(missing_dates)}")
     else:
         checker.ok(f"all {len(CANONICAL_DECISION_DATES)} canonical decision dates are present")
+
+    dated_case_pattern = re.compile(
+        r"(?P<date>\d{2}\.\d{2}\.\d{4})\s*[–-]\s*"
+        r"(?P<case>\d+\s+(?:AZR|AZB|AZN|ABR|ABN|SLa|Sa|Ta|Ca)\s+"
+        r"\d+(?:\s+b)?/\d+"
+        r"(?:\s+\([A-Z]\))?)"
+    )
+    citation_conflicts: list[str] = []
+    dated_citation_count = 0
+    legal_surfaces = sorted((*ROOT.rglob("*.md"), *ROOT.rglob("*.html")))
+    for path in legal_surfaces:
+        if ".git" in path.parts:
+            continue
+        for match in dated_case_pattern.finditer(path.read_text(encoding="utf-8")):
+            dated_citation_count += 1
+            case = match.group("case")
+            date = match.group("date")
+            canonical = CANONICAL_DECISION_DATES.get(case)
+            if canonical is None:
+                citation_conflicts.append(f"{path.relative_to(ROOT)}: untracked {date} – {case}")
+            elif canonical != date:
+                citation_conflicts.append(
+                    f"{path.relative_to(ROOT)}: {date} – {case}, expected {canonical}"
+                )
+    if citation_conflicts:
+        checker.fail("conflicting dated legal citations: " + "; ".join(citation_conflicts))
+    else:
+        checker.ok(
+            f"all {dated_citation_count} dated case citations across Markdown/HTML use canonical dates"
+        )
+
+    all_case_mentions: set[str] = set()
+    mention_locations: dict[str, set[str]] = {}
+    for path in legal_surfaces:
+        if ".git" in path.parts:
+            continue
+        rel = path.relative_to(ROOT).as_posix()
+        for case in case_pattern.findall(path.read_text(encoding="utf-8")):
+            all_case_mentions.add(case)
+            mention_locations.setdefault(case, set()).add(rel)
+    untracked_mentions = sorted(all_case_mentions - set(CANONICAL_DECISION_DATES))
+    if untracked_mentions:
+        details = "; ".join(
+            f"{case} in {', '.join(sorted(mention_locations[case]))}"
+            for case in untracked_mentions
+        )
+        checker.fail(f"undated or otherwise untracked case citations found: {details}")
+    else:
+        checker.ok(
+            f"all {len(all_case_mentions)} case identifiers across Markdown/HTML are canonical, including undated mentions"
+        )
 
     required_full = [
         "§ 109 GewO und BAG-Linie",
@@ -454,6 +517,34 @@ def check_legal_citations(checker: Checker) -> None:
         "Arbeitsgericht zuständig; Zeugnisberichtigung",
         "PATRIOT Act § 215",
         "typischerweise personenbezogene Daten besonderer Kategorien",
+        "das **stärkste Signal** im Bewerbungsverkehr",
+        "Verwirkung bei langem Zuwarten",
+        "wer ohne nachvollziehbaren Grund lange zuwartet, riskiert den Anspruchsverlust",
+        "wenn die Schlussformel z. B. unwahre Tatsachen suggeriert",
+        "eine kalendermäßige Frist macht die Mahnung beweisbar",
+        "mindestens eine 🔴- oder 🟠-Beanstandung",
+        "mit 🔴/🟠 oder sonstigem Berichtigungspunkt",
+        "Vier von fünf Bausteinen vorhanden | Note 2",
+        "Drei Bausteine | Note 3",
+        "Fehlt der Steigerer im gesamten Zeugnis, ist Note 1 nicht erreichbar",
+        "signalisiert genau das Gegenteil",
+        "bewusste Irreführung",
+        "Karenz nicht erwähnt",
+        "Sorglosigkeit oder Absicht",
+        "fehlender Berufsschulabschnitt",
+        "riskante Suchtmittel-Lesart",
+        "riskante Alkohol-/Geselligkeitslesart",
+        "riskante Annäherungs-/Belästigungslesart",
+        "riskante Eigentums-/Vertrauenslesart",
+        "riskante Belästigungs-Lesart",
+        "Note 4–6",
+        "Notentendenz 1 bis 6",
+        "keine Pünktlichkeitsaussage",
+        "es gab sonst nichts Positives zu sagen",
+        "Verdacht auf Gefälligkeit",
+        "Distanzsignal; Arbeitgeberkündigung",
+        "Passivkonstruktion** („Das Arbeitsverhältnis endet\"): Distanzsignal",
+        "Datumsangabe ohne weitere Worte** am Ende: Kalte Trennung",
     ]
     combined = "\n".join((full, mini, readme))
     stale = [item for item in forbidden if item in combined]
@@ -470,6 +561,12 @@ def check_legal_citations(checker: Checker) -> None:
     lag_12 = next((line for key, line in decision_rows.items() if "12 Ta 475/16" in key), "")
     lag_4 = next((line for key, line in decision_rows.items() if "4 Ta 118/16" in key), "")
     lag_9 = next((line for key, line in decision_rows.items() if "9 Ta 319/25" in key), "")
+    lag_6 = next((line for key, line in decision_rows.items() if "6 SLa 25/24" in key), "")
+    bag_3 = next((line for key, line in decision_rows.items() if "3 AZR 121/11" in key), "")
+    bag_5 = next((line for key, line in decision_rows.items() if "5 AZR 848/93" in key), "")
+    bag_8 = next((line for key, line in decision_rows.items() if "9 AZR 8/15" in key), "")
+    bag_838 = next((line for key, line in decision_rows.items() if "8 AZR 838/13" in key), "")
+    bag_48 = next((line for key, line in decision_rows.items() if "9 AZR 48/24" in key), "")
     bag_227 = next((line for key, line in decision_rows.items() if "9 AZR 227/11" in key), "")
     bag_248 = next((line for key, line in decision_rows.items() if "9 AZR 248/07" in key), "")
     bag_262 = next((line for key, line in decision_rows.items() if "9 AZR 262/20" in key), "")
@@ -503,7 +600,55 @@ def check_legal_citations(checker: Checker) -> None:
         "9 Ta 319/25 carries the letterhead rule",
     )
     checker.require(
-        "Aufforderungsschreiben nur bei passender Rolle" in full
+        "tatsächlichen Ausfertigung" in lag_6 and "abweichende Vereinbarung" in lag_6,
+        "6 SLa 25/24 carries the direct issue-date rule",
+    )
+    checker.require(
+        "nicht als Arbeitsverhältnis" in bag_3
+        and "§ 630 BGB" in bag_3
+        and "§ 109 GewO" in bag_3,
+        "3 AZR 121/11 keeps the concrete retraining status distinction",
+    )
+    checker.require(
+        "Papierzeugnis" in bag_5 and "elektronischer Form" in bag_5,
+        "5 AZR 848/93 remains limited to physical-certificate collection",
+    )
+    checker.require(
+        "keine pauschale Regel" in bag_8 and "Prozessbeschäftigung" in bag_8,
+        "9 AZR 8/15 is not misused as a general issue-date rule",
+    )
+    checker.require(
+        "Zeitmoment" in bag_838
+        and "Umstandsmoment" in bag_838
+        and "bloßes Zuwarten" in bag_838
+        and "besonderen Umständen" in bag_838,
+        "8 AZR 838/13 carries both elements and the exceptional nature of forfeiture",
+    )
+    checker.require(
+        "digitale Entgeltabrechnungen" in bag_48
+        and "5 AZR 848/93" in bag_48
+        and "nicht" in bag_48
+        and "§ 126a BGB" in bag_48,
+        "9 AZR 48/24 confirms work-paper collection without replacing certificate e-form rules",
+    )
+    checker.require(
+        "Entfernung der gesamten Schlussformel" in full
+        and "Unwahre objektive Tatsachenangaben" in full
+        and "nur Entfernung, kein Wunschtext" in mini,
+        "closing-formula remedies remain separated from factual corrections",
+    )
+    checker.require(
+        "Verwirkung ist keine feste Monatsfrist" in full
+        and "Zeit- und Umstandsmoment" in mini,
+        "forfeiture is not reduced to delay or a fixed month threshold",
+    )
+    checker.require(
+        "schriftliche, nachweisbar zugegangene Aufforderung" in full
+        and "ersetzt aber weder Anspruchsgrundlage noch Prüfung der Verzugsvoraussetzungen" in full,
+        "demand, provable receipt and default remain distinct",
+    )
+    checker.require(
+        "Gegenseitenschreiben nur bei passender Rolle und passendem Rechtsstatus" in full
         and "Bei HR-, Arbeitgeber-, Betriebsrats- oder neutraler Schulungsperspektive"
         in full
         and "Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik"
@@ -520,6 +665,88 @@ def check_legal_citations(checker: Checker) -> None:
         "Wahrheit und verständiges Wohlwollen" in mini,
         "Codex review regression: mini skill retains truth and goodwill",
     )
+    checker.require(
+        "Die Ampelfarbe allein löst kein Anspruchsschreiben aus" in full
+        and "Ampel allein begründet keinen Anspruch" in mini
+        and "freundliche Änderungsbitte ohne Rechtsverstoß, Anspruchsbehauptung oder Klageandrohung"
+        in full,
+        "finding colour, grade and legal enforceability remain separated",
+    )
+    checker.require(
+        "sprachliche Prüfhypothesen, keine gerichtlich festgelegte Geheimcode-Liste" in full
+        and "keine gerichtliche Phrase-zu-Note-Liste" in mini
+        and "verwirft gerade die pauschale Umkehrung" in full,
+        "code-word heuristics cannot masquerade as fixed case law",
+    )
+    checker.require(
+        "Keine feste Übersetzungsregel" in full
+        and "Keine Suchtmittelbehauptung ableiten" in full
+        and "keine Belästigung ableiten" in full
+        and "geschützte Betätigung nicht als Leistungsdefizit behandeln" in full,
+        "sensitive-topic wording remains neutral and evidence-gated",
+    )
+    checker.require(
+        "kein gesetzlicher Mindestmangel nach § 16 Abs. 2 BBiG" in full
+        and "§ 16 Abs. 2 BBiG verlangt sie nicht automatisch" in full,
+        "vocational-school assessment is not invented as mandatory BBiG content",
+    )
+    checker.require(
+        "Notentendenz 1 bis 5" in full
+        and "typischerweise Note 4–5" in full
+        and "häufig Note 4-5" in mini,
+        "full and mini skills use the same five-level grading scale",
+    )
+    checker.require(
+        "weder gesetzlich festgelegt noch für sich ein BAG-Code" in full
+        and "nur Sprachkonvention, kein fester Rechtscode" in mini,
+        "social-behaviour ordering is not presented as a fixed legal code",
+    )
+    checker.require(
+        "Seitenvollständigkeit und OCR-Treue" in full
+        and "OCR-Fehler nicht als Zeugnisfehler" in mini
+        and "Wortlaut nie stillschweigend korrigieren" in full,
+        "PDF and OCR review remains source-faithful",
+    )
+    checker.require(
+        "vollständige Kompaktmodus" in full
+        and "Kompakt" in full
+        and "Voll" in full
+        and "Batch" in full
+        and "Fortsetzungsmarke erst nach den geschuldeten Schreiben" in mini,
+        "execution modes and mandatory-block continuation order remain coherent",
+    )
+    checker.require(
+        "keine allgemeine Loyalitätsformel verlangen" in full
+        and "Pünktlichkeitsaussage" not in full
+        and "Geburtsdatum nur, wenn vorhanden und sachlich benötigt" in full,
+        "omission and personal-data checks remain evidence-gated",
+    )
+    checker.require(
+        "neutrale Tatsachenform; nur zusammen mit weiteren Signalen bewerten" in full
+        and "keine gesetzliche Unvollständigkeit" in full
+        and "keine isolierte Gesamtnote" in full,
+        "closing-formula and isolated-integrity language remains non-mechanical",
+    )
+    checker.require(
+        "das tatsächliche Ausstellungsdatum trägt" in full
+        and "Kunden, falls tatsächlicher Kundenkontakt bestand" in full
+        and "Freiwillige Schlussformelwünsche" in full,
+        "claim template keeps issue date, contact profile and voluntary closing wishes legally gated",
+    )
+
+    exercise = read_text(
+        Path(
+            "testakten/arbeitszeugnis-analyse-bluehendes-leben/"
+            "90-ergaenzende-korrespondenz-und-vollvermerke.md"
+        )
+    )
+    checker.require(
+        "Floristin Wiebke Hagedorn und Arbeitgeberin" not in exercise
+        and "Bescheide, Akteneinsicht" not in exercise
+        and "Ausformulierte Erklärung an die Arbeitnehmerin" in exercise
+        and "Entwurf an die Arbeitgeberin" in exercise,
+        "supplemental exercise remains a role-consistent certificate workflow",
+    )
 
 
 def check_generated_build_contract(checker: Checker) -> None:
@@ -527,6 +754,10 @@ def check_generated_build_contract(checker: Checker) -> None:
     checker.require(
         "--verify-reproducible" in aggregate and "CURATED_FILES" in aggregate,
         "aggregate builder verifies reproducibility and protects curated files",
+    )
+    checker.require(
+        "ThreadPoolExecutor" in aggregate and "executor.map(run_builder, BUILDERS)" in aggregate,
+        "aggregate builder runs independent test sets concurrently",
     )
 
     builders = [
@@ -540,6 +771,11 @@ def check_generated_build_contract(checker: Checker) -> None:
             f"{rel} normalizes PDFs and ZIP metadata",
         )
         checker.require(
+            "normalize_pdf(pdf_path, expected_date_count=2)" in source
+            and "normalize_pdf(combined, expected_date_count=0)" in source,
+            f"{rel} enforces artifact-specific PDF date counts",
+        )
+        checker.require(
             "shutil.rmtree(OUT)" not in source,
             f"{rel} preserves curated archive files",
         )
@@ -547,6 +783,20 @@ def check_generated_build_contract(checker: Checker) -> None:
             "\n    write_readme()\n" not in source,
             f"{rel} does not overwrite its curated README",
         )
+        checker.require(
+            "ThreadPoolExecutor" in source
+            and "max_workers=min(PDF_WORKERS, len(CASES))" in source,
+            f"{rel} builds case PDFs with bounded concurrency",
+        )
+
+    helper = read_text(Path("scripts/reproducible_test_artifacts.py"))
+    checker.require(
+        "expected_date_count" in helper
+        and "duplicate ZIP input" in helper
+        and "outside" in helper
+        and "empty ZIP archive" in helper,
+        "artifact helper rejects incomplete PDF metadata and unsafe ZIP inputs",
+    )
 
     generated_case_pdfs = [
         *sorted(
@@ -580,17 +830,128 @@ def check_generated_build_contract(checker: Checker) -> None:
         ),
     ]
     zip_metadata_is_stable = True
+    zip_entries_are_sorted = True
     for rel in generated_zips:
         with zipfile.ZipFile(ROOT / rel) as archive:
+            names = archive.namelist()
             zip_metadata_is_stable = zip_metadata_is_stable and all(
                 info.date_time == ZIP_TIMESTAMP
                 and info.external_attr >> 16 == ZIP_FILE_MODE
                 for info in archive.infolist()
             )
+            zip_entries_are_sorted = zip_entries_are_sorted and names == sorted(names)
     checker.require(
         zip_metadata_is_stable,
         "generated ZIP archives use canonical entry metadata",
     )
+    checker.require(zip_entries_are_sorted, "generated ZIP entries use canonical order")
+
+
+def check_quality_audit(checker: Checker) -> None:
+    path = ROOT / QUALITY_AUDIT
+    checker.require(path.exists(), f"{QUALITY_AUDIT} exists")
+    if not path.exists():
+        return
+
+    row_pattern = re.compile(
+        r"^\|\s*(\d{1,3})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*(Behoben)\s*\|$",
+        re.MULTILINE,
+    )
+    rows = row_pattern.findall(read_text(QUALITY_AUDIT))
+    numbers = [int(number) for number, _, _, _ in rows]
+    checker.require(numbers == list(range(1, 101)), "quality audit has exactly the ordered findings 1 through 100")
+    checker.require(
+        all(finding.strip() and fix.strip() for _, finding, fix, _ in rows),
+        "every quality-audit finding has a concrete remediation",
+    )
+
+
+def check_text_hygiene(checker: Checker) -> None:
+    suffixes = {".html", ".md", ".py", ".txt", ".yaml", ".yml"}
+    paths = sorted(
+        path
+        for path in ROOT.rglob("*")
+        if path.is_file()
+        and path.suffix.lower() in suffixes
+        and ".git" not in path.parts
+        and "__pycache__" not in path.parts
+    )
+    problems: list[str] = []
+    for path in paths:
+        data = path.read_bytes()
+        rel = path.relative_to(ROOT)
+        if data.startswith(b"\xef\xbb\xbf"):
+            problems.append(f"{rel}: UTF-8 BOM")
+        try:
+            data.decode("utf-8")
+        except UnicodeDecodeError:
+            problems.append(f"{rel}: not UTF-8")
+            continue
+        if data and not data.endswith(b"\n"):
+            problems.append(f"{rel}: missing final newline")
+        if b"\r\n" in data:
+            problems.append(f"{rel}: CRLF line endings")
+    if problems:
+        checker.fail("text hygiene problems: " + "; ".join(problems))
+    else:
+        checker.ok(f"all {len(paths)} text files are UTF-8/LF without BOM and end in a newline")
+
+    git = shutil.which("git")
+    if not git:
+        checker.warn("git not found; skipped tracked-junk check")
+        return
+    result = subprocess.run(
+        [git, "ls-files"],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=True,
+        timeout=PROCESS_TIMEOUT_SECONDS,
+    )
+    tracked = result.stdout.splitlines()
+    junk = [
+        name
+        for name in tracked
+        if PurePosixPath(name).name == ".DS_Store"
+        or "__pycache__" in PurePosixPath(name).parts
+        or PurePosixPath(name).suffix in {".pyc", ".pyo"}
+    ]
+    checker.require(not junk, "repository tracks no OS metadata or Python cache files")
+
+
+def check_markdown_table_shapes(checker: Checker) -> None:
+    separator = re.compile(r"\s*\|(?:\s*:?-{3,}:?\s*\|)+\s*")
+    malformed: list[str] = []
+    checked = 0
+    for path in sorted(ROOT.rglob("*.md")):
+        if ".git" in path.parts:
+            continue
+        lines = path.read_text(encoding="utf-8").splitlines()
+        index = 0
+        while index < len(lines):
+            if not lines[index].lstrip().startswith("|"):
+                index += 1
+                continue
+            start = index
+            block: list[str] = []
+            while index < len(lines) and lines[index].lstrip().startswith("|"):
+                block.append(lines[index])
+                index += 1
+            if len(block) < 2 or not separator.fullmatch(block[1]):
+                continue
+            checked += 1
+            cell_counts = [
+                len(re.split(r"(?<!\\)\|", line.strip())) - 2
+                for line in block
+            ]
+            if len(set(cell_counts)) != 1:
+                malformed.append(
+                    f"{path.relative_to(ROOT)}:{start + 1} ({cell_counts})"
+                )
+    if malformed:
+        checker.fail("malformed Markdown tables: " + ", ".join(malformed))
+    else:
+        checker.ok(f"all {checked} Markdown tables have consistent column counts")
 
 
 def check_markdown_anchors(checker: Checker) -> None:
@@ -763,6 +1124,7 @@ def check_navigation_inventory(checker: Checker) -> None:
         "blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md",
         "tree/main/scripts",
         "blob/main/CHANGELOG.md",
+        "blob/main/QUALITY-AUDIT-100.md",
         "blob/main/.github/workflows/verify-integrity.yml",
         "blob/main/scripts/check_release_integrity.py",
         "blob/main/scripts/build_generated_testakten.py",
@@ -834,7 +1196,25 @@ def check_public_artifacts(checker: Checker) -> None:
             checker.require(source_path.read_bytes() == public_path.read_bytes(), f"{public} mirrors {source}")
         if zip_count is not None and source_path.exists():
             with zipfile.ZipFile(source_path) as archive:
-                pdfs = [name for name in archive.namelist() if name.endswith(".pdf")]
+                infos = archive.infolist()
+                names = [info.filename for info in infos]
+                pdfs = [name for name in names if name.lower().endswith(".pdf")]
+                corrupt = archive.testzip()
+            checker.require(corrupt is None, f"{source} passes ZIP CRC validation")
+            checker.require(len(names) == len(set(names)), f"{source} has no duplicate entries")
+            checker.require(
+                all(
+                    name
+                    and not name.startswith(("/", "\\"))
+                    and ".." not in PurePosixPath(name).parts
+                    for name in names
+                ),
+                f"{source} has no absolute or traversal entry names",
+            )
+            checker.require(
+                all(info.file_size > 0 for info in infos),
+                f"{source} has no empty entries",
+            )
             checker.require(len(pdfs) == zip_count, f"{source} contains {zip_count} PDFs")
         if source.suffix == ".pdf" and source_path.exists():
             checker.require(source_path.read_bytes().startswith(b"%PDF"), f"{source} is a PDF file")
@@ -853,8 +1233,13 @@ def check_release_asset_candidates(checker: Checker) -> None:
         checker.require(path.exists() and path.stat().st_size > 0, f"{rel} is ready for release upload")
 
 
+@lru_cache(maxsize=None)
 def sha256_digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    hasher = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
 
 
 def expected_release_checksums() -> str:
@@ -870,7 +1255,21 @@ def check_release_checksums(checker: Checker) -> None:
     path = ROOT / rel
     checker.require(path.exists(), f"{rel} exists")
     if path.exists():
-        checker.require(path.read_text(encoding="utf-8") == expected_release_checksums(), f"{rel} matches release assets")
+        manifest = path.read_text(encoding="utf-8")
+        entries: list[tuple[str, str]] = []
+        malformed: list[str] = []
+        for line_number, line in enumerate(manifest.splitlines(), 1):
+            match = re.fullmatch(r"([0-9a-f]{64})  ([^/\\]+)", line)
+            if match:
+                entries.append((match.group(1), match.group(2)))
+            else:
+                malformed.append(f"line {line_number}")
+        names = [name for _, name in entries]
+        expected_names = [item.name for item in CHECKSUM_ASSET_CANDIDATES]
+        checker.require(not malformed, f"{rel} uses strict SHA-256 manifest syntax")
+        checker.require(len(names) == len(set(names)), f"{rel} has no duplicate filenames")
+        checker.require(names == expected_names, f"{rel} lists exactly the release assets in canonical order")
+        checker.require(manifest == expected_release_checksums(), f"{rel} matches release assets")
 
 
 def github_commit_sha(gh: str, ref: str) -> str:
@@ -951,40 +1350,62 @@ def check_github_release_assets(checker: Checker, tag: str, version: str) -> Non
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
-    for rel, label, minimum_pages, expected_headings, expected_attachments in COMBINED_PDF_DETAILS:
-        combined = ROOT / rel
-        if not combined.exists():
-            checker.fail(f"{label} combined PDF is missing")
-            continue
+    if not pdfinfo:
+        checker.warn("pdfinfo not found; skipped all detailed PDF metadata checks")
+    if not pdftotext:
+        checker.warn("pdftotext not found; skipped all PDF text extraction checks")
 
-        if pdfinfo:
-            info = subprocess.run(
-                [pdfinfo, str(combined)],
+    def run(command: list[str]) -> tuple[str | None, str | None]:
+        try:
+            result = subprocess.run(
+                command,
                 text=True,
                 capture_output=True,
                 check=True,
                 timeout=PROCESS_TIMEOUT_SECONDS,
-            ).stdout
-            checker.require("Encrypted:       no" in info, f"{label} combined PDF is not encrypted")
-            page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
-            checker.require(
-                bool(page_match and int(page_match.group(1)) >= minimum_pages),
-                f"{label} combined PDF has at least {minimum_pages} pages",
             )
-        else:
-            checker.warn("pdfinfo not found; skipped detailed PDF metadata check")
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+            return None, str(exc)
+        return result.stdout, None
+
+    available = [detail for detail in COMBINED_PDF_DETAILS if (ROOT / detail[0]).exists()]
+    for rel, label, *_ in COMBINED_PDF_DETAILS:
+        if not (ROOT / rel).exists():
+            checker.fail(f"{label} combined PDF is missing")
+
+    futures: dict[tuple[str, Path], Future[tuple[str | None, str | None]]] = {}
+    worker_count = max(1, min(6, len(available) * 2))
+    with ThreadPoolExecutor(max_workers=worker_count) as executor:
+        for rel, _, *_ in available:
+            combined = ROOT / rel
+            if pdfinfo:
+                futures[("info", rel)] = executor.submit(run, [pdfinfo, str(combined)])
+            if pdftotext:
+                futures[("text", rel)] = executor.submit(run, [pdftotext, str(combined), "-"])
+
+    for rel, label, minimum_pages, expected_headings, expected_attachments in available:
+        if pdfinfo:
+            info, error = futures[("info", rel)].result()
+            if error:
+                checker.fail(f"{label} pdfinfo failed: {error}")
+            else:
+                assert info is not None
+                checker.require("Encrypted:       no" in info, f"{label} combined PDF is not encrypted")
+                page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
+                checker.require(
+                    bool(page_match and int(page_match.group(1)) >= minimum_pages),
+                    f"{label} combined PDF has at least {minimum_pages} pages",
+                )
 
         if pdftotext:
-            text = subprocess.run(
-                [pdftotext, str(combined), "-"],
-                text=True,
-                capture_output=True,
-                check=True,
-                timeout=PROCESS_TIMEOUT_SECONDS,
-            ).stdout
+            extracted, error = futures[("text", rel)].result()
+            if error:
+                checker.fail(f"{label} pdftotext failed: {error}")
+                continue
+            assert extracted is not None
             headings = sum(
                 1
-                for line in text.splitlines()
+                for line in extracted.splitlines()
                 if line.strip() in {"ARBEITSZEUGNIS", "ZWISCHENZEUGNIS", "Arbeitszeugnis"}
             )
             checker.require(
@@ -992,13 +1413,15 @@ def check_pdf_details(checker: Checker) -> None:
                 f"{label} combined PDF contains {expected_headings} certificate headings (found {headings})",
             )
             if expected_attachments is not None:
-                attachments = sum(1 for line in text.splitlines() if line.strip().startswith("PDF-Anhang:"))
+                attachments = sum(
+                    1
+                    for line in extracted.splitlines()
+                    if line.strip().startswith("PDF-Anhang:")
+                )
                 checker.require(
                     attachments == expected_attachments,
                     f"{label} combined PDF contains {expected_attachments} PDF attachment markers (found {attachments})",
                 )
-        else:
-            checker.warn("pdftotext not found; skipped PDF text extraction check")
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:
@@ -1007,6 +1430,16 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--github-release",
         metavar="TAG",
         help="also verify the published GitHub release assets for TAG, e.g. v3.0.21",
+    )
+    parser.add_argument(
+        "--quick",
+        action="store_true",
+        help="skip external pdfinfo/pdftotext inspection for a fast edit loop",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="print every successful invariant instead of the compact summary",
     )
     return parser.parse_args(argv)
 
@@ -1022,6 +1455,9 @@ def main(argv: list[str] | None = None) -> int:
         check_mini_size(checker)
         check_legal_citations(checker)
         check_generated_build_contract(checker)
+        check_quality_audit(checker)
+        check_text_hygiene(checker)
+        check_markdown_table_shapes(checker)
         check_markdown_anchors(checker)
         check_markdown_local_links(checker)
         check_html_links(checker)
@@ -1029,7 +1465,10 @@ def main(argv: list[str] | None = None) -> int:
         check_public_artifacts(checker)
         check_release_checksums(checker)
         check_release_asset_candidates(checker)
-        check_pdf_details(checker)
+        if args.quick:
+            checker.ok("quick mode skipped external PDF metadata/text inspection")
+        else:
+            check_pdf_details(checker)
         if args.github_release:
             check_github_release_assets(checker, args.github_release, version)
     except Exception as exc:  # pragma: no cover - top-level diagnostics
@@ -1037,8 +1476,11 @@ def main(argv: list[str] | None = None) -> int:
         version = "unknown"
 
     print(f"release integrity check for version {version}")
-    for note in checker.notes:
-        print(note)
+    if args.verbose:
+        for note in checker.notes:
+            print(note)
+    else:
+        print(f"{len(checker.notes)} invariants passed")
     for warning in checker.warnings:
         print(warning)
     for failure in checker.failures:

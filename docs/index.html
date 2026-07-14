@@ -178,7 +178,7 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.21.</p>
+  <p class="lead">Ein offener Markdown-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die vollständige Skill-Datei oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.0.22.</p>
 
   <nav class="site-nav" aria-label="Seitennavigation">
     <a href="#schnellzugriff">Alle Downloads</a>
@@ -187,6 +187,7 @@
     <a href="#anwendung">Anwendung</a>
     <a href="#ausgabe">Ausgabe</a>
     <a href="#wegweiser">Repository</a>
+    <a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/QUALITY-AUDIT-100.md">100-Punkte-Audit</a>
     <a href="#rechtsanker">Rechtsanker</a>
     <a href="#wartung">Prüfsummen</a>
     <a href="#download-hilfe">Downloadhilfe</a>
@@ -210,6 +211,7 @@
       <li><span>Gesamtes Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip" download>ZIP herunterladen</a></li>
       <li><span>Repository</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">README und Quelltext</a></li>
       <li><span>Release-Historie</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">CHANGELOG.md</a></li>
+      <li><span>100-Punkte-Qualitätsaudit</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/QUALITY-AUDIT-100.md">Befunde und Behebungen</a></li>
     </ul>
   </div>
 
@@ -275,6 +277,7 @@
       <li><span>Jura und Wissenschaft</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md">10 Einzelzeugnisse</a></li>
       <li><span>Leitungsfunktionen</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md">5 Einzelzeugnisse</a></li>
       <li><span>Prüf- und Buildskripte</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/tree/main/scripts">scripts/ öffnen</a></li>
+      <li><span>Qualitätsaudit</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/QUALITY-AUDIT-100.md">100 geprüfte Punkte</a></li>
       <li><span>Lizenz Apache-2.0</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/LICENSE-APACHE">Lizenztext</a></li>
       <li><span>Lizenz MIT</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/LICENSE-MIT">Lizenztext</a></li>
       <li><span>Alle Dateien</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill">Repository öffnen</a></li>
@@ -286,6 +289,7 @@
     <p>Die Projektdateien sind offen einsehbar; der lesende Release-Check prüft Skill-Frontmatter, Versionen, Links, Rechtsanker, Pages-Spiegel, Prüfsummen, Testakten-Artefakte und optional Tag-Ziel sowie SHA-256-Inhalte der tatsächlich veröffentlichten Release-Assets.</p>
     <ul class="link-list">
       <li><span>Changelog</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/CHANGELOG.md">Release-Historie öffnen</a></li>
+      <li><span>100-Punkte-Audit</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/QUALITY-AUDIT-100.md">Befunde und Korrekturen öffnen</a></li>
       <li><span>Integritätscheck</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/scripts/check_release_integrity.py">check_release_integrity.py</a></li>
       <li><span>GitHub-Prüfung</span><a href="https://github.com/Klotzkette/arbeitszeugnispruefer-skill/blob/main/.github/workflows/verify-integrity.yml">verify-integrity.yml</a></li>
       <li><span>SHA-256</span><a href="SHA256SUMS.txt" download="SHA256SUMS.txt" type="text/plain">SHA256SUMS.txt</a></li>
@@ -310,14 +314,16 @@
     <h2>Und dann?</h2>
     <p>Die heruntergeladene <code>SKILL.md</code> oder <code>SKILL-mini.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
     <p><em>„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."</em></p>
-    <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch.</p>
+    <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch. Für ein einzelnes Zeugnis läuft der vollständige, aber verdichtete Kompaktmodus. „Vollmodus" ergänzt die Satz-für-Satz-, Beweis- und Prozessvertiefung; mehrere klar getrennte Zeugnisse aktivieren den Batchmodus.</p>
+    <p>PDF, Scan und Foto werden zuerst auf Seitenzahl, Reihenfolge und OCR-Treue geprüft. Das Zeugnis wird einmal in ein Satzregister eingelesen; alle späteren Texte verwenden dieselben Befunde, Belege und Zielwortlaute.</p>
   </div>
 
   <div class="card" id="ausgabe">
     <h2>Welche Ausgabe?</h2>
     <ul>
       <li><strong>Erster Blick:</strong> Analyse, Ampel-Bilanz, Notenspanne und nächste Weiche.</li>
-      <li><strong>One-Shot:</strong> aus der Perspektive der beurteilten Person bei Berichtigungsbedarf Analyse, direkte Erklärung bei Selbstprüfung oder anwaltliches Mandantenschreiben bei Kanzleiprüfung und Aufforderung an Arbeitgeber, Dienstgeber oder Ausbildende.</li>
+      <li><strong>One-Shot:</strong> Aus der Perspektive der beurteilten Person werden Kurzbefund, direkte Erklärung oder anwaltliches Mandantenschreiben und das gegebenenfalls geschuldete Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende vor der langen Detailmatrix abgeschlossen. Rechtsmangel: Berichtigungsverlangen; nur freiwilliger Punkt: Änderungsbitte ohne Anspruchs- oder Klagebehauptung.</li>
+      <li><strong>Ampel:</strong> 🔴/🟠/🟢 zeigt Befund und Risiko, nicht automatisch die rechtliche Durchsetzbarkeit. Die Matrix weist den Rechtsstatus gesondert aus.</li>
       <li><strong>HR/Arbeitgeber:</strong> neutraler Korrekturvermerk mit sicheren Ersatzformulierungen.</li>
       <li><strong>Abbruch:</strong> „Bitte fahre mit dem nächsten offenen Block fort."</li>
     </ul>

@@ -7,6 +7,113 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.22] — 2026-07-15
+
+### Behoben
+- 100 weitere konkrete Fehler-, Risiko-, Stabilitäts- und Reibungspunkte in
+  `QUALITY-AUDIT-100.md` erfasst, behoben und durch eine exakte 1-bis-100-
+  Regression abgesichert.
+- One-Shot-Ausführung auf ein gemeinsames Satz-/Evidenzregister umgestellt:
+  Zeugnis nur einmal einlesen, Wiederholungen gruppieren und Kurzbefund,
+  Erklärung/Mandantenschreiben sowie geschuldetes Gegenseitenschreiben vor der
+  langen Detailmatrix fertigstellen.
+- Quellenannahme für PDF, Scan, Foto und Batch gehärtet: Seitenzahl,
+  Reihenfolge, Dokumentgrenzen und OCR-Unsicherheiten werden geprüft;
+  Briefkopf, Stempel und Unterschrift nur am Originalbild bewertet und
+  OCR-Fehler nicht als Zeugnisfehler ausgegeben.
+- Weitere Bewertungsautomatismen entfernt: Verhaltensreihenfolge ist keine
+  feste Rechtsregel, fehlende Pünktlichkeits- oder Loyalitätsformeln sind kein
+  pauschaler Mangel, neutrale Beendigungsdaten kein Kündigungscode und sensible
+  Kontextsignale keine Tatsachen über Krankheit, Konflikte oder Integrität.
+- Notenskala in Voll- und Mini-Fassung auf 1 bis 5 vereinheitlicht und
+  Geburtsdaten aus den Vollskill-Musterzeugnissen entfernt.
+- PDF-Normalisierung nach Artefakttyp abgesichert: `cupsfilter`-Einzeldateien
+  müssen genau zwei Datumsfelder, `pdfunite`-Sammeldokumente genau null
+  enthalten. Damit wurde zugleich ein im ersten Testlauf aufgedeckter
+  Sammel-PDF-Regressionsfehler beseitigt.
+- ZIP- und Prüfsummenprüfung erkennt nun CRC-Fehler, doppelte, leere oder
+  unsichere Einträge, falsche Reihenfolge, fehlerhafte SHA-256-Syntax sowie
+  Textdateien mit BOM, CRLF oder fehlender Schlusszeile.
+- 30-Punkte-Bug-Hunt durch Rechtslogik, Bewertungsmatrix, Sprachkataloge,
+  Musterschreiben, Klageantrag, Ausbildungsmodul, Musterfälle und technische
+  Prüfroutine. Ampel, Notentendenz und Durchsetzbarkeit sind jetzt getrennte
+  Größen; Orange löst nicht mehr automatisch ein Anspruchsschreiben aus.
+- Autonome Ausgabe dreistufig gehärtet: belastbarer Rechtsmangel führt zum
+  Berichtigungsverlangen, ein ausschließlich freiwilliger Wunsch nur zur
+  ausdrücklich unverbindlichen Änderungsbitte ohne Klageandrohung, fehlender
+  Handlungsbedarf zu keinem Gegenseitenschreiben.
+- Codewort-, Adverb-, Drift-, Negations- und Auslassungskataloge von
+  unzulässigen Tatsachen-, Absichts- und Festnotenautomatismen befreit. BAG
+  9 AZR 386/10 wird nun auch methodisch umgesetzt: Codeangaben sind
+  kontextabhängige Prüfhypothesen und keine gerichtliche Phrase-zu-Note-Liste.
+- Interne Bewertungswidersprüche beseitigt, insbesondere bei „stets
+  einwandfrei", Schlussformel-Bausteinen, Fortbildungs-/Lernformulierungen,
+  Gesamtformel ohne „stets" sowie dem zusammengesetzten Satz „stets bemüht,
+  … zur vollen Zufriedenheit zu erledigen".
+- Formalprüfung präzisiert: tatsächlicher Beschäftigungszeitraum statt
+  pauschaler Karenz-/Abwesenheitsnennung, Tippfehler nach objektiver Relevanz,
+  Unterzeichner nach Funktion und Weisungsbefugnis sowie Beendigungsdatum im
+  Zeugnistext getrennt vom tatsächlichen Ausstellungsdatum.
+- Gegenseiten- und Klagemuster datensparsamer und beweisgebunden gefasst:
+  kein Geburtsdatum als Standard, keine erfundene Spitzennote, kein
+  ungeprüfter Kundenbezug und keine freiwillige Schlussformel im
+  Leistungsantrag.
+- Ausbildungsmodul an § 16 Abs. 2 BBiG angeglichen: Eine
+  Berufsschulbewertung ist kein automatischer Mindestinhalt. Branchenübliche
+  Auslassungen bleiben nach BAG 9 AZR 632/07 konkrete Kontextfragen.
+- Sachfremde und rollenwidersprüchliche Zusatzakte „Blühendes Leben"
+  vollständig durch einen konsistenten Zeugnisworkflow mit Tatsachenblatt,
+  Matrix, Beweisgate, Mandantenerklärung und Arbeitgeberanschreiben ersetzt.
+- Mini-Skill bildet dieselben Schutzschranken unter 7.500 Zeichen ab und nennt
+  Rechtschreibung/Format sowie BAG 9 AZR 262/20 und 9 AZR 386/10 ausdrücklich.
+- Integritätscheck erfasst jetzt auch undatierte Aktenzeichen im gesamten
+  Markdown-/HTML-Bestand und sperrt die wichtigsten beseitigten
+  Rechts- und Bewertungsautomatismen als Regressionen.
+
+### Geändert
+- BAG 28.01.2025 – 9 AZR 48/24 als aktuelle Bestätigung der Holschuld für
+  Arbeitspapiere ergänzt, zugleich aber ausdrücklich auf den dort entschiedenen
+  Gegenstand digitale Entgeltabrechnung begrenzt; die Entscheidung ersetzt bei
+  Arbeitszeugnissen weder Einwilligung noch qualifizierte elektronische Signatur.
+- Testakten-Build beschleunigt: beide Aktenpakete sowie deren Einzel-PDFs
+  werden mit begrenzter Parallelität gebaut; Hashes werden gestreamt.
+  Integritätschecks cachen wiederholte Lese-/Hashvorgänge, prüfen Gesamt-PDFs
+  parallel und bieten eine kompakte Standardausgabe sowie `--quick` und
+  `--verbose`.
+- Rechtsprechungs-Audits vom 12. und 14.07.2026 gegen die amtliche BAG-Datenbank und
+  gerichtseigene Landesportale: LAG Köln 05.12.2024 – 6 SLa 25/24 als direkten
+  Anker für tatsächliches Ausstellungsdatum und Grenzen der Rückdatierung
+  ergänzt.
+- Verwirkungsprüfung mit BAG 11.12.2014 – 8 AZR 838/13 gehärtet: Zeit- und
+  Umstandsmoment sind kumulativ erforderlich; bloßes Zuwarten ist keine feste
+  Monatsfrist und trägt für sich keinen Anspruchsverlust.
+- Schlussformel-Rechtsfolgen aus BAG 11.12.2012 – 9 AZR 227/11 und BAG
+  06.06.2023 – 9 AZR 272/22 klar getrennt: regelmäßig nur Entfernung statt
+  Wunschtext, Wiederaufnahme nur bei maßregelnder Streichung; objektive
+  Tatsachenangaben bleiben gesondert berichtigungsfähig.
+- BAG 12.02.2013 – 3 AZR 121/11 präzisiert: Im entschiedenen isolierten
+  Umschulungsverhältnis galt § 630 BGB; § 109 GewO bleibt die statusabhängige
+  Alternative bei Umschulung im Arbeitsverhältnis.
+- Verzugsmodul präzisiert: Erst eine nachweisbar zugegangene Aufforderung
+  dokumentiert Verlangen und Fristablauf; ein bloßes Kalenderdatum beweist den
+  Zugang einer Mahnung nicht und ersetzt keine Verzugsvoraussetzung.
+- Die Holschuld aus BAG 08.03.1995 – 5 AZR 848/93 ausdrücklich auf die
+  körperliche Papierurkunde begrenzt und von Übermittlung/Zugang eines wirksam
+  mit Einwilligung elektronisch erteilten Zeugnisses getrennt.
+- Mini-Skill bei der Datumsprüfung mit Vollversion harmonisiert: Ein späteres
+  tatsächliches Ausfertigungsdatum ist nicht schematisch als Mangel zu werten.
+
+### Geprüft
+- Alle vorhandenen BAG-, LAG- und ArbG-Fundstellen auf Gericht, Datum,
+  Aktenzeichen und tragende Zuordnung geprüft; keine erfundene oder falsch
+  datierte Entscheidung festgestellt.
+- Die bis 14.07.2026 veröffentlichte BAG-Entscheidungsliste erneut durchsucht;
+  8 AZB 25/25 bleibt die jüngste unmittelbar einschlägige Entscheidung und ist
+  bereits zutreffend verarbeitet.
+- Sämtliche drei Codex-Automatic-Review-Hinweise erneut kontrolliert; sie sind
+  im aktuellen Stand umgesetzt. Für die präzisierten Fundstellen wurden neue
+  Zuordnungs-Regressionstests ergänzt.
+
 ## [3.0.21] — 2026-07-11
 
 ### Geändert
@@ -448,6 +555,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.22]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.22
 [3.0.21]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.21
 [3.0.20]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.20
 [3.0.19]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.19

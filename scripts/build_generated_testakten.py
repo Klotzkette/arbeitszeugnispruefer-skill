@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 
@@ -30,7 +31,11 @@ PUBLIC_ARTIFACTS = [
 
 
 def digest(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    hasher = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            hasher.update(chunk)
+    return hasher.hexdigest()
 
 
 def snapshot(paths: list[Path]) -> dict[str, str]:
@@ -47,18 +52,64 @@ def artifact_manifest() -> dict[str, str]:
     return snapshot(sorted(set(paths + PUBLIC_ARTIFACTS)))
 
 
-def run_builders() -> None:
-    for rel in BUILDERS:
-        script = ROOT / rel
-        if not script.exists():
-            raise SystemExit(f"missing build script: {rel}")
-        print(f"==> {rel}", flush=True)
-        subprocess.run(
-            [sys.executable, str(script)],
+def as_text(value: str | bytes | None) -> str:
+    if value is None:
+        return ""
+    if isinstance(value, bytes):
+        return value.decode("utf-8", errors="replace")
+    return value
+
+
+def run_builder(rel: Path) -> subprocess.CompletedProcess[str]:
+    script = ROOT / rel
+    command = [sys.executable, str(script)]
+    try:
+        return subprocess.run(
+            command,
             cwd=ROOT,
-            check=True,
+            text=True,
+            capture_output=True,
+            check=False,
             timeout=BUILD_TIMEOUT_SECONDS,
         )
+    except subprocess.TimeoutExpired as exc:
+        return subprocess.CompletedProcess(
+            command,
+            124,
+            stdout=as_text(exc.stdout),
+            stderr=(
+                f"{as_text(exc.stderr)}\n" if exc.stderr else ""
+            )
+            + f"timed out after {BUILD_TIMEOUT_SECONDS} seconds",
+        )
+    except OSError as exc:
+        return subprocess.CompletedProcess(command, 127, stdout="", stderr=str(exc))
+
+
+def run_builders() -> None:
+    missing = [rel for rel in BUILDERS if not (ROOT / rel).is_file()]
+    if missing:
+        raise SystemExit(f"missing build scripts: {', '.join(map(str, missing))}")
+
+    for rel in BUILDERS:
+        print(f"==> {rel}", flush=True)
+    with ThreadPoolExecutor(max_workers=len(BUILDERS)) as executor:
+        results = list(executor.map(run_builder, BUILDERS))
+
+    failed: list[str] = []
+    for rel, result in zip(BUILDERS, results, strict=True):
+        if result.stdout:
+            print(result.stdout, end="" if result.stdout.endswith("\n") else "\n")
+        if result.returncode:
+            if result.stderr:
+                print(
+                    result.stderr,
+                    file=sys.stderr,
+                    end="" if result.stderr.endswith("\n") else "\n",
+                )
+            failed.append(f"{rel} (exit {result.returncode})")
+    if failed:
+        raise SystemExit(f"builder failure: {', '.join(failed)}")
 
 
 def parse_args(argv: list[str]) -> argparse.Namespace:

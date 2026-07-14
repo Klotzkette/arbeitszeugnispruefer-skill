@@ -10,6 +10,7 @@ from __future__ import annotations
 import shutil
 import subprocess
 import textwrap
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from reproducible_test_artifacts import normalize_pdf, write_reproducible_zip
@@ -20,6 +21,7 @@ OUT = ROOT / "testakten" / "arbeitszeugnisse-jura-und-wissenschaft"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
 WIDTH = 76
 PROCESS_TIMEOUT_SECONDS = 120
+PDF_WORKERS = 4
 
 
 CASES = [
@@ -620,7 +622,18 @@ def write_pdf(text: str, pdf_path: Path, title: str) -> None:
             )
     finally:
         txt_path.unlink(missing_ok=True)
-    normalize_pdf(pdf_path)
+    normalize_pdf(pdf_path, expected_date_count=2)
+
+
+def build_case(case: dict[str, str]) -> Path:
+    folder = OUT / f"{case['nr']}-{case['slug']}"
+    folder.mkdir(parents=True)
+    pdf = folder / f"Arbeitszeugnis_{case['nr']}-{case['slug']}.pdf"
+    try:
+        write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
+    except Exception as exc:
+        raise RuntimeError(f"failed to build case {case['nr']}-{case['slug']}") from exc
+    return pdf
 
 
 def write_expectations() -> None:
@@ -669,13 +682,8 @@ def main() -> None:
     combined_dir.mkdir()
     DOCS_TESTAKTEN.mkdir(parents=True, exist_ok=True)
 
-    pdfs: list[Path] = []
-    for case in CASES:
-        folder = OUT / f"{case['nr']}-{case['slug']}"
-        folder.mkdir(parents=True)
-        pdf = folder / f"Arbeitszeugnis_{case['nr']}-{case['slug']}.pdf"
-        write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
-        pdfs.append(pdf)
+    with ThreadPoolExecutor(max_workers=min(PDF_WORKERS, len(CASES))) as executor:
+        pdfs = list(executor.map(build_case, CASES))
 
     combined = combined_dir / "arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"
     subprocess.run(
@@ -683,7 +691,7 @@ def main() -> None:
         check=True,
         timeout=PROCESS_TIMEOUT_SECONDS,
     )
-    normalize_pdf(combined)
+    normalize_pdf(combined, expected_date_count=0)
 
     zip_path = OUT / "arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"
     write_reproducible_zip(zip_path, OUT, pdfs)
