@@ -30,6 +30,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes poppler-utils
 
+      - name: Install deterministic PDF build dependencies
+        run: python3 -m pip install --requirement requirements-build.txt
+
+      - name: Rebuild test artifacts twice
+        run: python3 scripts/build_generated_testakten.py --verify-reproducible
+
       - name: Run repository integrity checks
         run: python3 scripts/check_release_integrity.py
 

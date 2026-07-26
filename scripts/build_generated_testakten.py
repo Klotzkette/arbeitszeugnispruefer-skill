@@ -5,10 +5,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import shutil
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+from reproducible_test_artifacts import write_reproducible_zip
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,12 +24,21 @@ GENERATED_ROOTS = [
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft"),
     Path("testakten/arbeitszeugnisse-leitungsfunktionen"),
 ]
-CURATED_FILES = [root / "README.md" for root in GENERATED_ROOTS]
+TESTAKTEN_ROOT = Path("testakten")
+MASTER_ARCHIVE = TESTAKTEN_ROOT / "arbeitszeugnis-testpaket-komplett.zip"
+PUBLIC_MASTER_ARCHIVE = Path("docs/testakten") / MASTER_ARCHIVE.name
+CURATED_FILES = [
+    TESTAKTEN_ROOT / "README.md",
+    TESTAKTEN_ROOT / "TESTFALL-MATRIX.md",
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    *[root / "README.md" for root in GENERATED_ROOTS],
+]
 PUBLIC_ARTIFACTS = [
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"),
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+    PUBLIC_MASTER_ARCHIVE,
 ]
 
 
@@ -49,7 +61,7 @@ def artifact_manifest() -> dict[str, str]:
         for path in sorted((ROOT / rel).rglob("*"))
         if path.is_file()
     ]
-    return snapshot(sorted(set(paths + PUBLIC_ARTIFACTS)))
+    return snapshot(sorted(set(paths + PUBLIC_ARTIFACTS + [MASTER_ARCHIVE])))
 
 
 def as_text(value: str | bytes | None) -> str:
@@ -112,6 +124,30 @@ def run_builders() -> None:
         raise SystemExit(f"builder failure: {', '.join(failed)}")
 
 
+def build_master_archive() -> None:
+    root = ROOT / TESTAKTEN_ROOT
+    pdfs = sorted(root.glob("*/[0-9][0-9]-*/*.pdf"))
+    support_files = sorted(root.glob("*/README.md"))
+    support_files += sorted(root.glob("*/90-*.md"))
+    support_files += [root / "README.md", root / "TESTFALL-MATRIX.md"]
+    if len(pdfs) != 25:
+        raise SystemExit(f"expected 25 individual test PDFs, found {len(pdfs)}")
+    write_reproducible_zip(
+        ROOT / MASTER_ARCHIVE,
+        root,
+        [*pdfs, *support_files],
+    )
+    (ROOT / PUBLIC_MASTER_ARCHIVE).parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / MASTER_ARCHIVE, ROOT / PUBLIC_MASTER_ARCHIVE)
+    print(f"wrote {MASTER_ARCHIVE}")
+    print(f"copied {PUBLIC_MASTER_ARCHIVE}")
+
+
+def build_all() -> None:
+    run_builders()
+    build_master_archive()
+
+
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -125,13 +161,13 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(sys.argv[1:] if argv is None else argv)
     curated_before = snapshot(CURATED_FILES)
-    run_builders()
+    build_all()
     if snapshot(CURATED_FILES) != curated_before:
         raise SystemExit("builder changed a curated test-archive README")
 
     if args.verify_reproducible:
         first = artifact_manifest()
-        run_builders()
+        build_all()
         second = artifact_manifest()
         changed = sorted(
             path

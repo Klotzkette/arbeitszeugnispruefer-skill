@@ -2,7 +2,7 @@
 
 Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) als Trainings- und Demonstrationsmaterial. Sie enthält zehn fiktive Arbeitszeugnisse aus zehn verschiedenen Branchen und Berufen, jeweils ein bis zwei Seiten lang, formal freundlich und im üblichen Wohlwollens-Stil verfasst. Alle Personen, Firmen, Adressen, Telefon-, Fax- und Steuernummern sind frei erfunden.
 
-**Navigation:** [Hauptübersicht](../../README.md) · [alle Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [Prüfsummen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) · **Allgemeine Branchen** · [Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md) · [Leitungsfunktionen](../arbeitszeugnisse-leitungsfunktionen/README.md)
+**Navigation:** [Hauptübersicht](../../README.md) · [Testakten-Zentrale](../README.md) · [Fallmatrix 01–25](../TESTFALL-MATRIX.md) · [alle Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [Prüfsummen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) · **Allgemeine Branchen** · [Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md) · [Leitungsfunktionen](../arbeitszeugnisse-leitungsfunktionen/README.md)
 
 ## Schnellzugriff
 
@@ -11,7 +11,8 @@ Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) a
 | Zur Hauptübersicht | [`README.md`](../../README.md) |
 | Öffentliche Downloadseite | [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) |
 | Voll- und Mini-Skill | [Vollversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) · [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
-| Vollständiges Release und Prüfsummen | [alle neun Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) |
+| Vollständiges Release und Prüfsummen | [alle zehn Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) |
+| Alle 25 Fälle und Ground Truth | [Komplettpaket herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) · [Fallmatrix](../TESTFALL-MATRIX.md) |
 | ZIP mit allen 10 Einzel-PDFs | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnis-testakten-einzel-pdfs.zip) |
 | Gesamt-PDF aller 10 Zeugnisse | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
 | Ergänzende Korrespondenz und Vollvermerke | [`90-ergaenzende-korrespondenz-und-vollvermerke.md`](90-ergaenzende-korrespondenz-und-vollvermerke.md) |

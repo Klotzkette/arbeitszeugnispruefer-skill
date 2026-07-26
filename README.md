@@ -6,7 +6,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.22) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.22 härtet den One-Shot-Workflow, OCR- und Bewertungslogik sowie die reproduzierbare, parallele Erzeugung und Prüfung sämtlicher Release-Artefakte anhand eines dokumentierten 100-Punkte-Qualitätsaudits.
+Konsolidierter Skill (Version 3.0.23) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.23 ergänzt eine kalibrierte 25-Fälle-Testsuite mit professionell gesetzten, reproduzierbaren PDFs, detaillierten Erwartungshorizonten und einem vollständigen Testpaket für Regressionstests.
 
 ## Navigation
 
@@ -14,7 +14,7 @@ Konsolidierter Skill (Version 3.0.22) für die Prüfung deutscher Arbeits-, Dien
 
 ## Direktdownloads
 
-Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt einer GitHub-Vorschauseite. Die ersten neun Zeilen bilden den vollständigen Asset-Satz des neuesten Releases ab; das Gesamtprojekt folgt als aktuelles `main`-Archiv. Die Spalte **Details / Ansehen** ist zum Lesen, Prüfen oder Kopieren im Browser gedacht.
+Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt einer GitHub-Vorschauseite. Die ersten zehn Zeilen bilden den vollständigen Asset-Satz des neuesten Releases ab; das Gesamtprojekt folgt als aktuelles `main`-Archiv. Die Spalte **Details / Ansehen** ist zum Lesen, Prüfen oder Kopieren im Browser gedacht.
 
 | Inhalt | Herunterladen | Details / Ansehen |
 | --- | --- | --- |
@@ -26,6 +26,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 | Jura/Wissenschaft: Sammeldokument | [Gesamt-PDF herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) | [`PDF im Repository`](testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
 | Leitungsfunktionen: 5 Einzel-PDFs | [ZIP herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) | [`Testakten-README`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) |
 | Leitungsfunktionen: Sammeldokument | [Gesamt-PDF herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) | [`PDF im Repository`](testakten/arbeitszeugnisse-leitungsfunktionen/gesamt-pdf/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
+| Komplettpaket aller 25 Testfälle | [ZIP herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) | [Testakten-Zentrale](testakten/README.md) · [Fallmatrix](testakten/TESTFALL-MATRIX.md) |
 | Prüfsummen `SHA256SUMS.txt` | [Datei herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) | [Pages-Ansicht](https://klotzkette.github.io/arbeitszeugnispruefer-skill/SHA256SUMS.txt) |
 | Gesamtes Repository | [ZIP von `main` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip) | [Dateibaum öffnen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill) |
 
@@ -57,18 +58,20 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 | Komplexen Streit, Vergleich oder Klage vertiefen | Vollversion verwenden und ausdrücklich „Vollmodus" ergänzen |
 | Einen einzelnen Musterfall ausprobieren | In einer [Testakten-README](#testakten-im-überblick) auf **herunterladen** neben dem gewünschten PDF klicken |
 | Mehrere Fälle als Batch oder One-Shot prüfen | Passendes ZIP oder Gesamt-PDF im [vollständigen Downloadkatalog](#direktdownloads) wählen |
+| Alle 25 Fälle samt Ground Truth laden | [Komplettpaket herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) und erst nach dem Blindlauf die [Fallmatrix](testakten/TESTFALL-MATRIX.md) öffnen |
 | Downloadintegrität kontrollieren | [`SHA256SUMS.txt` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SHA256SUMS.txt) und wie oben beschrieben prüfen |
 | Projekt forken, lokal prüfen oder weiterentwickeln | [Repository als ZIP herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip) oder [Dateibaum öffnen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill) |
 
 ## Testakten im Überblick
 
-Fünfundzwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Alle Akten sind frei erfunden, als Einzel-PDFs und Gesamt-PDF verfügbar und zusätzlich mit Erwartungshorizont beziehungsweise Prüfpunkten im Repository dokumentiert.
+Fünfundzwanzig fiktive Arbeitszeugnisse zum Durchtesten des Skills. Alle Akten sind frei erfunden, als Einzel-PDFs und Gesamt-PDF verfügbar und zusätzlich mit Erwartungshorizont beziehungsweise Prüfpunkten dokumentiert. Die [Testakten-Zentrale](testakten/README.md) erklärt Blindlauf, Kalibrierung und Batch-Test; die [Fallmatrix](testakten/TESTFALL-MATRIX.md) bündelt Sollkorridor, Kernbefund und Überinterpretationsschutz für alle 25 Fälle.
 
 | Akte | Inhalt | Direktdownloads | Details im Repository |
 | --- | --- | --- | --- |
 | Allgemeine Branchen | 10 Zeugnisse: PTA, Rechtsanwalt, MTA-R, Lagermeister, ZFA, Sparkassen-Filialleitung, Spedition, Hotel-Empfang, Altenpflege, Industriemechanik. | [ZIP mit 10 Einzel-PDFs](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) | [`README`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) · [`Vollvermerke`](testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md) |
 | Jura und Wissenschaft | 10 Zeugnisse: juristische Lehrstuhl-/Universitätsrollen, Kanzleileitung ohne Anwaltszulassung, Junior Associate, ReNo-Fachkraft, Senior Associates. | [ZIP mit 10 Einzel-PDFs](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) | [`README`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) · [`Erwartungshorizont`](testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md) |
 | Leitungsfunktionen | 5 Zeugnisse: Rechtsabteilungsleitung, kaufmännische Leitung/CFO, Personal und Arbeitsrecht, Compliance/Datenschutz, Werk- und Standortleitung. | [ZIP mit 5 Einzel-PDFs](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) | [`README`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) · [`Erwartungshorizont`](testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md) |
+| Komplettpaket | Alle 25 Einzel-PDFs sowie READMEs und Erwartungshorizonte in einer reproduzierbaren Datei. | [Komplett-ZIP](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) | [Testakten-Zentrale](testakten/README.md) · [Fallmatrix](testakten/TESTFALL-MATRIX.md) |
 
 Praktischer Einsatz: Einzel-PDFs eignen sich für gezielte Chats und Regressionstests; Gesamt-PDFs eignen sich für Batch- oder One-Shot-Läufe. Die README-Dateien der Testakten erklären, welche Rollen, formalen Auffälligkeiten und typischen Bewertungsfallen jeweils trainiert werden.
 
@@ -119,10 +122,11 @@ Im One-Shot kommen Kurzbefund, ausformulierte Erklärung/Mandantenschreiben und 
 | --- | --- | --- |
 | Skills | [`skill/`](skill/) | [`SKILL.md`](skill/SKILL.md) Vollversion · [`SKILL-mini.md`](skill/SKILL-mini.md) Kurzversion |
 | Öffentliche Downloadseite | [`docs/`](docs/) · [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) | [`index.html`](docs/index.html) · [`download-skill.html`](docs/download-skill.html) · [`download-mini.html`](docs/download-mini.html) · [`SHA256SUMS.txt`](docs/SHA256SUMS.txt) |
+| Testakten-Zentrale | [`testakten/README.md`](testakten/README.md) | 25 Fälle · Blindtest-Anleitung · Komplettpaket · [`TESTFALL-MATRIX.md`](testakten/TESTFALL-MATRIX.md) |
 | Allgemeine Testakte | [`README`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) | 10 Einzel-PDFs · Gesamt-PDF · ZIP · [`Vollvermerke`](testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md) |
 | Jura und Wissenschaft | [`README`](testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md) | 10 Einzel-PDFs · Gesamt-PDF · ZIP · [`Erwartungshorizont`](testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md) |
 | Leitungsfunktionen | [`README`](testakten/arbeitszeugnisse-leitungsfunktionen/README.md) | 5 Einzel-PDFs · Gesamt-PDF · ZIP · [`Erwartungshorizont`](testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md) |
-| Prüf- und Buildskripte | [`scripts/`](scripts/) | [`check_release_integrity.py`](scripts/check_release_integrity.py) · [`build_generated_testakten.py`](scripts/build_generated_testakten.py) · [`reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) · [`build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) · [`build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) |
+| Prüf- und Buildskripte | [`scripts/`](scripts/) | [`requirements-build.txt`](requirements-build.txt) · [`check_release_integrity.py`](scripts/check_release_integrity.py) · [`build_generated_testakten.py`](scripts/build_generated_testakten.py) · [`render_testzeugnis.py`](scripts/render_testzeugnis.py) · [`reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) · [`build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) · [`build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) |
 | Projektpflege | [`CHANGELOG.md`](CHANGELOG.md) · [`QUALITY-AUDIT-100.md`](QUALITY-AUDIT-100.md) · [Integritäts-Workflow](.github/workflows/verify-integrity.yml) · [neueste Release-Dateien](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) | Release-Historie, 100 konkrete Befunde/Behebungen und lesende Prüfung von Skills, Pages-Spiegeln, Links, Rechtsankern und Artefakten |
 | Lizenzen | [`LICENSE-APACHE`](LICENSE-APACHE) · [`LICENSE-MIT`](LICENSE-MIT) | Dual-Lizenz Apache-2.0 OR MIT |
 
@@ -162,7 +166,8 @@ python3 scripts/check_release_integrity.py --verbose
 | Skript | Zweck |
 | --- | --- |
 | [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
-| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut beide generierten Testaktensätze und deren Einzel-PDFs parallel, ohne kuratierte READMEs zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
+| [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut beide generierten Testaktensätze, deren Einzel-PDFs und das Komplettpaket parallel, ohne kuratierte READMEs zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
+| [`scripts/render_testzeugnis.py`](scripts/render_testzeugnis.py) | Erzeugt mit ReportLab das gemeinsame A4-Layout, deutsche Typografie, Fortsetzungszeile, Seitenfuß und Signaturblöcke der Fälle 11 bis 25. |
 | [`scripts/reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) | Gemeinsame Hilfsfunktionen für kanonische PDF-Metadaten und reproduzierbare ZIP-Dateien. |
 | [`scripts/build_jura_und_wissenschaft_testakten.py`](scripts/build_jura_und_wissenschaft_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Jura-/Wissenschaftsakte. |
 | [`scripts/build_leitungsfunktionen_testakten.py`](scripts/build_leitungsfunktionen_testakten.py) | Erzeugt Einzel-PDFs, Gesamt-PDF, ZIP und Pages-Downloads der Leitungsfunktionen-Akte. |
@@ -170,6 +175,9 @@ python3 scripts/check_release_integrity.py --verbose
 Alle generierten Testakten-Artefakte gemeinsam neu bauen:
 
 ```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements-build.txt
 python3 scripts/build_generated_testakten.py
 
 # Strenger Release-Lauf: zweimal bauen und Byte-Reproduzierbarkeit prüfen
@@ -179,7 +187,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.22
+python3 scripts/check_release_integrity.py --github-release v3.0.23
 ```
 
 ## Workflow in acht Stufen

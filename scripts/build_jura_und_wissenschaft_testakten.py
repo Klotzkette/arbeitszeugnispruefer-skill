@@ -1,25 +1,24 @@
 #!/usr/bin/env python3
 """Build the legal/academic employment-reference test files.
 
-The script intentionally uses system tools already present on macOS:
-`cupsfilter` for text-to-PDF and `pdfunite` for the combined PDF.
+The script uses ReportLab for deterministic A4 documents and `pdfunite` for
+the combined PDF.
 """
 
 from __future__ import annotations
 
 import shutil
 import subprocess
-import textwrap
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+from render_testzeugnis import germanize, write_testimony_pdf
 from reproducible_test_artifacts import normalize_pdf, write_reproducible_zip
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "testakten" / "arbeitszeugnisse-jura-und-wissenschaft"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
-WIDTH = 76
 PROCESS_TIMEOUT_SECONDS = 120
 PDF_WORKERS = 4
 
@@ -33,7 +32,11 @@ CASES = [
         "sector": "Universität / Zivilrecht",
         "type": "Endzeugnis",
         "reason": "Promotionsabschluss und Wechsel ins Referendariat",
+        "grade": "1",
         "expected": "überwiegend 🟢; klare Note 1-2, Briefkopf/Aussteller und Lehr-/Publikationsanteile sauber prüfen",
+        "must_find": "Spitzenformel „stets zu unserer vollsten Zufriedenheit“, vorbildliches Verhalten und stimmige Austrittsformel als konsistentes sehr gutes Gesamtbild.",
+        "guardrail": "Aus einer nicht ausdrücklich genannten Einzelpublikation oder Examensnote keinen Mangel ableiten.",
+        "output": "Kurze positive Einordnung; ohne Tatsachenfehler kein Aufforderungsschreiben erzeugen.",
         "text": """
         UNIVERSITAET ALBSTADT - JURISTISCHE FAKULTAET
         Lehrstuhl fuer Buergerliches Recht, Handels- und Gesellschaftsrecht
@@ -98,7 +101,11 @@ CASES = [
         "sector": "Universität / Strafrecht",
         "type": "Endzeugnis",
         "reason": "Auslaufen der Projektbefristung",
+        "grade": "3 bis 4",
         "expected": "🟠 mit einzelnen 🔴-Signalen; Projektrolle, Nachbearbeitung, Auslassungen und Schlussformel pruefen",
+        "must_find": "Durchschnittliche Gesamtformel, „brauchbare Ergebnisse“ und enger Abstimmungsbedarf ergeben ein deutlich schwächeres Bild als die neutrale Befristung.",
+        "guardrail": "Das Auslaufen der Projektbefristung weder als Kündigungscode noch automatisch als Rechtsmangel behandeln.",
+        "output": "Verständliche Warnung und nur bei Leistungsbelegen ein gezieltes Berichtigungsverlangen.",
         "text": """
         RHEINISCHE UNIVERSITAET NORDSTADT - FAKULTAET FUER RECHTSWISSENSCHAFT
         Lehrstuhl fuer Strafrecht, Strafprozessrecht und Wirtschaftsstrafrecht
@@ -156,7 +163,11 @@ CASES = [
         "sector": "Universität / Öffentliches Recht",
         "type": "Zwischenzeugnis",
         "reason": "Drittmittelantrag und Lehrstuhlwechsel",
+        "grade": "1",
         "expected": "🟢🟠; starke Forschung, Zwischenzeugnis-/Selbstbindungslogik, Drittmittelanlass und Schluss einordnen",
+        "must_find": "Sehr gute Forschungs-, Lehr- und Koordinationsleistung; Zwischenzeugnis als mögliche spätere Vergleichsbasis sichern.",
+        "guardrail": "Der Drittmittelanlass und der Hinweis auf den Ausstellungszeitraum sind keine verdeckte Abwertung.",
+        "output": "Positive Einordnung und Hinweis, das Dokument für einen späteren Driftvergleich aufzubewahren.",
         "text": """
         UNIVERSITAET KUETTENHAFEN - JURISTISCHE FAKULTAET
         Institut fuer Oeffentliches Recht und Europarecht
@@ -212,7 +223,11 @@ CASES = [
         "sector": "Universität / Legal Tech",
         "type": "Endzeugnis",
         "reason": "Wechsel in die Justiz",
+        "grade": "2 mit Bereichsdrift",
         "expected": "🟠; Schaufenster-Drift zwischen Tech-/Projektlob, juristischer Nachbearbeitung und Gesamtformel",
+        "must_find": "Gesamtformel Note 2, zugleich deutliche Einschränkungen bei juristischer Verdichtung und eigenständiger Schlussfolgerung.",
+        "guardrail": "Techniknähe und Projektarbeit nicht als Ersatz für die gesondert bewertete juristische Leistung behandeln.",
+        "output": "Drift erklären; Korrekturschreiben nur mit Belegen für bessere juristische Eigenständigkeit.",
         "text": """
         UNIVERSITAET WESTFELD - CENTER FOR LAW AND TECHNOLOGY
         Arbeitsbereich Zivilprozessrecht und digitale Justiz
@@ -266,7 +281,11 @@ CASES = [
         "sector": "Universität / Arbeitsrecht",
         "type": "Endzeugnis",
         "reason": "Beendigung nach Befristungsablauf",
+        "grade": "4 bis 5 / lückenhaft",
         "expected": "🔴/🟠; knappe Bewertung, enges Anleitungsbeduerfnis, fehlende Kernbereiche und Sozialformel",
+        "must_find": "Fehlende zusammenfassende Leistungsformel, enger Anleitungsbedarf und nur „insgesamt korrektes“ Verhalten ergeben ein klar schwaches Gesamtbild.",
+        "guardrail": "Aus dem Befristungsablauf selbst keine negative Leistungsursache konstruieren.",
+        "output": "Konkrete Mängel erläutern und nach Belegprüfung Tätigkeits- sowie Bewertungsberichtigung verlangen.",
         "text": """
         UNIVERSITAET HELMBURG - FAKULTAET FUER RECHTSWISSENSCHAFT
         Lehrstuhl fuer Arbeitsrecht und Buergerliches Recht
@@ -317,7 +336,11 @@ CASES = [
         "sector": "Große Wirtschaftskanzlei",
         "type": "Endzeugnis",
         "reason": "Aufhebungsvereinbarung",
+        "grade": "2",
         "expected": "🟠; Nicht-Anwaltsrolle, Organ-/Arbeitnehmerbezug, Managementleistung und Schlussformel trennen",
+        "must_find": "Management- und Kanzleileitungsleistung getrennt von anwaltlicher Tätigkeit würdigen; Anspruchsnorm und Rechtsweg statusabhängig offenhalten.",
+        "guardrail": "Weder Anwaltszulassung noch Arbeitnehmerstatus oder Arbeitsgerichtsweg ohne Tatsachengrundlage unterstellen.",
+        "output": "Rollen- und Statusvermerk vor Inhaltsbewertung; nur status- und beleggestützte Änderungspositionen formulieren.",
         "text": """
         ELLERBROOK RECHTSANWAELTE PARTG MBB
         Wirtschaftsrecht - Steuern - Compliance
@@ -375,7 +398,11 @@ CASES = [
         "sector": "Internationale Kanzlei / M&A",
         "type": "Endzeugnis",
         "reason": "Beendigung während der Probezeit",
+        "grade": "4 bis 5",
         "expected": "🔴; Probezeit, Nachbearbeitungsbedarf, Note 4-5, Mandatskontakt und knappe Schlussformel",
+        "must_find": "„Zu unserer Zufriedenheit“, Bemühenssatz und deutliche Nachbearbeitung beschreiben ein schwaches, in sich stimmiges Leistungsbild.",
+        "guardrail": "Die Probezeitbeendigung nicht zusätzlich als Geheimcode werten und keine bessere Note ohne Gegenbelege behaupten.",
+        "output": "Klare Alltagserklärung; Berichtigungsverlangen nur mit belastbaren Arbeitsproben, Feedback oder Vergleichszeugnis.",
         "text": """
         BERGNER FIELDING LLP
         Rechtsanwaelte und Steuerberater
@@ -428,7 +455,11 @@ CASES = [
         "sector": "Kleine Kanzlei",
         "type": "Endzeugnis",
         "reason": "Eigenkündigung",
+        "grade": "2 bis 3",
         "expected": "🟠; Fristen-/beA-/RVG-Profil, Ruecksprachebedarf, Reihenfolge im Sozialverhalten und Code-Lesarten pruefen",
+        "must_find": "Gute Gesamtformel und Fristensorgfalt, aber Einschränkung bei komplexeren Kosten- und Vollstreckungsvorgängen.",
+        "guardrail": "Eigenschaften wie „ehrlich, pünktlich und ordnungsliebend“ nicht isoliert als Geheimcode oder feste Note behandeln.",
+        "output": "Ausgewogene Einordnung; bei belegter Selbstständigkeit gezielte Aufwertung einzelner Kernaufgaben anregen.",
         "text": """
         KANZLEI HANSEN & KOLLEGEN
         Rechtsanwaelte - Familienrecht - Mietrecht - Verkehrsrecht
@@ -478,7 +509,11 @@ CASES = [
         "sector": "Arbeitsrechtsboutique",
         "type": "Zwischenzeugnis",
         "reason": "Partnerperspektive / interner Wechsel",
+        "grade": "1",
         "expected": "🟢🟠; sehr starke Leistung, aber Zwischenzeugnisanlass, Partnertrack- und Akquiseauslassungen beachten",
+        "must_find": "Spitzenleistung und vorbildliches Verhalten; Akquise wird ausdrücklich nicht bewertet und ist daher keine verdeckte Auslassung.",
+        "guardrail": "Aus fehlender Umsatz- oder Akquisebewertung keinen Anspruch auf Partnerperspektive ableiten.",
+        "output": "Positive Einordnung und Sicherung als Vergleichsmaßstab; kein Korrekturschreiben ohne Tatsachenfehler.",
         "text": """
         LINDENAU ARBEITSRECHT
         Boutique fuer Arbeitsrecht und Organhaftung
@@ -531,7 +566,11 @@ CASES = [
         "sector": "Internationale Großkanzlei / Dispute Resolution",
         "type": "Endzeugnis",
         "reason": "Wechsel in ein Unternehmen",
+        "grade": "2",
         "expected": "🟠; starke Einzelsaetze, Teamleitung, fehlende Akquise-/Partnerperspektive und Schlussabgleich",
+        "must_find": "Sehr starke Fach- und Mandatsleistung bei Gesamtformel Note 2; Schlussformel bleibt etwas kühler als die Einzelbewertungen.",
+        "guardrail": "Fehlende Akquise- oder Partneraussage ohne belegte Rollenprägung nicht als rechtlichen Mangel ausgeben.",
+        "output": "Drift sachlich erklären; freiwillige Schlussformelbitte und beweisgestützte Inhaltskorrektur klar trennen.",
         "text": """
         WINTERBOURNE KELLER RECHTSANWAELTE PARTG MBB
         Litigation - Arbitration - Investigations
@@ -583,54 +622,17 @@ CASES = [
 ]
 
 
-def wrapped(text: str) -> str:
-    lines: list[str] = []
-    for raw in textwrap.dedent(text).strip().splitlines():
-        line = raw.strip()
-        if not line:
-            lines.append("")
-            continue
-        if line.isupper() and len(line) < 90:
-            lines.append(line)
-            continue
-        lines.extend(textwrap.wrap(line, width=WIDTH, break_long_words=False) or [""])
-    return "\n".join(lines) + "\n"
-
-
-def write_pdf(text: str, pdf_path: Path, title: str) -> None:
-    txt_path = pdf_path.with_suffix(".txt")
-    txt_path.write_text(wrapped(text), encoding="utf-8")
-    try:
-        with pdf_path.open("wb") as out:
-            subprocess.run(
-                [
-                    "cupsfilter",
-                    "-i",
-                    "text/plain",
-                    "-m",
-                    "application/pdf",
-                    "-o",
-                    "media=A4",
-                    "-t",
-                    title,
-                    str(txt_path),
-                ],
-                stdout=out,
-                stderr=subprocess.DEVNULL,
-                check=True,
-                timeout=PROCESS_TIMEOUT_SECONDS,
-            )
-    finally:
-        txt_path.unlink(missing_ok=True)
-    normalize_pdf(pdf_path, expected_date_count=2)
-
-
 def build_case(case: dict[str, str]) -> Path:
     folder = OUT / f"{case['nr']}-{case['slug']}"
     folder.mkdir(parents=True)
     pdf = folder / f"Arbeitszeugnis_{case['nr']}-{case['slug']}.pdf"
     try:
-        write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
+        write_testimony_pdf(
+            case["text"],
+            pdf,
+            case_number=case["nr"],
+            document_title=f"Arbeitszeugnis {case['nr']} {case['name']}",
+        )
     except Exception as exc:
         raise RuntimeError(f"failed to build case {case['nr']}-{case['slug']}") from exc
     return pdf
@@ -638,31 +640,64 @@ def build_case(case: dict[str, str]) -> Path:
 
 def write_expectations() -> None:
     rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['expected']} |"
+        f"| {c['nr']} | {c['name']} | {c['grade']} | {germanize(c['expected'])} |"
         for c in CASES
     )
-    text = f"""# Erwartungshorizont und Pruefpunkte — Jura und Wissenschaft
+    details = "\n\n".join(
+        f"""### Fall {c['nr']}: {c['name']}
 
-Diese Liste ist kein Loesungsschluessel, sondern ein Pruefhorizont. Die Skill-Ausgabe darf abweichen, wenn sie die Abweichung aus Zeugnistext, Rolle und rechtlichem Anker begruendet.
+- **Muss erkannt werden:** {germanize(c['must_find'])}
+- **Nicht überdehnen:** {germanize(c['guardrail'])}
+- **Erwarteter One-Shot-Ausgang:** {germanize(c['output'])}"""
+        for c in CASES
+    )
+    text = f"""# Erwartungshorizont und Prüfpunkte — Jura und Wissenschaft
 
-| Nr. | Fall | Erwartete Hauptpruefung |
-| --- | --- | --- |
+Dieser Erwartungshorizont dient als kalibrierbare Ground Truth für die fiktiven
+Fälle 11 bis 20. Er ist kein schematischer Lösungsschlüssel: Die Ausgabe darf
+abweichen, wenn sie die Abweichung aus vollständigem Zeugnistext, Rolle,
+Beleglage und tragendem Rechtsanker nachvollziehbar begründet.
+
+## Schnellmatrix
+
+| Nr. | Fall | Sollkorridor | Erwartete Hauptprüfung |
+| --- | --- | --- | --- |
 {rows}
+
+## Fallbezogene Mindestbefunde
+
+{details}
 
 ## Besondere Lernziele
 
-- **Akademische Zeugnisse:** Forschungsleistung, Lehre, Drittmittel, Betreuung von Studierenden und Lehrstuhlorganisation getrennt auswerten.
-- **Kanzleirollen:** anwaltliche Leistung, Mandantenkontakt, Teamfuehrung, Akquise, Kanzleiorganisation und Berufsrollen nicht vermischen.
-- **Briefkopf/Formalia:** Ausstellerkompetenz, Personalzeichen, Projektbezug, Dienstsiegel, Kanzleistempel und Registerangaben mitpruefen, ohne aus reinen Stilfragen vorschnell Maengel zu machen.
-- **Probezeit:** kurze Beschaeftigungsdauer nicht als Freibrief fuer unklare oder codierte Abwertung behandeln, aber Beweis- und Erwartungslage realistisch halten.
-- **ReNo-/Kanzleibetrieb:** Fristen, beA, RVG, Kostenfestsetzung, Zwangsvollstreckung und Mandantenkontakt als Kernkompetenzen pruefen.
-- **Fremdgeschaeftsfuehrung:** Organ- und Arbeitnehmerbezug, Managementaufgaben und fehlende Anwaltszulassung sauber im Zeugnistext abbilden.
+- **Akademische Zeugnisse:** Forschungsleistung, Lehre, Drittmittel, Betreuung
+  von Studierenden und Lehrstuhlorganisation getrennt auswerten.
+- **Kanzleirollen:** anwaltliche Leistung, Mandantenkontakt, Teamführung,
+  Akquise, Kanzleiorganisation und Berufsrollen nicht vermischen.
+- **Briefkopf/Formalia:** Ausstellerkompetenz, Personalzeichen, Projektbezug,
+  Dienstsiegel, Kanzleistempel und Registerangaben mitprüfen, ohne aus reinen
+  Stilfragen vorschnell Mängel zu machen.
+- **Probezeit:** Kurze Beschäftigungsdauer nicht als Freibrief für unklare
+  Abwertung behandeln, aber Beweis- und Erwartungslage realistisch halten.
+- **ReNo-/Kanzleibetrieb:** Fristen, beA, RVG, Kostenfestsetzung,
+  Zwangsvollstreckung und Mandantenkontakt rollenbezogen prüfen.
+- **Fremdgeschäftsführung:** Organ- und Arbeitnehmerbezug, Managementaufgaben
+  und fehlende Anwaltszulassung sauber trennen.
+
+## Auswertungsregel
+
+Ampel, Sollkorridor und rechtliche Durchsetzbarkeit sind drei verschiedene
+Größen. Ein sprachlich schwaches Zeugnis begründet nicht ohne Tatsachenbelege
+eine bessere Note; ein freiwilliger Schlussformelwunsch ist kein einklagbarer
+Leistungsbestandteil. Erwartet wird stets die rollenrichtige Ausgabe: Erklärung
+an die beurteilte Person oder Mandantenschreiben, bei belastbarem Punkt ein
+beweisgebundenes Gegenseitenschreiben, sonst kein künstlicher Streit.
 """
     (OUT / "90-erwartungshorizont-und-pruefpunkte.md").write_text(text, encoding="utf-8")
 
 
 def main() -> None:
-    for tool in ("cupsfilter", "pdfunite"):
+    for tool in ("pdfunite",):
         if not shutil.which(tool):
             raise SystemExit(f"missing required tool: {tool}")
 

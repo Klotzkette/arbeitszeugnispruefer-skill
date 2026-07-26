@@ -9,17 +9,16 @@ from __future__ import annotations
 
 import shutil
 import subprocess
-import textwrap
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+from render_testzeugnis import germanize, write_testimony_pdf
 from reproducible_test_artifacts import normalize_pdf, write_reproducible_zip
 
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "testakten" / "arbeitszeugnisse-leitungsfunktionen"
 DOCS_TESTAKTEN = ROOT / "docs" / "testakten"
-WIDTH = 76
 PROCESS_TIMEOUT_SECONDS = 120
 PDF_WORKERS = 4
 
@@ -33,7 +32,11 @@ CASES = [
         "sector": "Mitteldeutscher Mischkonzern",
         "type": "Endzeugnis",
         "reason": "Wechsel in eine internationale Unternehmensgruppe",
+        "grade": "2",
         "expected": "🟢🟠; starke Leitungsrolle, aber Schaufenster-Drift zwischen Einzelprojekten und Gesamtformel",
+        "must_find": "Starkes Leitungsprofil und Note-2-Gesamtformel; strategische Projekterfolge und noch offene Standardisierung nicht zu einer Spitzennote vermengen.",
+        "guardrail": "Die heterogene Spartenstruktur nicht als persönliches Scheitern und die ausführliche Projektliste nicht als automatische Note 1 behandeln.",
+        "output": "Ausgewogene Managementeinordnung; Aufwertung nur bei belegter überdurchschnittlicher Gesamtleistung.",
         "text": """
         HALDENWERK INDUSTRIEGRUPPE AG
         Energie - Baustoffe - Maschinenkomponenten - Logistik
@@ -111,7 +114,11 @@ CASES = [
         "sector": "Familiengeführter Anlagenbauer",
         "type": "Endzeugnis",
         "reason": "Ruhestand nach geordneter Nachfolge",
+        "grade": "1",
         "expected": "🟢; sehr starkes Fuehrungszeugnis mit klarer Note 1-2 und sauberer Schlussformel",
+        "must_find": "Spitzenformel, vorbildliche Führung, konkrete Ergebnisse und warme Ruhestandsformel bilden ein konsistentes sehr gutes Zeugnis.",
+        "guardrail": "Ruhestand und Nachfolgeübergabe nicht als altersbezogene Abwertung interpretieren.",
+        "output": "Positive Einordnung; ohne Tatsachenfehler kein Gegenseitenschreiben.",
         "text": """
         WERTHER & SOEHNE ANLAGENBAU GMBH
         Sondermaschinen - Prozessanlagen - Service
@@ -180,7 +187,11 @@ CASES = [
         "sector": "Kommunaler Klinikverbund",
         "type": "Endzeugnis",
         "reason": "Aufhebungsvertrag nach Reorganisation",
+        "grade": "4 bis 5",
         "expected": "🔴/🟠; schwache Gesamtformel, Fuehrungs-/Sozialverhalten, Konflikt- und Auslassungspruefung",
+        "must_find": "„Im Wesentlichen zu unserer Zufriedenheit“, enge Abstimmung und nur korrektes Sozialverhalten ergeben ein deutlich negatives Führungsbild.",
+        "guardrail": "Aufhebungsvertrag und Reorganisation nicht ohne weitere Tatsachen als verhaltensbedingte Trennung darstellen.",
+        "output": "Klare Warnung; bei Gegenbelegen präzises Berichtigungsverlangen zu Leistung, Führung und Stakeholderverhalten.",
         "text": """
         KLINIKVERBUND SAALERAND GGMBH
         Maximalversorgung - Fachkliniken - Pflegeakademie
@@ -247,7 +258,11 @@ CASES = [
         "sector": "Automobilzulieferer / Maschinenbau",
         "type": "Zwischenzeugnis",
         "reason": "Berichtslinienwechsel nach Konzernintegration",
+        "grade": "2",
         "expected": "🟢🟠; starke Projektleistung, Zwischenzeugnis-/Selbstbindung, Berichtslinie und weiche Einschraenkungen pruefen",
+        "must_find": "Sehr gute Fach- und Projektleistung mit Note-2-Gesamtformel; Zwischenzeugnis als Referenz für spätere Berichtslinienänderungen sichern.",
+        "guardrail": "Den noch laufenden Aufbau von Exportkontroll- und IT-Security-Schnittstellen nicht automatisch als Leistungsdefizit zurechnen.",
+        "output": "Positive Einordnung mit Driftvorbehalt; Dokument als Vergleichsbasis sichern, kein Anspruchsschreiben ohne Mangel.",
         "text": """
         ROTHENBURG MOTION SYSTEMS SE
         Automotive Components - Industrial Drives - Sensors
@@ -314,7 +329,11 @@ CASES = [
         "sector": "Chemie- und Verpackungsindustrie",
         "type": "Endzeugnis",
         "reason": "Nichtverlängerung nach Transformationsprogramm",
+        "grade": "3 mit Führungsdrift",
         "expected": "🟠 mit 🔴-Risiken; Ergebnisdruck, Sicherheit/Qualitaet, Fuehrungsverhalten und Schlussformel pruefen",
+        "must_find": "Durchschnittliche Gesamtformel, kritische Hinweise auf Qualität, Anlagenverfügbarkeit, Kommunikation und Führungskräfteentwicklung.",
+        "guardrail": "Nichtverlängerung und Standortneuausrichtung nicht als verdeckte Kündigungs- oder Schuldzuweisung behandeln.",
+        "output": "Gemischtes Gesamtbild erläutern; nur belegte Erfolge oder unrichtige Tatsachen gezielt berichtigen lassen.",
         "text": """
         ELBTAL PACKAGING & CHEMICALS GMBH
         Folien - Spezialverpackungen - Chemische Vorprodukte
@@ -375,54 +394,17 @@ CASES = [
 ]
 
 
-def wrapped(text: str) -> str:
-    lines: list[str] = []
-    for raw in textwrap.dedent(text).strip().splitlines():
-        line = raw.strip()
-        if not line:
-            lines.append("")
-            continue
-        if line.isupper() and len(line) < 90:
-            lines.append(line)
-            continue
-        lines.extend(textwrap.wrap(line, width=WIDTH, break_long_words=False) or [""])
-    return "\n".join(lines) + "\n"
-
-
-def write_pdf(text: str, pdf_path: Path, title: str) -> None:
-    txt_path = pdf_path.with_suffix(".txt")
-    txt_path.write_text(wrapped(text), encoding="utf-8")
-    try:
-        with pdf_path.open("wb") as out:
-            subprocess.run(
-                [
-                    "cupsfilter",
-                    "-i",
-                    "text/plain",
-                    "-m",
-                    "application/pdf",
-                    "-o",
-                    "media=A4",
-                    "-t",
-                    title,
-                    str(txt_path),
-                ],
-                stdout=out,
-                stderr=subprocess.DEVNULL,
-                check=True,
-                timeout=PROCESS_TIMEOUT_SECONDS,
-            )
-    finally:
-        txt_path.unlink(missing_ok=True)
-    normalize_pdf(pdf_path, expected_date_count=2)
-
-
 def build_case(case: dict[str, str]) -> Path:
     folder = OUT / f"{case['nr']}-{case['slug']}"
     folder.mkdir(parents=True)
     pdf = folder / f"Arbeitszeugnis_{case['nr']}-{case['slug']}.pdf"
     try:
-        write_pdf(case["text"], pdf, f"Arbeitszeugnis {case['nr']} {case['name']}")
+        write_testimony_pdf(
+            case["text"],
+            pdf,
+            case_number=case["nr"],
+            document_title=f"Arbeitszeugnis {case['nr']} {case['name']}",
+        )
     except Exception as exc:
         raise RuntimeError(f"failed to build case {case['nr']}-{case['slug']}") from exc
     return pdf
@@ -430,30 +412,61 @@ def build_case(case: dict[str, str]) -> Path:
 
 def write_expectations() -> None:
     rows = "\n".join(
-        f"| {c['nr']} | {c['name']} | {c['expected']} |"
+        f"| {c['nr']} | {c['name']} | {c['grade']} | {germanize(c['expected'])} |"
         for c in CASES
     )
-    text = f"""# Erwartungshorizont und Pruefpunkte — Leitungsfunktionen
+    details = "\n\n".join(
+        f"""### Fall {c['nr']}: {c['name']}
 
-Diese Liste ist kein Loesungsschluessel, sondern ein Pruefhorizont. Die Skill-Ausgabe darf abweichen, wenn sie die Abweichung aus Zeugnistext, Rolle und rechtlichem Anker begruendet.
+- **Muss erkannt werden:** {germanize(c['must_find'])}
+- **Nicht überdehnen:** {germanize(c['guardrail'])}
+- **Erwarteter One-Shot-Ausgang:** {germanize(c['output'])}"""
+        for c in CASES
+    )
+    text = f"""# Erwartungshorizont und Prüfpunkte — Leitungsfunktionen
 
-| Nr. | Fall | Erwartete Hauptpruefung |
-| --- | --- | --- |
+Dieser Erwartungshorizont dient als kalibrierbare Ground Truth für die fiktiven
+Fälle 21 bis 25. Er ist kein schematischer Lösungsschlüssel: Die Ausgabe darf
+abweichen, wenn sie die Abweichung aus vollständigem Zeugnistext, Rolle,
+Beleglage und tragendem Rechtsanker nachvollziehbar begründet.
+
+## Schnellmatrix
+
+| Nr. | Fall | Sollkorridor | Erwartete Hauptprüfung |
+| --- | --- | --- | --- |
 {rows}
+
+## Fallbezogene Mindestbefunde
+
+{details}
 
 ## Besondere Lernziele
 
-- **Leitungsrollen:** Berichtslinie, Fuehrungsspanne, Budget, Gremiennaehe und Entscheidungsbefugnis sauber auswerten.
-- **Schaufenster-Drift:** Einzelprojekte und Spitzensaetze gegen Gesamtformel, Schlussformel und Fuehrungsbeurteilung lesen.
-- **Stakeholder:** Vorstand, Geschaeftsfuehrung, Aufsichtsrat, Betriebsrat, Behoerden, Banken, Kunden und externe Berater rollenbewusst beruecksichtigen.
-- **Transformation:** Restrukturierung, Integration, Digitalisierung und Standortprogramme nicht automatisch als Mangel oder Erfolg ueberbewerten.
-- **Beendigungsgrund:** Ruhestand, Eigenwechsel, Reorganisation, Aufhebungsvertrag, Nichtverlaengerung und Zwischenzeugnisanlass getrennt pruefen.
+- **Leitungsrollen:** Berichtslinie, Führungsspanne, Budget, Gremiennähe und
+  Entscheidungsbefugnis sauber auswerten.
+- **Schaufenster-Drift:** Einzelprojekte und Spitzensätze gegen Gesamtformel,
+  Schlussformel und Führungsbeurteilung lesen.
+- **Stakeholder:** Vorstand, Geschäftsführung, Aufsichtsrat, Betriebsrat,
+  Behörden, Banken, Kunden und externe Berater rollenbewusst berücksichtigen.
+- **Transformation:** Restrukturierung, Integration, Digitalisierung und
+  Standortprogramme nicht automatisch als Mangel oder Erfolg überbewerten.
+- **Beendigungsgrund:** Ruhestand, Eigenwechsel, Reorganisation,
+  Aufhebungsvertrag, Nichtverlängerung und Zwischenzeugnisanlass trennen.
+
+## Auswertungsregel
+
+Ampel, Sollkorridor und rechtliche Durchsetzbarkeit sind drei verschiedene
+Größen. Konkrete Projekterfolge ersetzen keine Gesamtformel; umgekehrt darf
+eine neutrale Reorganisation nicht als persönlicher Vorwurf gelesen werden.
+Erwartet wird stets die rollenrichtige Ausgabe: Managementeinordnung,
+beweisgebundene Korrekturpositionen und nur bei einem belastbaren Punkt ein
+fertiges Gegenseitenschreiben.
 """
     (OUT / "90-erwartungshorizont-und-pruefpunkte.md").write_text(text, encoding="utf-8")
 
 
 def main() -> None:
-    for tool in ("cupsfilter", "pdfunite"):
+    for tool in ("pdfunite",):
         if not shutil.which(tool):
             raise SystemExit(f"missing required tool: {tool}")
 

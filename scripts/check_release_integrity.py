@@ -43,6 +43,8 @@ MARKDOWN_WITH_ANCHORS = [
     QUALITY_AUDIT,
     Path("skill/SKILL.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    Path("testakten/README.md"),
+    Path("testakten/TESTFALL-MATRIX.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md"),
     Path("testakten/arbeitszeugnisse-leitungsfunktionen/README.md"),
@@ -86,6 +88,11 @@ PUBLIC_ARTIFACTS = [
         Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
         None,
     ),
+    (
+        Path("testakten/arbeitszeugnis-testpaket-komplett.zip"),
+        Path("docs/testakten/arbeitszeugnis-testpaket-komplett.zip"),
+        25,
+    ),
 ]
 
 CHECKSUM_ASSET_CANDIDATES = [
@@ -97,6 +104,7 @@ CHECKSUM_ASSET_CANDIDATES = [
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf"),
+    Path("docs/testakten/arbeitszeugnis-testpaket-komplett.zip"),
 ]
 
 RELEASE_ASSET_CANDIDATES = CHECKSUM_ASSET_CANDIDATES + [
@@ -112,6 +120,9 @@ README_NAVIGATION_TARGETS = [
     Path("docs/download-skill.html"),
     Path("docs/download-mini.html"),
     Path("docs/SHA256SUMS.txt"),
+    Path("requirements-build.txt"),
+    Path("testakten/README.md"),
+    Path("testakten/TESTFALL-MATRIX.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
@@ -120,6 +131,7 @@ README_NAVIGATION_TARGETS = [
     Path("testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md"),
     Path("scripts/check_release_integrity.py"),
     Path("scripts/build_generated_testakten.py"),
+    Path("scripts/render_testzeugnis.py"),
     Path("scripts/reproducible_test_artifacts.py"),
     Path("scripts/build_jura_und_wissenschaft_testakten.py"),
     Path("scripts/build_leitungsfunktionen_testakten.py"),
@@ -360,6 +372,11 @@ def check_ci_workflow(checker: Checker) -> None:
     python_action = re.search(r"uses:\s*actions/setup-python@v(\d+)", workflow)
     checker.require("pull_request:" in workflow and "branches: [main]" in workflow, "integrity CI covers pull requests and main")
     checker.require("python3 scripts/check_release_integrity.py" in workflow, "integrity CI runs the repository checker")
+    checker.require(
+        "pip install --requirement requirements-build.txt" in workflow
+        and "build_generated_testakten.py --verify-reproducible" in workflow,
+        "integrity CI installs pinned PDF dependencies and rebuilds artifacts twice",
+    )
     checker.require("contents: read" in workflow, "integrity CI uses read-only repository permissions")
     checker.require("git push" not in workflow and "contents: write" not in workflow, "integrity CI cannot mutate main")
     checker.require(
@@ -759,6 +776,12 @@ def check_generated_build_contract(checker: Checker) -> None:
         "ThreadPoolExecutor" in aggregate and "executor.map(run_builder, BUILDERS)" in aggregate,
         "aggregate builder runs independent test sets concurrently",
     )
+    checker.require(
+        "build_master_archive" in aggregate
+        and "expected 25 individual test PDFs" in aggregate
+        and "PUBLIC_MASTER_ARCHIVE" in aggregate,
+        "aggregate builder creates and publishes the complete 25-case archive",
+    )
 
     builders = [
         Path("scripts/build_jura_und_wissenschaft_testakten.py"),
@@ -767,13 +790,12 @@ def check_generated_build_contract(checker: Checker) -> None:
     for rel in builders:
         source = read_text(rel)
         checker.require(
-            "normalize_pdf" in source and "write_reproducible_zip" in source,
-            f"{rel} normalizes PDFs and ZIP metadata",
+            "write_testimony_pdf" in source and "write_reproducible_zip" in source,
+            f"{rel} uses the shared PDF renderer and canonical ZIP writer",
         )
         checker.require(
-            "normalize_pdf(pdf_path, expected_date_count=2)" in source
-            and "normalize_pdf(combined, expected_date_count=0)" in source,
-            f"{rel} enforces artifact-specific PDF date counts",
+            "normalize_pdf(combined, expected_date_count=0)" in source,
+            f"{rel} normalizes its combined PDF",
         )
         checker.require(
             "shutil.rmtree(OUT)" not in source,
@@ -788,6 +810,13 @@ def check_generated_build_contract(checker: Checker) -> None:
             and "max_workers=min(PDF_WORKERS, len(CASES))" in source,
             f"{rel} builds case PDFs with bounded concurrency",
         )
+        checker.require(
+            all(
+                f'"{field}"' in source
+                for field in ("grade", "must_find", "guardrail", "output")
+            ),
+            f"{rel} carries calibrated grade, finding, guardrail and output expectations",
+        )
 
     helper = read_text(Path("scripts/reproducible_test_artifacts.py"))
     checker.require(
@@ -796,6 +825,18 @@ def check_generated_build_contract(checker: Checker) -> None:
         and "outside" in helper
         and "empty ZIP archive" in helper,
         "artifact helper rejects incomplete PDF metadata and unsafe ZIP inputs",
+    )
+    renderer = read_text(Path("scripts/render_testzeugnis.py"))
+    checker.require(
+        "SimpleDocTemplate" in renderer
+        and "invariant" in renderer
+        and "normalize_pdf(pdf_path, expected_date_count=2)" in renderer
+        and "Fiktive Testakte" in renderer,
+        "shared renderer produces deterministic, visibly marked A4 test certificates",
+    )
+    checker.require(
+        read_text(Path("requirements-build.txt")).strip() == "reportlab==5.0.0",
+        "test-PDF renderer dependency is exactly pinned",
     )
 
     generated_case_pdfs = [
@@ -818,6 +859,14 @@ def check_generated_build_contract(checker: Checker) -> None:
         ),
         "all 15 generated case PDFs use canonical creation and modification dates",
     )
+    checker.require(
+        all(
+            b"ReportLab PDF Library" in pdf.read_bytes()
+            and b"/BaseFont /Helvetica" in pdf.read_bytes()
+            for pdf in generated_case_pdfs
+        ),
+        "all 15 generated case PDFs use the shared proportional-font layout",
+    )
 
     generated_zips = [
         Path(
@@ -828,6 +877,7 @@ def check_generated_build_contract(checker: Checker) -> None:
             "testakten/arbeitszeugnisse-leitungsfunktionen/"
             "arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"
         ),
+        Path("testakten/arbeitszeugnis-testpaket-komplett.zip"),
     ]
     zip_metadata_is_stable = True
     zip_entries_are_sorted = True
@@ -845,6 +895,49 @@ def check_generated_build_contract(checker: Checker) -> None:
         "generated ZIP archives use canonical entry metadata",
     )
     checker.require(zip_entries_are_sorted, "generated ZIP entries use canonical order")
+
+    master = ROOT / "testakten/arbeitszeugnis-testpaket-komplett.zip"
+    with zipfile.ZipFile(master) as archive:
+        names = archive.namelist()
+    checker.require(
+        len(names) == 33
+        and sum(name.endswith(".pdf") for name in names) == 25
+        and "README.md" in names
+        and "TESTFALL-MATRIX.md" in names,
+        "complete test archive contains 25 PDFs and all eight guidance files",
+    )
+
+    matrix = read_text(Path("testakten/TESTFALL-MATRIX.md"))
+    matrix_numbers = re.findall(r"^\|\s*(\d{2})\s*\|", matrix, re.MULTILINE)
+    checker.require(
+        matrix_numbers == [f"{number:02d}" for number in range(1, 26)],
+        "central test matrix covers cases 01 through 25 exactly once and in order",
+    )
+    for rel, expected_cases in (
+        (
+            Path(
+                "testakten/arbeitszeugnisse-jura-und-wissenschaft/"
+                "90-erwartungshorizont-und-pruefpunkte.md"
+            ),
+            10,
+        ),
+        (
+            Path(
+                "testakten/arbeitszeugnisse-leitungsfunktionen/"
+                "90-erwartungshorizont-und-pruefpunkte.md"
+            ),
+            5,
+        ),
+    ):
+        expectation = read_text(rel)
+        checker.require(
+            expectation.count("### Fall ") == expected_cases
+            and expectation.count("**Muss erkannt werden:**") == expected_cases
+            and expectation.count("**Nicht überdehnen:**") == expected_cases
+            and expectation.count("**Erwarteter One-Shot-Ausgang:**")
+            == expected_cases,
+            f"{rel} has complete per-case finding, guardrail and output expectations",
+        )
 
 
 def check_quality_audit(checker: Checker) -> None:
@@ -1119,6 +1212,8 @@ def check_navigation_inventory(checker: Checker) -> None:
         "blob/main/README.md",
         "blob/main/skill/SKILL.md",
         "blob/main/skill/SKILL-mini.md",
+        "blob/main/testakten/README.md",
+        "blob/main/testakten/TESTFALL-MATRIX.md",
         "blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md",
         "blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md",
         "blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md",
@@ -1128,6 +1223,7 @@ def check_navigation_inventory(checker: Checker) -> None:
         "blob/main/.github/workflows/verify-integrity.yml",
         "blob/main/scripts/check_release_integrity.py",
         "blob/main/scripts/build_generated_testakten.py",
+        "blob/main/scripts/render_testzeugnis.py",
         "blob/main/scripts/reproducible_test_artifacts.py",
         "blob/main/LICENSE-APACHE",
         "blob/main/LICENSE-MIT",
@@ -1168,9 +1264,12 @@ def check_navigation_inventory(checker: Checker) -> None:
     readme_names = {rel.parent.name: rel for rel in TEST_READMES}
     common_test_links = [
         "../../README.md",
+        "../README.md",
+        "../TESTFALL-MATRIX.md",
         f"{LATEST_RELEASE_URL}/download/SKILL.md",
         f"{LATEST_RELEASE_URL}/download/SKILL-mini.md",
         f"{LATEST_RELEASE_URL}/download/SHA256SUMS.txt",
+        f"{LATEST_RELEASE_URL}/download/arbeitszeugnis-testpaket-komplett.zip",
         LATEST_RELEASE_URL,
     ]
     for current_name, rel in readme_names.items():
@@ -1350,10 +1449,13 @@ def check_github_release_assets(checker: Checker, tag: str, version: str) -> Non
 def check_pdf_details(checker: Checker) -> None:
     pdfinfo = shutil.which("pdfinfo")
     pdftotext = shutil.which("pdftotext")
+    pdffonts = shutil.which("pdffonts")
     if not pdfinfo:
         checker.warn("pdfinfo not found; skipped all detailed PDF metadata checks")
     if not pdftotext:
         checker.warn("pdftotext not found; skipped all PDF text extraction checks")
+    if not pdffonts:
+        checker.warn("pdffonts not found; skipped generated-PDF font checks")
 
     def run(command: list[str]) -> tuple[str | None, str | None]:
         try:
@@ -1421,6 +1523,110 @@ def check_pdf_details(checker: Checker) -> None:
                 checker.require(
                     attachments == expected_attachments,
                     f"{label} combined PDF contains {expected_attachments} PDF attachment markers (found {attachments})",
+                )
+
+    generated = [
+        *sorted(
+            (ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
+        *sorted(
+            (ROOT / "testakten/arbeitszeugnisse-leitungsfunktionen").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
+    ]
+    detail_futures: dict[
+        tuple[str, Path], Future[tuple[str | None, str | None]]
+    ] = {}
+    commands_per_pdf = sum(tool is not None for tool in (pdfinfo, pdftotext, pdffonts))
+    with ThreadPoolExecutor(
+        max_workers=max(1, min(12, len(generated) * commands_per_pdf))
+    ) as executor:
+        for pdf in generated:
+            if pdfinfo:
+                detail_futures[("info", pdf)] = executor.submit(
+                    run, [pdfinfo, str(pdf)]
+                )
+            if pdftotext:
+                detail_futures[("text", pdf)] = executor.submit(
+                    run, [pdftotext, "-layout", str(pdf), "-"]
+                )
+            if pdffonts:
+                detail_futures[("fonts", pdf)] = executor.submit(
+                    run, [pdffonts, str(pdf)]
+                )
+
+    transliteration_pattern = re.compile(
+        r"\b(?:fuer|ueber\w*|gegenueber|verfueg\w*|geschaeft\w*|"
+        r"taetig\w*|qualitaet\w*|fuehr\w*|rueck\w*|persoen\w*|"
+        r"arbeitsablaeuf\w*|besprechungsfaell\w*|betriebsraet\w*|"
+        r"buero|beduerf\w*|europae\w*|geaendert\w*|"
+        r"interdisziplinaer\w*|kaufmaenn\w*|krankenhaeus\w*|"
+        r"perspektivklaer\w*|praesenz|umsetzungsstaerke|"
+        r"verguet\w*|einschraenk\w*)\b",
+        re.IGNORECASE,
+    )
+    for pdf in generated:
+        relative = pdf.relative_to(ROOT)
+        case_number = pdf.parent.name[:2]
+        if pdfinfo:
+            info, error = detail_futures[("info", pdf)].result()
+            if error:
+                checker.fail(f"{relative} pdfinfo failed: {error}")
+            else:
+                assert info is not None
+                page_match = re.search(r"^Pages:\s+(\d+)$", info, re.MULTILINE)
+                page_count = int(page_match.group(1)) if page_match else 0
+                checker.require(
+                    1 <= page_count <= 2
+                    and "(A4)" in info
+                    and "Encrypted:       no" in info,
+                    f"{relative} is an unencrypted one- or two-page A4 document",
+                )
+                checker.require(
+                    "Producer:        ReportLab PDF Library" in info,
+                    f"{relative} identifies the deterministic ReportLab renderer",
+                )
+        else:
+            page_count = 0
+
+        if pdftotext:
+            extracted, error = detail_futures[("text", pdf)].result()
+            if error:
+                checker.fail(f"{relative} pdftotext failed: {error}")
+            else:
+                assert extracted is not None
+                pages = [page for page in extracted.split("\f") if page.strip()]
+                checker.require(
+                    f"Fiktive Testakte | Fall {case_number}" in extracted
+                    and extracted.count("Fiktive Testakte | Fall") == len(pages),
+                    f"{relative} visibly marks every page as fictitious and case-specific",
+                )
+                checker.require(
+                    all(len(page.strip()) >= 500 for page in pages),
+                    f"{relative} has no empty or signature-only page",
+                )
+                checker.require(
+                    transliteration_pattern.search(extracted) is None,
+                    f"{relative} uses proper German typography instead of legacy ASCII transliteration",
+                )
+                if page_count:
+                    checker.require(
+                        len(pages) == page_count,
+                        f"{relative} extracted page boundaries match PDF metadata",
+                    )
+
+        if pdffonts:
+            fonts, error = detail_futures[("fonts", pdf)].result()
+            if error:
+                checker.fail(f"{relative} pdffonts failed: {error}")
+            else:
+                assert fonts is not None
+                checker.require(
+                    "Helvetica" in fonts and "Courier" not in fonts,
+                    f"{relative} uses proportional standard fonts and no monospaced body font",
                 )
 
 

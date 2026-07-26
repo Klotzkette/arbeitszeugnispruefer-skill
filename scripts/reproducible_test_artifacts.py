@@ -13,9 +13,11 @@ from typing import Iterable
 CANONICAL_PDF_DATE = b"D:20000101000000Z00'00'"
 ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 ZIP_FILE_MODE = 0o100644
-_PDF_DATE_RE = re.compile(rb"/(CreationDate|ModDate) \(D:\d{14}Z00'00'\)")
+_PDF_DATE_RE = re.compile(
+    rb"/(CreationDate|ModDate) \(D:\d{14}(?:Z00'00'|[+-]\d{2}'\d{2}')\)"
+)
 _HEX_ID_RE = re.compile(
-    rb"/ID \[ <([0-9a-fA-F]{32})>\s*<([0-9a-fA-F]{32})> \]"
+    rb"/ID\s*\[\s*<([0-9a-fA-F]{32})>\s*<([0-9a-fA-F]{32})>\s*\]"
 )
 
 

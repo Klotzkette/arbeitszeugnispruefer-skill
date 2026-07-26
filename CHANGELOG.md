@@ -7,6 +7,50 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.23] — 2026-07-26
+
+### Hinzugefügt
+- Zentrale Testakten-Übersicht und vollständige Testfallmatrix für alle 25
+  fiktiven Zeugnisse. Jeder Fall weist Soll-Notenkorridor, Kernbefund,
+  Überdehnungsverbot und klare Bestehenskriterien für One-Shot-Ausgaben aus.
+- Reproduzierbares Komplettpaket mit allen 25 Einzel-PDFs und acht
+  Begleitdateien als zusätzlicher Direktdownload und GitHub-Release-Asset.
+- Gemeinsamer ReportLab-Renderer mit festgeschriebener Build-Abhängigkeit für
+  die 15 juristischen, wissenschaftlichen und leitungsbezogenen Testzeugnisse.
+
+### Geändert
+- Testfälle 11 bis 25 vollständig neu gesetzt: proportionaler Schriftsatz,
+  fallbezogene Briefköpfe, Seiten- und Fortsetzungskennzeichnung, plausible
+  Unterschriftenblöcke, fiktive Dienststempel sowie robuste ein- bis
+  zweiseitige A4-Layouts.
+- Erwartungshorizonte für die Spezialfälle zu vollständigen Prüfprotokollen
+  ausgebaut. Sie trennen zwingenden Befund, zulässigen Bewertungskorridor,
+  rechtliche Zurückhaltung und erwartetes One-Shot-Ergebnis.
+- Testakten-Navigation in README, Pages und allen drei Sammlungen vereinheitlicht;
+  Einzelpakete, Sammel-PDFs, Matrix und Komplettpaket sind von den zentralen
+  Einstiegen direkt erreichbar.
+- Build und CI prüfen nun den reproduzierbaren Doppelbau sämtlicher erzeugter
+  Testartefakte sowie PDF-Format, Seiteninhalt, Schriftwahl, Metadaten,
+  Archivstruktur und Prüfsummen.
+
+### Behoben
+- Alte Schreibmaschinenoptik, ASCII-Umschriften, manuelle Trennstriche und eine
+  isolierte Unterschriftsseite aus den Spezial-Testzeugnissen entfernt.
+- PDF-Normalisierung für die von ReportLab erzeugten Datums- und ID-Formate
+  gehärtet; alle 29 erzeugten Dateien sind bei zwei unmittelbar aufeinander
+  folgenden Builds byteidentisch.
+- PDF- und ZIP-Artefakte für Git ausdrücklich als Binärdateien markiert, damit
+  Quellcode-Diffs und Leerzeichenprüfungen nicht von PDF-Rohdaten überflutet
+  werden.
+
+### Geprüft
+- Alle 15 neu gesetzten Spezialzeugnisse sowie die zweiseitige Leitungsakte
+  visuell geprüft; Voll- und Mini-Skill bleiben gespiegelt, die Mini-Fassung
+  bleibt unter 7.500 Zeichen.
+- Amtliche Aktualitätskontrolle der einschlägigen BAG-Rechtsprechung bis
+  26.07.2026: kein neuer unmittelbar einschlägiger Sachanker nach
+  BAG 07.05.2026 – 8 AZB 25/25; daher keine unbelegte Rechtsänderung.
+
 ## [3.0.22] — 2026-07-15
 
 ### Behoben
@@ -555,6 +599,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.23]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.23
 [3.0.22]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.22
 [3.0.21]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.21
 [3.0.20]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.20
