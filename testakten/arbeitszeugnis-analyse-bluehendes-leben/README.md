@@ -15,7 +15,9 @@ Diese Akte begleitet den Skill [`arbeitszeugnispruefer`](../../skill/SKILL.md) a
 | Alle 25 Fälle und Ground Truth | [Komplettpaket herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) · [Fallmatrix](../TESTFALL-MATRIX.md) |
 | ZIP mit allen 10 Einzel-PDFs | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) · [`Repository-Datei`](arbeitszeugnis-testakten-einzel-pdfs.zip) |
 | Gesamt-PDF aller 10 Zeugnisse | [direkt herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) · [`Repository-Datei`](gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
+| Erwartungshorizont und Prüfpunkte | [`90-erwartungshorizont-und-pruefpunkte.md`](90-erwartungshorizont-und-pruefpunkte.md) |
 | Ergänzende Korrespondenz und Vollvermerke | [`90-ergaenzende-korrespondenz-und-vollvermerke.md`](90-ergaenzende-korrespondenz-und-vollvermerke.md) |
+| Reproduzierbare Quellen und Builder | [`quellen/`](quellen/) · [`build_allgemeine_testakten.py`](../../scripts/build_allgemeine_testakten.py) |
 
 ## Zweck der Akte
 
@@ -50,5 +52,15 @@ Die Zeugnisse sehen oberflächlich höflich, vollständig und unkritisch aus. Ta
 Jedes Zeugnis liegt als eigenes PDF in einem eigenen Unterordner. Der Dateiname folgt dem Schema `Arbeitszeugnis_<nr>-<vorname>-<nachname>-<beruf>.pdf`.
 
 Alle Zeugnisse enthalten vollständige Briefköpfe, Ort und Datum, Personalstammdaten, Aufgabenbeschreibung, Bewertungsteile, Beendigungspassage, Schlussformel und Unterschriftsblock. Die Akte ist Trainings- und Demonstrationsmaterial und ersetzt keine rechtliche Beratung.
+
+## Reproduzierbarer Neubau
+
+Die zehn Textdateien in [`quellen/`](quellen/) sind ausschließlich die versionierten Ausgangstexte der fiktiven Zeugnisse, keine Lösungshinweise. Der Builder setzt daraus mit demselben Renderer wie bei den Fällen 11 bis 25 die Einzel-PDFs, das Gesamt-PDF, das ZIP und den Erwartungshorizont neu:
+
+```bash
+python3 scripts/build_allgemeine_testakten.py
+```
+
+Für den strengen Release-Lauf aller 25 Fälle dient `python3 scripts/build_generated_testakten.py --verify-reproducible`. Der Lauf baut sämtliche Artefakte zweimal und bricht bei jeder Byte-Abweichung oder Änderung einer kuratierten Quelle ab.
 
 [Zur Hauptübersicht](../../README.md) · [Zur Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Zur nächsten Testakte: Jura und Wissenschaft](../arbeitszeugnisse-jura-und-wissenschaft/README.md)

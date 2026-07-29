@@ -9,6 +9,7 @@ legal-citation drift, oversized mini skill files and missing public test artifac
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
 import re
@@ -43,6 +44,7 @@ MARKDOWN_WITH_ANCHORS = [
     QUALITY_AUDIT,
     Path("skill/SKILL.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/90-erwartungshorizont-und-pruefpunkte.md"),
     Path("testakten/README.md"),
     Path("testakten/TESTFALL-MATRIX.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
@@ -124,6 +126,7 @@ README_NAVIGATION_TARGETS = [
     Path("testakten/README.md"),
     Path("testakten/TESTFALL-MATRIX.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/90-erwartungshorizont-und-pruefpunkte.md"),
     Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md"),
@@ -133,6 +136,7 @@ README_NAVIGATION_TARGETS = [
     Path("scripts/build_generated_testakten.py"),
     Path("scripts/render_testzeugnis.py"),
     Path("scripts/reproducible_test_artifacts.py"),
+    Path("scripts/build_allgemeine_testakten.py"),
     Path("scripts/build_jura_und_wissenschaft_testakten.py"),
     Path("scripts/build_leitungsfunktionen_testakten.py"),
     Path("CHANGELOG.md"),
@@ -153,8 +157,8 @@ COMBINED_PDF_DETAILS = [
         Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf"),
         "Allgemeine Branchen",
         10,
-        9,
         10,
+        None,
     ),
     (
         Path("testakten/arbeitszeugnisse-jura-und-wissenschaft/gesamt-pdf/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
@@ -562,6 +566,7 @@ def check_legal_citations(checker: Checker) -> None:
         "Distanzsignal; Arbeitgeberkündigung",
         "Passivkonstruktion** („Das Arbeitsverhältnis endet\"): Distanzsignal",
         "Datumsangabe ohne weitere Worte** am Ende: Kalte Trennung",
+        "Branchenüblichkeit guter Noten ist kein Argument vor Gericht",
     ]
     combined = "\n".join((full, mini, readme))
     stale = [item for item in forbidden if item in combined]
@@ -669,7 +674,8 @@ def check_legal_citations(checker: Checker) -> None:
         and "Bei HR-, Arbeitgeber-, Betriebsrats- oder neutraler Schulungsperspektive"
         in full
         and "Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik"
-        in mini,
+        in mini
+        and "Ohne belastbaren Punkt: kein Gegenseitenschreiben" in mini,
         "Codex review regression: autonomous demand letters remain role-gated",
     )
     checker.require(
@@ -745,6 +751,13 @@ def check_legal_citations(checker: Checker) -> None:
         "closing-formula and isolated-integrity language remains non-mechanical",
     )
     checker.require(
+        "maßregelnde Streichung" in full
+        and "maßregelnde Streichung" in mini
+        and "9 AZR 272/22" in full
+        and "§ 612a BGB" in mini,
+        "closing-formula rules preserve the anti-retaliation exception",
+    )
+    checker.require(
         "das tatsächliche Ausstellungsdatum trägt" in full
         and "Kunden, falls tatsächlicher Kundenkontakt bestand" in full
         and "Freiwillige Schlussformelwünsche" in full,
@@ -784,9 +797,14 @@ def check_generated_build_contract(checker: Checker) -> None:
     )
 
     builders = [
+        Path("scripts/build_allgemeine_testakten.py"),
         Path("scripts/build_jura_und_wissenschaft_testakten.py"),
         Path("scripts/build_leitungsfunktionen_testakten.py"),
     ]
+    checker.require(
+        all(rel.as_posix() in aggregate for rel in builders),
+        "aggregate builder invokes all three test-set builders",
+    )
     for rel in builders:
         source = read_text(rel)
         checker.require(
@@ -818,6 +836,18 @@ def check_generated_build_contract(checker: Checker) -> None:
             f"{rel} carries calibrated grade, finding, guardrail and output expectations",
         )
 
+    general_sources = sorted(
+        (
+            ROOT / "testakten/arbeitszeugnis-analyse-bluehendes-leben/quellen"
+        ).glob("[0-9][0-9]-*.txt")
+    )
+    checker.require(
+        len(general_sources) == 10
+        and [path.name[:2] for path in general_sources]
+        == [f"{number:02d}" for number in range(1, 11)],
+        "general test set has exactly the versioned source files 01 through 10",
+    )
+
     helper = read_text(Path("scripts/reproducible_test_artifacts.py"))
     checker.require(
         "expected_date_count" in helper
@@ -841,6 +871,11 @@ def check_generated_build_contract(checker: Checker) -> None:
 
     generated_case_pdfs = [
         *sorted(
+            (ROOT / "testakten/arbeitszeugnis-analyse-bluehendes-leben").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
+        *sorted(
             (ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft").glob(
                 "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
             )
@@ -852,12 +887,12 @@ def check_generated_build_contract(checker: Checker) -> None:
         ),
     ]
     checker.require(
-        len(generated_case_pdfs) == 15
+        len(generated_case_pdfs) == 25
         and all(
             pdf.read_bytes().count(CANONICAL_PDF_DATE) == 2
             for pdf in generated_case_pdfs
         ),
-        "all 15 generated case PDFs use canonical creation and modification dates",
+        "all 25 generated case PDFs use canonical creation and modification dates",
     )
     checker.require(
         all(
@@ -865,10 +900,14 @@ def check_generated_build_contract(checker: Checker) -> None:
             and b"/BaseFont /Helvetica" in pdf.read_bytes()
             for pdf in generated_case_pdfs
         ),
-        "all 15 generated case PDFs use the shared proportional-font layout",
+        "all 25 generated case PDFs use the shared proportional-font layout",
     )
 
     generated_zips = [
+        Path(
+            "testakten/arbeitszeugnis-analyse-bluehendes-leben/"
+            "arbeitszeugnis-testakten-einzel-pdfs.zip"
+        ),
         Path(
             "testakten/arbeitszeugnisse-jura-und-wissenschaft/"
             "arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"
@@ -900,11 +939,11 @@ def check_generated_build_contract(checker: Checker) -> None:
     with zipfile.ZipFile(master) as archive:
         names = archive.namelist()
     checker.require(
-        len(names) == 33
+        len(names) == 34
         and sum(name.endswith(".pdf") for name in names) == 25
         and "README.md" in names
         and "TESTFALL-MATRIX.md" in names,
-        "complete test archive contains 25 PDFs and all eight guidance files",
+        "complete test archive contains 25 PDFs and all nine guidance files",
     )
 
     matrix = read_text(Path("testakten/TESTFALL-MATRIX.md"))
@@ -913,7 +952,39 @@ def check_generated_build_contract(checker: Checker) -> None:
         matrix_numbers == [f"{number:02d}" for number in range(1, 26)],
         "central test matrix covers cases 01 through 25 exactly once and in order",
     )
+    matrix_grades = dict(
+        re.findall(
+            r"^\|\s*(\d{2})\s*\|[^|]*\|\s*([^|]+?)\s*\|",
+            matrix,
+            re.MULTILINE,
+        )
+    )
+    builder_grades: dict[str, str] = {}
+    for rel in builders:
+        tree = ast.parse(read_text(rel), filename=str(rel))
+        cases_assignment = next(
+            node
+            for node in tree.body
+            if isinstance(node, ast.Assign)
+            and any(
+                isinstance(target, ast.Name) and target.id == "CASES"
+                for target in node.targets
+            )
+        )
+        for case in ast.literal_eval(cases_assignment.value):
+            builder_grades[str(case["nr"])] = str(case["grade"])
+    checker.require(
+        builder_grades == matrix_grades,
+        "all 25 builder grade corridors exactly match the central test matrix",
+    )
     for rel, expected_cases in (
+        (
+            Path(
+                "testakten/arbeitszeugnis-analyse-bluehendes-leben/"
+                "90-erwartungshorizont-und-pruefpunkte.md"
+            ),
+            10,
+        ),
         (
             Path(
                 "testakten/arbeitszeugnisse-jura-und-wissenschaft/"
@@ -1215,14 +1286,20 @@ def check_navigation_inventory(checker: Checker) -> None:
         "blob/main/testakten/README.md",
         "blob/main/testakten/TESTFALL-MATRIX.md",
         "blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md",
+        "blob/main/testakten/arbeitszeugnis-analyse-bluehendes-leben/90-erwartungshorizont-und-pruefpunkte.md",
         "blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/README.md",
+        "blob/main/testakten/arbeitszeugnisse-jura-und-wissenschaft/90-erwartungshorizont-und-pruefpunkte.md",
         "blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/README.md",
+        "blob/main/testakten/arbeitszeugnisse-leitungsfunktionen/90-erwartungshorizont-und-pruefpunkte.md",
         "tree/main/scripts",
         "blob/main/CHANGELOG.md",
         "blob/main/QUALITY-AUDIT-100.md",
         "blob/main/.github/workflows/verify-integrity.yml",
         "blob/main/scripts/check_release_integrity.py",
         "blob/main/scripts/build_generated_testakten.py",
+        "blob/main/scripts/build_allgemeine_testakten.py",
+        "blob/main/scripts/build_jura_und_wissenschaft_testakten.py",
+        "blob/main/scripts/build_leitungsfunktionen_testakten.py",
         "blob/main/scripts/render_testzeugnis.py",
         "blob/main/scripts/reproducible_test_artifacts.py",
         "blob/main/LICENSE-APACHE",
@@ -1508,7 +1585,13 @@ def check_pdf_details(checker: Checker) -> None:
             headings = sum(
                 1
                 for line in extracted.splitlines()
-                if line.strip() in {"ARBEITSZEUGNIS", "ZWISCHENZEUGNIS", "Arbeitszeugnis"}
+                if line.strip()
+                in {
+                    "ARBEITSZEUGNIS",
+                    "ZWISCHENZEUGNIS",
+                    "Arbeitszeugnis",
+                    "Zwischenzeugnis",
+                }
             )
             checker.require(
                 headings == expected_headings,
@@ -1526,6 +1609,11 @@ def check_pdf_details(checker: Checker) -> None:
                 )
 
     generated = [
+        *sorted(
+            (ROOT / "testakten/arbeitszeugnis-analyse-bluehendes-leben").glob(
+                "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"
+            )
+        ),
         *sorted(
             (ROOT / "testakten/arbeitszeugnisse-jura-und-wissenschaft").glob(
                 "[0-9][0-9]-*/Arbeitszeugnis_*.pdf"

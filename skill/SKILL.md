@@ -5,7 +5,7 @@ description: "Prüft deutsche einfache, qualifizierte, Zwischen-, Dienst- und Au
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.0.23
+Version: 3.0.24
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 
@@ -45,7 +45,7 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 - **Beweislastregel BAG:** Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist die Schwelle: Für eine bessere Note trägt der Arbeitnehmer, für eine schlechtere der Arbeitgeber die Darlegungs- und Beweislast (Einzelheiten und Fundstellen in [Stufe 6](#6--gesamtnotenspanne-und-hauptbefund)).
 - **Zuständigkeit:** Bei Arbeitnehmern regelmäßig Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf ordnungsgemäße Zeugniserteilung als Leistungsklage. Bei Organpersonen, insbesondere bestellten GmbH-Geschäftsführern, Arbeitnehmerstatus und Rechtsweg gesondert nach § 5 Abs. 1 Satz 3 ArbGG prüfen; der ordentliche Rechtsweg kann eröffnet sein.
 
-> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, die Entscheidungsdatenbank des BAG, ein Landesrechtsprechungsportal oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. `dejure.org` darf als Fundstellenindex dienen, ersetzt aber bei verfügbarer Primärquelle nicht deren Prüfung. Die nachstehenden Anker wurden zuletzt am **14.07.2026** gegen frei zugängliche Quellen geprüft; vor Verwendung in einem Schriftsatz Fortgeltung und genauen Wortlaut erneut kontrollieren.
+> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, die Entscheidungsdatenbank des BAG, ein Landesrechtsprechungsportal oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. `dejure.org` darf als Fundstellenindex dienen, ersetzt aber bei verfügbarer Primärquelle nicht deren Prüfung. Die nachstehenden Anker wurden zuletzt am **29.07.2026** gegen frei zugängliche Quellen geprüft; vor Verwendung in einem Schriftsatz Fortgeltung und genauen Wortlaut erneut kontrollieren.
 
 ## Rechtsprechungsanker — BAG-Leitentscheidungen
 
@@ -94,8 +94,8 @@ Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und
 
 1. **Status vor Inhalt klären.** Arbeitnehmer-Endzeugnis: § 109 GewO. Dauerndes Dienstverhältnis außerhalb des Arbeitnehmerstatus: § 630 BGB. Berufsausbildungsverhältnis: § 16 BBiG. Zwischenzeugnis: vertragliche Nebenpflicht bei triftigem Grund. Organpersonen, Umschulung und Mischstatus nie schematisch zuordnen.
 2. **Decodierung hat Grenzen.** Nicht jede unübliche oder blasse Formulierung ist ein Geheimcode. Das BAG verlangt für einen Verstoß gegen § 109 Abs. 2 S. 2 GewO, dass die Formulierung aus Sicht des objektiven Zeugnislesers etwas anderes aussagt als ihr Wortlaut. Im Zweifel: Tendenz mit Unsicherheitsvermerk ausweisen, nicht als sicheren Code behaupten.
-3. **Beweislast realistisch kommunizieren.** Wer Note 2 statt Note 3 will, muss liefern (9 AZR 12/03; 9 AZR 584/13). Branchenüblichkeit guter Noten ist kein Argument vor Gericht.
-4. **Schlussformel nüchtern einordnen.** Die Signalwirkung ist real, der Anspruch ist es nicht (9 AZR 44/00; 9 AZR 227/11; 9 AZR 146/21). Die Schlussformel gehört in die Verhandlung, nicht in den Klageantrag — und bei erteilter, missliebiger Schlussformel ist die einzige einklagbare Alternative das Zeugnis ohne Schlussformel.
+3. **Beweislast realistisch kommunizieren.** Wer Note 2 statt Note 3 will, muss liefern (9 AZR 12/03; 9 AZR 584/13). Der bloße Hinweis auf branchenüblich gute Noten verschiebt die Darlegungs- und Beweislast nicht.
+4. **Schlussformel nüchtern einordnen.** Die Signalwirkung ist real; auf Dank, Bedauern und gute Wünsche besteht grundsätzlich kein Anspruch (9 AZR 44/00; 9 AZR 227/11; 9 AZR 146/21). Solche Wunschformulierungen gehören regelmäßig in die Verhandlung, nicht in den Klageantrag; bei bloßer Unzufriedenheit mit einer erteilten Formel kann grundsätzlich nur ihre Entfernung verlangt werden. Unwahre Tatsachen und eine maßregelnde Streichung nach berechtigter Berichtigungsforderung sind davon getrennt zu prüfen (§ 612a BGB; 9 AZR 272/22).
 5. **Verzichtsklauseln prüfen.** Ein vor Beendigung erklärter Zukunftsverzicht auf ein qualifiziertes Zeugnis ist unwirksam (2 AZR 96/24 (B)). Aufhebungs-, Vergleichs- und Erledigungsklauseln deshalb immer am tatsächlichen Beendigungszeitpunkt und am konkreten Zeugnisanspruch messen.
 6. **Folgefassungen gegen Verschlechterung sichern.** Beim Übergang vom Zwischen- zum Endzeugnis Bindung für den bereits beurteilten Zeitraum prüfen (9 AZR 248/07). Bei Berichtigungsverlangen darf der Arbeitgeber unbeanstandete Teile ohne neue sachliche Gründe nicht verschlechtern (9 AZR 352/04). Schlussformeln bleiben gesondert zu behandeln: grundsätzlich kein Anspruch, aber Schutz gegen maßregelnde Streichung nach berechtigtem Änderungsverlangen.
 7. **Auslassungen nicht überdehnen.** Beredtes Schweigen nur dann als Berichtigungspunkt führen, wenn das fehlende Merkmal nach Berufskreis, Branche oder konkreter Funktion erwartbar ist und das Fehlen eine negative Lesart erzeugt (9 AZR 632/07). Fehlt diese Grundlage, nur als Verhandlungswunsch markieren.

@@ -7,6 +7,49 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.24] — 2026-07-29
+
+### Hinzugefügt
+- Reproduzierbarer Builder für die allgemeinen Fälle 01 bis 10 samt zehn
+  versionierten Zeugnisquellen, Gesamt-PDF, Einzel-PDF-ZIP und Pages-Spiegel.
+- Vollständiger Erwartungshorizont für die allgemeinen Branchen mit
+  Sollkorridor, Mindestbefund, Überinterpretationsschutz und erwartetem
+  One-Shot-Ausgang für jeden Fall.
+- Regression, die alle 25 Sollkorridore aus den drei Buildern exakt gegen die
+  zentrale Testfallmatrix prüft.
+
+### Geändert
+- Gemeinsamer PDF-Renderer auf alle 25 Fälle ausgedehnt. Ein adaptives
+  ein- bis zweiseitiges Layout, aussagekräftige Briefkopf-Kürzel sowie
+  platzsparende Stempel-/Unterschriftsblöcke beseitigen dünne Folgeseiten.
+- Zentraler Build erzeugt nun alle drei Testaktensätze parallel, schützt
+  Quelltexte und redaktionelle Begleitdateien und verifiziert 42 erzeugte
+  Dateien in zwei aufeinanderfolgenden Builds bytegenau.
+- README, Testakten-Zentrale und Pages-Wegweiser verlinken den neuen
+  Erwartungshorizont, sämtliche Builder und die reproduzierbaren Quellen.
+- Komplettpaket auf 25 PDFs und neun Begleitdateien erweitert.
+
+### Behoben
+- Schlussformel-Merksatz von der Ausnahme der maßregelnden Streichung getrennt:
+  § 612a BGB und BAG 06.06.2023 – 9 AZR 272/22 bleiben trotz des
+  grundsätzlichen fehlenden Anspruchs auf Dankes- und Wunschformeln anwendbar.
+- Beweislast-Merksatz zu BAG 18.11.2014 – 9 AZR 584/13 präzisiert:
+  Branchenüblich gute Noten verschieben die Darlegungs- und Beweislast nicht;
+  sie sind nicht pauschal als prozessual bedeutungslos bezeichnet.
+- Mini-Skill-Gate geschärft: Im One-Shot entscheidet ein belastbarer
+  Korrektur- oder Verhandlungspunkt über das Gegenseitenschreiben, nicht ein
+  zusätzlich ausdrücklich genanntes Handlungsziel.
+- Abweichenden Sollkorridor von Fall 14 zwischen Builder und Matrix
+  vereinheitlicht.
+
+### Geprüft
+- Alle 25 Erstseiten und sämtliche fünf Fortsetzungsseiten visuell kontrolliert;
+  keine leere oder reine Unterschriftsseite, keine Überlagerung und keine
+  abgeschnittenen Inhalte.
+- Amtliche Rechtskontrolle bis 29.07.2026: § 109 GewO und die einschlägige
+  BAG-Linie erneut geprüft; BAG 07.05.2026 – 8 AZB 25/25 bleibt der jüngste
+  unmittelbar einschlägige neue Sachanker.
+
 ## [3.0.23] — 2026-07-26
 
 ### Hinzugefügt
@@ -599,6 +642,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.24]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.24
 [3.0.23]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.23
 [3.0.22]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.22
 [3.0.21]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.21

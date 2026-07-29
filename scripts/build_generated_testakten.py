@@ -17,23 +17,33 @@ from reproducible_test_artifacts import write_reproducible_zip
 ROOT = Path(__file__).resolve().parents[1]
 BUILD_TIMEOUT_SECONDS = 300
 BUILDERS = [
+    Path("scripts/build_allgemeine_testakten.py"),
     Path("scripts/build_jura_und_wissenschaft_testakten.py"),
     Path("scripts/build_leitungsfunktionen_testakten.py"),
 ]
 GENERATED_ROOTS = [
+    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben"),
     Path("testakten/arbeitszeugnisse-jura-und-wissenschaft"),
     Path("testakten/arbeitszeugnisse-leitungsfunktionen"),
 ]
 TESTAKTEN_ROOT = Path("testakten")
 MASTER_ARCHIVE = TESTAKTEN_ROOT / "arbeitszeugnis-testpaket-komplett.zip"
 PUBLIC_MASTER_ARCHIVE = Path("docs/testakten") / MASTER_ARCHIVE.name
+GENERAL_ROOT = GENERATED_ROOTS[0]
+GENERAL_SOURCE_FILES = [
+    path.relative_to(ROOT)
+    for path in sorted((ROOT / GENERAL_ROOT / "quellen").glob("*.txt"))
+]
 CURATED_FILES = [
     TESTAKTEN_ROOT / "README.md",
     TESTAKTEN_ROOT / "TESTFALL-MATRIX.md",
-    Path("testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md"),
+    GENERAL_ROOT / "90-ergaenzende-korrespondenz-und-vollvermerke.md",
     *[root / "README.md" for root in GENERATED_ROOTS],
+    *GENERAL_SOURCE_FILES,
 ]
 PUBLIC_ARTIFACTS = [
+    Path("docs/testakten/arbeitszeugnis-testakten-einzel-pdfs.zip"),
+    Path("docs/testakten/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf"),
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip"),
     Path("docs/testakten/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf"),
     Path("docs/testakten/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip"),
@@ -55,11 +65,12 @@ def snapshot(paths: list[Path]) -> dict[str, str]:
 
 
 def artifact_manifest() -> dict[str, str]:
+    curated = set(CURATED_FILES)
     paths = [
         path.relative_to(ROOT)
         for rel in GENERATED_ROOTS
         for path in sorted((ROOT / rel).rglob("*"))
-        if path.is_file()
+        if path.is_file() and path.relative_to(ROOT) not in curated
     ]
     return snapshot(sorted(set(paths + PUBLIC_ARTIFACTS + [MASTER_ARCHIVE])))
 
@@ -163,7 +174,7 @@ def main(argv: list[str] | None = None) -> int:
     curated_before = snapshot(CURATED_FILES)
     build_all()
     if snapshot(CURATED_FILES) != curated_before:
-        raise SystemExit("builder changed a curated test-archive README")
+        raise SystemExit("builder changed a curated test-archive source or guide")
 
     if args.verify_reproducible:
         first = artifact_manifest()

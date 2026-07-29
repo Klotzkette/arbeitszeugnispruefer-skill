@@ -5,7 +5,7 @@ description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Pr�
 
 # Mini-Arbeitszeugnis-Prüfer
 
-Version: 3.0.23
+Version: 3.0.24
 
 Kurzskill für kleine Kontextfenster. Keine Gewähr; Recht vor Schriftsatznutzung live prüfen.
 
@@ -31,7 +31,7 @@ Quelle einmal lesen: Seiten/Dokumentgrenzen sichern; Sätze als S1, S2 … mit W
 - § 630 BGB: dauerndes Dienstverhältnis außerhalb des Arbeitnehmerstatus. § 16 Abs. 1/2 BBiG: Form/Inhalt bei Berufsausbildung und ggf. über § 26 BBiG; Umschulung gesondert einordnen.
 - Zwischenzeugnis bei triftigem Grund als Nebenpflicht (§ 241 Abs. 2 BGB); Verzögerungsschaden nur nach §§ 280 Abs. 1/2, 286 BGB.
 - Rechtsweg statusabhängig: bei Arbeitnehmern regelmäßig Arbeitsgericht/Leistungsklage; Organpersonen nach §§ 2, 5 ArbGG prüfen. § 12a ArbGG gilt nur im Arbeitsrechtsweg.
-- BAG-Linie: „zur vollen Zufriedenheit" = Note 3; bessere Note: Arbeitnehmer beweist, schlechtere: Arbeitgeber. Dank/Wünsche sind Signal, regelmäßig nicht einklagbar; bei missliebiger Formel grundsätzlich nur Entfernung, kein Wunschtext.
+- BAG-Linie: „zur vollen Zufriedenheit" = Note 3; bessere Note: Arbeitnehmer beweist, schlechtere: Arbeitgeber. Dank/Wünsche sind regelmäßig nicht einklagbar; bei bloßer Unzufriedenheit nur Entfernung, kein Wunschtext; maßregelnde Streichung gesondert nach § 612a BGB prüfen.
 - Auslassungen nur bei erwartbarer Hervorhebung rügen; Datum wahr halten; im Vergleich konkreten Wortlaut/Entwurf sichern.
 - Vor Beendigung kein wirksamer Zukunftsverzicht auf ein qualifiziertes Zeugnis; Verzichts-/Erledigungsklauseln prüfen.
 - Fristen: §§ 195, 199 BGB; Ausschlussfristen sowie Verwirkung nur mit Zeit- und Umstandsmoment prüfen.
@@ -70,7 +70,7 @@ Liefere knapp, aber verwendbar:
 4. **Hauptkritik/Recht:** Top-3, Drift/Auslassungen, Norm, Rechtsweg, Beweislast, Schlussformel, Fristen; keine ungeprüften Zitate.
 5. **Empfehlung:** akzeptieren, nachverhandeln, berichtigen, Vergleich/Klage prüfen.
 
-Aus Betroffenenperspektive bei belastbarem Punkt sofort Erklärung und ausformuliertes Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende mit Frist, Streitstellen alt/neu und höflichem Ton mitschreiben. Ampel allein begründet keinen Anspruch: Rechtsmängel als Berichtigung, freiwillige Punkte ausdrücklich nur als Bitte; ungesicherte Hypothesen erst klären. Ohne Handlungsziel: kein Gegenseitenschreiben.
+Aus Betroffenenperspektive bei belastbarem Punkt sofort Erklärung und ausformuliertes Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende mit Frist, Streitstellen alt/neu und höflichem Ton mitschreiben. Ampel allein begründet keinen Anspruch: Rechtsmängel als Berichtigung, freiwillige Punkte ausdrücklich nur als Bitte; ungesicherte Hypothesen erst klären. Ohne belastbaren Punkt: kein Gegenseitenschreiben.
 
 Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik gegen den eigenen Arbeitgeber. Liefere Korrekturvermerk: Risiko, warum angreifbar, sichere Ersatzformulierung, Konsistenzcheck, Formcheck.
 

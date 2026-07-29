@@ -40,26 +40,45 @@ STAMP_PREFIXES = (
     "Firmenstempel:",
     "Kanzleistempel:",
     "Konzernstempel:",
+    "Stempel:",
 )
 SIGNATURE_ROLE_MARKERS = (
     "Chief ",
+    "Direktorin",
     "Geschäftsführer",
     "Geschäftsführerin",
     "Head of ",
+    "Heimleitung",
+    "Inhaber und Apothekenleiter",
     "Institutsdirektor",
     "Kanzleiinhaber",
     "Lehrstuhlinhaber",
     "Lehrstuhlinhaberin",
     "Leiterin des Arbeitsbereichs",
+    "Leiterin Personal",
     "Managing Partner",
+    "Niederlassungsleiter",
     "Partner Germany",
     "Partnerin",
+    "Partner",
     "Personal Deutschland",
     "People Partner",
+    "Pflegedienstleitung",
+    "Praxisinhaber",
+    "Praxismanagerin",
     "Vorstand Personal",
     "Vorstandsvorsitzender",
     "Vorsitzende der Geschäftsführung",
+    "Werkstattmeister",
 )
+SECTION_HEADINGS = {
+    "Aufgabenbereich",
+    "Fachkenntnisse und Arbeitsweise",
+    "Belastbarkeit und Engagement",
+    "Arbeitserfolg",
+    "Verhalten",
+    "Beendigung des Arbeitsverhältnisses",
+}
 
 # The source fixtures predate the Unicode renderer and deliberately used
 # German ASCII transliterations. Apply only unambiguous stems and proper names.
@@ -314,8 +333,34 @@ def parse_fixture(text: str) -> dict[str, object]:
 
 
 def acronym(organization: str) -> str:
-    tokens = re.findall(r"[A-ZÄÖÜ][A-ZÄÖÜ&-]+", organization)
-    letters = "".join(token[0] for token in tokens if token != "&")
+    tokens = re.findall(r"\b[A-ZÄÖÜ][A-ZÄÖÜ&-]+\b", organization)
+    legal_forms = {"AG", "E", "GMBH", "KG", "MBB", "OHG", "SE"}
+    letters = "".join(
+        token[0]
+        for token in tokens
+        if token != "&"
+        and token not in legal_forms
+        and re.fullmatch(r"[IVXLCDM]+", token) is None
+    )
+    if not letters:
+        stopwords = {
+            "am",
+            "an",
+            "der",
+            "des",
+            "die",
+            "e",
+            "für",
+            "gmbh",
+            "kg",
+            "mbb",
+            "und",
+            "von",
+            "zum",
+            "zur",
+        }
+        words = re.findall(r"\b[A-ZÄÖÜ][A-Za-zÄÖÜäöüß-]+", organization)
+        letters = "".join(word[0] for word in words if word.lower() not in stopwords)
     return (letters[:3] or "AZ").upper()
 
 
@@ -338,18 +383,41 @@ def write_testimony_pdf(
 ) -> None:
     """Render one fixture and normalize its metadata for byte reproducibility."""
     fixture = parse_fixture(text)
+    body_character_count = sum(len(paragraph) for paragraph in fixture["body"])
+    compact_layout = (
+        body_character_count <= 3_000 and len(fixture["signatures"]) == 1
+    )
     accent = ACCENTS[(int(case_number) - 1) % len(ACCENTS)]
     styles = getSampleStyleSheet()
     body = ParagraphStyle(
         "Body",
         parent=styles["BodyText"],
         fontName="Helvetica",
-        fontSize=9.35,
-        leading=13.15,
+        fontSize=8.9 if compact_layout else 9.35,
+        leading=12 if compact_layout else 13.15,
         textColor=colors.HexColor("#20252B"),
-        spaceAfter=4.2 * mm,
+        spaceAfter=(3 if compact_layout else 4.2) * mm,
         allowWidows=0,
         allowOrphans=0,
+    )
+    section_heading = ParagraphStyle(
+        "SectionHeading",
+        parent=body,
+        fontName="Helvetica-Bold",
+        fontSize=9.1 if compact_layout else 9.3,
+        leading=11.4 if compact_layout else 11.8,
+        textColor=accent,
+        spaceBefore=(0.8 if compact_layout else 1.2) * mm,
+        spaceAfter=(1.1 if compact_layout else 1.5) * mm,
+        keepWithNext=True,
+    )
+    bullet = ParagraphStyle(
+        "Bullet",
+        parent=body,
+        leftIndent=5 * mm,
+        firstLineIndent=0,
+        bulletIndent=0,
+        spaceAfter=(0.8 if compact_layout else 1.2) * mm,
     )
     meta = ParagraphStyle(
         "Meta",
@@ -384,7 +452,7 @@ def write_testimony_pdf(
         fontSize=8.7,
         alignment=TA_RIGHT,
         textColor=colors.HexColor("#3F4852"),
-        spaceAfter=7 * mm,
+        spaceAfter=(5 if compact_layout else 7) * mm,
     )
     title_style = ParagraphStyle(
         "Title",
@@ -394,7 +462,7 @@ def write_testimony_pdf(
         leading=17,
         alignment=TA_CENTER,
         textColor=colors.HexColor("#17212B"),
-        spaceAfter=8 * mm,
+        spaceAfter=(6 if compact_layout else 8) * mm,
     )
     signature_name = ParagraphStyle(
         "SignatureName",
@@ -423,10 +491,10 @@ def write_testimony_pdf(
     doc = SimpleDocTemplate(
         str(pdf_path),
         pagesize=A4,
-        leftMargin=19 * mm,
-        rightMargin=19 * mm,
-        topMargin=22 * mm,
-        bottomMargin=18 * mm,
+        leftMargin=(18 if compact_layout else 19) * mm,
+        rightMargin=(18 if compact_layout else 19) * mm,
+        topMargin=(20 if compact_layout else 22) * mm,
+        bottomMargin=(17 if compact_layout else 18) * mm,
         title=document_title,
         author="Arbeitszeugnis-Prüfer Testakten",
         subject=f"Fiktive Testakte, Fall {case_number}",
@@ -446,6 +514,10 @@ def write_testimony_pdf(
                 ("BACKGROUND", (0, 0), (-1, -1), accent),
                 ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
                 ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
                 ("BOX", (0, 0), (-1, -1), 0.6, accent),
             ]
         )
@@ -473,16 +545,24 @@ def write_testimony_pdf(
 
     story: list[object] = [
         header,
-        Spacer(1, 4 * mm),
+        Spacer(1, (3 if compact_layout else 4) * mm),
         HRFlowable(width="100%", thickness=1.1, color=accent),
-        Spacer(1, 5 * mm),
+        Spacer(1, (4 if compact_layout else 5) * mm),
         Paragraph(escaped(fixture["date"]), date_style),
         Paragraph(escaped(fixture["title"]), title_style),
     ]
+
+    def body_flowable(paragraph: str) -> Paragraph:
+        if paragraph in SECTION_HEADINGS:
+            return Paragraph(escaped(paragraph), section_heading)
+        if paragraph.startswith("• "):
+            return Paragraph(escaped(paragraph[2:]), bullet, bulletText="•")
+        return Paragraph(escaped(paragraph), body)
+
     body_paragraphs = fixture["body"]
     closing_body_count = min(2, len(body_paragraphs))
     story.extend(
-        Paragraph(escaped(paragraph), body)
+        body_flowable(paragraph)
         for paragraph in body_paragraphs[:-closing_body_count]
     )
 
@@ -514,29 +594,51 @@ def write_testimony_pdf(
             ]
         )
     )
+    stamp_box = None
+    if fixture["stamp"]:
+        stamp_box = Table(
+            [[Paragraph(escaped(fixture["stamp"]), stamp_style)]],
+            colWidths=[76 * mm],
+            style=TableStyle(
+                [
+                    ("BOX", (0, 0), (-1, -1), 0.5, colors.HexColor("#A8B0B8")),
+                    ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#F6F7F8")),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 3 * mm),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 3 * mm),
+                    ("TOPPADDING", (0, 0), (-1, -1), 2 * mm),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 2 * mm),
+                ]
+            ),
+        )
+    if stamp_box is not None and len(signature_cells) == 1:
+        signature_table = Table(
+            [[signature_cells[0], stamp_box]],
+            colWidths=[
+                (page_width - doc.leftMargin - doc.rightMargin) / 2,
+                (page_width - doc.leftMargin - doc.rightMargin) / 2,
+            ],
+            style=TableStyle(
+                [
+                    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                    ("LEFTPADDING", (0, 0), (0, 0), 0),
+                    ("RIGHTPADDING", (0, 0), (0, 0), 5 * mm),
+                    ("LEFTPADDING", (1, 0), (1, 0), 5 * mm),
+                    ("RIGHTPADDING", (1, 0), (1, 0), 0),
+                    ("TOPPADDING", (0, 0), (-1, -1), 0),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+                ]
+            ),
+        )
     closing = [
-        Paragraph(escaped(paragraph), body)
+        body_flowable(paragraph)
         for paragraph in body_paragraphs[-closing_body_count:]
     ]
     closing.extend([Spacer(1, 5 * mm), signature_table])
-    if fixture["stamp"]:
+    if stamp_box is not None and len(signature_cells) > 1:
         closing.extend(
             [
                 Spacer(1, 5 * mm),
-                Table(
-                    [[Paragraph(escaped(fixture["stamp"]), stamp_style)]],
-                    colWidths=[82 * mm],
-                    style=TableStyle(
-                        [
-                            ("BOX", (0, 0), (-1, -1), 0.5, colors.HexColor("#A8B0B8")),
-                            ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor("#F6F7F8")),
-                            ("LEFTPADDING", (0, 0), (-1, -1), 3 * mm),
-                            ("RIGHTPADDING", (0, 0), (-1, -1), 3 * mm),
-                            ("TOPPADDING", (0, 0), (-1, -1), 2 * mm),
-                            ("BOTTOMPADDING", (0, 0), (-1, -1), 2 * mm),
-                        ]
-                    ),
-                ),
+                stamp_box,
             ]
         )
     story.append(KeepTogether(closing))

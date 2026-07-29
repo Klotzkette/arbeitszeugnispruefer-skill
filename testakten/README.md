@@ -20,7 +20,7 @@ echten Personalunterlagen und keine Rechtsberatung.
 
 | Umfang | Fälle | Schwerpunkt | Dateien und Downloads |
 | --- | ---: | --- | --- |
-| [Allgemeine Branchen](arbeitszeugnis-analyse-bluehendes-leben/README.md) | 01–10 | Apotheke, Kanzlei, Medizin, Logistik, Pflege, Handel und Industrie | [Einzel-PDF-ZIP](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
+| [Allgemeine Branchen](arbeitszeugnis-analyse-bluehendes-leben/README.md) | 01–10 | Apotheke, Kanzlei, Medizin, Logistik, Pflege, Handel und Industrie | [Einzel-PDF-ZIP](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) · [Erwartungshorizont](arbeitszeugnis-analyse-bluehendes-leben/90-erwartungshorizont-und-pruefpunkte.md) |
 | [Jura und Wissenschaft](arbeitszeugnisse-jura-und-wissenschaft/README.md) | 11–20 | Lehrstuhl, Forschung, Kanzleibetrieb und Associate-Rollen | [Einzel-PDF-ZIP](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-jura-und-wissenschaft_gesamt.pdf) |
 | [Leitungsfunktionen](arbeitszeugnisse-leitungsfunktionen/README.md) | 21–25 | Recht, Finanzen, Personal, Compliance und Werkleitung | [Einzel-PDF-ZIP](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen-einzel-pdfs.zip) · [Gesamt-PDF](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnisse-leitungsfunktionen_gesamt.pdf) |
 | Komplettpaket | 01–25 | Alle PDFs, READMEs und Erwartungshorizonte | [Komplett-ZIP herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) |
@@ -54,10 +54,10 @@ echten Personalunterlagen und keine Rechtsberatung.
 
 ## Technische Qualität
 
-Die generierten Fälle 11 bis 25 verwenden ein gemeinsames A4-Layout mit
+Alle 25 Fälle verwenden ein gemeinsames adaptives A4-Layout mit
 Briefkopf, Fortsetzungszeile, Seitenfuß, Signaturblock und sichtbarer
 Kennzeichnung als fiktive Testakte. Der Release-Build erzeugt sämtliche PDFs
-und ZIP-Dateien deterministisch, prüft Seitenzahl, Textgehalt, Schriften,
+und ZIP-Dateien aus versionierten Quellen deterministisch, prüft Seitenzahl, Textgehalt, Schriften,
 Dokumentgrenzen, ZIP-Struktur und SHA-256-Prüfsummen und baut das Komplettpaket
 zweimal byte-identisch.
 
