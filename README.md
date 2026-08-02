@@ -1,5 +1,8 @@
 # Arbeitszeugnis-Prüfer Skill
 
+> **Hinweis nach Art. 50 KI-VO (EU AI Act).** Alle Inhalte dieses Repositoriums wurden von einem Menschen überprüft und redaktionell kontrolliert. Ein Mensch trägt die redaktionelle Verantwortung (Art. 50 Abs. 4 Unterabsatz 2 Satz 5 KI-VO).
+
+
 > Experimenteller Agent-Skill für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
 > Transparenz: Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
