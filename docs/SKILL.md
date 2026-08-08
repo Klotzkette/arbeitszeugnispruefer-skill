@@ -5,7 +5,7 @@ description: "Prüft deutsche einfache, qualifizierte, Zwischen-, Dienst- und Au
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.0.24
+Version: 3.0.25
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 
@@ -45,7 +45,7 @@ Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: de
 - **Beweislastregel BAG:** Note 3 („befriedigend" / „zur vollen Zufriedenheit") ist die Schwelle: Für eine bessere Note trägt der Arbeitnehmer, für eine schlechtere der Arbeitgeber die Darlegungs- und Beweislast (Einzelheiten und Fundstellen in [Stufe 6](#6--gesamtnotenspanne-und-hauptbefund)).
 - **Zuständigkeit:** Bei Arbeitnehmern regelmäßig Arbeitsgericht (§ 2 Abs. 1 Nr. 3 ArbGG), Klage auf ordnungsgemäße Zeugniserteilung als Leistungsklage. Bei Organpersonen, insbesondere bestellten GmbH-Geschäftsführern, Arbeitnehmerstatus und Rechtsweg gesondert nach § 5 Abs. 1 Satz 3 ArbGG prüfen; der ordentliche Rechtsweg kann eröffnet sein.
 
-> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, die Entscheidungsdatenbank des BAG, ein Landesrechtsprechungsportal oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. `dejure.org` darf als Fundstellenindex dienen, ersetzt aber bei verfügbarer Primärquelle nicht deren Prüfung. Die nachstehenden Anker wurden zuletzt am **29.07.2026** gegen frei zugängliche Quellen geprüft; vor Verwendung in einem Schriftsatz Fortgeltung und genauen Wortlaut erneut kontrollieren.
+> **Rechtsprechung live prüfen.** Keine Entscheidung aus Modellwissen zitieren. Vor Ausgabe über `gesetze-im-internet.de`, die Entscheidungsdatenbank des BAG, ein Landesrechtsprechungsportal oder ein anderes amtliches/frei prüfbares Verzeichnis mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifizieren. `dejure.org` darf als Fundstellenindex dienen, ersetzt aber bei verfügbarer Primärquelle nicht deren Prüfung. Die nachstehenden Anker wurden zuletzt am **09.08.2026** gegen frei zugängliche Quellen geprüft; vor Verwendung in einem Schriftsatz Fortgeltung und genauen Wortlaut erneut kontrollieren. In der bis zu diesem Stichtag veröffentlichten BAG-Entscheidungsliste findet sich nach BAG 07.05.2026 – 8 AZB 25/25 kein neuerer unmittelbar zeugnisrechtlicher Sachanker; die Veröffentlichung einzelner Entscheidungen kann zeitversetzt erfolgen.
 
 ## Rechtsprechungsanker — BAG-Leitentscheidungen
 
@@ -80,19 +80,21 @@ Die folgenden Entscheidungen des Bundesarbeitsgerichts tragen die Kernregeln die
 
 ### LAG- und instanzgerichtliche Rechtsprechung (Auswahl)
 
-Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und Vergleichsverhandlung wertvoll. Die nachstehenden Entscheidungen sind im Volltext frei auffindbar; die LAG-Hamm-Beschlüsse stehen in der NRW-Rechtsprechungsdatenbank, die ArbG-Kiel-Entscheidung ist als erstinstanzlicher Zusatzanker zu behandeln.
+Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und Vergleichsverhandlung wertvoll. Die nachstehenden Entscheidungen sind im Volltext über amtliche Landesportale frei auffindbar. Bei zugelassener Revision den Rechtsmittelstand vor Verwendung live prüfen; die ArbG-Kiel-Entscheidung bleibt ein erstinstanzlicher Zusatzanker.
 
 | Entscheidung | Tragende Aussage | Einsatz im Skill |
 | --- | --- | --- |
 | **LAG Hamm, Beschluss v. 14.11.2016 – 12 Ta 475/16** | **Ironisch überzogenes Lob ist unzulässig:** Wer vereinbarte Formulierungen durch erkennbar nicht ernst gemeinte Superlative ersetzt („Wenn es bessere Noten als sehr gut gäbe, würden wir ihn damit beurteilen"), erfüllt den Zeugnisanspruch nicht. | Ironie-Code (Teil D.5), Vollstreckung (Teil F.4) |
 | **LAG Hamm, Beschluss v. 27.07.2016 – 4 Ta 118/16** | Eine Vertreterunterschrift muss der sonst bei wichtigen betrieblichen Dokumenten verwendeten Unterschrift entsprechen. Ein bloßes Handzeichen kann die Schriftform verfehlen; eine quer durch den Zeugnistext verlaufende Unterschrift weckt regelmäßig Zweifel an der Ernsthaftigkeit und verstößt gegen § 109 Abs. 2 S. 2 GewO. | Unterschrift und Schriftform (Teil E.5) |
 | **LAG Hamm, Beschluss v. 19.02.2026 – 9 Ta 319/25** | Ein Zeugnis muss einen ordnungsgemäßen Briefkopf mit Name und Anschrift des Ausstellers tragen und auf Firmenbogen erteilt werden, wenn der Arbeitgeber solchen im Geschäftsverkehr verwendet. Andernfalls ist der titulierte Zeugnisanspruch nicht erfüllt. | Briefkopf, Geschäftspapier und Vollstreckung (Teil E.5, Teil F.4) |
+| **LAG Köln, Urteil v. 04.03.2026 – 5 SLa 495/25** | Ein Zwischenzeugnis kann als arbeitsvertragliche Nebenpflicht bei triftigem Grund geschuldet sein. Eine ernsthafte interne oder externe Bewerbungsabsicht kann genügen, ohne dass bereits eine konkrete Bewerbung oder bevorstehende Beendigung feststehen muss. Nach schlüssiger Darlegung reicht pauschales Bestreiten des Arbeitgebers nicht; konkrete Zweifel sind darzulegen. Die Revision wurde zugelassen, daher Rechtsmittelstand live prüfen. | Zwischenzeugnis, Darlegung und Bewerbungsabsicht (Stufe 2, Teil F) |
+| **LAG Nürnberg, Beschluss v. 05.02.2026 – 7 Ta 2/26** | Eine Zeugnisregelung im Vergleich erzeugt nicht automatisch einen Vergleichsmehrwert. Erforderlich ist, dass sie einen zuvor bestehenden Streit oder eine Ungewissheit beseitigt; eine krankheitsbedingte Kündigung begründet ohne konkrete leistungs- oder verhaltensbezogene Tatsachen keine solche Ungewissheit. | Streitwert und Vergleichsmehrwert (Teil F.3) |
 | **LAG Köln, Urteil v. 05.12.2024 – 6 SLa 25/24** | Außerhalb der Berichtigung eines bereits erteilten Zeugnisses und ohne abweichende Vereinbarung darf und muss das Zeugnis grundsätzlich das Datum seiner tatsächlichen Ausfertigung tragen. Ein allgemeiner Anspruch auf Datierung mit dem Beendigungsdatum besteht nicht. | Ausstellungsdatum und Rückdatierung (Teil E.5) |
 | **ArbG Kiel, Urteil v. 18.04.2013 – 5 Ca 80 b/13** | Ein in die Unterschrift eingearbeiteter Smiley mit herabgezogenen Mundwinkeln ist ein unzulässiges Geheimzeichen (§ 109 Abs. 2 S. 2 GewO); der Aussteller muss mit seiner geschäftsüblichen Unterschrift zeichnen. | Unterschrift (Teil E.5) |
 
 **Anwendungsregeln aus dieser Rechtsprechung:**
 
-1. **Status vor Inhalt klären.** Arbeitnehmer-Endzeugnis: § 109 GewO. Dauerndes Dienstverhältnis außerhalb des Arbeitnehmerstatus: § 630 BGB. Berufsausbildungsverhältnis: § 16 BBiG. Zwischenzeugnis: vertragliche Nebenpflicht bei triftigem Grund. Organpersonen, Umschulung und Mischstatus nie schematisch zuordnen.
+1. **Status vor Inhalt klären.** Arbeitnehmer-Endzeugnis: § 109 GewO. Dauerndes Dienstverhältnis außerhalb des Arbeitnehmerstatus: § 630 BGB. Berufsausbildungsverhältnis: § 16 BBiG. Zwischenzeugnis: vertragliche Nebenpflicht bei triftigem Grund; eine ernsthafte Bewerbungsabsicht kann nach LAG Köln 5 SLa 495/25 genügen, der Rechtsmittelstand ist aber live zu prüfen. Organpersonen, Umschulung und Mischstatus nie schematisch zuordnen.
 2. **Decodierung hat Grenzen.** Nicht jede unübliche oder blasse Formulierung ist ein Geheimcode. Das BAG verlangt für einen Verstoß gegen § 109 Abs. 2 S. 2 GewO, dass die Formulierung aus Sicht des objektiven Zeugnislesers etwas anderes aussagt als ihr Wortlaut. Im Zweifel: Tendenz mit Unsicherheitsvermerk ausweisen, nicht als sicheren Code behaupten.
 3. **Beweislast realistisch kommunizieren.** Wer Note 2 statt Note 3 will, muss liefern (9 AZR 12/03; 9 AZR 584/13). Der bloße Hinweis auf branchenüblich gute Noten verschiebt die Darlegungs- und Beweislast nicht.
 4. **Schlussformel nüchtern einordnen.** Die Signalwirkung ist real; auf Dank, Bedauern und gute Wünsche besteht grundsätzlich kein Anspruch (9 AZR 44/00; 9 AZR 227/11; 9 AZR 146/21). Solche Wunschformulierungen gehören regelmäßig in die Verhandlung, nicht in den Klageantrag; bei bloßer Unzufriedenheit mit einer erteilten Formel kann grundsätzlich nur ihre Entfernung verlangt werden. Unwahre Tatsachen und eine maßregelnde Streichung nach berechtigter Berichtigungsforderung sind davon getrennt zu prüfen (§ 612a BGB; 9 AZR 272/22).
@@ -102,6 +104,7 @@ Instanzentscheidungen binden nur im Einzelfall, sind aber für Argumentation und
 8. **Datum und Titel ernst nehmen.** Beschäftigungs- und Beendigungsdaten müssen wahr bleiben (9 AZR 8/15). Das Ausstellungsdatum ist grundsätzlich das Datum der tatsächlichen Ausfertigung; Berichtigungsfälle und abweichende Vereinbarungen sind gesondert zu prüfen (6 SLa 25/24). Vergleichs- und Klageanträge dürfen nicht bei bloßen Notenstufen stehenbleiben; konkrete Wortlaute oder Entwurfsklauseln sichern. Besonders stark ist die Entwurfsklausel mit Abweichung nur aus wichtigem Grund (9 AZB 49/16; 8 AZB 25/25).
 9. **Unterzeichnung und Briefkopf getrennt prüfen.** Rang, Weisungsbefugnis, erkennbare Funktion und Identität des Unterzeichners sind andere Fragen als Form und Verlauf der Unterschrift. Geschäftspapier, Firmenbogen und Briefkopf sind wiederum eigene Formalien (9 AZR 507/04; 4 Ta 118/16; 9 Ta 319/25).
 10. **Verwirkung nicht aus dem Kalender ableiten.** Neben längerem Zeitablauf müssen besondere Umstände schutzwürdiges Vertrauen des Verpflichteten begründen. Bloßes Schweigen, die Beendigung des Arbeitsverhältnisses oder abstrakte Beweisnachteile genügen für sich nicht (8 AZR 838/13).
+11. **Vergleichsmehrwert nicht automatisch addieren.** Eine Zeugnisregelung erhöht den Vergleichswert nur, wenn sie einen konkreten Streit oder eine konkrete Ungewissheit beseitigt. Eine krankheitsbedingte Kündigung allein belegt keinen Leistungs- oder Verhaltensstreit (LAG Nürnberg 7 Ta 2/26); aktuelle regionale Streitwertpraxis stets gesondert prüfen.
 
 ## Wann dieser Skill greift
 
@@ -228,7 +231,7 @@ Notiere die Antworten in einem Mandatsblatt. Wenn das Zeugnis als PDF oder Bild 
 
 - Einfaches Arbeitnehmerzeugnis (§ 109 Abs. 1 S. 2 GewO): nur Art und Dauer der Tätigkeit.
 - Qualifiziertes Arbeitnehmerzeugnis (§ 109 Abs. 1 S. 3 GewO): zusätzlich Leistung und Verhalten.
-- Zwischenzeugnis: gesetzlich nicht in § 109 GewO geregelt; bei triftigem Grund als vertragliche Nebenpflicht, inhaltlich nach den für Arbeitszeugnisse entwickelten Grundsätzen und bezogen auf den laufenden Zeitabschnitt.
+- Zwischenzeugnis: gesetzlich nicht in § 109 GewO geregelt; bei triftigem Grund als arbeitsvertragliche Nebenpflicht (§ 241 Abs. 2 i. V. m. § 242 BGB), inhaltlich nach den für Arbeitszeugnisse entwickelten Grundsätzen und bezogen auf den laufenden Zeitabschnitt. Eine ernsthafte interne oder externe Bewerbungsabsicht kann nach LAG Köln 04.03.2026 – 5 SLa 495/25 auch ohne konkrete Bewerbung oder bevorstehende Beendigung genügen. Nach schlüssiger Darlegung ist pauschales Bestreiten nicht ausreichend; wegen zugelassener Revision den Rechtsmittelstand live prüfen.
 - Ausbildungs-/Lernzeugnis (§§ 16, 26 BBiG): Mindestinhalt nach § 16 Abs. 2 S. 1; Angaben zu Verhalten und Leistung nach Satz 2 nur auf Verlangen. § 16 gilt unmittelbar für Berufsausbildung und kann über § 26 bestimmte andere Lernverhältnisse erfassen; Umschulung und Fortbildung nicht automatisch zuordnen.
 - Dienstzeugnis (§ 630 BGB): bei dauerndem Dienstverhältnis außerhalb des Arbeitnehmerstatus; bei Arbeitnehmern gilt stattdessen § 109 GewO.
 
@@ -1059,6 +1062,8 @@ Die BAG-Notenregel betrifft die zusammenfassende Leistungsbewertung. Sie darf ni
 ### Streitwert
 
 Im arbeitsgerichtlichen Zeugnisstreit wird häufig ein Bruttomonatsgehalt als Orientierung angesetzt. Das ist keine starre gesetzliche Pauschale; Gegenstand, Umfang der begehrten Änderung, örtliche Praxis und aktueller Streitwertkatalog sind live zu prüfen. Mehrere Formulierungswünsche erhöhen den Wert nicht automatisch. Bei ordentlichem Rechtsweg gelten die dortigen Wert- und Kostenregeln.
+
+Auch eine Zeugnisregelung in einem Beendigungsvergleich erzeugt keinen automatischen Vergleichsmehrwert. Sie muss einen zuvor bestehenden Streit oder eine konkrete Ungewissheit über das Zeugnis beseitigen. Eine krankheitsbedingte Kündigung allein lässt ohne konkrete leistungs- oder verhaltensbezogene Tatsachen nicht auf einen Zeugnisstreit schließen (LAG Nürnberg 05.02.2026 – 7 Ta 2/26). Die Entscheidung betrifft die Wertfestsetzung; sie begründet oder begrenzt nicht den materiellen Zeugnisanspruch.
 
 | Klagegegenstand | Streitwert |
 | --- | --- |

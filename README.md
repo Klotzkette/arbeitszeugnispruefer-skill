@@ -1,6 +1,6 @@
 # Arbeitszeugnis-Prüfer Skill
 
-> **Hinweis nach Art. 50 KI-VO (EU AI Act).** Alle Inhalte dieses Repositoriums wurden von einem Menschen überprüft und redaktionell kontrolliert. Ein Mensch trägt die redaktionelle Verantwortung (Art. 50 Abs. 4 Unterabsatz 2 Satz 5 KI-VO).
+> **Transparenzhinweis zur KI-Nutzung.** Alle Inhalte dieses Repositoriums wurden von einem Menschen geprüft und redaktionell kontrolliert; ein Mensch trägt die redaktionelle Verantwortung. Dieser freiwillige Hinweis entscheidet nicht, ob [Art. 50 Abs. 4 KI-VO](https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:02024R1689-20260727) auf eine konkrete Datei oder Nutzung anwendbar ist. Rechtsstand: konsolidierte KI-VO nach [VO (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de), 9. August 2026.
 
 
 > Experimenteller Agent-Skill für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
@@ -9,7 +9,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.24) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.24 bringt alle 25 Testfälle in eine gemeinsame reproduzierbare Build-Pipeline, ergänzt die Ground Truth der allgemeinen Branchen und härtet Schlussformel-, Beweislast- und One-Shot-Logik.
+Konsolidierter Skill (Version 3.0.25) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.25 ergänzt verifizierte 2026-Rechtsprechung zu Zwischenzeugnis und Vergleichsmehrwert, dokumentiert den amtlichen Aktualitätsstand und korrigiert den KI-VO-Transparenzhinweis.
 
 ## Navigation
 
@@ -191,7 +191,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.24
+python3 scripts/check_release_integrity.py --github-release v3.0.25
 ```
 
 ## Workflow in acht Stufen
@@ -216,6 +216,13 @@ python3 scripts/check_release_integrity.py --github-release v3.0.24
 
 Die `SKILL.md` enthält einen eigenen Rechtsprechungsanker mit den Leitentscheidungen des Bundesarbeitsgerichts zu Notenstufen, Beweislast, Schlussformel, Zeugnisklarheit, Status, Form und Vollstreckung. Darüber hinaus gilt: Rechtsprechung wird in diesem Skill nie ungeprüft aus Modellwissen zitiert — jede tragende Aussage wird über `gesetze-im-internet.de`, die BAG-Datenbank oder ein amtliches Landes-/Bundesportal mit Gericht, Entscheidungsform, Datum, Aktenzeichen und tragender Aussage verifiziert. `dejure.org` kann bei der Suche helfen, ersetzt aber keine verfügbare Primärquelle.
 
+### Aktualitätsfenster 2026 (Stand 09.08.2026)
+
+- Die amtlichen Fassungen von § 109 GewO, § 630 BGB und §§ 16, 26 BBiG wurden erneut geprüft; für Inhalt und Form des Zeugnisses ergab sich gegenüber dem bereits abgebildeten Stand keine neue materielle Regel.
+- [BAG 07.05.2026 – 8 AZB 25/25](https://www.bundesarbeitsgericht.de/entscheidung/8-azb-25-25/) bleibt in der bis 09.08.2026 veröffentlichten [BAG-Entscheidungsliste](https://www.bundesarbeitsgericht.de/entscheidungen/) der jüngste unmittelbar zeugnisrechtliche neue Sachanker. Das BAG weist selbst darauf hin, dass Veröffentlichungen zeitversetzt erfolgen können.
+- [LAG Köln 04.03.2026 – 5 SLa 495/25](https://nrwe.justiz.nrw.de/arbgs/koeln/lag_koeln/j2026/5_SLa_495_25_Urteil_20260304.html) präzisiert den Zwischenzeugnisanspruch bei Bewerbungsabsicht und die abgestufte Darlegung. Weil die Revision zugelassen wurde, muss der Rechtsmittelstand vor praktischer Verwendung live geprüft werden.
+- [LAG Nürnberg 05.02.2026 – 7 Ta 2/26](https://www.gesetze-bayern.de/Content/Document/Y-300-Z-BECKRS-B-2026-N-6148) verneint einen automatischen Vergleichsmehrwert einer Zeugnisregelung: Sie muss einen konkreten Streit oder eine Ungewissheit beseitigen; eine krankheitsbedingte Kündigung allein genügt dafür nicht.
+
 ## Einsatzlagen
 
 - Mandant oder Mandantin will Zeugnis einordnen.
@@ -235,7 +242,7 @@ Lesen, bevor irgendetwas davon eingesetzt wird. Dieses Repository ist ausschlie�
 - Strafrechtlicher Geheimnisschutz — §§ 203, 204 StGB. Der Skill sagt nichts darüber aus, ob ein konkreter Einsatz mit § 203 StGB (Verletzung von Privatgeheimnissen) und, soweit einschlägig, § 204 StGB (Verwertung fremder Geheimnisse) vereinbar ist — auch nicht mit Blick auf mitwirkende Personen und sonstige Stellen nach § 203 Abs. 3 und 4 StGB.
 - Berufsrecht — § 43e BRAO, § 2 BORA, § 53 StPO. Es wird nicht geprüft, ob der Einsatz mit § 43e BRAO (Inanspruchnahme von Dienstleistern, insbesondere Cloud/KI), § 2 BORA (Verschwiegenheit), den Zeugnisverweigerungsrechten nach § 53 StPO und den Beschlagnahmeverboten nach § 97 StPO vereinbar ist. Gleiches gilt sinngemäß für andere freie Berufe mit eigenem Berufsrecht (StBerG für Steuerberater:innen, WPO für Wirtschaftsprüfer:innen, ÄrztInnen, Notar:innen, Patentanwält:innen u. a.).
 - Datenschutz — DSGVO, BDSG. Es wird nicht beurteilt, ob die Verarbeitung personenbezogener Daten DSGVO-konform ist, ob eine ausreichende Rechtsgrundlage nach Art. 6 DSGVO und bei tatsächlich enthaltenen besonderen Kategorien zusätzlich Art. 9 DSGVO vorliegt, ob ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO geschlossen werden muss, ob eine Datenschutz-Folgenabschätzung nach Art. 35 DSGVO erforderlich ist oder ob die Informationspflichten nach Art. 13, 14 DSGVO erfüllt sind. Arbeitszeugnisse enthalten stets personenbezogene Daten; besondere Kategorien nach Art. 9 DSGVO nur, wenn der konkrete Inhalt solche Informationen offenbart.
-- KI-Verordnung (KI-VO / EU AI Act, VO (EU) 2024/1689). Es wird nicht entschieden, ob der Einsatz unter eine der Hochrisiko-Kategorien nach Art. 6 KI-VO in Verbindung mit Anhang III KI-VO fällt (insbesondere Zugang zur Justiz, Beschäftigungskontext), ob Transparenzpflichten nach Art. 50 KI-VO greifen, ob es sich um ein General-Purpose-AI-Modell nach Art. 51 ff. KI-VO handelt und welche Pflichten als Betreiber (Art. 26 KI-VO) zu erfüllen sind.
+- KI-Verordnung (KI-VO / EU AI Act, VO (EU) 2024/1689). Die Verordnung gilt im Grundsatz seit **02.08.2026**. [VO (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de) verschiebt die Anforderungen aus Kapitel III Abschnitten 1 bis 3 für Hochrisiko-Systeme nach Art. 6 Abs. 2/Anhang III auf 02.12.2027 und für Systeme nach Art. 6 Abs. 1 auf 02.08.2028; daraus folgt keine pauschale Verschiebung der Transparenzpflichten aus Art. 50. Die Übergangsfrist bis 02.12.2026 in Art. 111 Abs. 4 betrifft nur bestimmte Anbieterpflichten aus Art. 50 Abs. 2 für bereits zuvor in Verkehr gebrachte Systeme. Dieses Repository entscheidet weiterhin weder die konkrete Hochrisiko-Einordnung noch Betreiber-, Anbieter- oder Transparenzpflichten des jeweiligen Einsatzes.
 - Beschlagnahmeverbote und auslandsrechtliche Zugriffe. Es wird nicht geprüft, ob Eingabedaten und Modellantworten gegen Beschlagnahme nach §§ 97, 160a StPO oder gegen Zugriffe aufgrund ausländischer und extraterritorial wirkender Rechtsgrundlagen, etwa CLOUD Act oder FISA, hinreichend geschützt sind. Dafür ist die jeweilige Nutzerin / der jeweilige Nutzer allein verantwortlich.
 - Zugang, Auftragsverarbeitung, Hosting. Wie der API-Zugang zum Modell beschafft wird (Anthropic direkt, AWS Bedrock, Google Vertex, eigenes Hosting), ob mit dem Anbieter ein Auftragsverarbeitungsvertrag geschlossen wird, ob ein berufsrechtskonformer Cloud-Vertrag vorliegt und ob die Anforderungen an die Verschwiegenheit / Mandatsgeheimnis und Datenflusskontrolle in der konkreten Deployment-Konstellation eingehalten sind, bleibt vollständig in der Eigenverantwortung der Nutzerin / des Nutzers.
 

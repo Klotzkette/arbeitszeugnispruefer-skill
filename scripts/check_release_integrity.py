@@ -204,6 +204,8 @@ CANONICAL_DECISION_DATES = {
     "12 Ta 475/16": "14.11.2016",
     "4 Ta 118/16": "27.07.2016",
     "9 Ta 319/25": "19.02.2026",
+    "5 SLa 495/25": "04.03.2026",
+    "7 Ta 2/26": "05.02.2026",
     "6 SLa 25/24": "05.12.2024",
     "5 Ca 80 b/13": "18.04.2013",
 }
@@ -504,6 +506,8 @@ def check_legal_citations(checker: Checker) -> None:
         "§ 16 Abs. 1/2 BBiG",
         "über § 26 BBiG",
         "Zwischenzeugnis bei triftigem Grund",
+        "5 SLa 495/25",
+        "7 Ta 2/26",
         "Rechtsweg statusabhängig",
         "Betroffenenperspektive",
     ]
@@ -521,8 +525,25 @@ def check_legal_citations(checker: Checker) -> None:
         "https://www.gesetze-im-internet.de/arbgg/__2.html",
         "https://www.gesetze-im-internet.de/arbgg/__5.html",
         "https://www.gesetze-im-internet.de/arbgg/__12a.html",
+        "https://www.bundesarbeitsgericht.de/entscheidung/8-azb-25-25/",
+        "https://nrwe.justiz.nrw.de/arbgs/koeln/lag_koeln/j2026/5_SLa_495_25_Urteil_20260304.html",
+        "https://www.gesetze-bayern.de/Content/Document/Y-300-Z-BECKRS-B-2026-N-6148",
+        "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:02024R1689-20260727",
+        "https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de",
     ]
-    checker.require(all(link in readme for link in official_links), "README links every central statute to an official source")
+    checker.require(all(link in readme for link in official_links), "README links the current legal source set to official sources")
+    checker.require(
+        "freiwillige Hinweis" in readme
+        and "02.08.2026" in readme
+        and "02.12.2027" in readme
+        and "02.08.2028" in readme
+        and "Art. 111 Abs. 4" in readme,
+        "README distinguishes the current AI Act dates and the voluntary transparency note",
+    )
+    checker.require(
+        "5 SLa 495/25" in index and "7 Ta 2/26" in index and "09.08.2026" in index,
+        "download page exposes the verified 2026 case-law update",
+    )
     checker.require(
         "Perspektive der beurteilten Person" in index
         and "Arbeitgeber, Dienstgeber oder Ausbildende" in index,
@@ -567,6 +588,7 @@ def check_legal_citations(checker: Checker) -> None:
         "Passivkonstruktion** („Das Arbeitsverhältnis endet\"): Distanzsignal",
         "Datumsangabe ohne weitere Worte** am Ende: Kalte Trennung",
         "Branchenüblichkeit guter Noten ist kein Argument vor Gericht",
+        "Art. 50 Abs. 4 Unterabsatz 2 Satz 5",
     ]
     combined = "\n".join((full, mini, readme))
     stale = [item for item in forbidden if item in combined]
@@ -583,6 +605,8 @@ def check_legal_citations(checker: Checker) -> None:
     lag_12 = next((line for key, line in decision_rows.items() if "12 Ta 475/16" in key), "")
     lag_4 = next((line for key, line in decision_rows.items() if "4 Ta 118/16" in key), "")
     lag_9 = next((line for key, line in decision_rows.items() if "9 Ta 319/25" in key), "")
+    lag_5sla = next((line for key, line in decision_rows.items() if "5 SLa 495/25" in key), "")
+    lag_7ta = next((line for key, line in decision_rows.items() if "7 Ta 2/26" in key), "")
     lag_6 = next((line for key, line in decision_rows.items() if "6 SLa 25/24" in key), "")
     bag_3 = next((line for key, line in decision_rows.items() if "3 AZR 121/11" in key), "")
     bag_5 = next((line for key, line in decision_rows.items() if "5 AZR 848/93" in key), "")
@@ -620,6 +644,18 @@ def check_legal_citations(checker: Checker) -> None:
     checker.require(
         "Briefkopf" in lag_9 and "Firmenbogen" in lag_9,
         "9 Ta 319/25 carries the letterhead rule",
+    )
+    checker.require(
+        "Bewerbungsabsicht" in lag_5sla
+        and "pauschales Bestreiten" in lag_5sla
+        and "Revision" in lag_5sla,
+        "5 SLa 495/25 remains limited to the intermediate-certificate holding and flags revision",
+    )
+    checker.require(
+        "Vergleichsmehrwert" in lag_7ta
+        and "krankheitsbedingte Kündigung" in lag_7ta
+        and "konkrete" in lag_7ta,
+        "7 Ta 2/26 remains limited to the comparison-value holding",
     )
     checker.require(
         "tatsächlichen Ausfertigung" in lag_6 and "abweichende Vereinbarung" in lag_6,
@@ -735,7 +771,7 @@ def check_legal_citations(checker: Checker) -> None:
         and "Kompakt" in full
         and "Voll" in full
         and "Batch" in full
-        and "Fortsetzungsmarke erst nach den geschuldeten Schreiben" in mini,
+        and "Erst nach den Schreiben Fortsetzungsmarke setzen" in mini,
         "execution modes and mandatory-block continuation order remain coherent",
     )
     checker.require(

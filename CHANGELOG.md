@@ -7,6 +7,33 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.0.25] — 2026-08-09
+
+### Hinzugefügt
+- LAG Köln 04.03.2026 – 5 SLa 495/25 als amtlich verifizierter Instanzanker
+  zum Zwischenzeugnis bei ernsthafter Bewerbungsabsicht und zur abgestuften
+  Darlegung; zugelassene Revision und Live-Prüfung sind ausdrücklich markiert.
+- LAG Nürnberg 05.02.2026 – 7 Ta 2/26 zum fehlenden automatischen
+  Vergleichsmehrwert einer Zeugnisregelung und zur fehlenden Aussagekraft einer
+  krankheitsbedingten Kündigung ohne konkrete Leistungs- oder Verhaltenstatsachen.
+
+### Geändert
+- Amtliche Aktualitätskontrolle von Zeugnisnormen und veröffentlichter
+  BAG-Rechtsprechung bis 09.08.2026 dokumentiert. BAG 07.05.2026 –
+  8 AZB 25/25 bleibt der jüngste veröffentlichte unmittelbar zeugnisrechtliche
+  neue Sachanker; mögliche Veröffentlichungsverzögerungen bleiben offengelegt.
+- Voll- und Mini-Skill um die zwei 2026-Entscheidungen ergänzt; Mini-Fassung
+  bleibt unter 7.500 Zeichen und beide öffentlichen Spiegel bleiben identisch.
+- KI-VO-Hinweise auf den seit 02.08.2026 grundsätzlich anwendbaren Stand und
+  die zeitlich gestaffelten Änderungen durch VO (EU) 2026/1744 aktualisiert.
+
+### Behoben
+- Unzutreffenden Fundstellen-Zusatz „Art. 50 Abs. 4 Unterabsatz 2 Satz 5"
+  entfernt und den redaktionellen Transparenzhinweis als freiwillig, nicht als
+  pauschale Anwendbarkeitsfeststellung formuliert.
+- Hochrisiko-Aufschub, Art.-50-Transparenzpflichten und die engere
+  Übergangsregel des Art. 111 Abs. 4 KI-VO klar voneinander getrennt.
+
 ## [3.0.24] — 2026-07-29
 
 ### Hinzugefügt
@@ -642,6 +669,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.0.25]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.25
 [3.0.24]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.24
 [3.0.23]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.23
 [3.0.22]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.22

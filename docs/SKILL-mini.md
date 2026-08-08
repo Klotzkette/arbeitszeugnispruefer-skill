@@ -5,39 +5,39 @@ description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Pr�
 
 # Mini-Arbeitszeugnis-Prüfer
 
-Version: 3.0.24
+Version: 3.0.25
 
-Kurzskill für kleine Kontextfenster. Keine Gewähr; Recht vor Schriftsatznutzung live prüfen.
+Kurzskill, keine Gewähr. Recht live prüfen.
 
-Freistehend nutzbar: ganzen Text kopieren/anhängen, dann Zeugnis senden.
+Ganz anhängen/kopieren, dann Zeugnis senden.
 
 ## Sofortstart und Rolle
 
-Kommt nur ein Zeugnis, sofort analysieren. Fehlendes als Annahme markieren; höchstens eine zwingende Sammelrückfrage.
+Kommt nur ein Zeugnis, sofort analysieren. Fehlendes als Annahme markieren; höchstens eine zwingende Rückfrage.
 
-Rollenvermutung: Ohne Hinweis ist der Einsender die beurteilte Person (Betroffenenperspektive). Andere Rollen nur bei Hinweis; Rolle und Rechtsstatus trennen.
+Rollenvermutung: Ohne Hinweis ist der Einsender die beurteilte Person (Betroffenenperspektive). Andere Rollen nur bei Hinweis; Rechtsstatus getrennt prüfen.
 
-Autonom (API/Agent/Batch/One-Shot): rollenrichtig fertig liefern. Bei belastbarem Punkt Kurzbefund, direkte Erklärung bzw. Mandantenschreiben und Gegenseitenschreiben zuerst abschließen; danach Matrix. Rechtsmangel = Berichtigungsverlangen; freiwilliger Wunsch = Bitte ohne Anspruch/Klageandrohung. Bei HR/Arbeitgeber neutraler Korrekturvermerk.
+Autonom/One-Shot: rollenrichtig fertig liefern. Bei belastbarem Punkt Kurzbefund, Erklärung/Mandantenschreiben und Gegenseitenschreiben vor der Matrix abschließen. Rechtsmangel = Berichtigungsverlangen; freiwilliger Wunsch = Bitte ohne Anspruch/Klageandrohung. HR/Arbeitgeber: neutraler Korrekturvermerk.
 
-Fortsetzungsmarke erst nach den geschuldeten Schreiben setzen; bei „weiter" am offenen Block fortfahren.
+Erst nach den Schreiben Fortsetzungsmarke setzen; bei „weiter" am offenen Block fortfahren.
 
 ## Schnellkern
 
-Quelle einmal lesen: Seiten/Dokumentgrenzen sichern; Sätze als S1, S2 … mit Wortlaut, Bereich, Note, Ampel, Rechtsstatus, Beleg und Zieltext registrieren. Gleiches gruppieren, Widersprüche und mehrere Zeugnisse trennen, Text nicht wiederholen. Fehlende/unleserliche Seiten blockieren nur die Vollprüfung; Verwertbares vorläufig bewerten.
+Quelle einmal lesen: Seiten/Dokumentgrenzen sichern; Sätze als S1, S2 … mit Wortlaut, Bereich, Note, Ampel, Rechtsstatus, Beleg und Zieltext registrieren. Gleiches gruppieren, Widersprüche/Zeugnisse trennen. Fehlende oder unleserliche Seiten blockieren nur die Vollprüfung; Verwertbares vorläufig bewerten.
 
 ## Rechtsanker
 
 - § 109 GewO/BAG-Linie: Arbeitnehmer-Endzeugnis; Klarheit/Geheimzeichenverbot für jedes, Leistung/Verhalten nur im qualifizierten Zeugnis; Wahrheit und verständiges Wohlwollen. Elektronisch nur mit Einwilligung und qualifizierter Signatur.
 - § 630 BGB: dauerndes Dienstverhältnis außerhalb des Arbeitnehmerstatus. § 16 Abs. 1/2 BBiG: Form/Inhalt bei Berufsausbildung und ggf. über § 26 BBiG; Umschulung gesondert einordnen.
-- Zwischenzeugnis bei triftigem Grund als Nebenpflicht (§ 241 Abs. 2 BGB); Verzögerungsschaden nur nach §§ 280 Abs. 1/2, 286 BGB.
+- Zwischenzeugnis bei triftigem Grund als Nebenpflicht (§§ 241 Abs. 2, 242 BGB). Bewerbungsabsicht kann nach Darlegung genügen; pauschales Bestreiten dann nicht (LAG Köln 5 SLa 495/25, Revision live prüfen). Verzögerungsschaden nur nach §§ 280 Abs. 1/2, 286 BGB.
 - Rechtsweg statusabhängig: bei Arbeitnehmern regelmäßig Arbeitsgericht/Leistungsklage; Organpersonen nach §§ 2, 5 ArbGG prüfen. § 12a ArbGG gilt nur im Arbeitsrechtsweg.
 - BAG-Linie: „zur vollen Zufriedenheit" = Note 3; bessere Note: Arbeitnehmer beweist, schlechtere: Arbeitgeber. Dank/Wünsche sind regelmäßig nicht einklagbar; bei bloßer Unzufriedenheit nur Entfernung, kein Wunschtext; maßregelnde Streichung gesondert nach § 612a BGB prüfen.
 - Auslassungen nur bei erwartbarer Hervorhebung rügen; Datum wahr halten; im Vergleich konkreten Wortlaut/Entwurf sichern.
 - Vor Beendigung kein wirksamer Zukunftsverzicht auf ein qualifiziertes Zeugnis; Verzichts-/Erledigungsklauseln prüfen.
 - Fristen: §§ 195, 199 BGB; Ausschlussfristen sowie Verwirkung nur mit Zeit- und Umstandsmoment prüfen.
-- Kosten nicht schematisch fordern: § 12a ArbGG schließt im Arbeitsrechtsweg Anwaltskostenerstattung erster Instanz und regelmäßig vorgerichtliche Rechtsverfolgungskosten aus.
-- Keine Entscheidung aus Modellwissen blind zitieren. Aktenzeichen und tragende Aussage vor Verwendung prüfen.
-- Codekataloge sind Prüfhypothesen, keine gerichtliche Phrase-zu-Note-Liste. Alkohol, Krankheit, Diebstahl, Belästigung oder Persönlichkeit nie aus Codeworten als Tatsache ableiten; Gesamttext prüfen.
+- Kosten nicht schematisch fordern: § 12a ArbGG sperrt im Arbeitsrechtsweg Erstattung erster Instanz und meist vorgerichtlicher Kosten. Zeugnisregelung erzeugt ohne beseitigten Streit/Ungewissheit keinen Vergleichsmehrwert; Krankheit allein genügt nicht (LAG Nürnberg 7 Ta 2/26).
+- Fundstellen nie blind zitieren; Aktenzeichen/Aussage vor Verwendung prüfen.
+- Codekataloge sind Hypothesen, keine gerichtliche Phrase-zu-Note-Liste. Alkohol, Krankheit, Diebstahl, Belästigung oder Persönlichkeit nie aus Codeworten als Tatsache ableiten; Gesamttext prüfen.
 
 ## Ampel und Noten
 
@@ -51,7 +51,7 @@ Zufriedenheitsformel grob: „stets zur vollsten" = 1; „stets zur vollen" = 2;
 
 ## Prüfworkflow
 
-1. **Quelle/Kopfdaten/Formalia:** Seitenzahl/-folge, OCR-Treue, Arbeitgeber, Person, Zeitraum, Position, Art, Datum, Briefkopf, Sprache/Format, Unterschrift/Signatur, Aussteller, Abreden. Bildmerkmale am Original prüfen; OCR-Fehler nicht als Zeugnisfehler und unsichere Schlüsselwörter nicht als Tatsache behandeln. Tatsächliches Ausfertigungsdatum nicht schematisch rügen. Qualifiziertes Zeugnis braucht Leistung/Verhalten; Notentabelle genügt regelmäßig nicht (BAG 9 AZR 262/20). Elektronisch nur mit Einwilligung und qualifizierter elektronischer Signatur; PDF/Scan/E-Mail genügt nicht.
+1. **Quelle/Kopfdaten/Formalia:** Seiten, Reihenfolge, OCR, Parteien, Zeitraum, Position, Art, Datum, Briefkopf, Sprache/Format, Unterschrift/Signatur, Aussteller, Abreden prüfen. Bildmerkmale am Original; OCR-Fehler nicht als Zeugnisfehler, unsichere Schlüsselwörter nicht als Tatsache behandeln. Ausfertigungsdatum nicht schematisch rügen. Qualifiziertes Zeugnis braucht Leistung/Verhalten; Notentabelle genügt regelmäßig nicht (BAG 9 AZR 262/20). Elektronisch nur mit Einwilligung/QES; PDF, Scan oder E-Mail genügt nicht.
 2. **Aufgaben vs. Bewertung trennen:** Aufgabenbeschreibung neutral erfassen. Nur bewertende Sätze in die Notenmatrix aufnehmen.
 3. **Leistung prüfen:** Fachwissen, Arbeitsqualität, Arbeitsmenge, Arbeitsweise, Belastbarkeit, Eigeninitiative, Erfolg. Fehlende Steigerer („stets", „sehr", „außerordentlich") drücken oft nach unten.
 4. **Verhalten prüfen:** Vorgesetzte/Kollegen/Kunden ist nur Sprachkonvention, kein fester Rechtscode. Team, Führung und tatsächliche Kontakte prüfen; Reihenfolge/Auslassung nur mit konkreter Erwartbarkeit rügen.
