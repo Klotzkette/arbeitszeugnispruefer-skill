@@ -7,13 +7,13 @@
 
 > Transparenz: Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
 >
-> Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity, lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
+> Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Werkstatt-Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity und lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Skill (Version 3.0.25) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Intake über die satzweise Notenmatrix bis zur Klagestrategie auf Zeugnisberichtigung. Version 3.0.25 ergänzt verifizierte 2026-Rechtsprechung zu Zwischenzeugnis und Vergleichsmehrwert, dokumentiert den amtlichen Aktualitätsstand und korrigiert den KI-VO-Transparenzhinweis.
+Konsolidierter Werkstatt-Skill (Version 3.1.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Drei-Minuten-Quickstart über Quellen-, Rollen-, Status- und Evidenzregister bis zu Notenmatrix, fertigen Schreiben, Vergleich, Klage und Vollstreckung. Version 3.1.0 erweitert die Vollfassung um rund 34 Prozent auf 23.077 Wörter, ergänzt sieben geführte Fallstrecken und gibt den verifizierten Rechtsstand bis 09.08.2026 modellgerecht wieder.
 
 ## Navigation
 
-[Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Ausführungsmodi](#schnell-stabil-und-vollständig) · [Repository-Landkarte](#repository-landkarte) · [100-Punkte-Audit](QUALITY-AUDIT-100.md) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
+[Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Werkstatt-Quickstart](#werkstatt-quickstart-für-jede-ki) · [Ausführungsmodi](#schnell-stabil-und-vollständig) · [Repository-Landkarte](#repository-landkarte) · [100-Punkte-Audit](QUALITY-AUDIT-100.md) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
 
 ## Direktdownloads
 
@@ -21,7 +21,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 | Inhalt | Herunterladen | Details / Ansehen |
 | --- | --- | --- |
-| Vollversion `SKILL.md` | [Datei herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) | [`skill/SKILL.md`](skill/SKILL.md) |
+| Voll-/Werkstattversion `SKILL.md` | [Datei herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) | [`skill/SKILL.md`](skill/SKILL.md) |
 | Mini-Version `SKILL-mini.md` | [Datei herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) | [`skill/SKILL-mini.md`](skill/SKILL-mini.md) |
 | Allgemeine Testakte: 10 Einzel-PDFs | [ZIP herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testakten-einzel-pdfs.zip) | [`Testakten-README`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) |
 | Allgemeine Testakte: Sammeldokument | [Gesamt-PDF herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) | [`PDF im Repository`](testakten/arbeitszeugnis-analyse-bluehendes-leben/gesamt-pdf/arbeitszeugnis-analyse-bluehendes-leben_gesamt.pdf) |
@@ -34,6 +34,8 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 | Gesamtes Repository | [ZIP von `main` herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/archive/refs/heads/main.zip) | [Dateibaum öffnen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill) |
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
+
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.077 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -55,7 +57,7 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 
 | Vorhaben | Passender Einstieg |
 | --- | --- |
-| Ein Zeugnis gründlich prüfen | [Vollversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) |
+| Ein Zeugnis gründlich mit geführtem Werkstatt-Workflow prüfen | [Voll-/Werkstattversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) |
 | Kleines Modell oder knappes Kontextfenster verwenden | [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
 | Ein Zeugnis schnell und trotzdem vollständig prüfen | Vollversion verwenden; sie wählt automatisch den verdichteten Kompaktmodus |
 | Komplexen Streit, Vergleich oder Klage vertiefen | Vollversion verwenden und ausdrücklich „Vollmodus" ergänzen |
@@ -80,29 +82,35 @@ Praktischer Einsatz: Einzel-PDFs eignen sich für gezielte Chats und Regressions
 
 ## Anwendung: So einfach geht's
 
+### Werkstatt-Quickstart für jede KI
+
 Begleitsatz zum Kopieren (egal ob Weg A oder Weg B) — zusammen mit dem Skill in den Chat geben:
 
 ```text
-Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach.
+Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis
+sofort und rollenrichtig. Nutze den Kompaktmodus, sofern der Fall keinen
+Vollmodus erfordert. Liefere im One-Shot zuerst Kurzbefund, verständliche
+Erklärung bzw. Mandantenschreiben und bei einem belastbaren Punkt das passend
+abgestufte Schreiben an die Gegenseite; danach Matrix und Vertiefung.
 ```
 
 Weg A — Text kopieren:
 
 1. [`skill/SKILL.md`](skill/SKILL.md) oder [`skill/SKILL-mini.md`](skill/SKILL-mini.md) öffnen, den gesamten Text mit `Strg+A` / `Cmd+A` markieren und in den Chat einfügen.
-2. Dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
+2. Den Begleitsatz aus dem Werkstatt-Quickstart dazuschreiben und absenden.
 3. Das Zeugnis einfügen (Text, PDF oder Foto). Die Analyse startet von selbst.
 
 Weg B — Datei hineinziehen (Drag & Drop):
 
 1. `SKILL.md` oder `SKILL-mini.md` über die [Direktdownloads oben](#direktdownloads) auf das Gerät laden.
-2. Die Datei per Drag & Drop in das Chatfenster ziehen, dazuschreiben: *„Bitte halte dich an diesen Skill/Prompt. Gleich kommt ein Arbeitszeugnis — bearbeite es danach."* Enter drücken.
+2. Die Datei per Drag & Drop in das Chatfenster ziehen, den Begleitsatz aus dem Werkstatt-Quickstart dazuschreiben und absenden.
 3. Das Zeugnis nachreichen — fertig.
 
 Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Die Matrix trennt dabei Ampelfarbe, Notentendenz und rechtliche Durchsetzbarkeit. Wird der Skill als One-Shot/Megaprompt mit Zeugnis genutzt, liefert er aus Perspektive der beurteilten Person bei einem belastbaren Korrektur- oder Verhandlungspunkt sofort eine persönliche Erklärung oder ein anwaltliches Mandantenschreiben sowie das passende Gegenseitenschreiben: bei einem Rechtsmangel ein Berichtigungsverlangen, bei ausschließlich freiwilligen Punkten eine freundliche Änderungsbitte ohne Anspruchs- oder Klagebehauptung. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
 
 ### Schnell, stabil und vollständig
 
-Die Vollversion liest das Zeugnis einmal in ein Satz- und Evidenzregister ein und erzeugt daraus alle Blöcke. Dadurch bleiben Note, Ampel, Rechtsstatus, Beleg und Zielwortlaut in Erklärung, Schreiben und Matrix identisch; Volltext und Zitate werden nicht wiederholt.
+Die Voll-/Werkstattversion liest das Zeugnis einmal in ein Quellen-, Satz- und Evidenzregister ein und erzeugt daraus alle Blöcke. Eine Statuskarte trennt Einsenderrolle, Rechtsstatus, Zeugnisart, Modus und Ziel; Befundkarten trennen Konfidenz, Ampel, Note und Anspruch. Dadurch bleiben Rechtsstatus, Beleg und Zielwortlaut in Erklärung, Schreiben und Matrix identisch; Volltext und Zitate werden nicht wiederholt.
 
 | Modus | Verwendung |
 | --- | --- |
@@ -123,7 +131,7 @@ Im One-Shot kommen Kurzbefund, ausformulierte Erklärung/Mandantenschreiben und 
 
 | Bereich | Einstieg | Enthaltene Dateien |
 | --- | --- | --- |
-| Skills | [`skill/`](skill/) | [`SKILL.md`](skill/SKILL.md) Vollversion · [`SKILL-mini.md`](skill/SKILL-mini.md) Kurzversion |
+| Skills | [`skill/`](skill/) | [`SKILL.md`](skill/SKILL.md) Voll-/Werkstattversion · [`SKILL-mini.md`](skill/SKILL-mini.md) Kurzversion |
 | Öffentliche Downloadseite | [`docs/`](docs/) · [GitHub Pages](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) | [`index.html`](docs/index.html) · [`download-skill.html`](docs/download-skill.html) · [`download-mini.html`](docs/download-mini.html) · [`SHA256SUMS.txt`](docs/SHA256SUMS.txt) |
 | Testakten-Zentrale | [`testakten/README.md`](testakten/README.md) | 25 Fälle · Blindtest-Anleitung · Komplettpaket · [`TESTFALL-MATRIX.md`](testakten/TESTFALL-MATRIX.md) |
 | Allgemeine Testakte | [`README`](testakten/arbeitszeugnis-analyse-bluehendes-leben/README.md) | 10 Einzel-PDFs · Gesamt-PDF · ZIP · [`Erwartungshorizont`](testakten/arbeitszeugnis-analyse-bluehendes-leben/90-erwartungshorizont-und-pruefpunkte.md) · [`Vollvermerke`](testakten/arbeitszeugnis-analyse-bluehendes-leben/90-ergaenzende-korrespondenz-und-vollvermerke.md) |
@@ -168,7 +176,7 @@ python3 scripts/check_release_integrity.py --verbose
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Werkstatt-Mindestumfang/-module, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
 | [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle drei Testaktensätze, deren Einzel-PDFs und das Komplettpaket parallel, ohne kuratierte Quellen oder Begleittexte zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
 | [`scripts/render_testzeugnis.py`](scripts/render_testzeugnis.py) | Erzeugt mit ReportLab das gemeinsame adaptive A4-Layout, deutsche Typografie, Fortsetzungszeile, Seitenfuß und Signaturblöcke aller 25 Fälle. |
 | [`scripts/reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) | Gemeinsame Hilfsfunktionen für kanonische PDF-Metadaten und reproduzierbare ZIP-Dateien. |
@@ -191,7 +199,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.0.25
+python3 scripts/check_release_integrity.py --github-release v3.1.0
 ```
 
 ## Workflow in acht Stufen
@@ -204,6 +212,8 @@ python3 scripts/check_release_integrity.py --github-release v3.0.25
 6. Gesamtnotenspanne und Hauptbefund
 7. Mandantenbericht und Verhandlungsmodul
 8. Klagestrategie Zeugnisberichtigung
+
+Die Werkstattversion legt darüber sieben geführte Strecken für Selbstprüfung, anwaltliches Mandat, HR-/Arbeitgeberprüfung, besondere Status- und Zeugnisarten, Dokumentvergleich, Eskalation/Vollstreckung sowie Scan/OCR/Batch. Eine eigene Ausgabewerkstatt sorgt dafür, dass aus Matrixbefunden vollständige Betroffenenerklärungen, Mandantenschreiben, Gegenseitenschreiben und HR-Vermerke entstehen.
 
 ## Rechtlicher Anker
 

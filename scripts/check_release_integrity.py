@@ -34,6 +34,8 @@ from reproducible_test_artifacts import (
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "Klotzkette/arbeitszeugnispruefer-skill"
 MINI_LIMIT = 7500
+WORKSHOP_BASELINE_WORDS = 17_152
+WORKSHOP_MIN_WORDS = (WORKSHOP_BASELINE_WORDS * 4 + 2) // 3
 PROCESS_TIMEOUT_SECONDS = 30
 INTEGRITY_WORKFLOW = Path(".github/workflows/verify-integrity.yml")
 QUALITY_AUDIT = Path("QUALITY-AUDIT-100.md")
@@ -313,6 +315,7 @@ def check_skill_frontmatter(checker: Checker) -> None:
         checker.require(set(fields) == {"name", "description"}, f"{rel} frontmatter has only name and description")
         checker.require(fields.get("name") == expected_name, f"{rel} has the expected skill name")
         checker.require(len(fields.get("description", "")) >= 80, f"{rel} has a substantive trigger description")
+        checker.require(len(fields.get("description", "")) <= 1024, f"{rel} trigger description stays within 1024 characters")
 
 
 def github_slug(text: str) -> str:
@@ -408,6 +411,72 @@ def check_mini_size(checker: Checker) -> None:
     for rel in (Path("skill/SKILL-mini.md"), Path("docs/SKILL-mini.md")):
         size = len(read_text(rel))
         checker.require(size <= MINI_LIMIT, f"{rel} has {size} characters <= {MINI_LIMIT}")
+
+
+def check_workshop_skill(checker: Checker) -> None:
+    full = read_text(Path("skill/SKILL.md"))
+    readme = read_text(Path("README.md"))
+    index = read_text(Path("docs/index.html"))
+    word_count = len(full.split())
+    display_count = f"{word_count:,}".replace(",", ".")
+
+    checker.require(
+        word_count >= WORKSHOP_MIN_WORDS,
+        f"full workshop skill has {word_count} words, at least one third above the {WORKSHOP_BASELINE_WORDS}-word baseline",
+    )
+    checker.require(
+        f"{display_count} Wörter" in readme and f"{display_count} Wörter" in index,
+        "README and download page publish the measured workshop word count",
+    )
+
+    required_sections = [
+        "## Freistehende Nutzung als Werkstatt-/Megaprompt",
+        "## Werkstatt-Quickstart — in drei Minuten zur vollständigen Prüfung",
+        "## Werkstattsteuerung und Arbeitsregister",
+        "## Aktualitätscockpit 2026 — Rechtsprechung richtig einsetzen",
+        "## Geführte Werkstattstrecken",
+        "## Ausgabewerkstatt — fertige Texte statt Rohbefunde",
+    ]
+    checker.require(
+        all(section in full for section in required_sections),
+        "full skill keeps every workshop navigation module",
+    )
+    checker.require(
+        all(f"### Strecke {letter}" in full for letter in "ABCDEFG"),
+        "full skill keeps all seven guided workshop routes",
+    )
+    checker.require(
+        all(f"**Q{number}" in full for number in range(1, 6))
+        and "### Satz- und Evidenzregister" in full
+        and "### Anspruchsgate vor jedem Gegenseitenschreiben" in full,
+        "workshop keeps source provenance, evidence and demand-letter gates",
+    )
+    checker.require(
+        "Arbeite verbindlich nach diesem Werkstatt-Prompt" in full
+        and "Vertrag über die erste Antwort" in full
+        and "Zehn Schritte, die jede KI unmittelbar ausführt" in full,
+        "workshop quickstart remains immediately executable across models",
+    )
+    checker.require(
+        "Bauplan für die direkte Betroffenenerklärung" in full
+        and "Bauplan für das anwaltliche Mandantenschreiben" in full
+        and "Bauplan für das Gegenseitenschreiben" in full
+        and "Bauplan für den HR-Korrekturvermerk" in full,
+        "output workshop retains all role-specific finished-text blueprints",
+    )
+    checker.require(
+        "bei einem belastbaren Punkt im One-Shot oder bei ausdrücklichem Auftrag sofort" in full
+        and "im sicher interaktiven Einsatz ohne solchen Auftrag" in full,
+        "guided routes preserve the interactive versus one-shot delivery boundary",
+    )
+    download_help = read_text(Path("docs/download-skill.html"))
+    checker.require(
+        "Voll-/Werkstattversion" in download_help
+        and "Werkstattversion ansehen" in download_help
+        and "Arbeite verbindlich nach diesem Werkstatt-Prompt" in readme
+        and "Arbeite verbindlich nach diesem Werkstatt-Prompt" in index,
+        "README and download surfaces expose the workshop identity and executable starter",
+    )
 
 
 def check_legal_citations(checker: Checker) -> None:
@@ -1783,6 +1852,7 @@ def main(argv: list[str] | None = None) -> int:
         check_ci_workflow(checker)
         check_docs_sync(checker)
         check_mini_size(checker)
+        check_workshop_skill(checker)
         check_legal_citations(checker)
         check_generated_build_contract(checker)
         check_quality_audit(checker)

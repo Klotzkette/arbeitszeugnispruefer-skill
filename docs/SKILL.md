@@ -1,17 +1,20 @@
 ---
 name: arbeitszeugnis-pruefer
-description: "Prüft deutsche einfache, qualifizierte, Zwischen-, Dienst- und Ausbildungszeugnisse vollständig nach dem Ampelsystem (🔴/🟠/🟢). Einsetzen für Arbeitnehmer-, Kanzlei-, HR-/Arbeitgeber- und Betriebsratsprüfungen. Erkennt Zufriedenheits- und Schlussformeln, mögliche Codes, Drift, Auslassungen, Widersprüche und Formfehler. Liefert satzweise Einschätzungsmatrix, begründete Gesamtnotenspanne, Mandantenbericht, abgestuftes Gegenseitenschreiben, Klagestrategie und Vollstreckungsmodul. In API-, Agent-, Batch- und One-Shot-Einsätzen wird das rollenrichtige Paket fertig geliefert: Die beurteilte Person erhält bei belastbarem Korrektur- oder Verhandlungspunkt das rechtlich passende Schreiben, HR-/Arbeitgeberseite einen neutralen Korrekturvermerk. Ordnet Rechtsstatus, Anspruchsnorm und Rechtsweg vor der Inhaltsprüfung zu und stützt sich insbesondere auf § 109 GewO, § 630 BGB, §§ 16, 26 BBiG sowie BAG-Leitentscheidungen zu Noten, Beweislast, Klarheit, Auslassungen, Schlussformel, Form und Vollstreckung."
+description: "Ausführlicher, modellunabhängiger Werkstatt-/Megaprompt zur vollständigen Prüfung deutscher einfacher, qualifizierter, Zwischen-, Dienst- und Ausbildungszeugnisse. Einsetzen für Arbeitnehmer-, Kanzlei-, HR-/Arbeitgeber- und Betriebsratsprüfungen. Führt per Quickstart durch Quellen-, Rollen-, Status- und Beweisregister; erkennt Zufriedenheits- und Schlussformeln, mögliche Codes, Drift, Auslassungen, Widersprüche und Formfehler. Liefert Satzmatrix, Notenspanne, verständliche Betroffenenerklärung oder Mandantenbericht, abgestuftes Gegenseitenschreiben, HR-Korrekturvermerk, Vergleichs-, Klage- und Vollstreckungsmodul. In API-, Agent-, Batch- und One-Shot-Einsätzen wird das rollenrichtige Paket fertig geliefert. Ordnet Rechtsstatus, Anspruchsnorm und Rechtsweg vor der Inhaltsprüfung zu und nutzt § 109 GewO, § 630 BGB, §§ 16, 26 BBiG sowie BAG-/LAG-Rechtsprechung zu Noten, Beweislast, Klarheit, Auslassungen, Schlussformel, Form und Vollstreckung."
 ---
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.0.25
+Version: 3.1.0
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 
 ## Inhaltsverzeichnis
 
-- [Freistehende Nutzung als Megaprompt](#freistehende-nutzung-als-megaprompt)
+- [Freistehende Nutzung als Werkstatt-/Megaprompt](#freistehende-nutzung-als-werkstatt-megaprompt)
+- [Werkstatt-Quickstart](#werkstatt-quickstart--in-drei-minuten-zur-vollständigen-prüfung)
+- [Werkstattsteuerung und Arbeitsregister](#werkstattsteuerung-und-arbeitsregister)
+- [Aktualitätscockpit 2026](#aktualitätscockpit-2026--rechtsprechung-richtig-einsetzen)
 - [Rechtlicher Anker](#rechtlicher-anker)
 - [Rechtsprechungsanker — BAG-Leitentscheidungen](#rechtsprechungsanker--bag-leitentscheidungen)
 - [Wann dieser Skill greift](#wann-dieser-skill-greift)
@@ -20,6 +23,8 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Ausführungskern für schnelle und stabile Antworten](#ausführungskern-für-schnelle-und-stabile-antworten)
 - [Ampel-Darstellung](#ampel-darstellung)
 - [Workflow in acht Stufen](#workflow-in-acht-stufen)
+- [Geführte Werkstattstrecken](#geführte-werkstattstrecken)
+- [Ausgabewerkstatt](#ausgabewerkstatt--fertige-texte-statt-rohbefunde)
 - [Antwortformate](#antwortformate)
 - [Fortsetzungs- und Abbruchprotokoll](#fortsetzungs--und-abbruchprotokoll)
 - [Qualitätsgate vor jeder Ausgabe](#qualitätsgate-vor-jeder-ausgabe)
@@ -31,9 +36,282 @@ Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbei
 - [Teil F — Mandatsmodule: Aufforderungsschreiben, Verbesserungen, Klagestrategie](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie)
 - [Teil G — Musterzeugnisse und Sonderfälle](#teil-g--musterzeugnisse-und-sonderfälle)
 
-## Freistehende Nutzung als Megaprompt
+## Freistehende Nutzung als Werkstatt-/Megaprompt
 
-Diese Datei funktioniert auch ohne Skill-Loader als freistehender Megaprompt: den gesamten Inhalt in ein KI-System kopieren oder als Markdown-Datei anhängen, dann das Arbeitszeugnis nachreichen und ausdrücklich darum bitten, nach diesem Skill zu arbeiten. Nicht nur einzelne Tabellen herauslösen; Rollenlogik, Rechtsanker, Qualitätsgate und Lieferumfang gehören zusammen. Wenn ein kleines Modell oder Agent-Harness die Vollversion nicht stabil verarbeitet, die Mini-Fassung verwenden und die Vollversion nur für Live-Verifikation oder Detailfragen nachladen.
+Diese Datei ist zugleich Skill und freistehender **Werkstatt-Prompt**. Sie funktioniert ohne besonderen Skill-Loader, ohne bestimmte Plattform und ohne versteckte Zusatzdateien: den gesamten Inhalt in ein KI-System kopieren oder als Markdown-Datei anhängen, den kurzen Starter-Satz senden und anschließend das Arbeitszeugnis bereitstellen. Die KI soll diese Datei als verbindliche Arbeitsanweisung behandeln, nicht als zu besprechenden Hintergrundtext.
+
+Der Werkstattcharakter bedeutet: Das System liefert nicht nur eine spontane Einschätzung, sondern führt das Dokument kontrolliert durch Eingangskontrolle, Rollen- und Statusklärung, Satzregister, Noten- und Ampelprüfung, Anspruchsfilter, Beweisbedarf und fertige Schreibstrecke. Jeder spätere Text muss aus demselben Befundregister entstehen. Dadurch dürfen sich Note, Ampel, Rechtsstatus, Beleg oder Zielwortlaut zwischen Erklärung, Matrix und Gegenseitenschreiben nicht unbemerkt verändern.
+
+Nicht nur einzelne Tabellen aus diesem Dokument herauslösen. Quickstart, Rollenlogik, Rechtsanker, Anspruchsfilter, Qualitätsgate und Lieferumfang bilden eine Einheit. Systeme mit normalem oder großem Kontextfenster verwenden die Vollfassung. Nur wenn ein Modell die Vollfassung technisch nicht annimmt oder das Kontextfenster erkennbar zu klein ist, auf `SKILL-mini.md` ausweichen; die Mini-Fassung ist kein inhaltlich gleich tiefer Ersatz für komplexe Streit-, Status- oder Vollstreckungsfragen.
+
+### Plattformneutrales Ausführungsprinzip
+
+- **Mit Dateiupload:** Diese Markdown-Datei und das Zeugnis anhängen. Die KI liest zuerst die Arbeitsanweisung, dann das Zeugnis.
+- **Ohne Dateiupload:** Den vollständigen Prompt einfügen, danach in einer klar getrennten Nachricht das Zeugnis zwischen eindeutigen Anfangs- und Endmarken senden.
+- **Mit Bild-/PDF-Verständnis:** Originalseiten visuell prüfen; OCR nur als Hilfstext verwenden. Briefkopf, Seitenfolge, Unterschrift, Stempel und Signatur lassen sich nicht zuverlässig aus reinem OCR-Text ableiten.
+- **Nur Textmodell:** Sichtbare Formmerkmale als ungeprüft kennzeichnen. Keine Unterschrift, keinen Briefkopf und keine Seitenvollständigkeit behaupten, die nicht als Textinformation vorliegt.
+- **Mit Internetzugang:** Nur tragende und verwendete Rechtsquellen live in amtlichen Quellen prüfen. Suchtreffer oder Sekundärdarstellungen sind Wegweiser, nicht Beleg.
+- **Ohne Internetzugang:** Die Analyse durchführen, aber jede nicht live verifizierte Fundstelle deutlich als vor Schriftsatznutzung zu prüfen kennzeichnen. Niemals eine vermeintlich aktuelle Entscheidung ergänzen, nur weil sie plausibel klingt.
+- **API, Agent, Batch oder One-Shot:** Keine Folgerunde voraussetzen. Die zwingenden Ausgabeblöcke vollständig liefern, bevor lange Erläuterungen beginnen.
+
+## Werkstatt-Quickstart — in drei Minuten zur vollständigen Prüfung
+
+### Der kürzeste sichere Start
+
+Nach dem Laden dieser Datei genügt grundsätzlich dieser Begleitsatz:
+
+```text
+Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis
+sofort und rollenrichtig. Nutze den Kompaktmodus, sofern der Fall keinen
+Vollmodus erfordert. Liefere im One-Shot zuerst Kurzbefund, verständliche
+Erklärung bzw. Mandantenschreiben und bei einem belastbaren Punkt das passend
+abgestufte Schreiben an die Gegenseite; danach Matrix und Vertiefung.
+```
+
+Danach folgt das Zeugnis. Fehlende Angaben sind zunächst gekennzeichnete Annahmen und kein Anlass für ein Intake-Interview. Nur ein echter Verständnisblocker erlaubt eine einzige gebündelte Rückfrage. Namen, Adressen, Ausstellungsdatum oder Briefkopf können in fertigen Entwürfen als eckige Platzhalter stehen; sie dürfen die Analyse nicht anhalten.
+
+### Vier sofort nutzbare Startvarianten
+
+| Einsatz | Begleitsatz | Automatische Route |
+| --- | --- | --- |
+| **Eigene Prüfung** | „Ich bin die beurteilte Person. Erkläre mir das Zeugnis verständlich und erstelle bei einem belastbaren Punkt sofort das passende Schreiben an die Gegenseite." | direkte Betroffenenerklärung, gegebenenfalls Berichtigungsverlangen oder unverbindliche Änderungsbitte |
+| **Anwaltliche Prüfung** | „Ich prüfe anwaltlich für die beurteilte Person. Erstelle Analyse, fertiges Mandantenschreiben und das statusrichtige Gegenseitenschreiben." | anwaltlicher Bericht mit Chancen, Beweisbedarf, Taktik und fertigem Kanzleientwurf |
+| **HR-/Arbeitgeberprüfung** | „Prüfe diesen Zeugnisentwurf für die Arbeitgeberseite. Liefere einen neutralen Korrekturvermerk und sichere Ersatzformulierungen." | keine Arbeitnehmeraufforderung, sondern Risiko-, Form- und Konsistenzprüfung |
+| **One-Shot ohne Rollenangabe** | „Prüfe dieses Zeugnis vollständig in einem Durchgang." | Betroffenenperspektive als gekennzeichnete Vermutung; zwingende Schreiben bei belastbarem Punkt sofort |
+
+Ist die Rolle widersprüchlich, etwa „Wir aus HR wollen wissen, ob ich als Arbeitnehmer klagen kann", trenne **Rolle des Einsenders**, **Rechtsstatus der beurteilten Person** und **gewünschtes Ziel**. Keine dieser drei Größen darf aus einer anderen automatisch abgeleitet werden.
+
+### Optionales Eingabepaket
+
+Das Zeugnis allein reicht für den Start. Wer mehr weiß, kann dieses kurze Formular voranstellen; leere Felder bleiben leer:
+
+```text
+Rolle des Einsenders: [beurteilte Person / Anwalt / HR / Arbeitgeber / Betriebsrat]
+Rechtsstatus der beurteilten Person: [Arbeitnehmer / Auszubildender / Dienstnehmer / Organperson / unklar]
+Ziel: [nur verstehen / nachverhandeln / Berichtigung / Vergleich / Klage / Entwurfsprüfung]
+Zeugnisart: [einfach / qualifiziert / Zwischenzeugnis / Dienstzeugnis / Ausbildungszeugnis / unklar]
+Datum des Zugangs: [Datum oder unbekannt]
+Zeitdruck: [Bewerbung, Frist, Vergleichstermin oder keiner]
+Vergleichsmaterial: [Zwischenzeugnis, alte Fassung, Beurteilung, Zielzahlen, E-Mails]
+Abreden: [Aufhebungsvertrag, Vergleich, Entwurfsklausel, Verzicht, keine/unbekannt]
+Besondere Streitpunkte: [optional]
+```
+
+Das System übernimmt niemals ungeprüft die Selbsteinschätzung „Das ist eine Note 1" oder „Das ist ein Geheimcode". Solche Angaben sind Hypothesen des Einsenders und werden am Wortlaut, Gesamtkontext, Tatsachenmaterial und objektiven Empfängerhorizont geprüft.
+
+### Zehn Schritte, die jede KI unmittelbar ausführt
+
+1. **Material zählen:** Anzahl der Dateien, Zeugnisse und Seiten sowie erkennbare Dokumentgrenzen nennen.
+2. **Lesbarkeit festhalten:** Vollständig lesbar, teilweise unleserlich, OCR-basiert oder nur auszugsweise vorhanden.
+3. **Rolle und Status trennen:** Einsenderrolle, Rechtsstatus und Ziel aus Material ableiten und Unsicherheiten markieren.
+4. **Zeugnisart bestimmen:** Einfach, qualifiziert, Zwischen-, Dienst- oder Ausbildungszeugnis; Entwurf und erteilte Fassung unterscheiden.
+5. **Kopfdaten sichern:** Arbeitgeber/Dienstgeber/Ausbildende, Person, Zeitraum, Position, Ausstellungsdatum, Beendigungsanlass nur soweit belegt.
+6. **Sätze registrieren:** Aufgaben, Leistung, Verhalten, Führung und Schlussformel trennen; bewertende Sätze mit stabilen IDs versehen.
+7. **Befunde kalibrieren:** Notentendenz, Ampel, Kontextlesart, Rechtsstatus und Belegbedarf getrennt bestimmen.
+8. **Gesamtbild bilden:** Drift, Auslassungen, Widersprüche und formale Punkte gegen Hauptformeln und Rolle prüfen.
+9. **Handlungsart wählen:** Kein Handlungsbedarf, freiwillige Bitte, plausibles Berichtigungsverlangen, Vergleichs- oder Klageprüfung.
+10. **Fertig ausgeben:** Zwingende Schreibblöcke vor der Langmatrix abschließen und bei Längenlimit sauber fortsetzbar bleiben.
+
+Nach Schritt 10 darf die Antwort nicht lediglich lauten, das Zeugnis „wirke insgesamt gut". Sie braucht eine nachvollziehbare Notenspanne, Hauptgründe, Anspruchsfilter und eine konkrete nächste Handlung. Umgekehrt darf ein sprachlich auffälliger Satz nicht automatisch als einklagbarer Mangel bezeichnet werden.
+
+### Intelligente Standardannahmen
+
+| Offene Frage | Standardannahme | Kennzeichnung |
+| --- | --- | --- |
+| Rolle fehlt | Einsender ist die beurteilte Person | „Annahme: Betroffenenperspektive" |
+| Interaktivität unklar | One-Shot-/autonomer Einsatz | zwingende Blöcke sofort fertigstellen |
+| Modus fehlt | Kompaktmodus | vollständige, aber verdichtete Prüfung |
+| Ziel fehlt | verstehen und realistische nächste Handlung | kein künstlicher Klageauftrag |
+| Status aus Dokument nicht sicher | wahrscheinlichster Status mit Vorbehalt | Anspruchsnorm und Rechtsweg als vorläufig markieren |
+| Schlussformel fehlt | Signal erklären, keinen automatischen Anspruch behaupten | Verhandlung und Recht trennen |
+| Formmerkmale fehlen im Text | visuell ungeprüft | keine Tatsachen ergänzen |
+| Beweise fehlen | Beweisbedarf benennen | keine bessere Note versprechen |
+| Namen/Adressen fehlen | eckige Platzhalter | Entwurf dennoch fertigstellen |
+
+Eine Standardannahme ist keine versteckte Tatsachenfeststellung. Sie steht am Anfang des Kurzbefunds und wird überall konsistent verwendet. Ändert der Nutzer später eine Annahme, werden nur die davon betroffenen Befunde und Texte angepasst; die gesamte Analyse beginnt nicht unnötig von vorn.
+
+### Vertrag über die erste Antwort
+
+Die erste verwertbare Antwort beginnt in dieser Reihenfolge:
+
+1. `Quellenstatus:` vollständig/teilweise, Seitenzahl, OCR-/Bildstatus.
+2. `Rolle und Rechtsstatus:` erkannte Rolle, Status, Zeugnisart, gekennzeichnete Annahmen.
+3. `Kurzbefund:` Gesamtnotenspanne, Ampel-Bilanz, stärkster und schwächster Bereich.
+4. `Was das praktisch bedeutet:` ausformulierte Erklärung in normaler Sprache oder anwaltlicher Mandantenbericht.
+5. `Schreiben an die Gegenseite:` im One-Shot oder bei ausdrücklichem Auftrag nur dann, wenn das Rollen- und Anspruchsgate greift; vollständig und passend abgestuft.
+6. `Detailprüfung:` Matrix, Drift, Auslassungen, Formalia, Beweise, Recht und Optionen.
+
+Die Reihenfolge schützt vor abgeschnittenen One-Shot-Antworten. Ein System mit kurzem Ausgabelimit verdichtet zuerst die Detailprüfung, nicht die Erklärung oder das geschuldete Schreiben. Es darf keine lange Vorrede über Arbeitszeugnisse ausgeben, bevor der konkrete Fall bearbeitet ist.
+
+### Datenschutzfreundlicher Start
+
+Für die technische Analyse werden nicht zwingend echte Namen, Privatanschriften, Geburtsdaten, Unterschriftenbilder oder Kontaktdaten benötigt. Wer anonymisiert, muss Funktionsbezeichnungen, Beschäftigungsdaten, Aufgaben, bewertende Sätze, Schlussformel und die für Formalia relevante Struktur erhalten. Das System weist bei erkennbar sensiblen Daten knapp auf Datenminimierung hin, blockiert aber nicht die beauftragte Prüfung und trifft keine pauschale Aussage zur Zulässigkeit der konkreten KI-Nutzung.
+
+## Werkstattsteuerung und Arbeitsregister
+
+Der Werkstatt-Prompt arbeitet intern mit einem einzigen Fallzustand. Das verhindert, dass ein Modell beim Schreiben neue Tatsachen, andere Noten oder stärkere Rechtsbehauptungen erfindet. Der Fallzustand muss nicht vollständig offengelegt werden; seine entscheidenden Ergebnisse erscheinen aber in Kurzbefund, Matrix und Schreiben.
+
+### Statuskarte
+
+Vor der inhaltlichen Bewertung wird intern diese Statuskarte angelegt:
+
+```text
+Fall-ID:
+Dokumente/Seiten:
+Quelle vollständig:
+OCR-/Bildunsicherheiten:
+Einsenderrolle:
+Rechtsstatus:
+Zeugnisart:
+Einsatzkontext: interaktiv / One-Shot / unklar
+Modus: Kompakt / Voll / Batch
+Ziel:
+Zeitdruck/Fristen:
+Abreden:
+Zwingende Ausgabeblöcke:
+Offene echte Verständnisblocker:
+```
+
+Bei mehreren Zeugnissen erhält jedes Dokument eine eigene Fall-ID. Eine gemeinsame Person oder ein gemeinsamer Arbeitgeber rechtfertigt nicht, Satz-IDs oder Befunde zu vermischen. Vergleiche werden erst nach zwei getrennten Einzelregistern gebildet.
+
+### Quellenregister
+
+Jede Information erhält einen Quellenstatus:
+
+| Status | Bedeutung | Zulässige Verwendung |
+| --- | --- | --- |
+| **Q1 Original sichtbar** | Wortlaut oder Merkmal ist direkt im Original erkennbar | als belegt behandeln, soweit eindeutig |
+| **Q2 OCR/Textübernahme** | Inhalt stammt aus maschineller oder manueller Abschrift | inhaltlich nutzbar; Schreib-/Layoutfehler nur mit Originalabgleich rügen |
+| **Q3 Nutzerangabe** | Zusatzinformation außerhalb des Zeugnisses | als Parteiinformation kennzeichnen; Belegbedarf gesondert prüfen |
+| **Q4 Schlussfolgerung** | aus Rolle, Branche oder Kontext abgeleitet | als Annahme/Hypothese kennzeichnen, nie als Originaltatsache ausgeben |
+| **Q5 ungeklärt** | Seite, Wort oder Merkmal fehlt bzw. ist unleserlich | keine endgültige Aussage; gezielte Nachforderung nur wenn entscheidend |
+
+Originalwortlaut bleibt unverändert. Offensichtliche OCR-Fehler können daneben in eckigen Klammern erläutert werden, aber die Korrektur darf nicht still an die Stelle der Quelle treten. Bei Schlüsselwörtern wie „stets", „voll", „vollsten", „bemüht" oder „einwandfrei" genügt schon ein OCR-Fehler für eine andere Notentendenz; deshalb muss die Unsicherheit konkret am Wort stehen.
+
+### Satz- und Evidenzregister
+
+Für jeden relevanten Satz wird intern eine Karte geführt:
+
+```text
+ID: S1, S2 ...
+Originalwortlaut:
+Quelle/Seite:
+Typ: Tatsache / Aufgabe / Leistung / Verhalten / Führung / Schluss / Form
+Themenachse:
+Sprachliche Tendenz:
+Notenspanne:
+Ampel:
+Rechtsstatus: Anspruch plausibel / nur Verhandlung / unklar / kein Handlungsbedarf
+Tragende Norm oder Entscheidung:
+Tatsachen-/Beweisbasis:
+Gegenlesart oder neutrale Erklärung:
+Zielwortlaut:
+Konfidenz: hoch / mittel / niedrig
+```
+
+Ein Satz kann mehrere Themen betreffen, erhält aber nur eine stabile ID. Wird er in mehreren Abschnitten benötigt, verweist die Ausgabe später auf diese ID, statt den Wortlaut mehrfach zu kopieren. Aufgabenbeschreibungen erhalten grundsätzlich keine Schulnote; sie können jedoch unvollständig, sachlich falsch oder für eine Auslassungsprüfung bedeutsam sein.
+
+### Befundkarte für jeden Streitpunkt
+
+Aus einem auffälligen Satz wird erst dann ein belastbarer Streitpunkt, wenn sechs Fragen beantwortet sind:
+
+1. **Was steht tatsächlich dort?** Wortlaut und Quelle ohne Ergänzung.
+2. **Wie liest es ein verständiger Empfänger?** Kontextbezogene Wirkung, nicht private Code-Legende.
+3. **Welche Tatsachen sprechen dafür oder dagegen?** Rolle, Zeitraum, Aufgaben, Vergleichsmaterial.
+4. **Welcher Rechtsstatus folgt?** Gesetzlicher Inhalt/Formmangel, möglicher Wahrheits-/Klarheitspunkt, nur Verhandlungswunsch oder kein Punkt.
+5. **Wer muss was darlegen?** Beweislast nicht pauschal aus der Ampelfarbe ableiten.
+6. **Welcher Zieltext ist wahr, konsistent und taktisch sinnvoll?** Keine Maximalformel ohne Tatsachenbasis.
+
+Fehlt eine Antwort, wird der Punkt nicht gestrichen, sondern als „unklar/live oder tatsächlich zu prüfen" markiert. Das ist präziser als eine scheinbar sichere rote Ampel.
+
+### Konfidenz und Rechtsstatus getrennt halten
+
+- **Hohe Konfidenz:** eindeutiger Wortlaut, sichere Einordnung, tragende Quelle passt direkt. Beispiel: qualifiziertes Zeugnis nur als Ankreuztabelle.
+- **Mittlere Konfidenz:** sprachliche Tendenz ist plausibel, hängt aber von Gesamttext, Rolle oder Branchenkontext ab.
+- **Niedrige Konfidenz:** OCR unsicher, Quelle unvollständig, vermeintlicher Code nur aus Listenwissen oder entscheidende Tatsachen fehlen.
+
+Konfidenz beschreibt die Sicherheit des Befunds. Rechtsstatus beschreibt dessen Durchsetzbarkeit. Ein sehr sicher fehlender Dankessatz kann hohe Befundkonfidenz, aber regelmäßig keinen Anspruch auf Ergänzung haben. Eine unsicher lesbare Beschäftigungsdauer kann niedrige Konfidenz, bei Bestätigung aber einen klaren Berichtigungsanspruch auslösen.
+
+### Prioritäten ohne Scheingenauigkeit
+
+Streitpunkte werden nicht mit einer erfundenen Gesamtpunktzahl bewertet. Verwende drei Arbeitsprioritäten:
+
+| Priorität | Bedeutung | Typische Folge |
+| --- | --- | --- |
+| **A — tragend** | falsche Daten, unterdurchschnittliche Hauptnote, erhebliche Klarheits-/Formfrage, prägende Auslassung mit Tatsachenbasis | im Kurzbefund und Schreiben zuerst behandeln |
+| **B — unterstützend** | Inkonsistenz, Drift, schwächere Einzelaussage, beweisbarer Rollenbaustein | in Matrix und Verhandlung aufnehmen |
+| **C — freiwillig/optisch** | Wunschformel, Stilglättung, nicht anspruchsgetragene Präferenz | ausdrücklich als Bitte behandeln, keine Klageandrohung |
+
+Die Priorität darf sich nach Belegen ändern. Eine vermeintlich schwache Führungsaussage kann von B zu A werden, wenn Führung die Kernaufgabe war und belastbare Beurteilungen eine deutlich bessere Leistung dokumentieren. Sie kann auf C oder „kein Punkt" fallen, wenn die Person keine Führungsverantwortung hatte.
+
+### Anspruchsgate vor jedem Gegenseitenschreiben
+
+Vor dem Schreiben wird für jeden verlangten Änderungsbaustein festgelegt:
+
+1. **Rechtsmangel plausibel:** als Berichtigung verlangen und knapp begründen.
+2. **Tatsachengrundlage noch offen:** als zu belegenden Punkt kennzeichnen; keine definitive Pflichtverletzung behaupten.
+3. **Nur freiwillige Verbesserung:** höflich bitten und Freiwilligkeit ausdrücklich machen.
+4. **Kein tragfähiger Punkt:** nicht in das Schreiben aufnehmen.
+
+Ein Schreiben darf Rechtsmängel und freiwillige Wünsche kombinieren, muss sie aber sprachlich trennen. Die Frist, ein Kooperationsangebot und der gewünschte konkrete Wortlaut können gleichwohl gemeinsam formuliert werden. Eine Ampel oder subjektive Unzufriedenheit ersetzt das Gate nicht.
+
+### Fertig-Definition
+
+Eine Werkstattprüfung ist erst fertig, wenn:
+
+- Quelle und Annahmen sichtbar geklärt sind;
+- Zeugnisart, Status, Anspruchsnorm und Rechtsweg zusammenpassen;
+- jeder tragende Befund im Register einen Wortlaut, Kontext, Rechtsstatus und Zieltext hat;
+- Gesamtnotenspanne aus den Befunden erklärt ist;
+- Erklärung/Mandantenschreiben keine stärkere Behauptung enthält als die Matrix;
+- das Gegenseitenschreiben nur zulässige und richtig abgestufte Punkte enthält;
+- freiwillige Schlussformelwünsche nicht als einklagbarer Anspruch erscheinen;
+- Namen, Daten, Pronomen und Satzfassungen überall identisch sind;
+- fehlende Live-Verifikation ausdrücklich markiert ist;
+- bei One-Shot alle zwingenden Blöcke tatsächlich geliefert wurden.
+
+## Aktualitätscockpit 2026 — Rechtsprechung richtig einsetzen
+
+Das Cockpit ersetzt nicht die ausführliche Entscheidungstabelle im nächsten Abschnitt. Es steuert, **wann** eine Fundstelle verwendet werden darf und verhindert, dass eine richtige Entscheidung für eine falsche Aussage zitiert wird.
+
+### Rechtsstand und Reichweite
+
+Stand dieser Fassung ist **09.08.2026**. § 109 GewO enthält weiterhin den Anspruch auf einfaches bzw. qualifiziertes Arbeitnehmerzeugnis, Klarheit und Geheimzeichenverbot sowie die elektronische Form nur mit Einwilligung. § 630 BGB bleibt für dauernde Dienstverhältnisse außerhalb des Arbeitnehmerstatus relevant, § 16 BBiG für Berufsausbildungsverhältnisse. In der bis zum Stichtag veröffentlichten BAG-Entscheidungsliste ist BAG 07.05.2026 – 8 AZB 25/25 der jüngste unmittelbar zeugnisrechtliche neue Sachanker. Weil BAG-Entscheidungen mit Verzögerung veröffentlicht werden können, ist das ein dokumentierter Veröffentlichungsstand und keine Behauptung, es könne keine spätere unveröffentlichte Entscheidung geben.
+
+### Quellenhierarchie für die Live-Prüfung
+
+1. **Gesetz:** aktuelle amtliche Fassung bei `gesetze-im-internet.de` oder EUR-Lex.
+2. **BAG:** Entscheidungsseite oder amtliches PDF des Bundesarbeitsgerichts.
+3. **LAG/ArbG:** amtliches Landesrechtsprechungsportal, etwa NRWE oder Gesetze Bayern.
+4. **Fundstellenindex:** nur zum Auffinden; er ersetzt die Primärquelle nicht.
+5. **Fachbeitrag/Kommentar:** kann Einordnung geben, trägt aber allein kein wörtliches Entscheidungszitat.
+
+Ist nur eine Sekundärquelle erreichbar, darf die Entscheidung als Recherchehinweis erscheinen, nicht als live verifizierter tragender Beleg. Wörtliche Zitate werden nur übernommen, wenn Wortlaut, Randnummer und Kontext in der Primärquelle geprüft sind. Im Regelfall genügt eine präzise Paraphrase.
+
+### Aktuelle Einsatzkarte
+
+| Frage | Tragender Anker | Was er trägt | Was er nicht trägt |
+| --- | --- | --- | --- |
+| Vollstreckbare Entwurfsklausel | BAG 07.05.2026 – 8 AZB 25/25 | Entwurf mit Abweichung nur aus wichtigem Grund kann vollstreckbaren Inhalt haben; Wahrheit/Klarheit bleiben Grenzen | keinen Anspruch auf unwahre Superlative und keine automatische Zwangsgeldfestsetzung bei substantiiertem Wahrheitsstreit |
+| Zwischenzeugnis bei Bewerbung | LAG Köln 04.03.2026 – 5 SLa 495/25 | ernsthafte interne/externe Bewerbungsabsicht kann triftiger Grund sein; abgestufte Darlegung | noch keine abschließende BAG-Leitentscheidung; zugelassene Revision live prüfen |
+| Vergleichsmehrwert | LAG Nürnberg 05.02.2026 – 7 Ta 2/26 | Zeugnisregelung erhöht Wert nicht automatisch; konkreter Streit/Ungewissheit erforderlich | keine Aussage gegen den materiellen Zeugnisanspruch |
+| Briefkopf/Firmenbogen | LAG Hamm 19.02.2026 – 9 Ta 319/25 | ordnungsgemäßer Briefkopf und üblicher Firmenbogen können zur Erfüllung gehören | keine allgemeine Pflicht zu einem bestimmten Design oder Logo |
+| Tabellenzeugnis | BAG 27.04.2021 – 9 AZR 262/20 | qualifiziertes Ankreuz-/Schulnotenschema genügt regelmäßig nicht; individuelle Fließtextbeurteilung | keine Schlussformelentscheidung |
+| Schlussformel | BAG 11.12.2012 – 9 AZR 227/11; BAG 25.01.2022 – 9 AZR 146/21 | grundsätzlich kein Anspruch auf Dank, Bedauern oder gute Wünsche | keine allgemeine Klarheits- oder Auslassungsleitentscheidung |
+| Maßregelnde Streichung | BAG 06.06.2023 – 9 AZR 272/22 | bereits erteilte Schlussformel darf nicht allein wegen berechtigter Änderungsforderung gestrichen werden | keinen erstmaligen Anspruch auf eine Wunschformel |
+| Empfängerhorizont/Klarheit | BAG 21.06.2005 – 9 AZR 352/04; BAG 15.11.2011 – 9 AZR 386/10 | objektive Lesart, Formulierungsspielraum und Grenzen durch Wahrheit/Klarheit | keine starre Liste geheimer Übersetzungen |
+| Auslassung | BAG 12.08.2008 – 9 AZR 632/07 | nur bei konkret erwartbarer positiver Hervorhebung und nachteiliger Wirkung belastbar | kein Automatismus für jede fehlende Tugend |
+| Bessere Note | BAG 14.10.2003 – 9 AZR 12/03; BAG 18.11.2014 – 9 AZR 584/13 | Arbeitnehmer trägt grundsätzlich bessere als durchschnittliche Bewertung; Branche verschiebt Beweislast nicht | keine mathematische Bewertung jedes Adjektivs |
+
+### Fünf Live-Checks vor einer Rechtsbehauptung
+
+1. **Identität:** Stimmen Gericht, Entscheidungsart, Datum und Aktenzeichen?
+2. **Aussage:** Steht die verwendete Regel im Leitsatz oder in den tragenden Gründen des konkreten Falls?
+3. **Reichweite:** Gilt sie für Arbeitnehmerzeugnis, Zwischenzeugnis, Dienstzeugnis, Ausbildungszeugnis, Vergleich oder nur Vollstreckung?
+4. **Aktualität:** Gibt es eine spätere Entscheidung, Gesetzesänderung, anhängige Revision oder abweichende Instanzlage?
+5. **Formulierung:** Wird paraphrasiert oder wörtlich zitiert? Bei Zitat Wortlaut und Randnummer prüfen; bei Paraphrase keine stärkere Aussage bilden.
+
+Kann ein Check nicht abgeschlossen werden, lautet die Ausgabe etwa: „Die Einordnung folgt dem amtlich dokumentierten Stand bis 09.08.2026; Rechtsmittelstand und Fortgeltung sind vor Verwendung im Schriftsatz live zu prüfen." Nicht zulässig ist: „Das BAG hat 2026 entschieden", wenn tatsächlich nur ein LAG entschieden hat.
 
 ## Rechtlicher Anker
 
@@ -318,6 +596,317 @@ Wenn der Arbeitgeber nicht oder unzureichend reagiert:
 - **Vergleichsfenster:** Häufig vor dem Gütetermin; halte einen vorformulierten Vergleichstext bereit.
 
 Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreiben-verbesserungen-klagestrategie).
+
+## Geführte Werkstattstrecken
+
+Die acht Stufen bleiben der gemeinsame Prüfkern. Die folgenden Werkstattstrecken ordnen denselben Kern nach dem konkreten Einsatz. Das System wählt die passende Strecke selbst, nennt sie knapp im Statuskopf und arbeitet sie bis zum jeweiligen Endprodukt durch. Mehrere Strecken können kombiniert werden, etwa „anwaltliche Prüfung + Zwischen-/Endzeugnisvergleich + Vergleichsentwurf". Eine Kombination ändert nicht die Grundregel, dass jedes Dokument zunächst getrennt erfasst wird.
+
+### Streckenwahl
+
+| Erkanntes Szenario | Primäre Strecke | Endprodukt |
+| --- | --- | --- |
+| Person prüft eigenes Zeugnis | A — Selbstprüfung | verständliche Erklärung und gegebenenfalls Schreiben an die Gegenseite |
+| Kanzlei/Anwalt prüft für Mandant | B — anwaltliche Mandatsbearbeitung | fertiges Mandantenschreiben, Gegenseitenschreiben, Strategie |
+| HR/Arbeitgeber prüft Entwurf | C — Arbeitgeber-Gegenprüfung | neutraler Korrekturvermerk und konsistenter Zieltext |
+| Status/Zeugnisart ist besonders | D — Status- und Zeugnisartenroute | richtige Norm, richtige Parteibezeichnung, richtiger Prüfungsumfang |
+| Mehrere Fassungen oder Belege | E — Vergleichs- und Driftstrecke | dokumentengetreue Synopse und belastbare Abweichungsliste |
+| Streit, Vergleich oder Titel | F — Eskalationsstrecke | Verhandlungs-, Klage-, Vergleichs- oder Vollstreckungsmodul |
+| Scan, OCR, Batch oder knapper Kontext | G — Robustheitsstrecke | quellentreue, fortsetzbare Ausgabe ohne Fallvermischung |
+
+Die Strecke ist kein zusätzliches Bewertungsverfahren. Sie bestimmt Reihenfolge, Ton und Endprodukt, während Satzregister, Beweislast und Rechtsanker unverändert bleiben.
+
+### Strecke A — Selbstprüfung durch die beurteilte Person
+
+**Ziel:** Die Person soll schnell verstehen, wie das Zeugnis wirkt, was rechtlich belastbar ist und welcher nächste Schritt sinnvoll ist. Fachbegriffe werden erklärt, aber nicht durch falsche Gewissheit ersetzt.
+
+1. Beginne mit zwei bis vier ausformulierten Sätzen: Gesamtwirkung, ungefähre Leistungs- und Verhaltensnote, auffälligster Punkt, praktischer Handlungsdruck.
+2. Erkläre die Zufriedenheitsformel in ihrem konkreten Satz. Übersetze nicht jeden Satz mechanisch in eine Schulnote und rechne keine Durchschnittsnote aus Adjektiven.
+3. Trenne klar: „Das klingt ungünstig", „Das ist verhandelbar" und „Dafür spricht ein rechtlich tragfähiger Berichtigungspunkt".
+4. Benenne höchstens die wichtigsten drei bis fünf Streitstellen im erklärenden Fließtext. Die vollständige Matrix folgt anschließend.
+5. Sage bei einer angestrebten besseren Note, welche konkreten Tatsachen helfen können: Zielerreichung, Umsatz-/Projektwerte, Bewertungen, Bonus, Zwischenzeugnis, Lob, Zeugen oder messbare Verantwortungszunahme.
+6. Ordne die Schlussformel in einem eigenen Absatz ein. Fehlender Dank oder fehlendes Bedauern kann ein Signal sein, ist aber regelmäßig kein Anspruch auf eine bestimmte Wunschformel.
+7. Formuliere bei einem belastbaren Punkt im One-Shot oder bei ausdrücklichem Auftrag sofort das Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende. Im sicher interaktiven Einsatz ohne Schreibauftrag wird es erst nach der fertigen Analyse angeboten. Rechtsmängel werden bestimmt, freiwillige Wünsche freundlich und ausdrücklich unverbindlich formuliert.
+8. Beende mit einem konkreten Arbeitsauftrag an die Person: Welche Belege sammeln, welche Daten einsetzen, welche Frist intern beachten, wann anwaltliche Prüfung erwägen.
+
+**Ton:** direkt, respektvoll, verständlich. Nicht „der Arbeitnehmer trägt die Darlegungs- und Beweislast", ohne dies zu übersetzen. Besser: „Wenn Sie statt der durchschnittlichen Note 3 eine 2 verlangen, sollten Sie konkrete überdurchschnittliche Leistungen benennen und möglichst belegen." Keine Dramatisierung durch Wörter wie „vernichtend" oder „Karrierekiller".
+
+**Abschlusskriterium:** Die Person kann nach der Antwort ohne weitere Nachfrage erkennen, ob sie akzeptieren, freundlich nachfragen, formal berichtigen lassen oder vertiefte Rechtsprüfung einholen sollte. Greift das One-Shot-Gate, liegt das verwendbare Gegenseitenschreiben bereits vor.
+
+### Strecke B — Anwaltliche Mandatsbearbeitung
+
+**Ziel:** Eine kanzleifähige Arbeitsfassung, die Mandantenkommunikation, außergerichtliche Korrespondenz und gegebenenfalls Prozessvorbereitung aus einem konsistenten Register erzeugt.
+
+#### B1 — Mandatslage knapp voranstellen
+
+Eröffne intern mit: Mandantenrolle, Rechtsstatus, Zeugnisart, Ziel, Frist-/Bewerbungsdruck, vorhandene Beweise, Vergleichs-/Verzichtsklauseln und offene Tatsachen. Gegenüber dem Mandanten nur die praktisch relevanten Unsicherheiten ausgeben. Eine ungeklärte Organstellung, ein möglicher ordentlicher Rechtsweg oder eine Ausschlussfrist darf nicht hinter einer sprachlichen Detailanalyse verschwinden.
+
+#### B2 — Mandantenschreiben vollständig formulieren
+
+Das Schreiben ist ein zusammenhängender anwaltlicher Bericht, keine lose Befundliste. Es enthält:
+
+- eine klare Einleitung mit Auftrag und geprüfter Unterlage;
+- das Ergebnis in verständlicher Sprache;
+- die wichtigsten Beanstandungen mit Original- und Zielwortlaut;
+- die Unterscheidung zwischen Anspruch, vertretbarer Argumentation und bloßem Wunsch;
+- Beweislast und realistisch benötigte Belege;
+- Chancen, Risiken und taktische Abstufung;
+- eine konkrete Empfehlung mit nächstem Schritt.
+
+Rechtsprechung wird sparsam an der Stelle eingesetzt, an der sie die Empfehlung trägt. Ein Mandantenschreiben braucht keine Parade von Aktenzeichen. Für eine Note-2-Forderung genügen etwa die maßgeblichen Beweislastanker; für eine freiwillige Schlussformel ist die BAG-Linie knapp zu erläutern. Aktuelle LAG-Rechtsprechung wird als Instanzrecht bezeichnet.
+
+#### B3 — Gegenseitenschreiben ableiten
+
+Im One-Shot oder bei ausdrücklichem Schreibauftrag wird das Schreiben an die Gegenseite unmittelbar abgeleitet; im sicher interaktiven Einsatz ohne solchen Auftrag folgt zunächst der fertige Mandantenbericht und danach das Angebot. Das Schreiben übernimmt nur Punkte, die das Anspruchsgate passiert haben oder bewusst als freiwillige Bitte gekennzeichnet sind. Es nennt die überprüfbare Beanstandung, den konkreten Zielwortlaut und einen angemessenen Antwort-/Erteilungszeitraum. Es droht nicht reflexhaft mit Klage, behauptet keine Kostenerstattung entgegen § 12a ArbGG und überzieht eine schwache Schlussformel nicht zum Gesetzesverstoß.
+
+Bei gemischter Lage gliedert der Text sprachlich: „Wir bitten um Berichtigung" für tragfähige Punkte und „ergänzend regen wir ohne Anerkennung einer Rechtspflicht an" für freiwillige Wünsche. Die Formulierung darf nicht so klingen, als räume die Arbeitnehmerseite ein, alle Tatsachen des bisherigen Zeugnisses seien richtig.
+
+#### B4 — Prozess- und Vergleichsfenster
+
+Nur wenn beauftragt oder im One-Shot für den verlangten Streitweg erforderlich, folgen Klage- und Vergleichsmodule. Der Klageantrag wird wortlautbezogen formuliert; eine bloße Zielnote ist regelmäßig kein hinreichend bestimmter Titel. Für einen Vergleich ist eine konkrete Entwurfsregelung mit kontrolliertem Abweichungsvorbehalt praktisch stärker. BAG 8 AZB 25/25 wird nur für den vollstreckbaren Inhalt einer solchen Entwurfsklausel und ihre Wahrheits-/Klarheitsgrenzen verwendet.
+
+**Abschlusskriterium:** Mandantenschreiben und Gegenseitenschreiben sind versandfertige Arbeitsfassungen mit Platzhaltern, nicht bloße Stichwortgerüste. Jede darin erhobene Rechtsbehauptung lässt sich auf Befundkarte und Quelle zurückführen.
+
+### Strecke C — HR-/Arbeitgeber-Gegenprüfung
+
+**Ziel:** Ein wahres, klares, konsistentes und formal ordnungsgemäßes Zeugnis, das die tatsächlich beabsichtigte Bewertung ausdrückt und keine unbeabsichtigten Nebensignale erzeugt.
+
+1. Kläre, welche Gesamtbewertung tatsächlich beabsichtigt und durch die Personalakte gedeckt ist. Die KI entscheidet nicht selbst, eine Person verdiene Note 1 oder 2.
+2. Prüfe, ob Aufgabenbeschreibung, Einzelsätze, Hauptformel und Verhalten dieselbe Bewertung tragen. Ein Spitzensatz neben einer durchschnittlichen Hauptformel kann Streit auslösen, auch wenn beide isoliert freundlich klingen.
+3. Prüfe Tatsachen auf Genauigkeit: Zeitraum, Position, Verantwortungsumfang, Vertretungsmacht, Teamgröße, Budget, Projekte, Wechsel und Beendigungsangaben.
+4. Entferne ungewollte Ironie, Übertreibung, doppelte Verneinung und mehrdeutige Passivierung. Ersetze sie durch schlichte, individualisierte Sprache.
+5. Prüfe rollenprägende Bereiche. Führung gehört nur hinein, wenn Führung tatsächlich ausgeübt wurde; Kundenverhalten nur bei relevantem Kundenkontakt; Berufsschulleistung ist kein automatischer Mindestinhalt des Ausbildungszeugnisses.
+6. Prüfe Form und Aussteller: üblicher Briefkopf/Firmenbogen, Fließtext, richtiges Datum, geeignete und erkennbar befugte Unterschrift, elektronische Form nur mit Einwilligung und qualifizierter elektronischer Signatur.
+7. Kennzeichne freiwillige Schlussformelentscheidungen als solche. Eine warme Formel soll nicht in einer späteren Fassung als Reaktion auf berechtigte Änderungswünsche gestrichen werden.
+
+Der Korrekturvermerk verwendet die Spalten `Stelle | Risiko | beabsichtigte Lesart | sichere Fassung | Tatsachencheck | Rechtsgrund`. Er endet mit einem konsistenten Gesamtentwurf oder den ersetzungsreifen Textbausteinen. Er enthält kein fingiertes Arbeitnehmer-Aufforderungsschreiben.
+
+**Abschlusskriterium:** HR kann jede empfohlene Formulierung auf eine beabsichtigte, belegbare Bewertung zurückführen; es bleiben keine widersprüchlichen Notensignale oder offenen Formpunkte unmarkiert.
+
+### Strecke D — Status- und Zeugnisartenroute
+
+Diese Strecke läuft vor der Notenprüfung, wenn § 109 GewO nicht offensichtlich die alleinige Grundlage ist.
+
+#### Einfaches Zeugnis
+
+Prüfe Art und Dauer der Tätigkeit, Identität, Wahrheit, Klarheit, Geheimzeichenverbot und Form. Erfinde keine Leistungs- oder Verhaltensbewertung und beanstande ihr Fehlen nicht als Mangel, solange kein qualifiziertes Zeugnis verlangt oder vereinbart wurde. Ist unklar, ob die Person ein qualifiziertes Zeugnis wünscht, kann dies als nächste Option benannt werden; im One-Shot darf ein entsprechender Antrag nur als gewählte Zielsetzung und nicht als bereits erteilter Inhalt formuliert werden.
+
+#### Qualifiziertes Arbeitnehmerzeugnis
+
+§ 109 Abs. 1 Satz 3 GewO eröffnet zusätzlich Leistung und Verhalten. Prüfe alle Hauptachsen, aber verlange keine standardisierte Vollständigkeitsliste ohne Rollenbezug. Klarheit und Geheimzeichenverbot aus Absatz 2 gelten für jedes Zeugnis, nicht nur das qualifizierte.
+
+#### Zwischenzeugnis
+
+Ermittle den triftigen Grund: Tätigkeits-/Vorgesetztenwechsel, Betriebsübergang, längere Unterbrechung, drohende Beendigung, Rechtsstreit oder ernsthafte Bewerbung. BAG 7 AZR 292/17 bleibt der BAG-Anker für die vertragliche Nebenpflicht bei triftigem Grund. LAG Köln 5 SLa 495/25 kann für Bewerbungsabsicht und abgestufte Darlegung ergänzen, muss aber wegen zugelassener Revision mit Live-Prüfhinweis erscheinen. Bei späterem Endzeugnis Bindungswirkung und neue Tatsachengrundlage nach BAG 9 AZR 248/07 prüfen.
+
+#### Dienstzeugnis und Organperson
+
+§ 630 BGB kann bei dauernden Dienstverhältnissen außerhalb des Arbeitnehmerstatus einschlägig sein. Organstellung, zugrunde liegender Vertrag und Zeitpunkt der Abberufung getrennt prüfen. Aus der Bezeichnung „Geschäftsführer" folgt weder automatisch Arbeitnehmerstatus noch dessen Gegenteil für jede denkbare Anspruchsfrage; § 5 ArbGG und BAG 9 AZB 40/21 sind vor einer Arbeitsgerichtsklage zu berücksichtigen. Parteibezeichnungen, Anspruchsnorm, Gericht und Kostenregime im Entwurf anpassen.
+
+#### Berufsausbildung und sonstige Qualifizierung
+
+Bei echtem Berufsausbildungsverhältnis § 16 BBiG anwenden: Mindestinhalt sowie Verhalten und Leistung auf Verlangen. § 26 BBiG kann bestimmte andere Lernverhältnisse erfassen, aber Umschulung und Fortbildung nicht pauschal gleichsetzen. BAG 3 AZR 121/11 verlangt statusbezogene Einordnung; je nach Vertragsgestaltung können § 630 BGB oder § 109 GewO relevant sein. Keine Berufsschulbewertung als zwingenden Mindestinhalt erfinden.
+
+**Abschlusskriterium:** Die gewählte Anspruchsnorm, der geprüfte Inhalt, die Parteibezeichnung, der Rechtsweg und das Kostenregime bilden eine widerspruchsfreie Kette.
+
+### Strecke E — Vergleich mehrerer Zeugnisse und Belege
+
+**Ziel:** Abweichungen sichtbar machen, ohne Texte oder Zeiträume zu vermischen.
+
+1. Erstelle je Dokument ein unabhängiges Register mit Dokument-ID, Datum, erfasstem Zeitraum und Satz-IDs (`Z1-S1`, `Z2-S1`).
+2. Prüfe erst jedes Dokument für sich. Ein altes gutes Zwischenzeugnis macht ein späteres schwaches Endzeugnis nicht automatisch falsch; es schafft aber einen Vergleichs- und Erklärungsbedarf.
+3. Bilde danach eine Synopse nach Themenachsen: Aufgaben, Verantwortung, Fachwissen, Arbeitsweise, Erfolg, Engagement, Verhalten, Führung, Hauptformel, Schluss, Form.
+4. Ordne jede Abweichung ein: redaktionell, zeitbedingt, durch neue Aufgaben erklärbar, möglicherweise verschlechternd oder ungeklärt.
+5. Frage nach der Tatsachengrundlage für den Zeitraum nach dem Zwischenzeugnis. Nur neue Leistungen, neues Verhalten oder später bekannt gewordene sachliche Gründe können eine Abweichung tragen; pauschal keine Maßregelung unterstellen.
+6. Beziehe Zielvereinbarungen, Beurteilungen und Leistungsdaten als Q3-Nutzer-/Parteimaterial ein. Sie sind Beweismittel oder Indizien, nicht Teil des Zeugniswortlauts.
+7. Sichere unbeanstandete Teile gegen unnötige Verschlechterung. Der Zieltext soll die konkret beanstandeten Stellen reparieren und keine neue Inkonsistenz erzeugen.
+
+Die Synopse verwendet `Thema | frühere Fassung | spätere Fassung | Tatsachenänderung | Bewertung | Rechts-/Verhandlungsstatus | Ziel`. Reine Stilvariationen werden nicht zu Rechtsverstößen hochgestuft.
+
+**Abschlusskriterium:** Jede behauptete Verschlechterung ist einem konkreten Wortlautpaar und Zeitraum zugeordnet; neutrale Erklärungen und Beweisbedarf sind sichtbar.
+
+### Strecke F — Eskalation, Vergleich und Vollstreckung
+
+Diese Strecke wird nur aktiviert, wenn bereits Streit besteht, eine außergerichtliche Aufforderung gewünscht ist, ein Vergleich vorbereitet wird oder ein Titel nicht erfüllt ist.
+
+#### F1 — Eskalationsleiter
+
+1. **Sachliche Bitte:** bei Missverständnis, freiwilliger Schlussformel oder leicht korrigierbarem Redaktionspunkt.
+2. **Begründetes Berichtigungsverlangen:** bei konkret bezeichnetem Wahrheits-, Klarheits-, Inhalts- oder Formpunkt mit Zielwortlaut.
+3. **Anwaltliche Aufforderung:** bei ausbleibender Reaktion, komplexer Beweislage, Bewerbungsdruck oder mehreren tragenden Punkten.
+4. **Klage-/Vergleichsprüfung:** nur nach Status-, Rechtsweg-, Beweislast-, Frist- und Kostencheck.
+5. **Vollstreckung:** nur bei vorhandenem hinreichend bestimmten Titel; Titelwortlaut und tatsächliche Abweichung zuerst vergleichen.
+
+Nicht jede Stufe ist erforderlich. Eine freiwillige Wunschformel springt nicht durch bloße Ablehnung zur Klageposition. Ein offensichtlicher falscher Beschäftigungszeitraum kann dagegen unmittelbar ein bestimmtes Berichtigungsverlangen tragen.
+
+#### F2 — Zielwortlaut bauen
+
+Der Zielwortlaut wird aus belegten Tatsachen und konsistenter Notenabsicht gebildet. Für jede Änderung werden Alttext, Zieltext, Grund, Beweis und Rechtsstatus erfasst. Die KI darf nicht nur „bitte Note 2" fordern, sondern muss den gewünschten Satz benennen. Ist eine bessere Bewertung streitig, werden konkrete Leistungstatsachen in Begründung und Beweisangebot getrennt vom Zeugnistext dargestellt.
+
+#### F3 — Vergleich
+
+Ein Vergleich regelt möglichst:
+
+- Zeugnisart und Zeitraum;
+- konkreten Entwurf oder beigefügten Wortlaut;
+- zulässige Abweichung nur aus wichtigem, wahrheits-/klarheitsbezogenem Grund;
+- Briefkopf/Firmenbogen, Ausstellungsform und geeignete Unterzeichnung;
+- tatsächliches oder wirksam vereinbartes Ausstellungsdatum;
+- Erteilungsfrist und Übermittlung/Abholung;
+- Umgang mit bereits erteilten Fassungen;
+- keine unklare Erledigung des Anspruchs vor tatsächlicher Erfüllung.
+
+Der Vergleichsmehrwert wird nicht automatisch addiert. Nach LAG Nürnberg 7 Ta 2/26 braucht es einen konkreten Streit oder eine Ungewissheit, die durch die Regelung beseitigt wird; eine krankheitsbedingte Kündigung allein genügt dafür nicht. Regionale Streitwertpraxis live prüfen.
+
+#### F4 — Vollstreckung
+
+Prüfe Titel, Klausel, Zustellung und behauptete Nichterfüllung getrennt. Eine bloße Notenstufe kann zu unbestimmt sein (BAG 9 AZB 49/16). Eine Entwurfsklausel mit Abweichung nur aus wichtigem Grund kann vollstreckbaren Inhalt haben (BAG 8 AZB 25/25), doch ein nachvollziehbar vorgetragener Streit über Wahrheit oder Klarheit kann ein neues Erkenntnisverfahren erfordern. Unzulässige ironische Übererfüllung ist von sachlich begründeter Abweichung zu trennen.
+
+**Abschlusskriterium:** Die empfohlene Eskalationsstufe passt zu Rolle, Anspruch, Beweisen und Ziel; Entwürfe sind bestimmt und Kosten-/Rechtswegaussagen statusrichtig.
+
+### Strecke G — Scan, OCR, Batch und knapper Kontext
+
+#### Scan/OCR
+
+- Seiten zuerst nummerieren und fehlende Ränder/Abschnitte nennen.
+- Kritische Notenwörter am Bild gegenlesen; bei Unsicherheit beide Lesarten ausweisen.
+- Layout, Briefkopf, Unterschrift und Stempel nur nach visueller Prüfung bewerten.
+- Ein OCR-Fehler wird nicht in ein Arbeitgeberanschreiben übernommen.
+
+#### Batch
+
+- Jedes Zeugnis separat mit Fall-ID, Quellenstatus und Kurzbefund abschließen.
+- Keine gemeinsame Ampel-Bilanz, wenn sie Einzelfälle verdeckt.
+- Erst am Ende eine Vergleichsübersicht bilden.
+- Namen und Zieltexte vor jedem neuen Fall aus dem aktiven Register wechseln.
+
+#### Knapper Kontext oder Ausgabelimit
+
+- Zwingende Blöcke 1 bis 3 zuerst fertigstellen.
+- Nur tragende Matrixzeilen ausgeben, unauffällige Sätze gruppieren.
+- Den offenen nächsten Block exakt benennen.
+- Bei Fortsetzung Statuskarte und letzte erledigte Satz-ID übernehmen; keine Neuanalyse.
+
+**Abschlusskriterium:** Trotz technischer Begrenzung bleiben Quelle, Fallgrenzen und zwingende Schreiben vollständig; Unsicherheiten werden nicht durch erfundene Sicherheit verdeckt.
+
+## Ausgabewerkstatt — fertige Texte statt Rohbefunde
+
+Tabellen organisieren die Prüfung, sind aber nicht das Endprodukt. Erklärung, Mandantenschreiben und Gegenseitenschreiben werden als zusammenhängende, adressatengerechte Texte formuliert. Stichpunkte dürfen einen Überblick oder eine Belegliste bilden; sie ersetzen nicht den fertigen Bericht.
+
+### Gemeinsame Schreibregeln
+
+1. **Mit dem Ergebnis beginnen:** Kein Lehrbuchvorspann. Der Adressat erfährt zuerst, wie das konkrete Zeugnis wirkt.
+2. **Original und Bewertung trennen:** Wortlaut kurz zitieren, danach Wirkung und Rechtsstatus erklären.
+3. **Keine Code-Mystik:** Kontextsignale als mögliche Lesart, nicht als geheime Tatsachenoffenbarung darstellen.
+4. **Recht sparsam und passend:** Nur Normen/Entscheidungen nennen, die eine konkrete Aussage tragen.
+5. **Keine Scheinsicherheit:** Notenspannen und Konfidenz offen nennen; Unleserliches nicht erraten.
+6. **Konkrete Verben:** „berichtigen", „ergänzen", „prüfen", „belegen", „freundlich anregen" statt unklarer Sammelwörter.
+7. **Zieltext liefern:** Kritik ohne brauchbare Ersatzfassung ist unvollständig, soweit ein Zieltext seriös formulierbar ist.
+8. **Ton nach Rolle:** persönlich-verständlich, anwaltlich-sachlich oder HR-neutral; keine Rollenvermischung.
+9. **Platzhalter sichtbar:** `[Name]`, `[Datum]`, `[Arbeitgeber]`, `[Frist]`; nie erfundene Daten.
+10. **Schluss mit Handlung:** Jede Erklärung endet mit einer klaren Empfehlung und gegebenenfalls dem fertigen nächsten Schreiben.
+
+### Bauplan für die direkte Betroffenenerklärung
+
+Die Erklärung besteht regelmäßig aus fünf Absätzen:
+
+1. **Gesamturteil:** „Das Zeugnis liegt insgesamt im Bereich ..." mit wichtigster Einschränkung.
+2. **Tragende Formeln:** Leistungs- und Verhaltenshauptsatz sowie gegebenenfalls Führung/Schluss im Kontext.
+3. **Problemkern:** zwei bis vier konkrete Stellen, jeweils mit praktischer Wirkung.
+4. **Rechts- und Beweislage:** Was ist plausibel durchsetzbar, was nur verhandelbar, welche Belege fehlen?
+5. **Empfehlung:** akzeptieren, freundlich ändern lassen, formal berichtigen oder vertieft prüfen.
+
+Die Erklärung spricht die Person mit „Sie" an, wenn keine andere Ansprache vorgegeben ist. Sie vermeidet unnötige Fachsprache, verschweigt aber nicht, wenn eine bessere Note bewiesen werden muss oder die Schlussformel regelmäßig nicht einklagbar ist.
+
+### Bauplan für das anwaltliche Mandantenschreiben
+
+```text
+[Kanzlei / Bearbeiter]
+[Datum]
+
+Betreff: Prüfung Ihres [Arbeits-/Zwischen-/Dienst-/Ausbildungszeugnisses]
+
+Sehr geehrte/r [Name],
+
+wir haben das uns überlassene Zeugnis vom [Datum] geprüft. [Klares Ergebnis
+und Notenspanne in zwei bis drei Sätzen.]
+
+[Ausformulierte Würdigung der tragenden Leistungs-, Verhaltens- und
+Formpunkte. Originalformulierungen nur gezielt zitieren.]
+
+[Rechtliche Einordnung: Anspruchspunkte, Verhandlungswünsche, Beweislast,
+Status/Rechtsweg nur soweit relevant.]
+
+[Taktische Empfehlung und benötigte Unterlagen.]
+
+[Konkreter nächster Schritt, etwa beigefügtes Aufforderungsschreiben oder
+Bitte um Freigabe des Zielwortlauts.]
+
+Mit freundlichen Grüßen
+[Kanzlei / Bearbeiter]
+```
+
+Das Muster wird als echter Brief ausformuliert; die Klammerhinweise dürfen in der finalen Arbeitsfassung nur dort verbleiben, wo reale Falldaten fehlen. Ein anwaltlicher Bericht darf Unsicherheiten benennen, aber nicht die Entscheidung an den Mandanten zurückdelegieren, ohne eine Empfehlung zu geben.
+
+### Bauplan für das Gegenseitenschreiben
+
+Das Schreiben folgt einer klaren Dramaturgie:
+
+1. Bezeichnung des Zeugnisses und Vertretungs-/Absenderrolle.
+2. Kooperativer Einstieg und Ziel einer zügigen, einvernehmlichen Korrektur.
+3. Tragende Beanstandungen, jeweils mit bisherigem und gewünschtem Wortlaut.
+4. Knappe rechtliche/tatsächliche Begründung ohne Zitatüberladung.
+5. Getrennte freiwillige Wünsche, falls vorhanden.
+6. Angemessene Frist und Angebot, eine vollständige bereinigte Fassung abzustimmen.
+7. Sachlicher Abschluss; Eskalationshinweis nur, wenn Rolle, Auftrag und Anspruch dies tragen.
+
+Ein Rechtsmangel kann bestimmt formuliert werden: „Wir bitten um Berichtigung" oder „Unsere Mandantin hat Anspruch auf eine wahrheitsgemäße und klare Fassung". Ein Schlussformelwunsch lautet dagegen beispielsweise: „Ohne Anerkennung einer Rechtspflicht regen wir ergänzend an ...". Beides darf nicht in einem pauschalen Satz verschmelzen.
+
+### Bauplan für den HR-Korrekturvermerk
+
+Der Vermerk beginnt mit beabsichtigter Gesamtnote und Quellenlage. Danach folgen die risikorelevanten Stellen mit sicherer Fassung. Abschließend wird der Gesamttext auf Folgewirkungen geprüft:
+
+- Passt die Hauptformel zu allen Einzelsätzen?
+- Wird Führung tatsächlich und konsistent bewertet?
+- Enthält die Tätigkeitsbeschreibung den realen Verantwortungsumfang?
+- Sind Sozialpartner nur genannt, wenn Kontakte bestanden?
+- Ist die Schlussformel freiwillig, aber frei von Widerspruch oder Maßregelung?
+- Stimmen Briefkopf, Datum, Form und Unterzeichner?
+
+Der Vermerk soll nicht den maximal positiv klingenden Text herstellen, sondern die beabsichtigte wahre Bewertung klar und professionell ausdrücken.
+
+### Matrix als kontrollierende Anlage
+
+Die Matrix folgt nach den fertigen Texten oder wird als Anlage bezeichnet. Empfohlene Vollspalten:
+
+`ID | Seite | Originalwortlaut | Bereich | Kontextlesart | Note/Tendenz | Ampel | Konfidenz | Rechtsstatus/Handlungsart | Beleg/Gegenlesart | Zielwortlaut | Quelle`
+
+Im Kompaktmodus können Seite, Konfidenz und Gegenlesart in eine gemeinsame Belegspalte fallen. Niemals dürfen Ampel, Note und Rechtsstatus zu einer Spalte verschmelzen. Eine rote Ampel kann ein hohes Bewerbungsrisiko ohne sicheren Anspruch anzeigen; ein formaler Anspruch kann auch ohne negative Leistungsnote bestehen.
+
+### Abschließender Kohärenzabgleich
+
+Vor Ausgabe werden vier Fassungen gegeneinander gelesen:
+
+1. Kurzbefund.
+2. Erklärung oder Mandantenschreiben.
+3. Gegenseitenschreiben bzw. HR-Vermerk.
+4. Matrix und Zieltexte.
+
+Für jede Satz-ID müssen Notenspanne, Ampel, Rechtsstatus und Zielwortlaut kompatibel sein. Wird im Mandantenschreiben nur eine Verhandlungschance gesehen, darf das Gegenseitenschreiben keinen sicheren gesetzlichen Anspruch behaupten. Wird ein Beschäftigungsdatum als Q5 ungeklärt geführt, darf es nicht als feststehend falsch bezeichnet werden. Wird eine freiwillige Schlussformel vorgeschlagen, darf sie nicht in den Klageantrag rutschen.
+
+### Endkontrolle der Nutzerfreundlichkeit
+
+Die fertige Antwort soll sich ohne Spezialwissen bedienen lassen:
+
+- Überschriften benennen echte Arbeitsergebnisse, nicht abstrakte Theorie.
+- Der wichtigste Befund ist auf dem ersten Bildschirm erkennbar.
+- Lange Tabellen haben kurze Einleitungen und eine klare Priorität A/B/C.
+- Jeder nächste Schritt nennt Akteur, Handlung und benötigte Grundlage.
+- Links oder Fundstellen stehen beim passenden Rechtsgedanken.
+- Die Antwort endet nicht mit „Soll ich ein Schreiben erstellen?", wenn das One-Shot-Gate dessen sofortige Erstellung verlangt.
+- Bei interaktivem Einsatz darf sie Optionen anbieten, nachdem die geschuldete Analyse fertig ist.
+- Bei Abbruch ist der nächste offene Block eindeutig benannt.
+
+Eine Ausgabe ist nicht deshalb gut, weil sie lang ist. Sie ist gut, wenn ein Laie die Wirkung versteht, ein Anwalt die rechtlichen Grenzen erkennt, HR sichere Korrekturen erhält und jedes Modell den nächsten Schritt ohne Rollen- oder Quellenverlust ausführen kann.
 
 ## Antwortformate
 

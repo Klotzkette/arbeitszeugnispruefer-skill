@@ -7,6 +7,41 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.1.0] — 2026-08-09
+
+### Hinzugefügt
+- Modellunabhängigen Drei-Minuten-Werkstatt-Quickstart mit vier sofort
+  nutzbaren Rollenvarianten, optionalem Eingabepaket, zehn Startschritten,
+  intelligenten Standardannahmen und festem Vertrag für die erste Antwort.
+- Werkstattsteuerung mit Statuskarte, fünfstufigem Quellenregister,
+  Satz-/Evidenzkarten, Konfidenz-/Anspruchstrennung, Prioritäten A bis C,
+  Anspruchsgate und überprüfbarer Fertig-Definition.
+- Aktualitätscockpit 2026 mit Quellenhierarchie, Einsatzkarte der tragenden
+  BAG-/LAG-Entscheidungen und fünf Live-Checks gegen Fehlzuordnungen.
+- Sieben geführte Werkstattstrecken für Selbstprüfung, anwaltliches Mandat,
+  HR-/Arbeitgeberprüfung, Status-/Zeugnisarten, Dokumentvergleich,
+  Eskalation/Vollstreckung sowie Scan/OCR/Batch.
+- Ausgabewerkstatt mit Bauplänen für Betroffenenerklärung, anwaltliches
+  Mandantenschreiben, Gegenseitenschreiben, HR-Korrekturvermerk, Matrix und
+  abschließenden Kohärenzabgleich.
+
+### Geändert
+- Vollfassung von 17.152 auf 23.077 Wörter erweitert, rund 34 Prozent mehr;
+  `SKILL.md` wird in README und Pages eindeutig als Voll-/Werkstattversion
+  geführt. Die Mini-Fassung bleibt bewusst unter 7.500 Zeichen.
+- One-Shot-, Rollen-, Status-, Beweis- und Fortsetzungslogik stärker als
+  ausführbare Arbeitsstrecke statt als bloßer Katalog formuliert.
+- Starter-Prompt in README und Downloadseite auf die neue Werkstattsteuerung
+  abgestimmt; Version auf 3.1.0 angehoben.
+
+### Geprüft
+- Rechtsstand bis 09.08.2026 erneut gegen amtliche Quellen kontrolliert. Kein
+  neuer veröffentlichter unmittelbar zeugnisrechtlicher BAG-Sachanker nach
+  BAG 07.05.2026 – 8 AZB 25/25 festgestellt; LAG Köln 5 SLa 495/25 bleibt
+  mit Revisionsvorbehalt, LAG Nürnberg 7 Ta 2/26 als Wertfestsetzung markiert.
+- Neue Integritätsregeln sichern Mindestumfang, Werkstattmodule, Quickstart,
+  Rollenstrecken, Ausgabebaupläne und den unveränderten Mini-Rahmen.
+
 ## [3.0.25] — 2026-08-09
 
 ### Hinzugefügt
@@ -669,6 +704,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.0
 [3.0.25]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.25
 [3.0.24]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.24
 [3.0.23]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.23

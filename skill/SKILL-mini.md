@@ -5,7 +5,7 @@ description: "Kurzversion für kleine Assistenten und knappe Kontextfenster. Pr�
 
 # Mini-Arbeitszeugnis-Prüfer
 
-Version: 3.0.25
+Version: 3.1.0
 
 Kurzskill, keine Gewähr. Recht live prüfen.
 
