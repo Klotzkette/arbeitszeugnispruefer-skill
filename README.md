@@ -9,7 +9,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Werkstatt-Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity und lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Werkstatt-Skill (Version 3.1.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Drei-Minuten-Quickstart über Quellen-, Rollen-, Status- und Evidenzregister bis zu Notenmatrix, fertigen Schreiben, Vergleich, Klage und Vollstreckung. Version 3.1.0 erweitert die Vollfassung um rund 34 Prozent auf 23.077 Wörter, ergänzt sieben geführte Fallstrecken und gibt den verifizierten Rechtsstand bis 09.08.2026 modellgerecht wieder.
+Konsolidierter Werkstatt-Skill (Version 3.1.1) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Drei-Minuten-Quickstart über interne Quellen-, Rollen-, Status- und Evidenzregister bis zu Notenmatrix, fertigen Schreiben, Vergleich, Klage und Vollstreckung. Die Vollfassung umfasst 23.325 Wörter und sieben geführte Fallstrecken; der Rechtsstand bleibt bei 09.08.2026. Version 3.1.1 beginnt unmittelbar mit dem Ergebnis oder einer notwendigen Rückfrage, ohne technischen Statuskopf.
 
 ## Navigation
 
@@ -35,7 +35,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
 
-Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.077 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.325 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -110,7 +110,7 @@ Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kenn
 
 ### Schnell, stabil und vollständig
 
-Die Voll-/Werkstattversion liest das Zeugnis einmal in ein Quellen-, Satz- und Evidenzregister ein und erzeugt daraus alle Blöcke. Eine Statuskarte trennt Einsenderrolle, Rechtsstatus, Zeugnisart, Modus und Ziel; Befundkarten trennen Konfidenz, Ampel, Note und Anspruch. Dadurch bleiben Rechtsstatus, Beleg und Zielwortlaut in Erklärung, Schreiben und Matrix identisch; Volltext und Zitate werden nicht wiederholt.
+Die Voll-/Werkstattversion liest das Zeugnis einmal in ein Quellen-, Satz- und Evidenzregister ein und erzeugt daraus alle Blöcke. Ein ausschließlich interner Bearbeitungsstand trennt Einsenderrolle, Rechtsstatus, Zeugnisart, Modus und Ziel; Befundkarten trennen Konfidenz, Ampel, Note und Anspruch. Dadurch bleiben Rechtsstatus, Beleg und Zielwortlaut in Erklärung, Schreiben und Matrix identisch; Volltext und Zitate werden nicht wiederholt. Voll- und Mini-Version beginnen direkt mit dem Ergebnis oder einer notwendigen Rückfrage. Quellenlücken und Unsicherheiten werden am betroffenen Befund benannt, nicht in einem vorgeschalteten Status- oder Metadatenblock.
 
 | Modus | Verwendung |
 | --- | --- |
@@ -122,10 +122,10 @@ Im One-Shot kommen Kurzbefund, ausformulierte Erklärung/Mandantenschreiben und 
 
 ### Welche Ausgabe bekomme ich?
 
-- **Erster Blick / Status:** Analyse, Ampel-Bilanz, Notenspanne, Hauptkritik und klare nächste Weiche.
+- **Direkter Einstieg:** Gesamteinschätzung, wichtigste Gründe und konkrete nächste Handlung in verständlichen Sätzen.
 - **One-Shot / Megaprompt:** aus Perspektive der beurteilten Person bei einem belastbaren Punkt Analyse, persönliche Erklärung bzw. anwaltliches Mandantenschreiben und rechtlich abgestuftes Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende in einem Durchgang. Eine orange Ampel allein ist noch kein Korrekturanspruch.
 - **HR / Arbeitgeberseite:** neutraler Korrekturvermerk mit Risiko, sicherer Ersatzformulierung und Formcheck statt Arbeitnehmer-Aufforderungsschreiben.
-- **Antwort bricht ab:** „Bitte fahre mit dem nächsten offenen Block fort." Der Skill soll dann nicht neu anfangen, sondern an der Fortsetzungsmarke weiterarbeiten.
+- **Antwort bricht ab:** „Bitte fahre mit dem nächsten offenen Block fort." Der Skill arbeitet unmittelbar am offenen Teil weiter, ohne Wiederholung oder neuen Vorspann.
 
 ## Repository-Landkarte
 
@@ -156,7 +156,7 @@ Zusätzlich enthält der Skill durchgängig:
 
 - Sofortstart und Rückfrage-Disziplin — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
 - Lieferumfang nach Einsatzkontext — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Die beurteilte Person erhält bei einem belastbaren Punkt ein Berichtigungsverlangen oder eine ausdrücklich unverbindliche Änderungsbitte, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
-- Fortsetzungs- und Abbruchprotokoll — lange One-Shot-Ausgaben bekommen Statuskopf und Fortsetzungsmarke, damit kleine Modelle oder API-Limits nicht zum Neuansatz zwingen.
+- Fortsetzungs- und Abbruchprotokoll — der Bearbeitungsstand bleibt intern; nach einem Abbruch geht es direkt mit dem offenen Teil weiter. Nur tatsächlich offene Vertiefungen werden nach den zwingenden Schreiben knapp benannt.
 - Ampel-Darstellung — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
 - Rechtsprechungsanker — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Auslassungen, Datumswahrheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 
@@ -199,7 +199,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.1.0
+python3 scripts/check_release_integrity.py --github-release v3.1.1
 ```
 
 ## Workflow in acht Stufen

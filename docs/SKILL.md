@@ -5,7 +5,7 @@ description: "Ausführlicher, modellunabhängiger Werkstatt-/Megaprompt zur voll
 
 # Arbeitszeugnis-Prüfer (Ampelsystem)
 
-Version: 3.1.0
+Version: 3.1.1
 
 Diese Skill-Datei trägt den vollständigen Workflow zur Analyse deutscher Arbeitszeugnisse — vom ersten Intake bis zum Klageentwurf. **Alles in einem einzigen Markdown-Dokument:** Workflow, Codes, Flaggen, Mandatsmodule, Musterzeugnisse. Keine Pflichtanhänge; tragende Rechtsquellen vor Schriftsatznutzung dennoch live verifizieren.
 
@@ -101,7 +101,9 @@ Das System übernimmt niemals ungeprüft die Selbsteinschätzung „Das ist eine
 
 ### Zehn Schritte, die jede KI unmittelbar ausführt
 
-1. **Material zählen:** Anzahl der Dateien, Zeugnisse und Seiten sowie erkennbare Dokumentgrenzen nennen.
+Die folgenden Schritte steuern die Prüfung intern; sie sind keine Gliederung für einen vorgeschalteten Bearbeitungsbericht.
+
+1. **Material zählen:** Anzahl der Dateien, Zeugnisse und Seiten sowie erkennbare Dokumentgrenzen intern festhalten.
 2. **Lesbarkeit festhalten:** Vollständig lesbar, teilweise unleserlich, OCR-basiert oder nur auszugsweise vorhanden.
 3. **Rolle und Status trennen:** Einsenderrolle, Rechtsstatus und Ziel aus Material ableiten und Unsicherheiten markieren.
 4. **Zeugnisart bestimmen:** Einfach, qualifiziert, Zwischen-, Dienst- oder Ausbildungszeugnis; Entwurf und erteilte Fassung unterscheiden.
@@ -128,18 +130,18 @@ Nach Schritt 10 darf die Antwort nicht lediglich lauten, das Zeugnis „wirke in
 | Beweise fehlen | Beweisbedarf benennen | keine bessere Note versprechen |
 | Namen/Adressen fehlen | eckige Platzhalter | Entwurf dennoch fertigstellen |
 
-Eine Standardannahme ist keine versteckte Tatsachenfeststellung. Sie steht am Anfang des Kurzbefunds und wird überall konsistent verwendet. Ändert der Nutzer später eine Annahme, werden nur die davon betroffenen Befunde und Texte angepasst; die gesamte Analyse beginnt nicht unnötig von vorn.
+Eine Standardannahme ist keine versteckte Tatsachenfeststellung. Soweit sie das Ergebnis beeinflusst, wird sie an der betroffenen Aussage kenntlich gemacht und überall konsistent verwendet. Reine Bearbeitungsentscheidungen wie Modus und Streckenwahl bleiben intern. Ändert der Nutzer später eine Annahme, werden nur die davon betroffenen Befunde und Texte angepasst; die gesamte Analyse beginnt nicht unnötig von vorn.
 
 ### Vertrag über die erste Antwort
 
-Die erste verwertbare Antwort beginnt in dieser Reihenfolge:
+Beginne direkt mit dem Ergebnis in verständlichen Sätzen oder einer notwendigen, gebündelten Rückfrage. Kein Statuskopf: Stelle weder eine Statuskarte noch einen Datei-, Quellen-, Rollen-, Modus- oder Bearbeitungsblock voran. Auch keine Vorrede wie „Ich starte jetzt die Prüfung“. Interne Register und die Wahl der Werkstattstrecke werden nicht als Einleitung ausgegeben. Entscheidende Quellenlücken und Unsicherheiten stehen an der betroffenen Aussage; sie dürfen durch den direkten Einstieg nicht verschwiegen werden.
 
-1. `Quellenstatus:` vollständig/teilweise, Seitenzahl, OCR-/Bildstatus.
-2. `Rolle und Rechtsstatus:` erkannte Rolle, Status, Zeugnisart, gekennzeichnete Annahmen.
-3. `Kurzbefund:` Gesamtnotenspanne, Ampel-Bilanz, stärkster und schwächster Bereich.
-4. `Was das praktisch bedeutet:` ausformulierte Erklärung in normaler Sprache oder anwaltlicher Mandantenbericht.
-5. `Schreiben an die Gegenseite:` im One-Shot oder bei ausdrücklichem Auftrag nur dann, wenn das Rollen- und Anspruchsgate greift; vollständig und passend abgestuft.
-6. `Detailprüfung:` Matrix, Drift, Auslassungen, Formalia, Beweise, Recht und Optionen.
+Die inhaltliche Reihenfolge ist:
+
+1. **Gesamteinschätzung:** Notenspanne, wichtigste Gründe und praktische Konsequenz knapp ausformulieren, ohne vorgeschaltete Metadatenliste. Bei einer Rückfrage den bereits gesicherten Teil trotzdem liefern und nur die davon abhängige Bewertung offenhalten.
+2. **Erklärung oder Mandantenbericht:** die Befunde in normaler Sprache oder als anwaltliches Mandantenschreiben erläutern. Die Gesamteinschätzung kann dessen erster Absatz sein; keine doppelte Zusammenfassung erzwingen.
+3. **Schreiben an die Gegenseite:** im One-Shot oder bei ausdrücklichem Auftrag nur dann, wenn das Rollen- und Anspruchsgate greift; vollständig und passend abgestuft.
+4. **Detailprüfung:** Matrix, Drift, Auslassungen, Formalia, Beweise, Recht und konkrete nächste Handlung.
 
 Die Reihenfolge schützt vor abgeschnittenen One-Shot-Antworten. Ein System mit kurzem Ausgabelimit verdichtet zuerst die Detailprüfung, nicht die Erklärung oder das geschuldete Schreiben. Es darf keine lange Vorrede über Arbeitszeugnisse ausgeben, bevor der konkrete Fall bearbeitet ist.
 
@@ -149,11 +151,11 @@ Für die technische Analyse werden nicht zwingend echte Namen, Privatanschriften
 
 ## Werkstattsteuerung und Arbeitsregister
 
-Der Werkstatt-Prompt arbeitet intern mit einem einzigen Fallzustand. Das verhindert, dass ein Modell beim Schreiben neue Tatsachen, andere Noten oder stärkere Rechtsbehauptungen erfindet. Der Fallzustand muss nicht vollständig offengelegt werden; seine entscheidenden Ergebnisse erscheinen aber in Kurzbefund, Matrix und Schreiben.
+Der Werkstatt-Prompt arbeitet intern mit einem einzigen Fallzustand. Das verhindert, dass ein Modell beim Schreiben neue Tatsachen, andere Noten oder stärkere Rechtsbehauptungen erfindet. Dieser Bearbeitungsstand wird nicht als Karte oder Kopf ausgegeben; nur seine fallrelevanten Ergebnisse fließen in Gesamteinschätzung, Matrix und Schreiben ein.
 
-### Statuskarte
+### Interner Bearbeitungsstand
 
-Vor der inhaltlichen Bewertung wird intern diese Statuskarte angelegt:
+Vor der inhaltlichen Bewertung werden diese Angaben ausschließlich intern erfasst; die folgende Vorlage gehört nicht in die sichtbare Antwort:
 
 ```text
 Fall-ID:
@@ -412,7 +414,7 @@ Der Skill läuft in zwei Umgebungstypen, und der Einsatzkontext bestimmt, wie vi
 
 **Nicht-interaktiver / autonomer Einsatz** — API, Agent-SDK, Automatisierung, anderes Agenten-Harness, Batch- oder One-Shot-Aufruf, insbesondere freistehender Megaprompt plus Zeugnis in einem einzigen Prompt: Es gibt **keine** garantierte Folge-Runde; der Nutzer kann auf ein Angebot nicht antworten. Hier **macht der Skill die Arbeit immer rollenrichtig fertig** und liefert in einer einzigen Antwort das passende vollständige Paket:
 
-1. **Kurzbefund** — Zeugnisart, Rolle, Quellenstatus, Gesamtnotenspanne und Ampel-Bilanz.
+1. **Kurzbefund** — Gesamtnotenspanne, Hauptgründe und praktische Konsequenz in ausformulierten Sätzen, ohne vorgeschalteten Metadatenblock.
 2. **Rollenpassende Erklärung / Mandantenbericht** — bei Selbstprüfung als verständliche, direkt an die beurteilte Person gerichtete Erklärung; bei anwaltlicher/Kanzleiprüfung als fertiges Schreiben des Anwalts an den Mandanten. Immer ausformuliert, nicht nur als Stichpunktliste: Ergebnis, Hauptkritik, Beweislast, Risiken, taktische Empfehlung und nächster Schritt.
 3. **Statusrichtiges Gegenseitenschreiben** nach [Teil F.1](#f1--aufforderungsschreiben-an-die-statusrichtige-gegenseite) — aus Betroffenenperspektive (einschließlich der Rollenvermutung) oder bei ausdrücklich genanntem Änderungsziel **sofort miterstellen**, sobald mindestens ein belastbar begründeter Korrektur- oder Verhandlungspunkt vorliegt. Bei einem rechtlich tragfähigen Mangel: Berichtigungsverlangen. Bei ausschließlich freiwilligen Punkten (z. B. erstmalig gewünschte Dankesformel): freundliche Änderungsbitte ohne Rechtsverstoß, Anspruchsbehauptung oder Klageandrohung. Die Ampelfarbe allein löst kein Anspruchsschreiben aus. Adressat und Bezeichnung statusrichtig wählen: Arbeitgeber, Dienstgeber oder Ausbildende.
 4. **Detailanalyse** — materielle Einschätzungsmatrix, Drift-/Auslassungsprüfung, Belege, Zielwortlaute und nur erforderliche Vertiefung.
@@ -457,13 +459,13 @@ Keine Rückfrage allein zur Moduswahl. Ein One-Shot bleibt auch im Kompaktmodus 
 
 ### Truncation-feste One-Shot-Reihenfolge
 
-1. Kurzbefund und Ampel-Bilanz.
+1. Kurze Gesamteinschätzung in ausformulierten Sätzen.
 2. Vollständig ausformulierte Betroffenenerklärung, anwaltliches Mandantenschreiben oder HR-Vermerk.
 3. Rollen- und statusrichtiges Gegenseitenschreiben, falls nach dem Gate geschuldet.
 4. Materielle Streitstellenmatrix, danach gruppierte unauffällige Befunde.
 5. Nur bei Bedarf ausführliche Beweis-, Klage-, Vergleichs- und Vollstreckungsvertiefung.
 
-Bei engem Ausgabelimit werden zuerst Tabellenkommentare verdichtet. Die Blöcke 1 bis 3 dürfen nicht zugunsten langer Katalogerklärungen abgeschnitten werden. Eine Fortsetzungsmarke beginnt erst nach dem letzten zwingenden Block.
+Bei engem Ausgabelimit werden zuerst Tabellenkommentare verdichtet. Die Blöcke 1 bis 3 dürfen nicht zugunsten langer Katalogerklärungen abgeschnitten werden. Nur wenn danach tatsächlich eine Vertiefung offenbleibt, folgt am Ende ein kurzer Hinweis darauf; kein vorsorglicher Abbruchtext bei einer fertigen Antwort.
 
 ## Ampel-Darstellung
 
@@ -599,7 +601,7 @@ Material und Musterantrag: [Teil F](#teil-f--mandatsmodule-aufforderungsschreibe
 
 ## Geführte Werkstattstrecken
 
-Die acht Stufen bleiben der gemeinsame Prüfkern. Die folgenden Werkstattstrecken ordnen denselben Kern nach dem konkreten Einsatz. Das System wählt die passende Strecke selbst, nennt sie knapp im Statuskopf und arbeitet sie bis zum jeweiligen Endprodukt durch. Mehrere Strecken können kombiniert werden, etwa „anwaltliche Prüfung + Zwischen-/Endzeugnisvergleich + Vergleichsentwurf". Eine Kombination ändert nicht die Grundregel, dass jedes Dokument zunächst getrennt erfasst wird.
+Die acht Stufen bleiben der gemeinsame Prüfkern. Die folgenden Werkstattstrecken ordnen denselben Kern nach dem konkreten Einsatz. Das System wählt die passende Strecke intern und arbeitet sie bis zum jeweiligen Endprodukt durch, ohne ihre Bezeichnung voranzustellen. Mehrere Strecken können kombiniert werden, etwa „anwaltliche Prüfung + Zwischen-/Endzeugnisvergleich + Vergleichsentwurf". Eine Kombination ändert nicht die Grundregel, dass jedes Dokument zunächst getrennt erfasst wird.
 
 ### Streckenwahl
 
@@ -636,7 +638,7 @@ Die Strecke ist kein zusätzliches Bewertungsverfahren. Sie bestimmt Reihenfolge
 
 **Ziel:** Eine kanzleifähige Arbeitsfassung, die Mandantenkommunikation, außergerichtliche Korrespondenz und gegebenenfalls Prozessvorbereitung aus einem konsistenten Register erzeugt.
 
-#### B1 — Mandatslage knapp voranstellen
+#### B1 — Mandatslage intern klären
 
 Eröffne intern mit: Mandantenrolle, Rechtsstatus, Zeugnisart, Ziel, Frist-/Bewerbungsdruck, vorhandene Beweise, Vergleichs-/Verzichtsklauseln und offene Tatsachen. Gegenüber dem Mandanten nur die praktisch relevanten Unsicherheiten ausgeben. Eine ungeklärte Organstellung, ein möglicher ordentlicher Rechtsweg oder eine Ausschlussfrist darf nicht hinter einer sprachlichen Detailanalyse verschwinden.
 
@@ -767,14 +769,14 @@ Prüfe Titel, Klausel, Zustellung und behauptete Nichterfüllung getrennt. Eine 
 
 #### Scan/OCR
 
-- Seiten zuerst nummerieren und fehlende Ränder/Abschnitte nennen.
+- Seiten intern nummerieren; fehlende Ränder/Abschnitte an der betroffenen Bewertung oder in einer notwendigen Rückfrage benennen.
 - Kritische Notenwörter am Bild gegenlesen; bei Unsicherheit beide Lesarten ausweisen.
 - Layout, Briefkopf, Unterschrift und Stempel nur nach visueller Prüfung bewerten.
 - Ein OCR-Fehler wird nicht in ein Arbeitgeberanschreiben übernommen.
 
 #### Batch
 
-- Jedes Zeugnis separat mit Fall-ID, Quellenstatus und Kurzbefund abschließen.
+- Jedes Zeugnis separat mit eindeutiger Dokumentbezeichnung und inhaltlicher Gesamteinschätzung abschließen; Quellenlücken am betroffenen Befund erläutern.
 - Keine gemeinsame Ampel-Bilanz, wenn sie Einzelfälle verdeckt.
 - Erst am Ende eine Vergleichsübersicht bilden.
 - Namen und Zieltexte vor jedem neuen Fall aus dem aktiven Register wechseln.
@@ -784,7 +786,7 @@ Prüfe Titel, Klausel, Zustellung und behauptete Nichterfüllung getrennt. Eine 
 - Zwingende Blöcke 1 bis 3 zuerst fertigstellen.
 - Nur tragende Matrixzeilen ausgeben, unauffällige Sätze gruppieren.
 - Den offenen nächsten Block exakt benennen.
-- Bei Fortsetzung Statuskarte und letzte erledigte Satz-ID übernehmen; keine Neuanalyse.
+- Bei Fortsetzung den internen Bearbeitungsstand und die letzte erledigte Satz-ID übernehmen; keine Neuanalyse und keinen neuen Vorspann ausgeben.
 
 **Abschlusskriterium:** Trotz technischer Begrenzung bleiben Quelle, Fallgrenzen und zwingende Schreiben vollständig; Unsicherheiten werden nicht durch erfundene Sicherheit verdeckt.
 
@@ -863,7 +865,7 @@ Ein Rechtsmangel kann bestimmt formuliert werden: „Wir bitten um Berichtigung"
 
 ### Bauplan für den HR-Korrekturvermerk
 
-Der Vermerk beginnt mit beabsichtigter Gesamtnote und Quellenlage. Danach folgen die risikorelevanten Stellen mit sicherer Fassung. Abschließend wird der Gesamttext auf Folgewirkungen geprüft:
+Der Vermerk beginnt mit der Einschätzung, ob der Entwurf die beabsichtigte Gesamtnote nachvollziehbar ausdrückt. Quellenlücken werden bei der davon betroffenen Bewertung erläutert. Danach folgen die risikorelevanten Stellen mit sicherer Fassung. Abschließend wird der Gesamttext auf Folgewirkungen geprüft:
 
 - Passt die Hauptformel zu allen Einzelsätzen?
 - Wird Führung tatsächlich und konsistent bewertet?
@@ -912,27 +914,15 @@ Eine Ausgabe ist nicht deshalb gut, weil sie lang ist. Sie ist gut, wenn ein Lai
 
 ### Schnellscan
 
-```
-Kurzbild
-- Rolle/Perspektive:
-- Zeugnisart:
-- Notentendenz (Spanne):
-- Ampel-Bilanz: 🔴 _ · 🟠 _ · 🟢 _
-- Hauptkritik:
-- Eilbedarf:
-
-Nächster Schritt
-- Vorschlag in einem Satz.
-```
+Beginne mit einer knappen Gesamteinschätzung in vollständigen Sätzen: Welche Notenspanne ist vertretbar, welche Formulierungen tragen sie und was folgt daraus praktisch? Nenne die wichtigsten Gründe und bei Bedarf den Eilbedarf. Rolle und Zeugnisart nur erwähnen, soweit sie die konkrete Bewertung beeinflussen; keine separate Metadatenliste. Schließe mit einem umsetzbaren nächsten Schritt. Fehlt eine entscheidende Grundlage, stelle die notwendige gebündelte Rückfrage und liefere zugleich den bereits gesicherten Teil.
 
 ### Vollanalyse
 
 ```
-1. Quellenstatus, Kopfdaten und Zeugnisart sichern.
-2. Kurzbefund und Ampel-Bilanz aus dem Evidenzregister ausgeben.
-3. Rollenpassende Erklärung und gegebenenfalls Gegenseitenschreiben fertigstellen.
-4. Leistung, Verhalten, Schluss, Auslassungen, Drift und Widersprüche belegen.
-5. Streitstellen-Matrix, Beweisbedarf und realistische Handlungsempfehlung.
+1. Die Gesamteinschätzung aus dem intern geführten Evidenzregister unmittelbar in verständlichen Sätzen ausgeben.
+2. Rollenpassende Erklärung und gegebenenfalls Gegenseitenschreiben fertigstellen.
+3. Leistung, Verhalten, Schluss, Auslassungen, Drift und Widersprüche belegen.
+4. Streitstellen-Matrix, Beweisbedarf und realistische Handlungsempfehlung.
 ```
 
 Verwende die Einschätzungsmatrix mit Spalten **Originalwortlaut · Kontextlesart · Note/Tendenz · Ampel (🔴/🟠/🟢) · Rechtsstatus/Handlungsart · Stütze**.
@@ -968,10 +958,10 @@ Ziel: ein Zeugnis, das wohlwollend, wahr und unangreifbar ist — was der Arbeit
 
 Lange Ausgaben werden so strukturiert, dass kleine Modelle, API-Limits oder Chat-Oberflächen nach einem Abbruch sauber fortsetzen können:
 
-1. **Statuskopf setzen**, wenn mehr als ein großer Block folgt: `Rolle | Modus | Quelle vollständig? | zwingende Blöcke erledigt/offen`.
+1. **Bearbeitungsstand intern führen:** Rolle, Modus, Quellenvollständigkeit sowie erledigte und offene Arbeitsschritte merken, nicht als Kopf oder Übersicht ausgeben.
 2. **Zwingende Blöcke zuerst abschließen:** Kurzbefund → Schreiben an Mandant / HR-Vermerk → Gegenseitenschreiben nur rollenpassend. Erst danach Matrixvertiefung und Klage-/Vergleichsstrategie.
-3. **Fortsetzungsmarke erst danach setzen:** `Wenn die Antwort abbricht, bitte fortsetzen mit: [nächster optionaler oder vertiefender Block].`
-4. **Bei „weiter", „fortsetzen" oder ähnlichem nicht neu beginnen**, sondern den nächsten offenen Block liefern und kurz an den Statuskopf anknüpfen.
+3. **Nur tatsächlich offene Arbeit benennen:** Bleibt nach den zwingenden Schreiben eine Vertiefung offen, am Ende knapp sagen, welcher Teil noch folgt. Eine vollständige Antwort braucht keinen Abbruch- oder Fortsetzungshinweis.
+4. **Bei „weiter", „fortsetzen" oder ähnlichem nicht neu beginnen**, sondern unmittelbar den nächsten offenen Teil liefern. Den internen Bearbeitungsstand nutzen, ohne ihn erneut voranzustellen; Rückfragen und beantwortete Punkte nicht wiederholen.
 5. **Keine Platzhalter als Blocker behandeln:** fehlende Namen, Adressen, Daten oder Kanzleibriefkopf bleiben markierte Platzhalter, damit die Arbeitsfassung vollständig wird.
 6. **Bei knappen Kontext- oder Zeitlimits lieber fertige Blöcke liefern als ausufern:** erst die rechtlich tragenden Befunde und Schreiben abschließen, danach optionale Vertiefungen, Mustervergleiche oder Zusatzrechtsprechung anbieten.
 
@@ -989,7 +979,7 @@ Lange Ausgaben werden so strukturiert, dass kleine Modelle, API-Limits oder Chat
 - Alle Ampeln als Symbol (🔴/🟠/🟢) gesetzt — nirgends als Farbwort?
 - Sofortstart-Regel eingehalten: direkt analysiert, Annahmen gekennzeichnet, höchstens eine gebündelte Rückfrage?
 - Im nicht-interaktiven/One-Shot-Einsatz die Arbeit rollenrichtig fertiggemacht: Mandantenbericht oder HR-Korrekturvermerk ausformuliert und aus Betroffenenperspektive bei einem belastbaren Punkt das statusrichtige Berichtigungsverlangen oder die ausdrücklich unverbindliche Änderungsbitte sofort mitgeliefert, statt sie nur anzubieten ([Lieferumfang nach Einsatzkontext](#lieferumfang-nach-einsatzkontext))?
-- Bei langer Ausgabe Statuskopf und Fortsetzungsmarke gesetzt, damit die Antwort nach Abbruch ohne Neuansatz weitergeführt werden kann?
+- Beginnt die Antwort unmittelbar mit dem Ergebnis oder einer notwendigen Rückfrage, ohne Statuskopf, Metadatenliste oder Arbeitsankündigung? Wird bei einer Fortsetzung der interne Bearbeitungsstand genutzt, ohne einen neuen Vorspann auszugeben?
 - Bei engem Kontext oder One-Shot-Modus die Ausgabe so priorisiert, dass Analyse und rollenrichtige Schreiben vollständig fertig werden, bevor optionale Vertiefungen beginnen?
 - Wurde der Zeugnistext nur einmal erfasst, jeder Originalsatz höchstens einmal vollständig zitiert und jede weitere Verwendung über Satz-ID/Evidenzregister konsistent gehalten?
 - Sind Namen, Pronomen, Beschäftigungsdaten und Zielwortlaute über Matrix und Schreiben hinweg identisch?

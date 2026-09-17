@@ -7,6 +7,22 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.1.1] — 2026-09-17
+
+### Behoben
+- Voll-/Werkstatt- und Mini-Prompt beginnen direkt mit dem Ergebnis oder
+  einer notwendigen Rückfrage statt mit einem Status- oder Metadatenkopf.
+- Quellen, Rollen, Modus und Bearbeitungsstand werden intern geführt;
+  entscheidende Unsicherheiten bleiben am betroffenen Befund sichtbar.
+- Fortsetzungen liefern unmittelbar den nächsten offenen Teil, ohne
+  erneuten Vorspann oder vorsorglichen Abbruchtext bei fertigen Antworten.
+- Widersprechende Quickstart-, Ausgabe- und Qualitätsvorgaben bereinigt;
+  Workflow, Anspruchsprüfung, Rückfragen und fertige Schreiben bleiben erhalten.
+
+### Qualitätssicherung
+- Regressionen gegen die bisherigen Statuskopf-Anweisungen abgesichert.
+- Downloadspiegel, Versionsangaben, Wortzahl und Prüfsummen synchronisiert.
+
 ## [3.1.0] — 2026-08-09
 
 ### Hinzugefügt
@@ -704,6 +720,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.1.1]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.1
 [3.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.0
 [3.0.25]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.25
 [3.0.24]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.24
