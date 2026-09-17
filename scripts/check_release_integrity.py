@@ -415,6 +415,7 @@ def check_mini_size(checker: Checker) -> None:
 
 def check_workshop_skill(checker: Checker) -> None:
     full = read_text(Path("skill/SKILL.md"))
+    mini = read_text(Path("skill/SKILL-mini.md"))
     readme = read_text(Path("README.md"))
     index = read_text(Path("docs/index.html"))
     word_count = len(full.split())
@@ -470,6 +471,24 @@ def check_workshop_skill(checker: Checker) -> None:
         "guided routes preserve the interactive versus one-shot delivery boundary",
     )
     download_help = read_text(Path("docs/download-skill.html"))
+    for label, prompt in (("workshop", full), ("mini", mini)):
+        checker.require(
+            "Beginne direkt mit" in prompt and "Kein Statuskopf" in prompt,
+            f"{label} starts with substance or a necessary question, not a status header",
+        )
+        obsolete_headers = (
+            "**Statuskopf setzen**",
+            "nennt sie knapp im Statuskopf",
+            "kurz an den Statuskopf anknüpfen",
+            "1. `Quellenstatus:`",
+            "**Kurzbefund:** Quellenstatus, Zeugnisart, Rolle",
+            "- Rolle/Perspektive:",
+            "1. Quellenstatus, Kopfdaten und Zeugnisart sichern.",
+        )
+        checker.require(
+            not any(instruction in prompt for instruction in obsolete_headers),
+            f"{label} does not reintroduce the former status or metadata preamble",
+        )
     checker.require(
         "Voll-/Werkstattversion" in download_help
         and "Werkstattversion ansehen" in download_help
@@ -840,7 +859,7 @@ def check_legal_citations(checker: Checker) -> None:
         and "Kompakt" in full
         and "Voll" in full
         and "Batch" in full
-        and "Erst nach den Schreiben Fortsetzungsmarke setzen" in mini,
+        and "Nur tatsächlich offene Teile nach den Schreiben benennen" in mini,
         "execution modes and mandatory-block continuation order remain coherent",
     )
     checker.require(

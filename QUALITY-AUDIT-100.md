@@ -1,6 +1,6 @@
 # Qualitätsaudit: 100 Befunde und Behebungen
 
-Stand: 14.07.2026. Gezählt werden konkrete Fehler, Überdehnungsrisiken, Stabilitätslücken und vermeidbare Reibungspunkte. Die Tabelle ist bewusst maschinenprüfbar; `scripts/check_release_integrity.py` verlangt genau die laufenden Nummern 1 bis 100, eine konkrete Behebung und den Status `Behoben`.
+Ursprünglicher Auditstand: 14.07.2026; Befund 20 am 17.09.2026 zur Ausgabe ohne Statuskopf aktualisiert. Gezählt werden konkrete Fehler, Überdehnungsrisiken, Stabilitätslücken und vermeidbare Reibungspunkte. Die Tabelle ist bewusst maschinenprüfbar; `scripts/check_release_integrity.py` verlangt genau die laufenden Nummern 1 bis 100, eine konkrete Behebung und den Status `Behoben`.
 
 | Nr. | Befund | Behebung | Status |
 | --- | --- | --- | --- |
@@ -23,7 +23,7 @@ Stand: 14.07.2026. Gezählt werden konkrete Fehler, Überdehnungsrisiken, Stabil
 | 17 | One-Shot-Schreiben konnten hinter langer Matrix abgeschnitten werden | Zwingende Schreiben vor Detailmatrix angeordnet | Behoben |
 | 18 | Fortsetzungsmarke konnte vor Pflichtblöcken erscheinen | Fortsetzung erst nach Kurzbefund und geschuldeten Schreiben erlaubt | Behoben |
 | 19 | Kompaktmodus konnte mit unvollständig verwechselt werden | Vollständigkeit bei bloßer Verdichtung ausdrücklich gesichert | Behoben |
-| 20 | Statuskopf zeigte Quellenvollständigkeit nicht | Quellenstatus in den Statuskopf aufgenommen | Behoben |
+| 20 | Technischer Statuskopf verdrängte den direkten Einstieg | Bearbeitungsstand bleibt intern; Quellenlücken stehen am betroffenen Befund | Behoben |
 | 21 | Rote Ampel nannte eine nicht verwendete Skala bis Note 6 | Skala auf die im Projekt verwendeten Noten 1 bis 5 vereinheitlicht | Behoben |
 | 22 | Matrix erlaubte inkonsistent Noten 1 bis 6 | Matrix auf Notentendenz 1 bis 5 korrigiert | Behoben |
 | 23 | Sozialreihenfolge wirkte wie eine feste Rechtsregel | Als Sprachkonvention ohne gesetzlichen oder festen BAG-Code klargestellt | Behoben |
