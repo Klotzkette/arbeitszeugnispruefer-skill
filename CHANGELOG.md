@@ -7,6 +7,27 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.2.0] — 2026-09-25
+
+### Arbeitnehmer-Workflow wieder durchgängig
+
+- Auch ein einzelner kopierter Prompt startet einen Frage-Antwort-Dialog.
+  Entscheidende Rückfragen werden beantwortet und ohne Neustart verarbeitet;
+  neue Widersprüche können weitere gezielte Fragen auslösen.
+- Der vollständige Arbeitnehmerauftrag umfasst nach der Tatsachenklärung
+  beide Schreiben ohne zusätzlichen Schreibauftrag. Mangelfreie Zeugnisse
+  ohne Änderungswunsch führen nicht zu erfundenen Beanstandungen.
+- Mandantenbrief und ausführliche Rechtsprüfung getrennt: Ziel 120–180 Wörter
+  für den verständlichen Brief, regelmäßig höchstens 250 Wörter. Belege,
+  Satzprüfung und Rechtsprechung bleiben im eigenständigen Prüfvermerk.
+- Mini-Fassung unter 7.500 Zeichen mit Dialogablauf und direkt eingebundenen
+  Rechtsprechungsankern; umfangreicher Fachteil der Vollfassung erhalten.
+- Veraltete Einmalaufruf-Annahmen und Rückfrageverbote sowie widersprechende
+  Ausgabevorlagen bereinigt. Nicht-interaktiver Betrieb bleibt ausdrücklich
+  beauftragte Ausnahme. Kein Versand ohne Freigabe.
+- Reine Mindestwortzahl als Qualitätsgate entfernt; fachliche Modul-,
+  Quellen-, Spiegel-, Rechtsstatus- und Integritätsprüfungen bleiben erhalten.
+
 ## [3.1.1] — 2026-09-17
 
 ### Behoben
@@ -720,6 +741,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.2.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.2.0
 [3.1.1]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.1
 [3.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.0
 [3.0.25]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.0.25

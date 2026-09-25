@@ -9,7 +9,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Werkstatt-Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity und lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Werkstatt-Skill (Version 3.1.1) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem — Befunde werden als farbige Ampelsymbole 🔴/🟠/🟢 ausgegeben, nicht als Farbwörter. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` und deckt den vollständigen Bogen ab — vom Drei-Minuten-Quickstart über interne Quellen-, Rollen-, Status- und Evidenzregister bis zu Notenmatrix, fertigen Schreiben, Vergleich, Klage und Vollstreckung. Die Vollfassung umfasst 23.325 Wörter und sieben geführte Fallstrecken; der Rechtsstand bleibt bei 09.08.2026. Version 3.1.1 beginnt unmittelbar mit dem Ergebnis oder einer notwendigen Rückfrage, ohne technischen Statuskopf.
+Konsolidierter Werkstatt-Skill (Version 3.2.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse. Standard ist der vollständige Arbeitnehmer-Workflow: prüfen, entscheidende Fragen klären, Antworten verarbeiten und beide Schreiben fertigstellen. Die ausführliche Rechtsprüfung einschließlich Rechtsprechung bleibt eigenständig enthalten; nur der Mandantenbrief ist bewusst kurz und einfach. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben geführten Fallstrecken. Die Vollfassung umfasst 23.352 Wörter; der bisherige umfassende Quellenprüfstand bleibt bei 09.08.2026. Ampelsymbole 🔴/🟠/🟢 gehören in die fachliche Matrix, nicht in die Briefe. Kein technischer Statuskopf.
 
 ## Navigation
 
@@ -35,7 +35,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
 
-Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.325 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.352 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -88,10 +88,11 @@ Begleitsatz zum Kopieren (egal ob Weg A oder Weg B) — zusammen mit dem Skill i
 
 ```text
 Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis
-sofort und rollenrichtig. Nutze den Kompaktmodus, sofern der Fall keinen
-Vollmodus erfordert. Liefere im One-Shot zuerst Kurzbefund, verständliche
-Erklärung bzw. Mandantenschreiben und bei einem belastbaren Punkt das passend
-abgestufte Schreiben an die Gegenseite; danach Matrix und Vertiefung.
+aus Arbeitnehmerperspektive. Kläre entscheidende Tatsachen durch Rückfragen,
+warte auf meine Antwort und führe den Fall ohne Neustart fort. Erstelle nach
+der Klärung ein kurzes verständliches Mandantenschreiben und das rechtlich
+abgestufte Gegenseitenschreiben. Begründe die Prüfung einschließlich
+Rechtsprechung und Beweisen getrennt von der kurzen Mandantenkommunikation.
 ```
 
 Weg A — Text kopieren:
@@ -106,7 +107,7 @@ Weg B — Datei hineinziehen (Drag & Drop):
 2. Die Datei per Drag & Drop in das Chatfenster ziehen, den Begleitsatz aus dem Werkstatt-Quickstart dazuschreiben und absenden.
 3. Das Zeugnis nachreichen — fertig.
 
-Sofortstart in beiden Wegen: Der Skill analysiert ohne Rückfragen-Kaskade, kennzeichnet fehlende Angaben als Annahmen und liefert Einschätzungsmatrix, Ampel-Bilanz (🔴/🟠/🟢), Gesamtnotenspanne und Handlungsempfehlung in einem Durchgang. Die Matrix trennt dabei Ampelfarbe, Notentendenz und rechtliche Durchsetzbarkeit. Wird der Skill als One-Shot/Megaprompt mit Zeugnis genutzt, liefert er aus Perspektive der beurteilten Person bei einem belastbaren Korrektur- oder Verhandlungspunkt sofort eine persönliche Erklärung oder ein anwaltliches Mandantenschreiben sowie das passende Gegenseitenschreiben: bei einem Rechtsmangel ein Berichtigungsverlangen, bei ausschließlich freiwilligen Punkten eine freundliche Änderungsbitte ohne Anspruchs- oder Klagebehauptung. Eine gebündelte Rückfrage gibt es höchstens dann, wenn die Analyse sonst objektiv falsch würde.
+Ein einzelner kopierter Prompt startet auch in einem beliebigen KI-Chat einen vollständigen Arbeitnehmer-Dialog: Zeugnis lesen, entscheidende Tatsachen erfragen, die echte Antwort abwarten, einarbeiten und beide Schreiben fertigstellen. Neue entscheidende Widersprüche dürfen weitere gezielte Fragen auslösen. Nach der Klärung braucht es keinen erneuten Schreibauftrag. Das Mandantenschreiben bleibt einfach und kurz (Ziel 120–180 Wörter, regelmäßig höchstens 250); ausführliche Rechtsprüfung, Satzmatrix und Rechtsprechung bleiben getrennt erhalten. Das Gegenseitenschreiben unterscheidet begründete Berichtigung und freiwillige Bitte. Nur ohne Mangel und ohne Änderungswunsch entfällt es mit kurzer Begründung. Ausschließlich ausdrücklich nicht-interaktive Aufträge werden ohne Rückfragerunde mit gekennzeichneten Annahmen und Varianten bearbeitet.
 
 ### Schnell, stabil und vollständig
 
@@ -118,12 +119,12 @@ Die Voll-/Werkstattversion liest das Zeugnis einmal in ein Quellen-, Satz- und E
 | **Voll** | Für komplexe Beweisfragen, Organstatus, Vergleich, Klage oder ausdrücklich gewünschte Satz-für-Satz-Vertiefung. |
 | **Batch** | Für mehrere Zeugnisse. Jeder Fall erhält ein strikt getrenntes Seiten-, Satz- und Ergebnisregister. |
 
-Im One-Shot kommen Kurzbefund, ausformulierte Erklärung/Mandantenschreiben und das gegebenenfalls geschuldete Gegenseitenschreiben **vor** der langen Detailmatrix. So bleiben die praktisch benötigten Schreiben auch bei knappen Ausgabelimits vollständig. Bei PDF, Scan oder Foto prüft der Skill zunächst Seitenzahl, Reihenfolge und OCR-Treue; unleserliche oder fehlende Seiten werden nicht durch erfundenen Wortlaut ersetzt.
+Nach der notwendigen Klärung werden die vollständigen Schreiben vor langen Detailausführungen abgeschlossen. Die rechtliche Prüfung wird dadurch nicht verkürzt, sondern vom kurzen Mandantenbrief getrennt. Bei PDF, Scan oder Foto prüft der Skill Seitenzahl, Reihenfolge und OCR-Treue; fehlende Seiten oder Leistungsbelege werden nicht durch erfundene Tatsachen ersetzt.
 
 ### Welche Ausgabe bekomme ich?
 
 - **Direkter Einstieg:** Gesamteinschätzung, wichtigste Gründe und konkrete nächste Handlung in verständlichen Sätzen.
-- **One-Shot / Megaprompt:** aus Perspektive der beurteilten Person bei einem belastbaren Punkt Analyse, persönliche Erklärung bzw. anwaltliches Mandantenschreiben und rechtlich abgestuftes Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende in einem Durchgang. Eine orange Ampel allein ist noch kein Korrekturanspruch.
+- **Arbeitnehmer-Workflow, auch als einzelner Megaprompt:** Nach Frage und Antwort entstehen der kurze Mandantenbrief und das rechtlich abgestufte Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende. Die ausführliche Rechtsprüfung steht separat. Ein technischer Einmalaufruf ist eine ausdrückliche Ausnahme, nicht der Standard.
 - **HR / Arbeitgeberseite:** neutraler Korrekturvermerk mit Risiko, sicherer Ersatzformulierung und Formcheck statt Arbeitnehmer-Aufforderungsschreiben.
 - **Antwort bricht ab:** „Bitte fahre mit dem nächsten offenen Block fort." Der Skill arbeitet unmittelbar am offenen Teil weiter, ohne Wiederholung oder neuen Vorspann.
 
@@ -154,13 +155,19 @@ Die Datei ist in folgende Hauptteile gegliedert (interne Sprungmarken):
 
 Zusätzlich enthält der Skill durchgängig:
 
-- Sofortstart und Rückfrage-Disziplin — Zeugnis rein, Analyse läuft; Annahmen statt Fragenkaskade.
-- Lieferumfang nach Einsatzkontext — interaktiv (Claude-Apps, Claude Code) bietet der Skill Aufforderungs- und Klageschritte am Ende als Option an; im nicht-interaktiven Einsatz (API, Agent-SDK, Automatisierung) macht er die Arbeit rollenrichtig fertig: Die beurteilte Person erhält bei einem belastbaren Punkt ein Berichtigungsverlangen oder eine ausdrücklich unverbindliche Änderungsbitte, HR-/Arbeitgeberprüfung stattdessen eine neutrale Korrekturprüfung.
+- Sofortstart und Rückfrage-Disziplin — Unterlagen zuerst, entscheidende Fragen bündeln, echte Antworten verarbeiten und ohne Neustart fertigstellen.
+- Lieferumfang nach Einsatzkontext — beide Schreiben gehören zum Arbeitnehmerauftrag, nicht zu einem späteren Angebot. HR erhält bei entsprechendem Auftrag eine neutrale Korrekturprüfung. Klage, Vergleich und Vollstreckung bleiben gesondert beauftragte Folgearbeit.
 - Fortsetzungs- und Abbruchprotokoll — der Bearbeitungsstand bleibt intern; nach einem Abbruch geht es direkt mit dem offenen Teil weiter. Nur tatsächlich offene Vertiefungen werden nach den zwingenden Schreiben knapp benannt.
-- Ampel-Darstellung — Befunde immer als 🔴/🟠/🟢, mit Ampel-Bilanz im Hauptbefund.
+- Ampel-Darstellung — 🔴/🟠/🟢 kennzeichnen Befunde im gesonderten Prüfvermerk, nicht im Mandantenbrief oder als vorgeschalteten Statuskopf.
 - Rechtsprechungsanker — verifizierte BAG-Leitentscheidungen zu Notenstufen, Beweislast, Schlussformel, Maßregelungsverbot, Zeugnisklarheit, Auslassungen, Datumswahrheit, Tabellenform, Vollstreckbarkeit und äußerer Form, ergänzt um frei verfügbare LAG- und instanzgerichtliche Rechtsprechung.
 
 ## Qualitätssicherung und Release-Check
+
+Die ergänzende [Dialogprüfung der Version 3.2.0](testakten/DIALOG-WORKFLOW-TEST.md)
+beschreibt tatsächlich durchgespielte Rückfrage-, Fortsetzungs- und
+Schreibfälle mit unabhängigen Agenten. Sie ist keine allgemeine Modellbenchmark.
+Die folgenden Integritätschecks prüfen Dateien und bekannte Widersprüche;
+sie allein belegen keine Qualität erzeugter Antworten.
 
 Vor einer neuen Version sollte der lokale Integritätscheck ausgeführt werden:
 
@@ -176,7 +183,7 @@ python3 scripts/check_release_integrity.py --verbose
 
 | Skript | Zweck |
 | --- | --- |
-| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Werkstatt-Mindestumfang/-module, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
+| [`scripts/check_release_integrity.py`](scripts/check_release_integrity.py) | Prüft Skill-Frontmatter, Werkstattmodule, Versionsgleichlauf, Spiegel, Mini-Limit, Rechtsfundstellen, 100-Punkte-Audit, Text-/ZIP-Hygiene, Links, Navigation, CI, Prüfsummen und PDF-Artefakte. Standardausgabe ist kompakt; `--quick` überspringt nur externe PDF-Inspektion, `--verbose` zeigt jede Einzelinvariante. Nach Veröffentlichung vergleicht `--github-release vX.Y.Z` zusätzlich Tag, `main` und reale Release-Assets. |
 | [`scripts/build_generated_testakten.py`](scripts/build_generated_testakten.py) | Baut alle drei Testaktensätze, deren Einzel-PDFs und das Komplettpaket parallel, ohne kuratierte Quellen oder Begleittexte zu verändern. `--verify-reproducible` baut zweimal und vergleicht jede erzeugte Datei bytegenau. |
 | [`scripts/render_testzeugnis.py`](scripts/render_testzeugnis.py) | Erzeugt mit ReportLab das gemeinsame adaptive A4-Layout, deutsche Typografie, Fortsetzungszeile, Seitenfuß und Signaturblöcke aller 25 Fälle. |
 | [`scripts/reproducible_test_artifacts.py`](scripts/reproducible_test_artifacts.py) | Gemeinsame Hilfsfunktionen für kanonische PDF-Metadaten und reproduzierbare ZIP-Dateien. |
@@ -199,7 +206,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.1.1
+python3 scripts/check_release_integrity.py --github-release v3.2.0
 ```
 
 ## Workflow in acht Stufen
