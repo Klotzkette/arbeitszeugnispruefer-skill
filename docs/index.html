@@ -178,7 +178,7 @@
 <body>
 <main>
   <h1>Arbeitszeugnis-Prüfer Skill</h1>
-  <p class="lead">Ein offener Werkstatt-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die ausführliche Vollfassung oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.1.1.</p>
+  <p class="lead">Ein offener Werkstatt-Prompt, der deutsche Arbeits-, Dienst- und Ausbildungszeugnisse nach dem Ampelsystem 🔴/🟠/🟢 prüft. Lade die ausführliche Vollfassung oder die kompakte Mini-Version in einem Klick herunter — als freistehende Markdown-Promptdatei direkt in den Downloads-Ordner deines Geräts. Stand: Version 3.2.0.</p>
 
   <nav class="site-nav" aria-label="Seitennavigation">
     <a href="#schnellzugriff">Alle Downloads</a>
@@ -218,7 +218,7 @@
 
   <div class="card" id="skills">
     <h2>📥 Voll-/Werkstattversion</h2>
-    <p>23.325 Wörter mit Drei-Minuten-Quickstart, internen Quellen-, Rollen-, Status- und Evidenzregistern, sieben geführten Einsatzstrecken, 2026-Rechtsprechungscockpit, Mandatsmodulen und Musterzeugnissen. Die Ausgabe beginnt direkt mit dem Ergebnis oder einer notwendigen Rückfrage, ohne Statuskopf. Auch ohne Skill-Loader in praktisch jeder leistungsfähigen KI als Megaprompt nutzbar.</p>
+    <p>23.352 Wörter mit Drei-Minuten-Quickstart, internen Quellen-, Rollen-, Status- und Evidenzregistern, sieben geführten Einsatzstrecken, 2026-Rechtsprechungscockpit, Mandatsmodulen und Musterzeugnissen. Die Ausgabe beginnt direkt mit dem Ergebnis oder einer notwendigen Rückfrage, ohne Statuskopf. Auch ohne Skill-Loader in praktisch jeder leistungsfähigen KI als Megaprompt nutzbar.</p>
     <a class="btn" href="SKILL.md" download="SKILL.md" type="text/markdown">
       SKILL.md herunterladen
     </a>
@@ -226,7 +226,7 @@
 
   <div class="card">
     <h2>Mini-Version</h2>
-    <p>Für kleine Assistenten, knappe Kontextfenster und einfache Skillsets. Unter 7.500 Zeichen; mit Satzmatrix, Notenspanne, direkter Erklärung bei Selbstprüfung oder Mandantenschreiben bei Kanzleiprüfung und statusrichtigem Gegenseitenschreiben.</p>
+    <p>Unter 7.500 Zeichen: Arbeitnehmerprüfung mit Frage-Antwort-Fortsetzung, Rechtsprechungsankern, kurzem Mandantenbrief und abgestuftem Gegenseitenschreiben. Auch ein einzelner kopierter Prompt bleibt ein Dialog.</p>
     <a class="btn secondary" href="SKILL-mini.md" download="SKILL-mini.md" type="text/markdown">
       SKILL-mini.md herunterladen
     </a>
@@ -332,7 +332,7 @@
   <div class="card" id="anwendung">
     <h2>Und dann?</h2>
     <p>Die heruntergeladene <code>SKILL.md</code> oder <code>SKILL-mini.md</code> per Drag &amp; Drop in ein KI-Chatfenster (Claude, ChatGPT, Gemini, Perplexity, Mistral …) ziehen. Dazu schreiben:</p>
-    <p><em>„Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis sofort und rollenrichtig. Liefere im One-Shot zuerst Kurzbefund, Erklärung bzw. Mandantenschreiben und bei einem belastbaren Punkt das passende Gegenseitenschreiben; danach Matrix und Vertiefung."</em></p>
+    <p><em>„Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis aus Arbeitnehmerperspektive. Kläre entscheidende Tatsachen durch Rückfragen, warte auf meine Antwort und führe den Fall ohne Neustart fort. Erstelle anschließend den kurzen Mandantenbrief und das rechtlich abgestufte Gegenseitenschreiben. Halte die ausführliche Rechtsprüfung getrennt."</em></p>
     <p>Dann das Zeugnis nachreichen — die Analyse startet automatisch. Für ein einzelnes Zeugnis läuft der vollständige, aber verdichtete Kompaktmodus. „Vollmodus" ergänzt die Satz-für-Satz-, Beweis- und Prozessvertiefung; mehrere klar getrennte Zeugnisse aktivieren den Batchmodus.</p>
     <p>PDF, Scan und Foto werden zuerst auf Seitenzahl, Reihenfolge und OCR-Treue geprüft. Das Zeugnis wird einmal in ein Satzregister eingelesen; alle späteren Texte verwenden dieselben Befunde, Belege und Zielwortlaute.</p>
   </div>
@@ -340,8 +340,8 @@
   <div class="card" id="ausgabe">
     <h2>Welche Ausgabe?</h2>
     <ul>
-      <li><strong>Erster Blick:</strong> Analyse, Ampel-Bilanz, Notenspanne und nächste Weiche.</li>
-      <li><strong>One-Shot:</strong> Aus der Perspektive der beurteilten Person werden Kurzbefund, direkte Erklärung oder anwaltliches Mandantenschreiben und das gegebenenfalls geschuldete Schreiben an Arbeitgeber, Dienstgeber oder Ausbildende vor der langen Detailmatrix abgeschlossen. Rechtsmangel: Berichtigungsverlangen; nur freiwilliger Punkt: Änderungsbitte ohne Anspruchs- oder Klagebehauptung.</li>
+      <li><strong>Erster Blick:</strong> Verständliche Einschätzung und eine notwendige Rückfrage oder der konkrete nächste Schritt, ohne technischen Statuskopf.</li>
+      <li><strong>Arbeitnehmer-Dialog:</strong> Aus der Perspektive der beurteilten Person werden Fragen geklärt und danach beide Schreiben an den Arbeitnehmer und an Arbeitgeber, Dienstgeber oder Ausbildende abgeschlossen. Der Mandantenbrief ist kurz und verständlich; die Rechtsprüfung bleibt ausführlich und separat. Rechtsmangel: Berichtigungsverlangen; freiwilliger Wunsch: unverbindliche Bitte. Auch ein einzelner eingefügter Prompt führt diesen Dialog.</li>
       <li><strong>Ampel:</strong> 🔴/🟠/🟢 zeigt Befund und Risiko, nicht automatisch die rechtliche Durchsetzbarkeit. Die Matrix weist den Rechtsstatus gesondert aus.</li>
       <li><strong>HR/Arbeitgeber:</strong> neutraler Korrekturvermerk mit sicheren Ersatzformulierungen.</li>
       <li><strong>Abbruch:</strong> „Bitte fahre mit dem nächsten offenen Block fort."</li>

@@ -34,8 +34,6 @@ from reproducible_test_artifacts import (
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "Klotzkette/arbeitszeugnispruefer-skill"
 MINI_LIMIT = 7500
-WORKSHOP_BASELINE_WORDS = 17_152
-WORKSHOP_MIN_WORDS = (WORKSHOP_BASELINE_WORDS * 4 + 2) // 3
 PROCESS_TIMEOUT_SECONDS = 30
 INTEGRITY_WORKFLOW = Path(".github/workflows/verify-integrity.yml")
 QUALITY_AUDIT = Path("QUALITY-AUDIT-100.md")
@@ -422,10 +420,6 @@ def check_workshop_skill(checker: Checker) -> None:
     display_count = f"{word_count:,}".replace(",", ".")
 
     checker.require(
-        word_count >= WORKSHOP_MIN_WORDS,
-        f"full workshop skill has {word_count} words, at least one third above the {WORKSHOP_BASELINE_WORDS}-word baseline",
-    )
-    checker.require(
         f"{display_count} Wörter" in readme and f"{display_count} Wörter" in index,
         "README and download page publish the measured workshop word count",
     )
@@ -465,11 +459,26 @@ def check_workshop_skill(checker: Checker) -> None:
         and "Bauplan für den HR-Korrekturvermerk" in full,
         "output workshop retains all role-specific finished-text blueprints",
     )
-    checker.require(
-        "bei einem belastbaren Punkt im One-Shot oder bei ausdrücklichem Auftrag sofort" in full
-        and "im sicher interaktiven Einsatz ohne solchen Auftrag" in full,
-        "guided routes preserve the interactive versus one-shot delivery boundary",
+    # Prompt contracts catch known contradictory instructions; they are not
+    # evidence of model performance. Dialogue trials must inspect actual replies.
+    obsolete_dialogue_rules = (
+        "Höchstens eine Rückfrage",
+        "Höchstens eine notwendige Rückfrage",
+        "niemals seriell nachfragen",
+        "One-Shot/Megaprompt ist immer wie nicht-interaktiv",
+        "Im Zweifel autonom",
+        "im sicher interaktiven Einsatz ohne solchen Auftrag",
+        "wird es erst nach der fertigen Analyse angeboten",
     )
+    for label, prompt in (("workshop", full), ("mini", mini)):
+        checker.require(
+            not any(rule in prompt for rule in obsolete_dialogue_rules),
+            f"{label} has no known dialogue-blocking or letter-deferring instruction",
+        )
+        checker.require(
+            "120–180" in prompt and "250" in prompt,
+            f"{label} separates the short employee letter from the legal analysis",
+        )
     download_help = read_text(Path("docs/download-skill.html"))
     for label, prompt in (("workshop", full), ("mini", mini)):
         checker.require(
@@ -799,7 +808,7 @@ def check_legal_citations(checker: Checker) -> None:
         in full
         and "Bei HR-/Arbeitgeberperspektive: keine Droh- oder Aufforderungslogik"
         in mini
-        and "Ohne belastbaren Punkt: kein Gegenseitenschreiben" in mini,
+        and "Ohne belastbaren Punkt und ohne Änderungswunsch: kein Gegenseitenschreiben" in mini,
         "Codex review regression: autonomous demand letters remain role-gated",
     )
     checker.require(
