@@ -9,7 +9,7 @@
 >
 > Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Werkstatt-Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity und lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Werkstatt-Skill (Version 3.2.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse. Standard ist der vollständige Arbeitnehmer-Workflow: prüfen, entscheidende Fragen klären, Antworten verarbeiten und beide Schreiben fertigstellen. Die ausführliche Rechtsprüfung einschließlich Rechtsprechung bleibt eigenständig enthalten; nur der Mandantenbrief ist bewusst kurz und einfach. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben geführten Fallstrecken. Die Vollfassung umfasst 23.352 Wörter; der bisherige umfassende Quellenprüfstand bleibt bei 09.08.2026. Ampelsymbole 🔴/🟠/🟢 gehören in die fachliche Matrix, nicht in die Briefe. Kein technischer Statuskopf.
+Konsolidierter Werkstatt-Skill (Version 3.3.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse. Standard ist der vollständige Arbeitnehmer-Workflow: prüfen, entscheidende Fragen klären, Antworten verarbeiten, beide Schreiben fertigstellen und die Arbeitgeberantwort mit einer neuen Zeugnisfassung nachprüfen. Die ausführliche Rechtsprüfung einschließlich Rechtsprechung bleibt eigenständig enthalten; nur der Mandantenbrief ist bewusst kurz und einfach. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben geführten Fallstrecken. Die Vollfassung umfasst 26.675 Wörter. Sechs Rechtsprechungs-Arbeitskarten wurden am 28.09.2026 an amtlichen Quellen geprüft; der umfassende Quellenprüfstand des übrigen Katalogs bleibt bei 09.08.2026. Ampelsymbole 🔴/🟠/🟢 gehören in die fachliche Matrix, nicht in die Briefe. Kein technischer Statuskopf.
 
 ## Navigation
 
@@ -35,7 +35,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
 
-Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 23.352 Wörter mit geführtem Quickstart, Arbeitsregistern, sieben Einsatzstrecken, 2026-Rechtsprechungscockpit und fertiger Ausgabewerkstatt. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 26.675 Wörter mit geführtem Quickstart, konkreten Frage-Antwort-Pfaden, sieben Einsatzstrecken, direkt eingebundenen Rechtsprechungs-Arbeitskarten und fertiger Ausgabewerkstatt. Auch ohne Plugin beginnt die als Datei hochgeladene Arbeitsanweisung einen Dialog. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -59,8 +59,8 @@ Wer den Inhalt lieber direkt sehen und kopieren will, öffnet [`skill/SKILL.md`]
 | --- | --- |
 | Ein Zeugnis gründlich mit geführtem Werkstatt-Workflow prüfen | [Voll-/Werkstattversion herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL.md) |
 | Kleines Modell oder knappes Kontextfenster verwenden | [Mini-Version herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/SKILL-mini.md) |
-| Ein Zeugnis schnell und trotzdem vollständig prüfen | Vollversion verwenden; sie wählt automatisch den verdichteten Kompaktmodus |
-| Komplexen Streit, Vergleich oder Klage vertiefen | Vollversion verwenden und ausdrücklich „Vollmodus" ergänzen |
+| Ein Zeugnis gründlich prüfen | Vollversion verwenden; sie führt standardmäßig durch Rückfragen, ausführliche Subsumtion und beide Schreiben |
+| Vergleich, Klage oder Vollstreckung vertiefen | Vollversion verwenden und den gewünschten Folgeauftrag ausdrücklich benennen |
 | Einen einzelnen Musterfall ausprobieren | In einer [Testakten-README](#testakten-im-überblick) auf **herunterladen** neben dem gewünschten PDF klicken |
 | Mehrere Fälle als Batch oder One-Shot prüfen | Passendes ZIP oder Gesamt-PDF im [vollständigen Downloadkatalog](#direktdownloads) wählen |
 | Alle 25 Fälle samt Ground Truth laden | [Komplettpaket herunterladen](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest/download/arbeitszeugnis-testpaket-komplett.zip) und erst nach dem Blindlauf die [Fallmatrix](testakten/TESTFALL-MATRIX.md) öffnen |
@@ -84,7 +84,7 @@ Praktischer Einsatz: Einzel-PDFs eignen sich für gezielte Chats und Regressions
 
 ### Werkstatt-Quickstart für jede KI
 
-Begleitsatz zum Kopieren (egal ob Weg A oder Weg B) — zusammen mit dem Skill in den Chat geben:
+Optionaler Begleitsatz zum Kopieren (egal ob Weg A oder Weg B). Die Datei ist selbst als Arbeitsanweisung formuliert; ein zusätzlicher Starter ist keine Voraussetzung:
 
 ```text
 Arbeite verbindlich nach diesem Werkstatt-Prompt. Prüfe das folgende Zeugnis
@@ -98,13 +98,13 @@ Rechtsprechung und Beweisen getrennt von der kurzen Mandantenkommunikation.
 Weg A — Text kopieren:
 
 1. [`skill/SKILL.md`](skill/SKILL.md) oder [`skill/SKILL-mini.md`](skill/SKILL-mini.md) öffnen, den gesamten Text mit `Strg+A` / `Cmd+A` markieren und in den Chat einfügen.
-2. Den Begleitsatz aus dem Werkstatt-Quickstart dazuschreiben und absenden.
+2. Absenden; den optionalen Begleitsatz bei Bedarf dazuschreiben.
 3. Das Zeugnis einfügen (Text, PDF oder Foto). Die Analyse startet von selbst.
 
 Weg B — Datei hineinziehen (Drag & Drop):
 
 1. `SKILL.md` oder `SKILL-mini.md` über die [Direktdownloads oben](#direktdownloads) auf das Gerät laden.
-2. Die Datei per Drag & Drop in das Chatfenster ziehen, den Begleitsatz aus dem Werkstatt-Quickstart dazuschreiben und absenden.
+2. Die Datei per Drag & Drop in das Chatfenster ziehen und absenden. Ein Begleitsatz ist optional; die KI soll die Datei anwenden, nicht zusammenfassen.
 3. Das Zeugnis nachreichen — fertig.
 
 Ein einzelner kopierter Prompt startet auch in einem beliebigen KI-Chat einen vollständigen Arbeitnehmer-Dialog: Zeugnis lesen, entscheidende Tatsachen erfragen, die echte Antwort abwarten, einarbeiten und beide Schreiben fertigstellen. Neue entscheidende Widersprüche dürfen weitere gezielte Fragen auslösen. Nach der Klärung braucht es keinen erneuten Schreibauftrag. Das Mandantenschreiben bleibt einfach und kurz (Ziel 120–180 Wörter, regelmäßig höchstens 250); ausführliche Rechtsprüfung, Satzmatrix und Rechtsprechung bleiben getrennt erhalten. Das Gegenseitenschreiben unterscheidet begründete Berichtigung und freiwillige Bitte. Nur ohne Mangel und ohne Änderungswunsch entfällt es mit kurzer Begründung. Ausschließlich ausdrücklich nicht-interaktive Aufträge werden ohne Rückfragerunde mit gekennzeichneten Annahmen und Varianten bearbeitet.
@@ -115,8 +115,8 @@ Die Voll-/Werkstattversion liest das Zeugnis einmal in ein Quellen-, Satz- und E
 
 | Modus | Verwendung |
 | --- | --- |
-| **Kompakt** | Automatischer Standard für ein Zeugnis. Vollständiger Workflow, materielle Sätze einzeln, Gleichartiges gruppiert. |
-| **Voll** | Für komplexe Beweisfragen, Organstatus, Vergleich, Klage oder ausdrücklich gewünschte Satz-für-Satz-Vertiefung. |
+| **Voll** | Standard der Werkstatt: erhebliche Streitpunkte mit Norm, Rechtsprechungsanker, Tatsachenanwendung, Gegenargument, Beweis und konkreter Empfehlung. |
+| **Kompakt** | Auf Wunsch eine verdichtete Darstellung; gleicher Frage-Antwort-Ablauf und vollständige geschuldete Schreiben. |
 | **Batch** | Für mehrere Zeugnisse. Jeder Fall erhält ein strikt getrenntes Seiten-, Satz- und Ergebnisregister. |
 
 Nach der notwendigen Klärung werden die vollständigen Schreiben vor langen Detailausführungen abgeschlossen. Die rechtliche Prüfung wird dadurch nicht verkürzt, sondern vom kurzen Mandantenbrief getrennt. Bei PDF, Scan oder Foto prüft der Skill Seitenzahl, Reihenfolge und OCR-Treue; fehlende Seiten oder Leistungsbelege werden nicht durch erfundene Tatsachen ersetzt.
@@ -163,9 +163,11 @@ Zusätzlich enthält der Skill durchgängig:
 
 ## Qualitätssicherung und Release-Check
 
-Die ergänzende [Dialogprüfung der Version 3.2.0](testakten/DIALOG-WORKFLOW-TEST.md)
+Die ergänzenden [Dialogprüfungen der Versionen 3.2.0 und 3.3.0](testakten/DIALOG-WORKFLOW-TEST.md)
 beschreibt tatsächlich durchgespielte Rückfrage-, Fortsetzungs- und
-Schreibfälle mit unabhängigen Agenten. Sie ist keine allgemeine Modellbenchmark.
+Schreibfälle mit unabhängigen Agenten. Die neue Vollfassung wurde vom bloßen
+Dateianhang bis zum Folgeschreiben nach einer teilweisen Berichtigung geprüft.
+Dies ist keine allgemeine Modellbenchmark.
 Die folgenden Integritätschecks prüfen Dateien und bekannte Widersprüche;
 sie allein belegen keine Qualität erzeugter Antworten.
 
@@ -206,7 +208,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.2.0
+python3 scripts/check_release_integrity.py --github-release v3.3.0
 ```
 
 ## Workflow in acht Stufen

@@ -469,6 +469,8 @@ def check_workshop_skill(checker: Checker) -> None:
         "Im Zweifel autonom",
         "im sicher interaktiven Einsatz ohne solchen Auftrag",
         "wird es erst nach der fertigen Analyse angeboten",
+        "gebündelt und höchstens einmal",
+        "Aufforderung blieb fruchtlos → Klage einreichen",
     )
     for label, prompt in (("workshop", full), ("mini", mini)):
         checker.require(
@@ -685,6 +687,8 @@ def check_legal_citations(checker: Checker) -> None:
         "Passivkonstruktion** („Das Arbeitsverhältnis endet\"): Distanzsignal",
         "Datumsangabe ohne weitere Worte** am Ende: Kalte Trennung",
         "Branchenüblichkeit guter Noten ist kein Argument vor Gericht",
+        "Bessere Gesamtbewertung als vorhanden gewünscht",
+        "unaufklärbare Aufwertung nur vorsichtig verhandeln",
         "Art. 50 Abs. 4 Unterabsatz 2 Satz 5",
     ]
     combined = "\n".join((full, mini, readme))
