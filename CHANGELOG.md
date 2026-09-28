@@ -7,6 +7,26 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [3.3.0] — 2026-09-28
+
+### Ausführliche Dialogwerkstatt und eigenständige Dateinutzung
+
+- Neuer ausführlicher Dialogkern vom bloßen Dateianhang bis zur Kontrolle der
+  berichtigten Zeugnisfassung, ohne versteckte Plugin- oder Referenzvoraussetzungen.
+- Konkrete Fragepfade zu Leistungsbeweisen, Aufgaben, Vorzeugnissen, Schlussformel,
+  Form, Fristen und Titeln; echte Verarbeitung von Teilantworten, unbekannten
+  Angaben und widersprüchlichen Belegen. Verbliebenes Ein-Rückfrage-Verbot entfernt.
+- Vollprüfung ist Werkstattstandard: fallbezogene Subsumtion, Gegenposition,
+  Beweiswürdigung und genaue Änderung getrennt vom kurzen Mandantenbrief.
+- Sechs direkt eingebundene Rechtsprechungs-Arbeitskarten mit geprüfter amtlicher
+  Quelle, Reichweitengrenze und daraus abgeleiteter Rückfrage. Kein behaupteter
+  neuer Gesamtprüfstand des historischen Rechtsprechungskatalogs.
+- Eigenständige Folgearbeit bei Ablehnung, Teilberichtigung und neuen Fassungen;
+  kein automatischer Klageauftrag nach erfolgloser Aufforderung.
+- Mini erhält denselben Dialogkern und direkte BAG-Links innerhalb von 7.500 Zeichen.
+- Notenabhängige Rückfragen präzisiert: Bei der Korrektur von unterdurchschnittlich
+  auf befriedigend keine überdurchschnittlichen Arbeitnehmerleistungen verlangen.
+
 ## [3.2.0] — 2026-09-25
 
 ### Arbeitnehmer-Workflow wieder durchgängig
@@ -741,6 +761,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[3.3.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.3.0
 [3.2.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.2.0
 [3.1.1]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.1
 [3.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.0
