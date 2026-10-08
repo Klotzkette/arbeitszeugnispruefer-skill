@@ -39,6 +39,9 @@ jobs:
       - name: Run repository integrity checks
         run: python3 scripts/check_release_integrity.py
 
+      - name: Check embedded handbook chapters
+        run: python3 scripts/build_handbook.py --check
+
       - name: Confirm checks leave the worktree clean
         run: |
           if [[ -n "$(git status --porcelain)" ]]; then

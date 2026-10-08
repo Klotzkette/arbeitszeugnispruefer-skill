@@ -7,6 +7,17 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [4.0.0] — 2026-10-08
+
+### Großes juristisches Arbeitsbuch
+
+- Neuer lesbarer Einstieg mit Mandatsziel, Rückfragen und fertigen Schreiben statt technischer Selbsterklärung.
+- Ausführliche Kapitel zu Leistung und Beweisen, Schlussformeln und Bindung sowie Form, Fristen und Durchsetzung. Entscheidungsinhalt, Reichweitengrenzen und eigene Anwendung werden getrennt.
+- Gezielte Volltextrecherche vom 8. Oktober 2026, einschließlich aktueller Instanzentscheidungen. Nichtamtliche Gerichtstextkopien und nicht nachgewiesene Rechtsmittelstände bleiben sichtbar; kein Vollständigkeitsversprechen für die gesamte Rechtsprechung.
+- Eigener Arbeitsweg für Webchat, Datei-Upload, Plugin und Word: tatsächlicher Dokumentzugriff, Originalerhalt, Änderungsverfolgung, getrennte Empfängertexte und Kontrolle der neuen Fassung.
+- Vollfassung bleibt eine einzige eigenständig nutzbare Datei. Redaktionelle Kapitelquellen und überprüfbarer Zusammenbau sichern identische Inhalte in Prompt und Pluginreferenz.
+- Mini bleibt kompakt; keine Verlagerung der langen Rechtsprechung in die Mandantenbriefe.
+
 ## [3.3.0] — 2026-09-28
 
 ### Ausführliche Dialogwerkstatt und eigenständige Dateinutzung
@@ -761,6 +772,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[4.0.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.0.0
 [3.3.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.3.0
 [3.2.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.2.0
 [3.1.1]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.1.1

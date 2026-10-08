@@ -210,6 +210,28 @@ CANONICAL_DECISION_DATES = {
     "5 Ca 80 b/13": "18.04.2013",
 }
 
+# New handbook decisions are checked separately from the historical quick table.
+# Dates are metadata invariants, not an assertion that every holding is correct.
+HANDBOOK_DECISION_DATES = {
+    "5 Sa 108/23": "02.07.2024",
+    "4 Sa 208/22": "06.12.2022",
+    "9 AZR 261/04": "10.05.2005",
+    "16 Sa 1387/14": "02.02.2015",
+    "6 AZR 171/92": "21.01.1993",
+    "3 Sa 1300/11": "06.12.2011",
+    "5 AZR 509/91": "09.09.1992",
+    "7 Ta 200/19": "27.03.2020",
+    "16 Sa 1195/10": "07.02.2011",
+    "3 AZR 120/11": "12.02.2013",
+    "9 Ta 209/26": "17.09.2026",
+}
+RESEARCH_LEAD_DATES = {
+    # Explicitly unverified leads in the research log, never substantive anchors.
+    "4 Sa 114/12": "04.05.2012",
+    "5 Sa 996/95": "30.01.1996",
+}
+ALL_DECISION_DATES = CANONICAL_DECISION_DATES | HANDBOOK_DECISION_DATES | RESEARCH_LEAD_DATES
+
 
 class Checker:
     def __init__(self) -> None:
@@ -541,7 +563,7 @@ def check_legal_citations(checker: Checker) -> None:
         checker.ok(f"all {len(CANONICAL_DECISION_DATES)} canonical decision dates are present")
 
     dated_case_pattern = re.compile(
-        r"(?P<date>\d{2}\.\d{2}\.\d{4})\s*[–-]\s*"
+        r"(?P<date>\d{2}\.\d{2}\.\d{4})\s*[–-]\s*(?:Az\.\s*)?"
         r"(?P<case>\d+\s+(?:AZR|AZB|AZN|ABR|ABN|SLa|Sa|Ta|Ca)\s+"
         r"\d+(?:\s+b)?/\d+"
         r"(?:\s+\([A-Z]\))?)"
@@ -556,7 +578,7 @@ def check_legal_citations(checker: Checker) -> None:
             dated_citation_count += 1
             case = match.group("case")
             date = match.group("date")
-            canonical = CANONICAL_DECISION_DATES.get(case)
+            canonical = ALL_DECISION_DATES.get(case)
             if canonical is None:
                 citation_conflicts.append(f"{path.relative_to(ROOT)}: untracked {date} – {case}")
             elif canonical != date:
@@ -579,7 +601,7 @@ def check_legal_citations(checker: Checker) -> None:
         for case in case_pattern.findall(path.read_text(encoding="utf-8")):
             all_case_mentions.add(case)
             mention_locations.setdefault(case, set()).add(rel)
-    untracked_mentions = sorted(all_case_mentions - set(CANONICAL_DECISION_DATES))
+    untracked_mentions = sorted(all_case_mentions - set(ALL_DECISION_DATES))
     if untracked_mentions:
         details = "; ".join(
             f"{case} in {', '.join(sorted(mention_locations[case]))}"
@@ -588,8 +610,19 @@ def check_legal_citations(checker: Checker) -> None:
         checker.fail(f"undated or otherwise untracked case citations found: {details}")
     else:
         checker.ok(
-            f"all {len(all_case_mentions)} case identifiers across Markdown/HTML are canonical, including undated mentions"
+            f"all {len(all_case_mentions)} case identifiers across Markdown/HTML are tracked, including marked research leads"
         )
+
+    full_dates = {(match.group("case"), match.group("date")) for match in dated_case_pattern.finditer(full)}
+    checker.require(
+        all((case, date) in full_dates for case, date in HANDBOOK_DECISION_DATES.items()),
+        "every new handbook decision has its canonical date in the full prompt",
+    )
+    checker.require(
+        "Nicht als verifiziert aufgenommen" in full
+        and all(case in full for case in RESEARCH_LEAD_DATES),
+        "unverified research leads remain visibly distinguished from substantive anchors",
+    )
 
     required_full = [
         "§ 109 GewO und BAG-Linie",
@@ -895,10 +928,32 @@ def check_legal_citations(checker: Checker) -> None:
         "closing-formula rules preserve the anti-retaliation exception",
     )
     checker.require(
-        "das tatsächliche Ausstellungsdatum trägt" in full
+        "Datum [TT.MM.JJJJ] trägt" in full
+        and "keine offenen Rechtsbedingungen oder Wahlmöglichkeiten im Antrag" in full
         and "Kunden, falls tatsächlicher Kundenkontakt bestand" in full
         and "Freiwillige Schlussformelwünsche" in full,
         "claim template keeps issue date, contact profile and voluntary closing wishes legally gated",
+    )
+    checker.require(
+        "Beide Vorinstanzen hatten die Klage abgewiesen" in full
+        and "zusprechende Berufungsurteil" not in full,
+        "9 AZR 12/03 preserves the actual procedural outcome",
+    )
+    checker.require(
+        "Prüfverdacht, kein automatischer Widerspruch" in full
+        and "Die Zuweisung einer Aufgabe schließt ihre eigenverantwortliche Ausführung nicht aus" in full,
+        "positive individual statements do not mechanically prove an inconsistent overall grade",
+    )
+    checker.require(
+        "Abweichung vom Ausfertigungstag allein ist kein sicherer Mangel" in full
+        and "Weder ein übliches Beendigungsdatum" in full,
+        "date review distinguishes chronology and practice from established defects",
+    )
+    checker.require(
+        "Ist noch kein Zeugnis erteilt, verlange kein nicht vorhandenes Dokument" in full[:18000]
+        and "Ist keines erteilt" in mini
+        and "Erteilungsverlangen ausarbeiten" in mini,
+        "both early entry gates route non-issuance without requesting an impossible attachment",
     )
 
     exercise = read_text(
