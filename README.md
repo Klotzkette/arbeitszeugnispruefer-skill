@@ -1,17 +1,19 @@
 # Arbeitszeugnis-Prüfer Skill
 
-> **Transparenzhinweis zur KI-Nutzung.** Alle Inhalte dieses Repositoriums wurden von einem Menschen geprüft und redaktionell kontrolliert; ein Mensch trägt die redaktionelle Verantwortung. Dieser freiwillige Hinweis entscheidet nicht, ob [Art. 50 Abs. 4 KI-VO](https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:02024R1689-20260727) auf eine konkrete Datei oder Nutzung anwendbar ist. Rechtsstand: konsolidierte KI-VO nach [VO (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de), 9. August 2026.
+> **Transparenzhinweis zur KI-Nutzung.** Dieses Arbeitsmaterial wird KI-gestützt entwickelt. Automatisierte Prüfungen und dokumentierte Fallproben ersetzen keine menschliche fachliche Endkontrolle der jeweils verwendeten Fassung. Dieser freiwillige Hinweis entscheidet nicht, ob [Art. 50 Abs. 4 KI-VO](https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:02024R1689-20260727) auf eine konkrete Datei oder Nutzung anwendbar ist. Rechtsstand dieses ergänzenden Hinweises: konsolidierte KI-VO nach [VO (EU) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj?locale=de), 9. August 2026.
 
 
 > Experimenteller Agent-Skill für die anwaltliche Prüfung deutscher Arbeitszeugnisse — als Anregung für Kanzlei-Arbeitsabläufe. Orientiert sich an der deutschen Rechtspraxis, an Gesetzestexten, amtlichen Materialien und frei überprüfbarer Rechtsprechung. Enthält keinerlei Fachgutachten oder Rechtsberatung, alle Angaben ohne Gewähr — jede Nutzerin und jeder Nutzer kalibriert den Skill selbst für die eigene Praxis.
 
 > Transparenz: Dieser Skill ist strukturierter Markdown-Text — ein umfangreicher, sorgfältig gegliederter Prompt, den ein Sprachmodell bei der Analyse eines Arbeitszeugnisses als Arbeitsanweisung lädt. Kein eigenes Modell, keine Blackbox, keine versteckte Logik. Der gesamte Inhalt ist offen einsehbar, nachvollziehbar, anpassbar und forkbar.
 >
-> Eine einzige Datei, modellunabhängig einsetzbar. Der vollständige Werkstatt-Workflow steckt in einer einzigen Markdown-Datei: [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Er funktioniert in jedem leistungsfähigen KI-Chatbot bzw. Sprachmodell: Claude, ChatGPT, Gemini, Mistral, Perplexity und lokal betriebene Modelle. Es ist keine Installation und kein Konto erforderlich; tragende Rechtsquellen sind vor Schriftsatznutzung gleichwohl live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
+> Eine einzige Datei, ohne Bindung an einen bestimmten Anbieter. Der vollständige Ablauf steckt in [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Voraussetzung ist ein KI-System, das die große Datei vollständig verarbeiten kann; Dokumentzugriff, Internetrecherche und Word-Bearbeitung hängen von der jeweiligen Umgebung ab. Das Arbeitsbuch selbst erfordert keine Plugininstallation. Tragende Rechtsquellen sind vor Schriftsatznutzung live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Konsolidierter Werkstatt-Skill (Version 3.3.0) für die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse. Standard ist der vollständige Arbeitnehmer-Workflow: prüfen, entscheidende Fragen klären, Antworten verarbeiten, beide Schreiben fertigstellen und die Arbeitgeberantwort mit einer neuen Zeugnisfassung nachprüfen. Die ausführliche Rechtsprüfung einschließlich Rechtsprechung bleibt eigenständig enthalten; nur der Mandantenbrief ist bewusst kurz und einfach. Der Skill bündelt eine ursprünglich 50-teilige Plugin-Sammlung in eine einzige `SKILL.md` mit sieben geführten Fallstrecken. Die Vollfassung umfasst 26.675 Wörter. Sechs Rechtsprechungs-Arbeitskarten wurden am 28.09.2026 an amtlichen Quellen geprüft; der umfassende Quellenprüfstand des übrigen Katalogs bleibt bei 09.08.2026. Ampelsymbole 🔴/🟠/🟢 gehören in die fachliche Matrix, nicht in die Briefe. Kein technischer Statuskopf.
+Das große Arbeitsbuch (Version 4.0.0) führt die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse vom ersten Lesen bis zur kontrollierten Neufassung. Standard ist die Arbeitnehmerperspektive: entscheidende Fragen klären, Antworten auswerten, Ansprüche begründen und beide passenden Schreiben fertigstellen. Der neue Einstieg erklärt diesen Zweck in verständlicher Sprache; technische Steuerung bleibt im Hintergrund. Die Vollfassung umfasst 50.644 Wörter. Ausführliche Entscheidungsbesprechungen mit Recherchestand 08.10.2026 unterscheiden Sachverhalt, rechtliche Aussage, Grenzen und eigene Anwendung. Der ältere Katalog wird nicht pauschal als neu geprüft ausgegeben. Die langen fachlichen Kapitel bleiben von der kurzen Mandantenkommunikation getrennt. Kein technischer Statuskopf.
 
 ## Navigation
+
+Neu: [Prüfbericht zum großen Arbeitsbuch mit tatsächlichen Dialogantworten](testakten/handbuch-2026-10-08/README.md).
 
 [Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Werkstatt-Quickstart](#werkstatt-quickstart-für-jede-ki) · [Ausführungsmodi](#schnell-stabil-und-vollständig) · [Repository-Landkarte](#repository-landkarte) · [100-Punkte-Audit](QUALITY-AUDIT-100.md) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
 
@@ -35,7 +37,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
 
-Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 26.675 Wörter mit geführtem Quickstart, konkreten Frage-Antwort-Pfaden, sieben Einsatzstrecken, direkt eingebundenen Rechtsprechungs-Arbeitskarten und fertiger Ausgabewerkstatt. Auch ohne Plugin beginnt die als Datei hochgeladene Arbeitsanweisung einen Dialog. Es gibt dafür bewusst keine dritte, abweichende Promptdatei; Vollversion und Werkstattversion sind dieselbe verlässliche Quelle.
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 50.644 Wörter mit Frage-Antwort-Pfaden, sieben Einsatzstrecken, vertiefter Rechtsprechung, Beweisanwendungen und fertigen Schreiben. Ein eigenes Kapitel behandelt Datei-Upload, Webchat, Plugin und Word: tatsächlichen Dokumentzugriff prüfen, Original erhalten, Kommentare und Entwürfe trennen und die neue Fassung kontrollieren. Auch die einzelne hochgeladene Datei führt den Dialog; zusätzliche Referenzdateien sind nicht erforderlich. Die [redaktionellen Kapitelquellen](handbuch/README.md) sind nur für die Pflege bestimmt.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -208,7 +210,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v3.3.0
+python3 scripts/check_release_integrity.py --github-release v4.0.0
 ```
 
 ## Workflow in acht Stufen
