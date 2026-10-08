@@ -137,9 +137,12 @@ def run_builders() -> None:
 
 def build_master_archive() -> None:
     root = ROOT / TESTAKTEN_ROOT
-    pdfs = sorted(root.glob("*/[0-9][0-9]-*/*.pdf"))
-    support_files = sorted(root.glob("*/README.md"))
-    support_files += sorted(root.glob("*/90-*.md"))
+    # Package only the three certificate sets. Dialogue/audit reports may also
+    # live under testakten, but must not silently change this download inventory.
+    sets = [ROOT / relative for relative in GENERATED_ROOTS]
+    pdfs = sorted(path for folder in sets for path in folder.glob("[0-9][0-9]-*/*.pdf"))
+    support_files = sorted(folder / "README.md" for folder in sets)
+    support_files += sorted(path for folder in sets for path in folder.glob("90-*.md"))
     support_files += [root / "README.md", root / "TESTFALL-MATRIX.md"]
     if len(pdfs) != 25:
         raise SystemExit(f"expected 25 individual test PDFs, found {len(pdfs)}")

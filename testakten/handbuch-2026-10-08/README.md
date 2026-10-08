@@ -33,6 +33,7 @@ Ein weiterer Agent prüfte die neuen Fachkapitel und gezielt ihre Vereinbarkeit 
 - `python3 scripts/check_release_integrity.py`: 412 bestandene Invarianten, einschließlich vier neuer Regressionen zu den genannten Gegencheck-Befunden.
 - `python3 scripts/build_handbook.py --check --plugin-root …`: Alle vier Kapitel in Einzeldatei, öffentlicher Kopie, Plugin-Werkstatt und Pluginreferenz synchron.
 - `scripts/build_generated_testakten.py --verify-reproducible`: 42 erzeugte Dateien in zwei vollständigen Durchläufen bytegleich. Die vorhandenen 25 Zeugnis-Testfälle wurden nicht inhaltlich verändert.
+- Der erste CI-Lauf erkannte, dass der bisherige Sammelpaket-Builder die neue Prüfbericht-README zusätzlich einsammelte. Der Builder ist auf die drei tatsächlichen Zeugnis-Testreihen begrenzt; das bestehende Downloadpaket mit 25 PDFs und neun Begleitdateien bleibt unverändert. Danach wurden beide Builds und die Integritätsprüfung erneut ausgeführt.
 - Mini bleibt innerhalb der Grenze von 7.500 Zeichen. Referenzen, Datumszuordnungen, Downloadkopien, Prüfsummen und Links sind maschinell geprüft. Das ersetzt keinen rechtlichen Volltextabgleich oder Modelllauf.
 
 SHA-256 der finalen Vollfassung: `ac4462d3fb02aa4be5ed1037ea3986bb52a4962a7458dbd9b2122c8ebe81dbc9`.
