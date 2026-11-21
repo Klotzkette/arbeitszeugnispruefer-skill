@@ -9,11 +9,11 @@
 >
 > Eine einzige Datei, ohne Bindung an einen bestimmten Anbieter. Der vollständige Ablauf steckt in [`skill/SKILL.md`](skill/SKILL.md) — ohne Pflichtanhänge oder zusätzliche Promptdateien. Voraussetzung ist ein KI-System, das die große Datei vollständig verarbeiten kann; Dokumentzugriff, Internetrecherche und Word-Bearbeitung hängen von der jeweiligen Umgebung ab. Das Arbeitsbuch selbst erfordert keine Plugininstallation. Tragende Rechtsquellen sind vor Schriftsatznutzung live zu prüfen — siehe [Anwendung](#anwendung-so-einfach-gehts).
 
-Das große Arbeitsbuch (Version 4.0.0) führt die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse vom ersten Lesen bis zur kontrollierten Neufassung. Standard ist die Arbeitnehmerperspektive: entscheidende Fragen klären, Antworten auswerten, Ansprüche begründen und beide passenden Schreiben fertigstellen. Der neue Einstieg erklärt diesen Zweck in verständlicher Sprache; technische Steuerung bleibt im Hintergrund. Die Vollfassung umfasst 50.644 Wörter. Ausführliche Entscheidungsbesprechungen mit Recherchestand 08.10.2026 unterscheiden Sachverhalt, rechtliche Aussage, Grenzen und eigene Anwendung. Der ältere Katalog wird nicht pauschal als neu geprüft ausgegeben. Die langen fachlichen Kapitel bleiben von der kurzen Mandantenkommunikation getrennt. Kein technischer Statuskopf.
+Das Arbeitsbuch (Version 4.1.0) führt die Prüfung deutscher Arbeits-, Dienst- und Ausbildungszeugnisse vom ersten Lesen bis zur kontrollierten Neufassung. Es verbindet die Arbeitnehmerperspektive mit einer begründeten Bewertung, einem kurzen Mandantenschreiben und dem passenden Schreiben an den Arbeitgeber. Die Vollfassung umfasst 51.306 Wörter. Bei einer Berichtigung nach gerichtlichem Vergleich prüft sie die vereinbarte Schlussformel, den Zeugnisentwurf und die konkret bestrittenen Tätigkeiten. Der Quellenstand ist bei den Entscheidungsbesprechungen ausgewiesen. Die gezielte Nachprüfung vom 21.11.2026 ergänzt den ausführlichen Stand vom 08.10.2026.
 
 ## Navigation
 
-Neu: [Prüfbericht zum großen Arbeitsbuch mit tatsächlichen Dialogantworten](testakten/handbuch-2026-10-08/README.md).
+[Prüfbericht vom Oktober 2026 zum großen Arbeitsbuch mit tatsächlichen Dialogantworten](testakten/handbuch-2026-10-08/README.md).
 
 [Direktdownloads](#direktdownloads) · [Dateiwahl](#welche-datei-brauche-ich) · [Testakten](#testakten-im-überblick) · [Anwendung](#anwendung-so-einfach-gehts) · [Werkstatt-Quickstart](#werkstatt-quickstart-für-jede-ki) · [Ausführungsmodi](#schnell-stabil-und-vollständig) · [Repository-Landkarte](#repository-landkarte) · [100-Punkte-Audit](QUALITY-AUDIT-100.md) · [Qualitätssicherung](#qualitätssicherung-und-release-check) · [Workflow](#workflow-in-acht-stufen) · [Rechtsanker](#rechtlicher-anker) · [Nutzungshinweise](#-keine-aussage-über-berufsrecht-datenschutz-ki-vo-oder-beschlagnahmeverbote)
 
@@ -37,7 +37,7 @@ Die Links in der Spalte **Herunterladen** liefern unmittelbar eine Datei statt e
 
 Weitere Einstiege: [komfortable Downloadseite](https://klotzkette.github.io/arbeitszeugnispruefer-skill/) · [Downloadhilfe Vollversion](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-skill.html) · [Downloadhilfe Mini-Version](https://klotzkette.github.io/arbeitszeugnispruefer-skill/download-mini.html) · [alle versionierten Release-Assets](https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/latest) · [`CHANGELOG.md`](CHANGELOG.md)
 
-Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 50.644 Wörter mit Frage-Antwort-Pfaden, sieben Einsatzstrecken, vertiefter Rechtsprechung, Beweisanwendungen und fertigen Schreiben. Ein eigenes Kapitel behandelt Datei-Upload, Webchat, Plugin und Word: tatsächlichen Dokumentzugriff prüfen, Original erhalten, Kommentare und Entwürfe trennen und die neue Fassung kontrollieren. Auch die einzelne hochgeladene Datei führt den Dialog; zusätzliche Referenzdateien sind nicht erforderlich. Die [redaktionellen Kapitelquellen](handbuch/README.md) sind nur für die Pflege bestimmt.
+Die `SKILL.md` ist der ausführliche **Werkstatt-Prompt**: 51.306 Wörter mit Frage-Antwort-Pfaden, sieben Einsatzstrecken, vertiefter Rechtsprechung, Beweisanwendungen und fertigen Schreiben. Ein eigenes Kapitel behandelt Datei-Upload, Webchat, Plugin und Word: tatsächlichen Dokumentzugriff prüfen, Original erhalten, Kommentare und Entwürfe trennen und die neue Fassung kontrollieren. Auch die einzelne hochgeladene Datei führt den Dialog; zusätzliche Referenzdateien sind nicht erforderlich. Die [redaktionellen Kapitelquellen](handbuch/README.md) sind nur für die Pflege bestimmt.
 
 Kurzversion für kleine Assistenten: Wenn Claude, ChatGPT, Gemini, ein Agent-Harness oder ein kleines Skillset die große Datei nicht sauber annimmt, nimm die kompakte Sparversion. Sie bleibt unter 7.500 Zeichen inklusive Leerzeichen, ist weniger tief als die Vollversion, bildet aber den Kernworkflow mit Ampel, Rollenlogik, tabellarischer Satzmatrix, Notenspanne, Mandantenerklärung in normaler Sprache und Gegenseitenschreiben ab. Beide Dateien sind freistehend nutzbar: herunterladen oder kopieren, in ein KI-System geben, Zeugnis nachreichen.
 
@@ -210,7 +210,7 @@ python3 scripts/build_generated_testakten.py --verify-reproducible
 Nach dem GitHub-Release kann zusätzlich der veröffentlichte Asset-Satz geprüft werden:
 
 ```bash
-python3 scripts/check_release_integrity.py --github-release v4.0.0
+python3 scripts/check_release_integrity.py --github-release v4.1.0
 ```
 
 ## Workflow in acht Stufen

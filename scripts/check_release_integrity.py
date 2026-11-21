@@ -224,6 +224,8 @@ HANDBOOK_DECISION_DATES = {
     "16 Sa 1195/10": "07.02.2011",
     "3 AZR 120/11": "12.02.2013",
     "9 Ta 209/26": "17.09.2026",
+    "3 Ca 7407/25": "03.03.2026",
+    "10 Ta 207/26": "19.10.2026",
 }
 RESEARCH_LEAD_DATES = {
     # Explicitly unverified leads in the research log, never substantive anchors.
@@ -623,6 +625,35 @@ def check_legal_citations(checker: Checker) -> None:
         and all(case in full for case in RESEARCH_LEAD_DATES),
         "unverified research leads remain visibly distinguished from substantive anchors",
     )
+
+    # Test the operative prompt, not only a citation or a historical note.
+    # The full handbook is assembled from separate sources; the mini must
+    # carry the same scope without that handbook being present.
+    full_entry = full.partition("<!-- BEGIN ZEUGNIS-HANDBUCH:")[0]
+    for label, prompt in (("full entry", full_entry), ("mini", mini)):
+        for case, terms in (
+            ("3 Ca 7407/25", ("viel Erfolg", "Wortlaut")),
+            ("10 Ta 207/26", ("wesentlich", "offen")),
+        ):
+            relevant = [line for line in prompt.splitlines() if case in line]
+            checker.require(
+                any(all(term.casefold() in line.casefold() for term in terms) for line in relevant),
+                f"{label} applies {case} with its case-specific limit",
+            )
+        checker.require(
+            "Fertigkeiten, Kenntnisse und Fähigkeiten" in prompt
+            and re.search(r"Leistung(?: und |/)Verhalten.{0,35}auf Verlangen", prompt),
+            f"{label} distinguishes compulsory vocational skills from optional evaluation",
+        )
+    for document_id, locator, source_file in (
+        ("NJRE001639396", "Rn. 23–35", "schluss-bindung-status.md"),
+        ("LARE260001319", "Gründe II.5 und II.6.b", "form-fristen-durchsetzung.md"),
+    ):
+        source = read_text(Path("handbuch") / source_file)
+        checker.require(
+            all(document_id in content and locator in content for content in (source, full)),
+            f"maintained and embedded chapter retain the source and scope of {document_id}",
+        )
 
     required_full = [
         "§ 109 GewO und BAG-Linie",

@@ -269,6 +269,12 @@ Für Arbeitgeber ist eine Abweichungsliste hilfreicher als ein pauschales „unw
 
 Auch ein erfolgreicher Zwangsgeldantrag liefert noch nicht selbst das fertige Dokument. Nach Eingang ist erneut zu prüfen, ob gerade die titulierte Pflicht erfüllt wurde. Umgekehrt sollte eine tatsächlich ordnungsgemäße Leistung zeitnah im Verfahren berücksichtigt werden. Verfahrensfortsetzung aus bloßer Verärgerung kann zusätzliche Kosten und neue Konflikte erzeugen.
 
+#### 23.8.7. Einzelner Einwand gegen eine wesentliche Tätigkeitsangabe
+
+Das Hessische LAG hielt bei einem erteilten Zeugnis den konkreten Streit über eine wesentliche Tätigkeit für ausreichend, um ein Zwangsgeld abzulehnen. Der Entwurf nannte Baustellenüberwachung und Teambesprechungen. Im erteilten Text fehlten sie, zur tatsächlichen Aufgabenverteilung äußerte sich der Gläubiger nicht näher. Die Kammer stellte auf die Einheit des Zeugnisses ab. Erfasse für jede strittige Passage den Einwand und seine tatsächliche Grundlage. Bei einem substanziellen Einwand zu einem wesentlichen Punkt prüfe das Erkenntnisverfahren. Bei bloßer pauschaler Kritik bleiben Titelinhalt und Erfüllung konkret zu vergleichen. Das BAG hat die Frage nur teilweise begründeter Abweichungen ausdrücklich offengelassen. [Hessisches LAG, Beschluss vom 19.10.2026 – 10 Ta 207/26, Gründe II.5 und II.6.b, Landesdatenbank](https://www.rv.hessenrecht.hessen.de/bshe/?query=DOKNR%3ALARE260001319&source=PermaLink) · [Gerichtstext in freier Wiedergabe](https://zitierfest.de/rechtsprechung/lag-hessen/10-ta-207-26).
+
+Im Mandat den letzten zur Vollstreckung gestellten Entwurf, die erteilte Fassung und für jede beanstandete Abweichung den genauen Tatsachenvortrag beider Seiten erfassen. Unstreitige Punkte für die gütliche Einigung kennzeichnen. Die Ablehnung des Zwangsgelds entscheidet den materiell zutreffenden Zeugniswortlaut nicht.
+
 ### 23.9. Kosten und Streitwert: Wert ist nicht Rechnung
 
 #### 23.9.1. Erstinstanzliche Anwaltskosten
@@ -308,6 +314,8 @@ Bei einem elektronischen Dokument sind Originaldatei und Einwilligung zu klären
 Zum Abschluss sollte die betroffene Person eine priorisierte Handlung erhalten: beispielsweise sofortige fristwahrende Geltendmachung, Einholung einer Originalfassung, technisch nachvollziehbare Signaturprüfung, präzise Nachbesserungsaufforderung oder Vorbereitung eines bestimmten Antrags. Der Bericht sollte keine gleichrangige Liste aller theoretisch denkbaren Verfahren anbieten, wenn sich aus den Unterlagen bereits eine klare nächste Handlung ergibt.
 
 ### 23.11. Rechercheprotokoll, Reichweite und offene Quellenpunkte
+
+Gezielter Nachtrag am 21.11.2026 für Abschnitt 23.8.7. Zur hessischen Entscheidung wurden die Landesfundstelle ermittelt und die Gründe II.5 und II.6.b in der verlinkten freien Wiedergabe des Gerichtstexts gelesen. Der BAG-Maßstab wurde am amtlichen Volltext von 8 AZB 25/25 abgeglichen. Der folgende Recherchevermerk dokumentiert die frühere Prüfung.
 
 #### 23.11.1. Volltexte und Quellenqualität
 

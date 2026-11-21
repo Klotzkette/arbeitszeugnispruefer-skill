@@ -5,13 +5,13 @@ description: "Prüft deutsche Arbeits-, Zwischen-, Dienst- und Ausbildungszeugni
 
 # Arbeitszeugnisse prüfen. Ansprüche begründen. Gute Fassungen erreichen.
 
-Version: 4.0.0
+Version: 4.1.0
 
 Ein Arbeitszeugnis entscheidet mit darüber, wie eine berufliche Leistung gesehen wird. Ein fehlender Aufgabenbereich, eine zu schwache Bewertung oder eine unklare Formulierung kann deshalb mehr sein als eine sprachliche Kleinigkeit. Eine gute Prüfung klärt, was der Text tatsächlich aussagt, was sich belegen lässt und welche Änderung rechtlich oder im Gespräch mit dem Arbeitgeber erreichbar ist.
 
 Dieses Arbeitsbuch führt die Prüfung aus Sicht der Arbeitnehmerin oder des Arbeitnehmers. Es liest zuerst das Zeugnis, fragt an den entscheidenden Stellen nach und verarbeitet die Antworten. Daraus entstehen eine begründete Bewertung, konkrete Verbesserungsvorschläge, ein kurzes verständliches Schreiben an die Mandantschaft und das passende Schreiben an den Arbeitgeber. Kommt eine Antwort oder eine neue Zeugnisfassung zurück, geht die Prüfung dort weiter. Sie endet erst, wenn das Ergebnis kontrolliert ist oder die Mandantschaft sich für einen anderen Weg entschieden hat.
 
-Dabei zählt die genaue Unterscheidung: Ein falsches Beschäftigungsdatum wird berichtigt. Eine bessere Leistungsnote braucht eine tragfähige Tatsachengrundlage. Eine freundlichere Schlussformel ist nicht ohne Weiteres einklagbar. Eine bereits zugesagte oder nach berechtigter Beanstandung entzogene Formulierung kann rechtlich anders zu behandeln sein. Das Arbeitsbuch erklärt diese Unterschiede anhand der maßgeblichen Entscheidungen und setzt sie in Fragen, Beweisführung und fertige Texte um.
+Dabei zählt die genaue Unterscheidung: Ein falsches Beschäftigungsdatum wird berichtigt. Eine bessere Leistungsnote braucht eine tragfähige Tatsachengrundlage. Eine freundlichere Schlussformel ist nicht ohne Weiteres einklagbar. Eine bereits zugesagte oder nach berechtigter Beanstandung entzogene Formulierung kann rechtlich anders zu behandeln sein. Bei einem Vergleich prüfe den genauen Text der Zusage. Ist eine zur Note passende Wunschformel oder ein bestimmter Satz vereinbart? Bestreitet der Arbeitgeber eine wesentliche Aufgabe im Entwurf, vergleiche Aufgabe, tatsächlichen Beitrag und Gegenbelege, bevor du den Verfahrensweg bestimmst. Die Fallprüfungen dazu stehen in 22.2.11 und 23.8.7.
 
 Die ausführlichen Kapitel sind für die anwaltliche Arbeit bestimmt. Die Mandantschaft erhält trotzdem eine kurze, verständliche Empfehlung. Der Umfang des Nachschlagewerks ist kein Auftrag, jedes Mandat mit einem langen Vortrag zu beginnen: Am Anfang stehen die konkrete Frage oder der wichtigste Befund, ohne Statuskopf, Bedienungsanleitung oder Selbstdarstellung der KI.
 
@@ -243,7 +243,7 @@ Die folgenden Schritte steuern die Prüfung intern; sie sind keine Gliederung f�
 1. **Material zählen:** Anzahl der Dateien, Zeugnisse und Seiten sowie erkennbare Dokumentgrenzen intern festhalten.
 2. **Lesbarkeit festhalten:** Vollständig lesbar, teilweise unleserlich, OCR-basiert oder nur auszugsweise vorhanden.
 3. **Rolle und Status trennen:** Einsenderrolle, Rechtsstatus und Ziel aus Material ableiten und Unsicherheiten markieren.
-4. **Zeugnisart bestimmen:** Einfach, qualifiziert, Zwischen-, Dienst- oder Ausbildungszeugnis; Entwurf und erteilte Fassung unterscheiden.
+4. **Zeugnisart bestimmen:** Zeitpunkt, Tätigkeit und Verlangen aus den Unterlagen klären. Beim einfachen Arbeitszeugnis Art und Dauer prüfen. Beim Ausbildungszeugnis kommen Ziel und erworbene Fertigkeiten, Kenntnisse und Fähigkeiten hinzu. Leistung und Verhalten werden jeweils auf Verlangen aufgenommen. Für Zwischen- und Dienstzeugnisse Anlass und Status prüfen. Entwurf und erteilte Fassung unterscheiden.
 5. **Kopfdaten sichern:** Arbeitgeber/Dienstgeber/Ausbildende, Person, Zeitraum, Position, Ausstellungsdatum, Beendigungsanlass nur soweit belegt.
 6. **Sätze registrieren:** Aufgaben, Leistung, Verhalten, Führung und Schlussformel trennen; bewertende Sätze mit stabilen IDs versehen.
 7. **Befunde kalibrieren:** Notentendenz, Ampel, Kontextlesart, Rechtsstatus und Belegbedarf getrennt bestimmen.
@@ -416,7 +416,7 @@ Das Cockpit ersetzt nicht die ausführliche Entscheidungstabelle im nächsten Ab
 
 ### Rechtsstand und Reichweite
 
-Die vertiefenden Kapitel dokumentieren die gezielte Recherche vom **08.10.2026**; der ältere Gesamtkatalog hatte den Prüfstand **09.08.2026**, sechs Kurzarbeitskarten den Stand **28.09.2026**. Diese Daten werden nicht zu einer behaupteten vollständigen Neuprüfung sämtlicher Altbelege zusammengezogen. Die Anspruchsgrundlagen bleiben nach Arbeitnehmer-, Dienst- und Ausbildungsstatus zu unterscheiden. Ein neu recherchierter prozessualer Anker ist LAG Hamm, Beschluss vom 17.09.2026 – Az. 9 Ta 209/26, zur Umsetzung einer bindenden Entwurfsregelung. Seine Reichweite und ein Datumsfehler im dortigen BAG-Zitat werden im vertiefenden Verfahrenskapitel erläutert. Veröffentlichungen können verzögert erfolgen; „kein weiterer Treffer“ bedeutet nicht „keine weitere Entscheidung“.
+Der Abgleich vom **21.11.2026** ergänzt die Auslegung einer zugesagten Schlussformel, einen wesentlichen Wahrheitseinwand gegen den titulierten Entwurf und den Kölner Zwischenzeugnisfall. Die vertiefenden Kapitel dokumentieren außerdem die gezielte Recherche vom **08.10.2026**; der ältere Gesamtkatalog hatte den Prüfstand **09.08.2026**, sechs Kurzarbeitskarten den Stand **28.09.2026**. Diese Daten werden nicht zu einer behaupteten vollständigen Neuprüfung sämtlicher Altbelege zusammengezogen. Die Anspruchsgrundlagen bleiben nach Arbeitnehmer-, Dienst- und Ausbildungsstatus zu unterscheiden. Ein neu recherchierter prozessualer Anker ist LAG Hamm, Beschluss vom 17.09.2026 – Az. 9 Ta 209/26, zur Umsetzung einer bindenden Entwurfsregelung. Seine Reichweite und ein Datumsfehler im dortigen BAG-Zitat werden im vertiefenden Verfahrenskapitel erläutert. Veröffentlichungen können verzögert erfolgen; „kein weiterer Treffer“ bedeutet nicht „keine weitere Entscheidung“.
 
 ### Quellenhierarchie für die Live-Prüfung
 
@@ -433,6 +433,8 @@ Ein redaktioneller Bericht oder Suchtreffer ist nur ein Recherchehinweis. Eine v
 | Frage | Tragender Anker | Was er trägt | Was er nicht trägt |
 | --- | --- | --- | --- |
 | Vollstreckbare Entwurfsklausel | BAG 07.05.2026 – 8 AZB 25/25 | Entwurf mit Abweichung nur aus wichtigem Grund kann vollstreckbaren Inhalt haben; Wahrheit/Klarheit bleiben Grenzen | keinen Anspruch auf unwahre Superlative und keine automatische Zwangsgeldfestsetzung bei substantiiertem Wahrheitsstreit |
+| Wesentlicher Einzeleinwand bei erteiltem Zeugnis | Hessisches LAG 19.10.2026 – 10 Ta 207/26 | Ein konkreter Streit über eine wesentliche Tätigkeit konnte Zwangsgeld für die verlangte Gesamtfassung ausschließen | Vortrag beider Seiten prüfen. Das BAG ließ die Teilfrage offen. Abschnitt 23.8.7. |
+| Vereinbarte gute Wunschformel | ArbG Stuttgart 03.03.2026 – 3 Ca 7407/25 | Im Vergleich war die Wirkung, aber kein genauer Wortlaut festgelegt. „Viel Erfolg“ erfüllte im positiven Gesamttext die Zusage. | Wortlautbindung und spätere Maßregelung gesondert prüfen. Abschnitt 22.2.11. |
 | Zwischenzeugnis bei Bewerbung | LAG Köln 04.03.2026 – 5 SLa 495/25 | ernsthafte interne/externe Bewerbungsabsicht kann triftiger Grund sein; abgestufte Darlegung | noch keine abschließende BAG-Leitentscheidung; zugelassene Revision live prüfen |
 | Vergleichsmehrwert | LAG Nürnberg 05.02.2026 – 7 Ta 2/26 | Zeugnisregelung erhöht Wert nicht automatisch; konkreter Streit/Ungewissheit erforderlich | keine Aussage gegen den materiellen Zeugnisanspruch |
 | Briefkopf/Firmenbogen | LAG Hamm 19.02.2026 – 9 Ta 319/25 | ordnungsgemäßer Briefkopf und üblicher Firmenbogen können zur Erfüllung gehören | keine allgemeine Pflicht zu einem bestimmten Design oder Logo |
@@ -1203,12 +1205,12 @@ Typische freiwillige Schlussformeln kombinieren mehrere Bausteine:
 ## Anspruchs-Realität
 
 - Eine wohlwollende Schlussformel lässt sich nach ständiger BAG-Linie **nicht erzwingen** (BAG 20.02.2001 – 9 AZR 44/00; BAG 11.12.2012 – 9 AZR 227/11; BAG 25.01.2022 – 9 AZR 146/21 — dort auch Abwägung mit der Meinungsfreiheit des Arbeitgebers, Art. 5 Abs. 1 GG).
-- **Wichtige Folge aus 9 AZR 227/11:** Ist der Mandant mit einer **erteilten** Schlussformel unzufrieden, besteht kein Anspruch auf Ergänzung oder Umformulierung — einklagbar ist nur ein Zeugnis **ohne** Schlussformel. Das ist taktisch fast nie attraktiv und gehört deshalb in die Verhandlungs-, nicht in die Klagestrategie.
+- **Folge aus 9 AZR 227/11 für freiwillige Formeln ohne zusätzliche Abrede:** Ist der Mandant mit einer erteilten Schlussformel lediglich unzufrieden, besteht kein Anspruch auf Ergänzung oder Umformulierung — einklagbar ist nur ein Zeugnis **ohne** Schlussformel. Das ist taktisch fast nie attraktiv und gehört deshalb in die Verhandlungs-, nicht in die Klagestrategie.
 - **Gegenausnahme aus BAG 06.06.2023 – 9 AZR 272/22:** Schutz besteht gegen eine **maßregelnde Streichung**. Streicht der Arbeitgeber die Dankes- und Wunschformel in einer Folgefassung gerade deshalb, weil der Arbeitnehmer berechtigte Änderungswünsche geltend gemacht hat, verstößt das gegen § 612a BGB — die Formel ist dann wieder aufzunehmen. Das ist kein allgemeiner Anspruch auf Beibehaltung oder Aufwertung jeder Schlussformel; entscheidend sind Benachteiligung und Maßregelungszusammenhang.
 - Eine missliebige persönliche Schlussformel wird nicht über Zeugniswahrheit oder -klarheit in einen gewünschten Dankes-, Bedauerns- oder Wunschsatz umgeschrieben. Selbst bei behaupteter negativer Codierung gewährt 9 AZR 227/11 grundsätzlich nur die **Entfernung der gesamten Schlussformel**, nicht deren Ergänzung oder Umformulierung. Unwahre objektive Tatsachenangaben, etwa zum Beendigungsdatum oder -grund, sind davon zu trennen und als gewöhnlicher Zeugnisinhalt zu berichtigen.
 - Vor Schriftsatzverwendung erneut verifizieren: [Rechtsprechungsanker](#rechtsprechungsanker--bag-leitentscheidungen).
 
-> Im Mandantenbericht Signal und Anspruch getrennt ausweisen: Mehr Wärme ist regelmäßig nur Verhandlungsziel. Als selbständigen Anspruch nur die Entfernung einer missliebigen Formel, die Wiederaufnahme nach § 612a BGB oder die Berichtigung einer davon trennbaren unwahren Tatsachenangabe prüfen.
+> Im Mandantenbericht Signal und Anspruch getrennt ausweisen: Mehr Wärme ist regelmäßig nur Verhandlungsziel. Gesondert prüfen, ob eine konkrete Vereinbarung erfüllt werden muss, eine missliebige freiwillige Formel entfernt, eine maßregelnd gestrichene Formel wieder aufgenommen oder eine unwahre Tatsachenangabe berichtigt werden soll. Eine „entsprechende“ Wunschformel ließ in 3 Ca 7407/25 sprachlichen Spielraum. Den vereinbarten und erteilten Text nebeneinanderlegen.
 
 ---
 
@@ -1638,7 +1640,7 @@ Vor der inhaltlichen Bewertung muss die formale Ebene geprüft werden, weil viel
 **Weitere formale Eckpunkte (verifizierte Rechtsprechung und Gesetz):**
 
 - **Fließtext statt Tabelle:** Ein qualifiziertes Zeugnis im Ankreuz- oder Schulnotenschema erfüllt § 109 GewO regelmäßig nicht (BAG 27.04.2021 – 9 AZR 262/20). Unzulässig ist etwa eine Bewertungsmatrix wie „Arbeitsqualität: ☒ sehr gut ☐ gut ☐ befriedigend" oder „Fachwissen … Note 2" — der Anspruch verlangt eine ausformulierte, individuell gewichtete Beurteilung im Fließtext (Positivbeispiele in [Teil G](#teil-g--musterzeugnisse-und-sonderfälle)).
-- **Papierzeugnis oder elektronische Form:** Für das Arbeitnehmerzeugnis erlaubt § 109 Abs. 3 GewO seit 1.1.2025 die elektronische Form mit Einwilligung des Arbeitnehmers; für das Ausbildungszeugnis eröffnete § 16 Abs. 1 BBiG dies zum 1.8.2024 mit Einwilligung der Auszubildenden. § 630 Satz 3 BGB enthält eine entsprechende Öffnung für Dienstzeugnisse. Ohne Einwilligung bleibt das Papierzeugnis der Regelfall. Elektronisch genügt nicht bloß PDF, Scan, E-Mail oder Textform, sondern nur die elektronische Form im Rechtssinn (qualifizierte elektronische Signatur, § 126a BGB).
+- **Papierzeugnis oder elektronische Form:** Für das Arbeitnehmerzeugnis erlaubt § 109 Abs. 3 GewO seit 1.1.2025 die elektronische Form mit Einwilligung des Arbeitnehmers; für das Ausbildungszeugnis eröffnete § 16 Abs. 1 BBiG dies zum 1.8.2024 mit Einwilligung der Auszubildenden. § 630 Satz 3 BGB enthält eine entsprechende Öffnung für Dienstzeugnisse. Ohne Einwilligung bleibt das Papierzeugnis der Regelfall. Elektronisch genügt nicht bloß PDF, Scan, E-Mail oder Textform, sondern die elektronische Form nach § 126a Abs. 1 BGB. Dazu gehören der hinzugefügte Name und die qualifizierte elektronische Signatur des Ausstellers. Bei einem Ausdruck oder Bild die Einwilligung und den Signaturstatus der Originaldatei gezielt klären.
 - **Unterzeichnerstatus:** Bei Vertretung des Arbeitgebers müssen höhere Rangstellung, Weisungsbefugnis und Funktion erkennbar sein (BAG 04.10.2005 – 9 AZR 507/04). Nennt das Zeugnis maschinenschriftlich Name und Funktion einer Person, muss diese Person unterzeichnen (BAG 21.09.1999 – 9 AZR 893/98).
 - **Geschäftsübliche Unterschrift:** Eine quer durch den Text laufende Unterschrift (LAG Hamm 27.07.2016 – 4 Ta 118/16) oder ein in die Unterschrift eingebauter Smiley mit herabgezogenen Mundwinkeln (ArbG Kiel 18.04.2013 – 5 Ca 80 b/13) sind unzulässige Distanzierungs- bzw. Geheimzeichen.
 - **Briefkopf und Firmenbogen:** Name und Anschrift des Ausstellers müssen aus einem ordnungsgemäßen Briefkopf hervorgehen; vorhandenes, im Geschäftsverkehr genutztes Firmenpapier ist zu verwenden (LAG Hamm 19.02.2026 – 9 Ta 319/25).
@@ -1823,6 +1825,8 @@ Häufig schon vor dem Gütetermin. Vorformulierten Vergleichstext bereithalten: 
 
 **Vollstreckbarkeit des Zeugnisvergleichs (BAG 07.05.2026 – 8 AZB 25/25):** Die im gerichtlichen Vergleich übernommene Pflicht, das Zeugnis nach dem **Entwurf des Arbeitnehmers** zu erteilen — mit Abweichungsvorbehalt nur aus wichtigem Grund — hat vollstreckbaren Inhalt. Praxisfolge: Diese Entwurfsklausel ist ein starkes Vergleichsinstrument und sollte im Vergleichstext mitgedacht werden. Sie eröffnet Vollstreckung, wenn der Arbeitgeber keinen nachvollziehbaren wichtigen Grund vorträgt. Beruft er sich dagegen substantiiert auf Zeugniswahrheit oder Zeugnisklarheit, kann das Zwangsgeld scheitern; der Inhalt ist dann nicht im Vollstreckungsverfahren auszujudizieren, sondern in einem neuen Erkenntnisverfahren zu klären (BAG 8 AZB 25/25, Rn. 19-21). Nicht ausreichend ist eine bloße Notenformel ohne konkreten Zeugnisinhalt („sehr gute Führungs- und Leistungsbeurteilung"): Das ist regelmäßig zu unbestimmt für die Vollstreckung (BAG 14.02.2017 – 9 AZB 49/16).
 
+Der Fall des Hessischen LAG in Abschnitt 23.8.7 betraf insbesondere die im Entwurf genannte Baustellenüberwachung und die Durchführung von Teambesprechungen. Ein einzelner nachvollziehbarer Einwand gegen einen wesentlichen Teil kann nach dieser Kammer zur materiellen Klärung führen. Bei bloßer Pauschalkritik am Entwurf die konkrete Abweichung und Titelerfüllung weiterprüfen.
+
 ## F.4 — Vollstreckung des Zeugnisanspruchs
 
 Wenn Urteil oder Vergleich vorliegt, der Arbeitgeber aber nicht oder falsch erfüllt:
@@ -2000,7 +2004,7 @@ Führungskräftezeugnisse haben typische Erwartungsbausteine. Ihr Fehlen ist nic
 
 1. Echtes Berufsausbildungsverhältnis nach BBiG, Umschulung, Fortbildung, Praktikum oder sonstige Qualifizierung? Anspruchsnorm zuerst festlegen.
 2. Abschlusszeugnis oder Zwischenzeugnis?
-3. Berufsschulbewertung nur prüfen, wenn sie aufgenommen, vereinbart oder konkret verlangt wurde; § 16 Abs. 2 BBiG verlangt sie nicht automatisch.
+3. Schulnoten im betrieblichen Zeugnis: § 16 Abs. 2 BBiG verlangt sie nicht automatisch. Eine zusätzlich verlangte Leistungs- und Verhaltensbeurteilung bezieht sich auf das Ausbildungsverhältnis. Fehlen schulische Angaben, lassen sich daraus keine Schulprobleme ableiten. Bei einer Übernahme den Ausbildungszeitraum und die anschließende Beschäftigung getrennt prüfen.
 4. Ausbildung abgebrochen → Mindestinhalt bleibt geschuldet; Angaben zu Verhalten und Leistung nach § 16 Abs. 2 S. 2 BBiG auf Verlangen prüfen.
 5. Beendigungsgrund: bestandene Prüfung oder Kündigung/Aufhebung?
 
@@ -2033,7 +2037,7 @@ Fehlende Kernaussagen können nach Funktion und Branchenbrauch ein negatives Sig
 
 ## Vertiefendes Arbeitsbuch: Quellen, Fallführung und Umsetzung
 
-Die folgenden Kapitel verbinden die am 08.10.2026 recherchierten Entscheidungen mit eigenständigen Arbeitshilfen. Entscheidungsbesprechung und eigene Anwendung sind getrennt: Rückfragen, Beispiele und Entwürfe sind keine wörtlichen Vorgaben der Gerichte. Die Recherche erfasst die bezeichneten Themen und Quellen, nicht jede veröffentlichte oder unveröffentlichte Entscheidung. Eine bloße Suchspur und ein nicht nachgewiesener Rechtsmittelstand bleiben ausdrücklich offen.
+Die folgenden Kapitel verbinden die am 08.10.2026 recherchierten Entscheidungen mit eigenständigen Arbeitshilfen. Der Nachtrag vom 21.11.2026 betrifft die zugesagte Schlussformel (22.2.11), den Kölner Zwischenzeugnisfall (22.2.8) und einzelne Wahrheitseinwände gegen einen Entwurf (23.8.7). Entscheidungsbesprechung und eigene Anwendung sind getrennt: Rückfragen, Beispiele und Entwürfe sind keine wörtlichen Vorgaben der Gerichte. Die Recherche erfasst die bezeichneten Themen und Quellen, nicht jede veröffentlichte oder unveröffentlichte Entscheidung. Eine bloße Suchspur und ein nicht nachgewiesener Rechtsmittelstand bleiben ausdrücklich offen.
 
 Die älteren Kurzanker im vorderen Teil dienen der Orientierung. Für die genaue Reichweite und den ausgewiesenen Quellenstatus gelten die differenzierten Besprechungen dieses Arbeitsbuchs. Nicht jede frühere Fundstelle wurde am neuen Stichtag erneut geprüft. Die dokumentierte Recherche ersetzt keine aktuelle Prüfung der im konkreten Mandat tragenden Quelle.
 
@@ -2523,7 +2527,7 @@ Die Entscheidung beantwortet nicht jede Frage eines nachträglichen Vergleichs. 
 
 #### 22.2.8 LAG Köln, Urteil vom 04.03.2026 – Az. 5 SLa 495/25
 
-Eine Arbeitnehmerin verlangte erstmals nach mehrjähriger Beschäftigung ein Zwischenzeugnis. Sie nannte zunächst gesundheitlich bedingte Zukunftsüberlegungen und erläuterte anschließend ihre berufliche Neuorientierung. Das LAG bejahte den Anspruch aus arbeitsvertraglicher Nebenpflicht bei triftigem Grund. Eine bereits konkret betriebene Bewerbung verlangte es nicht.
+Ein Arbeitnehmer verlangte nach mehrjähriger Beschäftigung erstmals ein Zwischenzeugnis. Zunächst verwies er auf seine frühere längere Erkrankung. Anschließend erläuterte er, dass er sich intern oder extern bewerben wolle. Das LAG bejahte den Anspruch aus arbeitsvertraglicher Nebenpflicht bei triftigem Grund. Eine bereits konkret betriebene Bewerbung verlangte es nicht.
 
 Der Arbeitnehmer muss einen schlüssigen Grund darstellen. Bloßes Bestreiten des Arbeitgebers genügt nach der vom Gericht angenommenen abgestuften Darlegungslast nicht; konkrete Zweifel können hingegen weitere Erläuterungen erforderlich machen. Das Gericht betonte zugleich, dass weder ein grundloser Anspruch noch unbegrenzte Wiederholungsansprüche entstehen. Fundstellen: Rn. 30–42.
 
@@ -2544,6 +2548,12 @@ Ein langjähriger Vertriebsingenieur verlangte nach einem umfassenden Beendigung
 Fundstellen: Gründe II 1 b cc–dd, II 1 c–d und II 2. Die Revision wurde zugelassen; ein weiterführender Verfahrensnachweis wurde nicht verifiziert. Der amtliche Text nennt beim Vergleich und in den Gründen widersprüchliche Jahreszahlen zum Beschäftigungsende. Seine Begründung geht vom bereits entstandenen Anspruch aus. Er ist deshalb kein belastbarer Beleg für die Wirksamkeit eines Vorausverzichts und nicht unbesehen auf einen heutigen Vergleich vor dem feststehenden Endtermin übertragbar.
 
 Die Reichweite nachträglicher Abgeltung bleibt ein eigener Prüfpunkt. [Amtlicher Volltext im Landesrechtsportal Brandenburg](https://gerichtsentscheidungen.brandenburg.de/gerichtsentscheidung/5827).
+
+#### 22.2.11 Vereinbarte Schlussformel und Wunschwortlaut
+
+Im Vergleich waren ein gutes Zeugnis und eine entsprechende Bedauerns-, Dankes- und Wunschformel vereinbart. Der Arbeitnehmer wollte „viel Erfolg“ durch „weiterhin viel Erfolg“ ersetzen. Das Arbeitsgericht verneinte eine entsprechende Wortlautbindung. Das Zeugnis beschrieb die erfolgreiche Arbeit im Leistungsteil, und der vereinbarte Schlusssatz ließ dem Arbeitgeber sprachlichen Spielraum. Frage nach dem genauen Vergleichstext, einem verbindlichen Entwurf und dem vollständigen Leistungsteil. Ein ausdrücklich vereinbarter Satz oder die nachträgliche Streichung einer früher erteilten Formel erfordert eine eigene Prüfung. [ArbG Stuttgart, Urteil vom 03.03.2026 – 3 Ca 7407/25, Rn. 23–35, Landesrecht BW](https://www.landesrecht-bw.de/bsbw/document/NJRE001639396).
+
+Gezielter Quellenabgleich am 21.11.2026. Landesrecht BW weist das Stuttgarter Urteil als rechtskräftig aus. Es entscheidet den konkreten Vergleich. Für die nachträgliche Streichung einer früheren Formel bleibt das Motiv der Änderung gesondert zu klären. Der Kölner Sachverhalt in Abschnitt 22.2.8 wurde mit dem dort verlinkten Gerichtstext abgeglichen.
 
 ### 22.3. Eigene Anwendung: zuerst die Anspruchslandkarte erstellen
 
@@ -3134,6 +3144,12 @@ Für Arbeitgeber ist eine Abweichungsliste hilfreicher als ein pauschales „unw
 
 Auch ein erfolgreicher Zwangsgeldantrag liefert noch nicht selbst das fertige Dokument. Nach Eingang ist erneut zu prüfen, ob gerade die titulierte Pflicht erfüllt wurde. Umgekehrt sollte eine tatsächlich ordnungsgemäße Leistung zeitnah im Verfahren berücksichtigt werden. Verfahrensfortsetzung aus bloßer Verärgerung kann zusätzliche Kosten und neue Konflikte erzeugen.
 
+#### 23.8.7. Einzelner Einwand gegen eine wesentliche Tätigkeitsangabe
+
+Das Hessische LAG hielt bei einem erteilten Zeugnis den konkreten Streit über eine wesentliche Tätigkeit für ausreichend, um ein Zwangsgeld abzulehnen. Der Entwurf nannte Baustellenüberwachung und Teambesprechungen. Im erteilten Text fehlten sie, zur tatsächlichen Aufgabenverteilung äußerte sich der Gläubiger nicht näher. Die Kammer stellte auf die Einheit des Zeugnisses ab. Erfasse für jede strittige Passage den Einwand und seine tatsächliche Grundlage. Bei einem substanziellen Einwand zu einem wesentlichen Punkt prüfe das Erkenntnisverfahren. Bei bloßer pauschaler Kritik bleiben Titelinhalt und Erfüllung konkret zu vergleichen. Das BAG hat die Frage nur teilweise begründeter Abweichungen ausdrücklich offengelassen. [Hessisches LAG, Beschluss vom 19.10.2026 – 10 Ta 207/26, Gründe II.5 und II.6.b, Landesdatenbank](https://www.rv.hessenrecht.hessen.de/bshe/?query=DOKNR%3ALARE260001319&source=PermaLink) · [Gerichtstext in freier Wiedergabe](https://zitierfest.de/rechtsprechung/lag-hessen/10-ta-207-26).
+
+Im Mandat den letzten zur Vollstreckung gestellten Entwurf, die erteilte Fassung und für jede beanstandete Abweichung den genauen Tatsachenvortrag beider Seiten erfassen. Unstreitige Punkte für die gütliche Einigung kennzeichnen. Die Ablehnung des Zwangsgelds entscheidet den materiell zutreffenden Zeugniswortlaut nicht.
+
 ### 23.9. Kosten und Streitwert: Wert ist nicht Rechnung
 
 #### 23.9.1. Erstinstanzliche Anwaltskosten
@@ -3173,6 +3189,8 @@ Bei einem elektronischen Dokument sind Originaldatei und Einwilligung zu klären
 Zum Abschluss sollte die betroffene Person eine priorisierte Handlung erhalten: beispielsweise sofortige fristwahrende Geltendmachung, Einholung einer Originalfassung, technisch nachvollziehbare Signaturprüfung, präzise Nachbesserungsaufforderung oder Vorbereitung eines bestimmten Antrags. Der Bericht sollte keine gleichrangige Liste aller theoretisch denkbaren Verfahren anbieten, wenn sich aus den Unterlagen bereits eine klare nächste Handlung ergibt.
 
 ### 23.11. Rechercheprotokoll, Reichweite und offene Quellenpunkte
+
+Gezielter Nachtrag am 21.11.2026 für Abschnitt 23.8.7. Zur hessischen Entscheidung wurden die Landesfundstelle ermittelt und die Gründe II.5 und II.6.b in der verlinkten freien Wiedergabe des Gerichtstexts gelesen. Der BAG-Maßstab wurde am amtlichen Volltext von 8 AZB 25/25 abgeglichen. Der folgende Recherchevermerk dokumentiert die frühere Prüfung.
 
 #### 23.11.1. Volltexte und Quellenqualität
 

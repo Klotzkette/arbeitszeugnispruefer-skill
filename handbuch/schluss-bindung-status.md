@@ -72,7 +72,7 @@ Die Entscheidung beantwortet nicht jede Frage eines nachträglichen Vergleichs. 
 
 ### 22.2.8 LAG Köln, Urteil vom 04.03.2026 – Az. 5 SLa 495/25
 
-Eine Arbeitnehmerin verlangte erstmals nach mehrjähriger Beschäftigung ein Zwischenzeugnis. Sie nannte zunächst gesundheitlich bedingte Zukunftsüberlegungen und erläuterte anschließend ihre berufliche Neuorientierung. Das LAG bejahte den Anspruch aus arbeitsvertraglicher Nebenpflicht bei triftigem Grund. Eine bereits konkret betriebene Bewerbung verlangte es nicht.
+Ein Arbeitnehmer verlangte nach mehrjähriger Beschäftigung erstmals ein Zwischenzeugnis. Zunächst verwies er auf seine frühere längere Erkrankung. Anschließend erläuterte er, dass er sich intern oder extern bewerben wolle. Das LAG bejahte den Anspruch aus arbeitsvertraglicher Nebenpflicht bei triftigem Grund. Eine bereits konkret betriebene Bewerbung verlangte es nicht.
 
 Der Arbeitnehmer muss einen schlüssigen Grund darstellen. Bloßes Bestreiten des Arbeitgebers genügt nach der vom Gericht angenommenen abgestuften Darlegungslast nicht; konkrete Zweifel können hingegen weitere Erläuterungen erforderlich machen. Das Gericht betonte zugleich, dass weder ein grundloser Anspruch noch unbegrenzte Wiederholungsansprüche entstehen. Fundstellen: Rn. 30–42.
 
@@ -93,6 +93,12 @@ Ein langjähriger Vertriebsingenieur verlangte nach einem umfassenden Beendigung
 Fundstellen: Gründe II 1 b cc–dd, II 1 c–d und II 2. Die Revision wurde zugelassen; ein weiterführender Verfahrensnachweis wurde nicht verifiziert. Der amtliche Text nennt beim Vergleich und in den Gründen widersprüchliche Jahreszahlen zum Beschäftigungsende. Seine Begründung geht vom bereits entstandenen Anspruch aus. Er ist deshalb kein belastbarer Beleg für die Wirksamkeit eines Vorausverzichts und nicht unbesehen auf einen heutigen Vergleich vor dem feststehenden Endtermin übertragbar.
 
 Die Reichweite nachträglicher Abgeltung bleibt ein eigener Prüfpunkt. [Amtlicher Volltext im Landesrechtsportal Brandenburg](https://gerichtsentscheidungen.brandenburg.de/gerichtsentscheidung/5827).
+
+### 22.2.11 Vereinbarte Schlussformel und Wunschwortlaut
+
+Im Vergleich waren ein gutes Zeugnis und eine entsprechende Bedauerns-, Dankes- und Wunschformel vereinbart. Der Arbeitnehmer wollte „viel Erfolg“ durch „weiterhin viel Erfolg“ ersetzen. Das Arbeitsgericht verneinte eine entsprechende Wortlautbindung. Das Zeugnis beschrieb die erfolgreiche Arbeit im Leistungsteil, und der vereinbarte Schlusssatz ließ dem Arbeitgeber sprachlichen Spielraum. Frage nach dem genauen Vergleichstext, einem verbindlichen Entwurf und dem vollständigen Leistungsteil. Ein ausdrücklich vereinbarter Satz oder die nachträgliche Streichung einer früher erteilten Formel erfordert eine eigene Prüfung. [ArbG Stuttgart, Urteil vom 03.03.2026 – 3 Ca 7407/25, Rn. 23–35, Landesrecht BW](https://www.landesrecht-bw.de/bsbw/document/NJRE001639396).
+
+Gezielter Quellenabgleich am 21.11.2026. Landesrecht BW weist das Stuttgarter Urteil als rechtskräftig aus. Es entscheidet den konkreten Vergleich. Für die nachträgliche Streichung einer früheren Formel bleibt das Motiv der Änderung gesondert zu klären. Der Kölner Sachverhalt in Abschnitt 22.2.8 wurde mit dem dort verlinkten Gerichtstext abgeglichen.
 
 ## 22.3. Eigene Anwendung: zuerst die Anspruchslandkarte erstellen
 
