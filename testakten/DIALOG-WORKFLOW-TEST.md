@@ -1,4 +1,4 @@
-# Dialogprüfungen der Versionen 3.2.0 und 3.3.0
+# Dialogprüfungen der Versionen 3.2.0, 3.3.0 und 4.1.0
 
 Erste Proben: 25.09.2026; Ergänzung zu 3.3.0: 28.09.2026.
 Ergänzende Verhaltensproben mit unabhängigen Agenten ohne
@@ -132,3 +132,19 @@ Berichtigungsaufforderung, keine bloße Gefälligkeitsbitte; gute Note und
 Schlussformel wurden nicht zusätzlich verlangt. Später mögliche Gegenbelege
 blieben als Risiko benannt. Diese Probe bewertet den beschriebenen Einzelfall,
 nicht sämtliche Rechtsfragen oder das Verhalten jedes Chatbots.
+
+## Verhaltensproben vom 21. November 2026 · Version 4.1.0
+
+Vier fiktive Aufträge wurden in der Codex CLI mit GPT-6.2-Astra beantwortet. In jeder frischen Textsitzung lag nur die vollständige bezeichnete Skilldatei und die jeweilige Nutzerfrage vor. Beim Formfall erhielt das Modell im zweiten Schritt zusätzlich den ersten tatsächlichen Dialog. Es nutzte weder Webrecherche noch Mandatsakten oder Musterlösungen.
+
+| Einstieg | Anfrage | Beobachtetes Ergebnis |
+| --- | --- | --- |
+| Mini, zwei Nachrichten | Nur ein PDF mit sichtbarer Unterschrift. Nach der Rückfrage bestätigte die Nutzerin einen Scan und verneinte ihre Einwilligung. | Die erste Antwort fragte nach Einwilligung und Signatur. Die zweite verlangte das eigenhändig unterschriebene Original und blieb beim Formmangel. |
+| Vollfassung | Ein Vergleich verspricht eine zur guten Note passende Schlussformel. Das Zeugnis bescheinigt bisherige Erfolge und wünscht „viel Erfolg“. Muss „weiterhin“ ergänzt werden? | Die Antwort würdigte Leistungsteil und Abrede. Den verlangten Einzelwortlaut stufte sie als unverbindlich ein und ordnete ArbG Stuttgart, 3 Ca 7407/25, der Fallgestaltung zu. |
+| Vollfassung | Ein tituliertes Entwurfsrecht trifft auf einen konkret belegten Einwand zur behaupteten Abteilungsleitung und auf nebensächliche Stilabweichungen. | Die Antwort prüfte die Vollstreckbarkeit, trennte Wahrheitseinwand und Stilfragen und unterschied die offene Teilfrage beim BAG von der Anwendung durch das Hessische LAG (8 AZB 25/25, 10 Ta 207/26). |
+| Mini | Einfaches Ausbildungszeugnis mit Angaben zu Art, Dauer, Ziel und erworbenen Fähigkeiten, ohne Verlangen nach Beurteilung. | Die Antwort erläuterte § 16 BBiG, die Ergänzung von Leistungs- und Verhaltensangaben auf Verlangen sowie den Unterschied zum Schulzeugnis. |
+
+Die fünf Antworten prüfen das Verhalten des geladenen Texts in einem Modell. Word-Integration und eine Liveprüfung von Rechtsquellen waren nicht Teil der Proben.
+
+- Vollständig geladene Langfassung, SHA-256 `13d8b736d485167aa2c82d006a4590a0ee1eba89b9da413e93b1f035a13cbd5c`
+- Vollständig geladener Mini-Prompt, SHA-256 `962c7f14d7589be28af70df3eb39b274bf5617e33df40328d23b8f2788a3a010`
