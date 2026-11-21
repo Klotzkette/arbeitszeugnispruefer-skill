@@ -7,6 +7,12 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [4.1.0] — 2026-11-21
+
+- Bei einer vereinbarten Schlussformel werden der genaue Wortlaut, die Bewertung im Gesamtzeugnis und ein etwaiger Anspruch auf eine bestimmte Formulierung geprüft.
+- Bei bestrittenen Aufgaben im Zeugnisentwurf werden die einzelnen Abweichungen und Wahrheitseinwände dem Erkenntnis- oder Vollstreckungsverfahren zugeordnet. Die Entscheidungsbesprechungen grenzen Instanzrechtsprechung und offengelassene Fragen des BAG ab.
+- Vollfassung, Mini und die Handbuchkapitel berücksichtigen die Nachrecherche vom 21.11.2026. Frühere Recherchezeitpunkte bleiben bei den jeweiligen Quellen erkennbar.
+
 ## [4.0.0] — 2026-10-08
 
 ### Großes juristisches Arbeitsbuch
@@ -772,6 +778,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[4.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.1.0
 [4.0.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.0.0
 [3.3.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.3.0
 [3.2.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.2.0

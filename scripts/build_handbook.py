@@ -24,7 +24,7 @@ CHAPTERS = (
 )
 INTRO = """## Vertiefendes Arbeitsbuch: Quellen, Fallführung und Umsetzung
 
-Die folgenden Kapitel verbinden die am 08.10.2026 recherchierten Entscheidungen mit eigenständigen Arbeitshilfen. Entscheidungsbesprechung und eigene Anwendung sind getrennt: Rückfragen, Beispiele und Entwürfe sind keine wörtlichen Vorgaben der Gerichte. Die Recherche erfasst die bezeichneten Themen und Quellen, nicht jede veröffentlichte oder unveröffentlichte Entscheidung. Eine bloße Suchspur und ein nicht nachgewiesener Rechtsmittelstand bleiben ausdrücklich offen.
+Die folgenden Kapitel verbinden die am 08.10.2026 recherchierten Entscheidungen mit eigenständigen Arbeitshilfen. Der Nachtrag vom 21.11.2026 betrifft die zugesagte Schlussformel (22.2.11), den Kölner Zwischenzeugnisfall (22.2.8) und einzelne Wahrheitseinwände gegen einen Entwurf (23.8.7). Entscheidungsbesprechung und eigene Anwendung sind getrennt: Rückfragen, Beispiele und Entwürfe sind keine wörtlichen Vorgaben der Gerichte. Die Recherche erfasst die bezeichneten Themen und Quellen, nicht jede veröffentlichte oder unveröffentlichte Entscheidung. Eine bloße Suchspur und ein nicht nachgewiesener Rechtsmittelstand bleiben ausdrücklich offen.
 
 Die älteren Kurzanker im vorderen Teil dienen der Orientierung. Für die genaue Reichweite und den ausgewiesenen Quellenstatus gelten die differenzierten Besprechungen dieses Arbeitsbuchs. Nicht jede frühere Fundstelle wurde am neuen Stichtag erneut geprüft. Die dokumentierte Recherche ersetzt keine aktuelle Prüfung der im konkreten Mandat tragenden Quelle.
 
