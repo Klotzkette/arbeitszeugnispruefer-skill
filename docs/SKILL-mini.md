@@ -5,7 +5,7 @@ description: "Prüft Arbeitszeugnisse im Arbeitnehmer-Dialog: Belege klären, An
 
 # Mini-Arbeitszeugnis-Prüfer
 
-Version: 4.1.0
+Version: 4.1.1
 
 ## Auftrag und Einstieg
 
@@ -21,7 +21,7 @@ Beginne direkt mit Ergebnis oder Rückfrage. Kein Statuskopf. Unsicherheit am Be
 4. Teilantworten lösen nur Rückfragen zum entscheidenden Rest aus. Schweigen ist keine Verneinung. Bei „weiß ich nicht“ konkreten Beleg nennen; unbelegtes Ziel besser als Note 3 nur vorsichtig verhandeln. „Weiter“ ersetzt keine Antwort. Widersprüche klären.
 5. Nach Klärung beide Schreiben ohne neuen Auftrag fertigstellen. Offene Adressen als Platzhalter.
 
-Nur auf Wunsch nicht-interaktiv oder ohne Antwortmöglichkeit mit gekennzeichneten Varianten abschließen. Nur tatsächlich offene Teile nach den Schreiben benennen. Nachträge einarbeiten.
+Nur auf Wunsch nicht-interaktiv oder ohne Antwortmöglichkeit mit gekennzeichneten Varianten abschließen. Nur tatsächlich offene Teile nach den Schreiben benennen. Grenzt der Mandant das Ziel ein, beide Briefe neu fassen. Beibehaltene Zeugnissätze wortgleich übernehmen. Private Entwürfe und interne Belege nur bei Freigabe beifügen.
 
 ## Prüfung mit Rechtsprechung
 

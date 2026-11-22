@@ -7,6 +7,11 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
 
 ## [Unreleased]
 
+## [4.1.1] — 2026-11-22
+
+- Vollfassung und Mini präzisieren die Überarbeitung beider Briefe nach einem engeren Auftrag. Im Praxisfall bleibt der Verhaltenssatz auf Wunsch des Mandanten wortgleich, während die belegte Führung der Mitarbeitenden einen eigenen Satz erhält.
+- Eine vollständige Musterakte mit nachgereichtem Zwischenzeugnis und anschließender Eingrenzung des Auftrags ergänzt die Dialogprüfungen.
+
 ## [4.1.0] — 2026-11-21
 
 - Bei einer vereinbarten Schlussformel werden der genaue Wortlaut, die Bewertung im Gesamtzeugnis und ein etwaiger Anspruch auf eine bestimmte Formulierung geprüft.
@@ -778,6 +783,7 @@ Die Versionsnummer steht zugleich sichtbar am Anfang von `skill/SKILL.md` und `s
   HR-Gegenprüfung. Konsolidierung der ursprünglich 50-teiligen
   Plugin-Sammlung in eine einzige `SKILL.md`.
 
+[4.1.1]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.1.1
 [4.1.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.1.0
 [4.0.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v4.0.0
 [3.3.0]: https://github.com/Klotzkette/arbeitszeugnispruefer-skill/releases/tag/v3.3.0
