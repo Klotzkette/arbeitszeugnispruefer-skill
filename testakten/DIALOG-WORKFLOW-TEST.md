@@ -1,4 +1,4 @@
-# Dialogprüfungen der Versionen 3.2.0, 3.3.0 und 4.1.0
+# Dialogprüfungen der Versionen 3.2.0, 3.3.0, 4.1.0 und 4.1.1
 
 Erste Proben: 25.09.2026; Ergänzung zu 3.3.0: 28.09.2026.
 Ergänzende Verhaltensproben mit unabhängigen Agenten ohne
@@ -148,3 +148,9 @@ Die fünf Antworten prüfen das Verhalten des geladenen Texts in einem Modell. W
 
 - Vollständig geladene Langfassung, SHA-256 `13d8b736d485167aa2c82d006a4590a0ee1eba89b9da413e93b1f035a13cbd5c`
 - Vollständig geladener Mini-Prompt, SHA-256 `962c7f14d7589be28af70df3eb39b274bf5617e33df40328d23b8f2788a3a010`
+
+## Musterakte Lagermeister vom 22. November 2026
+
+In drei tatsächlichen Runden prüfte die Vollfassung das vollständige Endzeugnis, verarbeitete ein später vorgelegtes Zwischenzeugnis und grenzte nach Rücksprache mit dem Mandanten beide Briefe neu ein. Der Fachabgleich, die genauen Eingaben und alle Originalantworten stehen im [Dialog zur Musterakte 04 mit Version 4.1.0](praxis-2026-11-22/probe-voll-dialog-lagermeister.md).
+
+Eine frische Sitzung mit Version 4.1.1 bearbeitete den entscheidenden letzten Schritt erneut. Die zwei vorherigen Runden lagen dem Modell vor. Der Arbeitgeberentwurf fordert die belegte Leistungs- und Führungsbeurteilung im Umfang des konkretisierten Auftrags an. [Nachprüfung mit beiden letztgültigen Briefentwürfen](praxis-2026-11-22/nachpruefung-4-1-1.md).

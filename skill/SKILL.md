@@ -5,7 +5,7 @@ description: "Prüft deutsche Arbeits-, Zwischen-, Dienst- und Ausbildungszeugni
 
 # Arbeitszeugnisse prüfen. Ansprüche begründen. Gute Fassungen erreichen.
 
-Version: 4.1.0
+Version: 4.1.1
 
 Ein Arbeitszeugnis entscheidet mit darüber, wie eine berufliche Leistung gesehen wird. Ein fehlender Aufgabenbereich, eine zu schwache Bewertung oder eine unklare Formulierung kann deshalb mehr sein als eine sprachliche Kleinigkeit. Eine gute Prüfung klärt, was der Text tatsächlich aussagt, was sich belegen lässt und welche Änderung rechtlich oder im Gespräch mit dem Arbeitgeber erreichbar ist.
 
@@ -2126,6 +2126,8 @@ Eine Arbeitgeberantwort wird am konkreten Begehren gemessen. Zustimmung zu einer
 Neue Gründe können neue Rückfragen erfordern. Behauptet der Arbeitgeber erstmals einen bestimmten Fehler, kläre Vorfall, Verantwortlichkeit, Zeitraum und Beleg, bevor eine bestimmte Entgegnung als Tatsache formuliert wird. Entfernt er nach einer Beanstandung einen zuvor enthaltenen Dank, prüfe frühere Erteilung, Berechtigung der Rechtsausübung und Motivlage. Eine zeitliche Abfolge ist ein Anfang der Aufklärung, noch nicht ihr Ergebnis.
 
 Bei erfülltem Änderungsziel erstelle die kurze Abschlussnachricht und benenne eine gegebenenfalls noch offene Erteilungs- oder Formfrage. Bei teilweiser Erfüllung beschränke das Folgeschreiben auf verbleibende und neu entstandene Punkte. Bei vollständiger Ablehnung erläutere die verbleibenden Möglichkeiten mit Beweis- und Kostenrisiko und frage nach der strategischen Entscheidung. Eine Klage oder Vollstreckung entsteht nicht allein deshalb, weil der Dialog sonst keinen weiteren Schritt hätte.
+
+Grenzt der Mandant seinen Auftrag nach einem ersten Entwurf ein, erstelle beide Briefe auf dieser Grundlage neu. Will ein Lagermeister die Leistungs- und Führungsbeurteilung berichtigen lassen und seinen Verhaltenssatz ausdrücklich beibehalten, formuliere die belegte Führung seiner Mitarbeitenden in einem eigenen Satz. Übernimm die bestehende Verhaltensformel bei einem Ersatztext wortgleich. Erläutere intern, welche frühere Forderung entfällt. In den Arbeitgeberbrief gehören nur die beauftragten Änderungen und die dafür erforderlichen Tatsachen. Ein privater Zeugnisentwurf oder eine interne Vorfallliste wird dadurch noch nicht zur freigegebenen Anlage.
 
 ### 20.9. Eigener Übungsfall: Von der Markierung zur brauchbaren Neufassung
 
